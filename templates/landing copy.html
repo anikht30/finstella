@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>INFINEETIA — Where Finance Leaders Converge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" stroke="#9FE1CB" stroke-width="1.5" fill="none"/>
+        <path d="M12 6L17 9V15L12 18L7 15V9L12 6Z" stroke="#1D9E75" stroke-width="1" fill="none"/>
+        <circle cx="12" cy="12" r="2.5" fill="#1D9E75"/>
+      </svg>
+    </div>
+    <div class="nav-wordmark" style="font-size: 24px; color: var(--deep); font-weight: 700; letter-spacing: 1px;">
+        <span>INFIN</span><span style="color: var(--teal);">EETIA</span>
+    </div>
+    <span class="nav-divider"></span>
+    <span class="nav-tag">Finance Leaders Network</span>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#features">Platform</a>
+    <a href="#forum">Community</a>
+    <a href="{% url 'login' %}">Sign In</a> 
+  </div>
+  <a href="#apply" class="nav-cta">Request Access</a>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow anim-1">
+        <span class="hero-eyebrow-line"></span>
+        Private Network for Senior Finance Leaders
+      </div>
+      <h1 class="hero-h1 anim-2">
+        Where India's<br>
+        <em>CFOs convene,</em><br>
+        connect & grow.
+      </h1>
+      <p class="hero-body anim-3">
+        A curated, by-invitation community for Chief Financial Officers and senior finance leaders. Engage in candid peer discussions, join exclusive webinars, and build relationships that transform your career.
+      </p>
+      <div class="hero-ctas anim-4">
+        <a href="#apply" class="btn-hero">Request Membership</a>
+        <a href="#features" class="btn-ghost">Explore Platform</a>
+      </div>
+    </div>
+    <div class="hero-right anim-5">
+      <div class="dash-topbar">
+        <span class="dash-title">Community Dashboard</span>
+        {% comment %} <div class="dash-av">{{request.user.first_name}}</div> {% endcomment %}
+      </div>
+      <div class="dash-stats">
+        <div class="dstat"><div class="dstat-n">{{member_count}}</div><div class="dstat-l">Members</div></div>
+        <div class="dstat"><div class="dstat-n">{{thread_count}}</div><div class="dstat-l">Threads</div></div>
+        <div class="dstat"><div class="dstat-n">{{event_count}}</div><div class="dstat-l">Webinars</div></div>
+      </div>
+
+      {% for thread in threads%}  
+       <a href="{% url 'thread_detail' thread.id %}" style="text-decoration: none; color: inherit; display: block;">
+      <div class="dash-thread">
+        <span class="dt-tag">{{thread.category.name}}</span>
+        <div class="dt-title">{{thread.title}}</div>
+        <div class="dt-meta"><span>{{thread.author.first_name}} · {{thread.author.title}} replies</span><span>{{thread.replies.count}}</span><span>{{ thread.created_at|timesince }} ago</span></div>
+      
+      </div>
+      </a>
+      {% endfor %}
+     
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="apply">
+  <div class="cta-inner">
+    <div class="sec-eyebrow">Join the Network</div>
+    <h2 class="sec-h2">Request an <em>introduction</em></h2>
+    <p class="sec-sub">Tell us about yourself. If there's a genuine fit, our team will reach out within five working days — no sales call, no obligation.</p>
+    
+    <div class="cta-form">
+      <form method="POST" action="{% url 'apply' %}" id="apply-form">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="fl"><label>First Name</label><input type="text" name="first_name" placeholder="Arjun" required/></div>
+          <div class="fl"><label>Last Name</label><input type="text" name="last_name" placeholder="Sharma" required/></div>
+        </div>
+        <div class="form-row">
+          <div class="fl"><label>Work Email</label><input type="email" name="email" placeholder="arjun@company.com" required/></div>
+          <div class="fl"><label>LinkedIn URL</label><input type="url" name="linkedin_url" placeholder="linkedin.com/in/arjun"/></div>
+        </div>
+        <div class="form-row">
+          <div class="fl">
+            <label>Current Title</label>
+            <input type="text" name="title" placeholder="e.g. CFO, Finance Director" required/>
+          </div>
+          <div class="fl">
+            <label>Company</label>
+            <input type="text" name="company" placeholder="Company Name" required/>
+          </div>
+        </div>
+        
+        <button type="submit" class="form-submit">Request an Introduction</button>
+        <p class="form-legal">Reviewed within 5 working days · We reach out only on genuine fit · Your details are never shared with vendors</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 INFINEETIA. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Subtle nav shadow on scroll
+window.addEventListener('scroll',()=>{
+  const nav=document.querySelector('nav');
+  nav.style.boxShadow=window.scrollY>20?'0 2px 20px rgba(4,44,26,.08)':'none';
+});
+</script>
+</body>
+</html>

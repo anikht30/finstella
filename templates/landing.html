@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>finstella</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href={%static 'css/landing.css'%}>  
+  
+
+
+
+
+</head>
+<body>
+    <div class="split-layout">
+        
+        
+        
+        <div class="left-pane">
+            <div class="brand-logo">
+                <img src={% static "finstella.svg" %} alt="">
+            </div>    
+
+            <div class='hero-content'>
+                <h1><u>Constellation of</u> Finance Leaders 
+                    <span class='large-text'>
+                    </br>
+                    </br>Finance's <u>wisest minds,</u>
+                    </br>in orbit together
+                    </span>
+                </h1>
+
+               
+                <p>
+
+                    </br>
+                    Finstella is peer fellowship for senior finance leaders
+                    </br>who believe the best decisions are shaped by trusted peers,
+                    </br>not consultants, not algorithms, not noise
+                    </br>
+                    
+                </p>
+
+                <div class="cta-group">
+                    <a href="{% url 'apply'%}" class="apply-btn">Apply to become a member</a>
+                    <span style= "color:#199A7A; font-size:20px; font-weight:700">|</span>
+                    {% comment %} <h6> | </h6> {% endcomment %}
+                    <a href="{% url 'fellowship' %}" class="why-link">About the fellowship →</a>
+                </div>
+
+                
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <div class="right-pane">
+           <div class='top-nav'>
+               {% comment %} <a href="#">Home</a>
+               <a href="#">Members</a>
+               <a href="#">Message</a>
+               <a href="#">Resource</a>
+               <a href="#">Webinars & Events</a>
+                {% endcomment %}
+               <a href="{% url 'login' %}" class='btn-sign-in'>Sign in</a>
+           
+           
+           </div>
+
+  
+  
+  
+  
+           <div class="illustration-box" id="valueCarousel">
+    
+    <div class="carousel-slide active">
+        <div class="house-placeholder">
+            <img src="{% static 'absolute trust image.png' %}" alt="Absolute Trust">
+        </div>
+        <div class="trust-text-container">
+            <p>
+                <span class="trust-title">absolute trust</span><br>
+                <span class="trust-desc">
+                    Chatham House as the floor, not the ceiling.<br>
+                    What is shared here belongs only to those in the room.
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div class="carousel-slide">
+        <div class="house-placeholder">
+            <img src="{% static 'peer equality image.png' %}" alt="Second Value"> 
+        </div>
+        <div class="trust-text-container">
+            <p>
+                <span class="trust-title">peer equality</span><br>
+                <span class="trust-desc">
+                    No sponsors. No keynotes. No hierarchy.<br>
+                    Every voice carries equal weight in this constellation.
+                </span>
+            </p>
+        </div>
+    </div>
+
+
+    <div class="carousel-slide">
+        <div class="house-placeholder">
+            <img src="{% static 'pure signal.png' %}" alt="Second Value"> 
+        </div>
+        <div class="trust-text-container">
+            <p>
+                <span class="trust-title">pure signal</span><br>
+                <span class="trust-desc">
+                    No vendor pitches. No algorithms. No agenda.<br>
+                    Only the unfiltered wisdom of peers who have been there.
+                </span>
+            </p>
+        </div>
+    </div>
+
+    </div>
+
+
+    
+    <div class="bottom-pane">
+        <h6>'By proceeding to Sign Up or Sign in, you agree to Finstella’s User Agreement, Privacy Policy, and Cookie Policy.'</h6>
+    </div>       
+
+    </div>
+
+
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Find all the slides inside our carousel
+        let slides = document.querySelectorAll("#valueCarousel .carousel-slide");
+        let currentSlideIndex = 0;
+
+        // Only run the timer if there is more than 1 slide
+        if (slides.length > 1) {
+            setInterval(function() {
+                // 1. Remove the 'active' class from the current slide
+                slides[currentSlideIndex].classList.remove("active");
+                
+                // 2. Move to the next slide (and loop back to 0 if we hit the end)
+                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                
+                // 3. Add the 'active' class to the new slide
+                slides[currentSlideIndex].classList.add("active");
+                
+            }, 5000); // 5000 milliseconds = 5 seconds
+        }
+    });
+</script>
+
+    
+</body>
+</html>

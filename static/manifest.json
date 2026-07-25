@@ -1,0 +1,17 @@
+{
+  "name": "INFINEETIA Network",
+  "short_name": "INFINEETIA",
+  "start_url": "/dashboard/",
+  "display": "standalone",
+  "background_color": "#042c1a",
+  "theme_color": "#1D9E75",
+  "description": "Private Network for Senior Finance Leaders",
+  "icons": [
+    {
+      "src": "/static/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

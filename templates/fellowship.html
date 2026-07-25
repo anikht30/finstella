@@ -1,0 +1,574 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href={%static 'css/fellow.css' %}>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+  
+    <div class="main">
+        <div class="top-part">
+            
+            <div class="logo-nav">
+                <div class="logo">
+                    <img src={% static "finstella.svg" %} alt="">
+                </div>
+                
+                <div class='top-nav'>
+               {% comment %} <a href="#">Home</a>
+               <a href="#">Members</a>
+               <a href="#">Message</a>
+               <a href="#">Resource</a>
+               <a href="#">Webinars & Events</a>
+                {% endcomment %}
+               <a href="{% url 'login' %}" class='btn-sign-in'>Sign in</a>
+           
+           
+           </div>
+
+            </div>
+
+
+
+            <div class="fellow-earth">
+                <div class="fellow">
+                    <div class="fellow-content">
+                      <img src={% static 'icons/the best decisions.svg'%} alt="">
+
+                    </div>
+                   
+                    <div class="fellow-points">
+                        <div class="f-point">
+                            
+                            <img src={%static 'icons/shield-check.svg'%} alt="">
+                            <p>
+                                Trusted Peers
+                                <br>
+                                <br>
+                                Vetted. Varified.
+                                <br>
+                                Relavent
+                            </p>
+                                                   
+                        </div>
+
+                        <div class="f-point-gap">
+                            <div class="dm-img">
+                                <img src="" alt="">
+                            </div>
+                            <div class="left-border">
+                                <p><br><br></p>
+                            </div>
+                        </div>
+    
+
+
+                        <div class="f-point">
+                            <img src={%static 'icons/lock.svg'%} alt="">
+                            <p>
+                                Private & Protected
+                                <br>
+                                <br>
+                                Chatham House Rule.
+                                <br>
+                                Absolute confidentiality.
+                            </p>
+                        </div>
+                         <div class="f-point-gap">
+                            <div class="dm-img">
+                                <img src="" alt="">
+                            </div>
+                            <div class="left-border">
+                                <p><br><br></p>
+                            </div>
+                        </div>
+    
+                        <div class="f-point">
+                            <img src={%static 'icons/users.svg'%} alt="">
+                            <p>
+                                Peer To Peer
+                                <br>
+                                <br>
+                                No hierarchy.<br>                                
+                                Every voice matters.
+                            </p>
+                        </div>
+
+                         <div class="f-point-gap">
+                            <div class="dm-img">
+                                <img src="" alt="">
+                            </div>
+                            <div class="left-border">
+                                <p><br><br></p>
+                            </div>
+                        </div>
+        
+
+                        <div class="f-point">
+                            <img src={%static 'icons/broadcast.svg'%} alt="">
+                            <p>
+                                Signal Over Noise<br><br>
+                                No vendors. No pitches.<br>                                
+                                Only real conversations.
+                            </p>
+                        </div>
+                    </div>
+                  
+                    <div class="apply">
+                        <a href="#" type=btn>APPLY FOR MEMBERSHIP</a>
+                        <h6> Membership by invitation and review only.</h6>
+
+                    </div>
+
+                </div>
+                {% comment %} <div class="earth">
+                   
+                    <div class="earth-part">
+                        <div class="earth-img">                        
+                        <img src="" alt="">
+                        </div>
+
+                    </div>
+
+                </div> {% endcomment %}
+
+            </div>
+            
+
+ 
+        </div>
+
+        <div class="reality">
+            <div class="reality-title">
+                <h4>THE REALITY EVERY FINANCE LEADER FACES</h4>
+                <h1>Every quarter brings a new challenge.</h1>
+            </div>
+            <div class="reality-points">
+                <div class="r-point">
+                    <img src={%static 'icons/chart growth.svg'%} alt="">
+                    <p>Managing Board
+                        <br>
+                       expectations 
+                    </p>
+                </div>
+                <div class="r-point">
+                    <img src={%static 'icons/globe.svg'%} alt="">
+                    <p>Balancing buisness priorities
+                        <br>
+                       with finance controls
+                    </p>
+                </div>
+                <div class="r-point">
+                <img src={%static 'icons/gear.svg'%} alt="">
+                    <p>Transforming finance
+                        <br>
+                       functions
+                    </p>
+                </div>
+                <div class="r-point">
+                   <img src={%static 'icons/users.svg'%} alt="">
+                    <p>Aligning compliances
+                        <br>
+                       with buisness realities
+                    </p>
+                </div>
+                <div class="r-point">
+                    <img src={%static 'icons/bank.svg'%} alt="">
+                    <p>Evaluating technology
+                        <br>
+                       investments
+                    </p>
+                </div>
+                <div class="r-point">
+                    <img src={%static 'icons/balance scale.svg'%} alt="">
+                    <p>Prepairing for M&A,
+                        <br>
+                        restructing or
+                        <br>
+                        fundraising
+                        
+                    </p>
+                </div>
+            </div>
+
+            <div class="reality-answer">
+                <p>
+                    The answers rarely exist in textbooks. More often, they exist in the experience of someone
+                    <br>
+                    who has already walked the same path. That is why Finostella exists.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="membership">
+            <div class="membership-title">WHAT MEMBERSHIP GIVES YOU</div>
+            <div class="membership-points">
+                <div class='m-point'>
+                    <img src={%static 'icons/users.svg'%} alt="">
+                    <h1>Access</h1>
+                    
+                    <p>Private discussions with
+                        <br>
+                        vetted finance leaders
+                        <br>
+                        across industries
+                    </p>
+
+                </div>
+                <div class='m-point'>
+                     <img src={%static 'icons/light bulb.svg'%} alt="">
+                    <h1>Perspective</h1>
+                    <p>Real-world experiences
+                        <br>
+                        and solutions from peers
+                        <br>
+                        who have been there.
+                    </p>
+                </div>
+                
+                <div class='m-point'>
+                     <img src={%static 'icons/megaphone.svg'%} alt="">
+                    <h1>Influence</h1>
+                    <p>Contribute to the collective
+                        <br>
+                        thinking shaping the future
+                        <br>
+                        of finance.
+                    </p>
+                </div>
+                <div class='m-point'>
+                    <img src={%static 'icons/shield-check.svg'%} alt="">
+                    <h1>Trust</h1>
+                    <p>A confidential environment
+                        <br>
+                        governed by Chatham House
+                        <br>
+                        principles.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="stella-part">
+            <div class="stella-deff">
+                <h1>
+                    THE FINOSTELLA DIFFERENCE
+                </h1>
+                <h2>Most communities reward attention.
+                    <br>
+                We reward contribution.</h2>
+
+                <h2>
+                    Most events focus on speakers.
+                    <br>
+                    We focus on conversations.
+                </h2>    
+
+                <h2>
+                    Most networks are built around visibility.
+                    <br>
+                    We are built around trust.
+                </h2>
+
+                <h3>
+                    Every member enters as a peer.
+                </h3>
+
+                <h3>
+                    Every insight is protected.
+                </h3>
+
+                <h3>
+                    Every discussion is designed to leave
+                    <br>
+                    members better informed than
+                    <br>
+                    When they arrived.
+                </h3>    
+
+            </div>
+            <div class="our-principles">
+                <h1>OUR FOUR PRINCIPLES</h1>
+                <div class="principle-img">
+                    <div class="p-img">
+                        <img src={%static 'icons/diamond.svg'%} alt="">
+                    </div>
+                    <div class="p-point">
+                        <p>
+                            Earned Membership
+                            <br>
+                            <br>
+                            Verified members only.
+                            Entry barrier ensuring quality members.
+                        </p>
+                    </div>
+                </div>
+                <div class="principle-img">
+                     <div class="p-img">
+                        <img src={%static 'icons/diamond.svg'%} alt="">
+                     </div>
+                    <div class="p-point">
+                        <p>
+                            Absolute Trust
+                            <br>
+                            <br>
+                            Chatham House as the floor, not the ceiling.
+                            What is shared here belongs only to those in the room.
+                        </p>
+                    </div>
+                </div>
+                <div class="principle-img">
+                     <div class="p-img">
+                        <img src={%static 'icons/diamond.svg'%} alt="">
+                     </div>
+                    <div class="p-point">
+                       <p>Peer Equality
+                        <br>
+                        <br>
+                        No sponsors. No keynotes. No hierarchy.
+                        Every voice carries equal weight.
+                       </p>
+
+                    </div>
+                </div>
+                <div class="principle-img">
+                     <div class="p-img">
+                        <img src={%static 'icons/diamond.svg'%} alt="">
+                     </div>
+                    <div class="p-point">
+                        <p>
+                            Pure Signal
+                            <br>
+                            <br>
+                            No vendor pitches. No algorithms. No agenda.
+                            Only unfiltered peer wisdom.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="stella-index">
+                <h1>
+                    THE STELLA INDEX
+                    
+                </h1>
+
+                <h2>
+                    The Collective Voice of
+                    <br>
+                    Finance Leaders
+                    <br>
+                    <br>
+                    Finostella's proprietary peer sentiment
+                    tracker. The unfiltered view of finance leaders
+                    on macro conditions,
+                    capital allocation, talent markets and
+                    strategic risk.
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </h2>
+                
+                <div class="index-tic">
+                
+                <div class="tic">
+                    <img src={%static 'icons/check circle.svg'%} alt="">
+                </div>
+                <div class="index">
+                    <h1>
+                        Released Quarterly
+                    </h1>
+                </div>
+
+                </div>
+                <div class="index-tic">
+                <div class="tic">
+                    <img src={%static 'icons/check circle.svg'%} alt="">
+                </div>
+                <div class="index">
+                    <h1>
+                        Exclusive To Members
+                    </h1>
+                </div>
+          
+                </div>
+                <div class="index-tic">
+                          <div class="tic">
+                    <img src={%static 'icons/check circle.svg'%} alt="">
+                </div>
+                <div class="index">
+                    <h1>
+                        Cited By Boards
+                    </h1>
+                </div>
+          
+                </div>
+                
+                <h3>Explore The Stella Index</h2>
+
+            </div>
+        </div>
+
+        <div class="who-belongs-title">
+                WHO BELONGS HERE
+        </div>
+
+        <div class="who-belongs">
+
+
+            <div class="belongs">
+                <div class="belongs-title">
+                    YOU BELONG HERE IF YOU ARE A:
+                </div>  <!--belongs-title-->
+
+                <div class="belongs-point">
+                    <div class="belongs-point-left">
+
+                        <div class="b-point-tic">
+                                <img src={%static 'icons/check circle.svg'%} alt="">
+                                <h1>CFO</h1>
+                        </div>
+
+                        <div class="b-point-tic">
+                                <img src={%static 'icons/check circle.svg'%} alt="">
+                                <h1> Group CFO </h1>
+                        </div>
+
+                        <div class="b-point-tic">
+                                <img src={%static 'icons/check circle.svg'%} alt="">
+                                <h1>Finance Director</h1>
+                        </div>
+
+                        <div class="b-point-tic">
+                                <img src={%static 'icons/check circle.svg'%} alt="">
+                                <h1>Treasury Leader</h1>
+                        </div>
+                    
+                    </div><!--belongs-point-left-->
+                    
+                    
+                    <div class="belongs-point-right">
+                        
+                        <div class="b-point-tic">
+                                <img src={%static 'icons/check circle.svg'%} alt="">
+                                <h1>Controller</h1>
+                        </div>
+                        
+                        <div class="b-point-tic">
+                                <img src={%static 'icons/check circle.svg'%} alt="">
+                                <h1>Head of FP&A</h1>
+                        </div>
+                        
+                        <div class="b-point-tic">
+                                <img src={%static 'icons/check circle.svg'%} alt="">
+                                <h1>Finance Transformation Leader</h1>
+                        </div>
+                       
+                        <div class="b-point-tic">
+                                <img src={%static 'icons/check circle.svg'%} alt="">
+                                <h1>VP / Senior Finance Leader</h1>
+                        </div>
+                    
+                    </div> <!--belongs-point-right-->
+
+                </div>  <!--belongs-point-->
+            </div><!--belongs-->
+            
+               <div class="not-belogns">
+                <div class="not-belongs-title">
+                 THIS FELLOWSHIP IS NOT FOR:
+                </div>
+                <div class="not-belongs-points">
+                   
+                    <div class="points-img">
+                        <img src={%static 'icons/x circle.svg'%} alt="">
+                        <h1>Vendors</h1>
+                    </div>
+                    
+                    <div class="points-img">
+                        <img src={%static 'icons/x circle.svg'%} alt="">
+                        <h1>Consultants Selling Services</h1>
+                    </div>
+                    
+                    <div class="points-img">
+                        <img src={%static 'icons/x circle.svg'%} alt="">
+                        <h1>Recruiters</h1>
+                    </div>
+                    
+                    <div class="points-img">
+                         <img src={%static 'icons/x circle.svg'%} alt="">
+                     <h1>Junior Professionals</h1>
+                    </div>
+
+                </div>
+
+            </div>
+         
+
+
+            
+            
+            <div class="who-img"></div>
+        </div>
+
+        <div class="trust-moment">
+            <div class="trust-img">
+                <img src={% static 'icons/peer equality image.svg' %} alt="A circle of seated peers in conversation">
+                <div class="trust-tag">
+                    <h2>peer equality</h2>
+                    <p>No sponsors. No keynotes. No hierarchy.
+                        <br>
+                        Every voice carries equal weight in this constellation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="trust-content">
+                <h1>The value of a trusted peer is not measured
+                    <br>
+                    when things are going well.
+                </h1>
+                <h1>It is measured when a critical decision
+                    <br>
+                    must be made.
+                </h1>
+
+                <p>Finostella exists so finance leaders never have
+                    <br>
+                    to navigate those moments alone.
+                </p>
+
+                <div class="apply">
+                    <a href="#" type=btn>APPLY FOR MEMBERSHIP</a>
+                </div>
+                <h6>Membership by invitation and review only.</h6>
+            </div>
+        </div>
+
+          <div class="site-footer">
+        <div class="footer-nav">
+            <a href="#">WHY JOIN</a>
+            <a href="#">OUR COMMUNITY</a>
+            <a href="#">THE STELL INEX</a>
+            <a href="#">EVENTS</a>
+            <a href="#">MEMBER STORIES</a>
+        </div>
+        <div class="footer-copy">
+            &copy; 2026 Finstella. All rights reserved
+        </div>
+    </div>  
+
+
+    </div><!--main-->
+
+
+
+</body>
+</html>

@@ -1,0 +1,1011 @@
+/* Shree Ganeshay Namahhh */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+
+.top-nav a{
+            font-family:"Libre Baskerville", serif;
+            font-size:11px;
+            color:#199A7A;
+            font-weight:500;
+            justify-content: left;
+            
+        }
+
+
+
+
+.btn-sign-in{
+  border:1px solid #199A7A;
+  padding:8px 20px;
+  color: solid #199A7A;
+  /* text-decoration: none; */
+  /* border-radius:20px; */
+
+}
+
+.btn-sign-in:hover{
+  background-color: #199A7A;
+  color: #F4EFE6;
+
+}
+
+
+
+
+.main{
+   /* background-color: #F4EFE6;  */
+   /* background-color: #FFFFFF; */
+   background:#f7fdfb;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden; 
+    /* position: relative; */
+    padding-top: 30px;
+    /* padding-left: 30px; */
+    /* padding-right: 30px; */
+    
+}
+
+.logo-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.logo{
+ 
+   flex: 1;
+    /* height: 10vh; */
+    /* padding-left: 30px;
+    padding-top: 30Px; */
+}
+
+.logo img{
+     height: 32px; 
+           /* top:30px; */
+           /* left:30px; */
+           /* position:absolute; */
+}
+
+/* Nav */
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+/* =========================
+   TOP PART (FIXED RESPONSIVE)
+========================= */
+.top-part {
+    background-image: url('globe with transparent bg.png');
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+  
+}
+
+
+.nav a{
+    font-family:"Libre Baskerville", serif;
+    font-size:15px;
+    color: #636466; 
+    font-weight:500;
+    justify-content: left;
+    text-decoration: none;
+}
+
+.nav a:hover{
+    opacity:0.7;
+    
+    text-decoration:underline; /* A subtle underline on hover is great for usability */
+}
+
+
+
+
+
+
+
+
+.fellow-earth {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+
+.fellow{
+
+    flex: 1;
+     z-index: 10;
+}
+
+.fellow-content{
+    font-family:"Libre Baskerville", serif;
+    width: 80%;
+    /* height: 50vh; */
+   /* width: 100%; */
+   /* margin-left: 30px; */
+   margin-top: 50px;
+  
+  }
+
+.fellow-content h1{
+     font-family:"Libre Baskerville", serif;
+     margin: 0;
+     width: 100%; 
+      font-size: 54px;
+      font-weight: 600;
+      color: #636466; 
+      
+          
+}
+
+.alon{
+     color:#199A7A;
+}
+
+.p-bold{
+    font-family:"Libre Baskerville", serif ;
+    font-size: 25px;
+    font-weight: 500;
+     width: 100%; 
+     color: #636466; 
+}
+
+.fellow-content p{
+    font-family:"Libre Baskerville", serif ;
+    font-size: 20px;
+    width: 100%; 
+    font-weight: 400;
+    color: #636466; 
+
+}
+
+
+
+.fellow-content img {
+    width: 60%;
+    /* margin-top: 20px; */
+    
+    
+}
+
+
+/* POINTS */
+.fellow-points {
+    display: flex;
+    /* flex-wrap: wrap; */
+    gap: 5px;
+    width: 50%;
+    /* width: 100%; */
+    justify-content:space-between;
+    margin-top: 50px;
+    /* padding-left: 2%; */
+    /* padding-right: 5%; */
+    /* align-items: flex-start; */
+
+}
+
+.f-point {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    width: 0 auto;
+    align-self: flex-start;
+    line-height: 1;
+}
+
+/* .image-center{
+    display: flex;
+    justify-content:center;
+} */
+
+
+
+
+
+.f-point p{
+   
+    /* padding-left: 5px; */
+    font-family:"Libre Baskerville", serif ;
+    font-size: 13px;
+    font-weight: 600;
+    
+}
+
+.f-point-gap{
+    display: flex;
+flex-direction: column;
+}    
+
+
+
+.left-border{
+ /* border-left: 2px solid #636466;  */
+ background-color: #1A1A1A;
+ width: 2px;
+ opacity: 25%;
+
+
+}
+
+
+.f-point img{
+    width: 35px;
+    margin-bottom: 15px;
+  
+    
+}
+
+/* APPLY BUTTON */
+.apply {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.apply a {
+    background: #636466;
+    color: #fff;
+    padding: 8px 12px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.apply a{
+    font-family:"Libre Baskerville", serif ;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+   background-color: #636466; 
+    padding: 7px;
+}
+
+.apply h6{
+    font-family:"Libre Baskerville", serif ;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #636466; 
+}
+
+
+
+
+
+
+.earth{
+    height: 90vh;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+     justify-content: flex-end;
+    align-items: flex-end; 
+    position: absolute; 
+    z-index: 1;
+     
+   
+    /* background-color: aquamarine; */
+}
+
+
+
+.earth-part{
+    display: flex;
+}
+
+.earth-img img{
+    width:60%;
+    
+    
+    /* align-content: right; */
+   
+}
+
+
+.reality{
+    display: flex;
+    flex-direction: column;
+    /* padding-left: 30px; */
+    text-align: center;
+    
+    background-color: #Faf6f2;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+  
+
+}
+
+.reality-title h4{
+    font-family: "Libre Baskerville", serif ;
+    font-size: 20px;
+    font-weight: 400;
+    color: #0AB89C;
+    margin-bottom: 5px;
+    
+}
+
+.reality-title h1{
+       font-family: "Libre Baskerville", serif ;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+
+
+
+.reality-points{
+    display: flex;
+    margin-bottom: 40px;
+}
+
+
+
+
+.r-point{
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    font-family: "Libre Baskerville", serif ;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.r-point img{
+     width: 20%;
+     
+}
+
+.reality-answer{
+       font-family: "Libre Baskerville", serif ;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+
+
+
+.membership{
+    display: flex;
+    flex-direction: column;
+      padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    
+}
+
+
+.membership-title{
+    font-family: "Libre Baskerville", serif ;
+    font-size: 20px;
+    font-weight: 600;
+   text-align: center;
+   margin-bottom: 10px;
+}
+
+
+.membership-points{
+    display: flex;
+   gap:10px;
+   margin-bottom: 40px;
+  
+   
+}
+
+.m-point{
+  flex: 1;
+    justify-content: center;
+    text-align: center;
+     border-radius: 20px;
+    border: 1px solid;
+    padding: 5px;
+}
+
+.m-point h1{
+           font-family: "Libre Baskerville", serif ;
+    font-size: 20px;
+    font-weight: 600;
+   
+}
+
+.m-point p{
+           font-family: "Libre Baskerville", serif ;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.1;
+   
+}
+
+.m-point img{
+    width: 40px;
+   
+}
+
+
+.stella-part{
+    display: flex;
+    gap: 10px;
+    background-color: #Faf6f2;
+      padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.stella-deff{
+    flex: 1;
+}
+
+
+.stella-deff h1{
+     font-family: "Libre Baskerville", serif ;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+
+.stella-deff h2{
+     font-family: "Libre Baskerville", serif ;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+
+.stella-deff h3{
+     font-family: "Libre Baskerville", serif ;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.our-principles{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.our-principles h1{
+     font-family: "Libre Baskerville", serif ;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-left: 40px;
+}
+
+.p-img img{
+    width: 40px;
+}
+
+
+
+
+.p-point p{
+         font-family: "Libre Baskerville", serif ;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.principle-img{
+    display: flex;
+    
+}
+
+
+
+.stella-index{
+    flex: 1;
+}
+
+.stella-index h1{
+     font-family: "Libre Baskerville", serif ;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.1;
+
+}
+
+
+.stella-index h2{
+    font-family: "Libre Baskerville", serif ;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.1;
+   
+}
+
+
+.index-tic{
+    display: flex;
+    gap: 2px;
+   
+}
+
+.tic img{
+    width: 30px;
+}
+
+.index h1{
+    font-family: "Libre Baskerville", serif ;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.1;
+} 
+
+
+.stella-index h3{
+    font-family: "Libre Baskerville", serif ;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-top: 50px;
+
+}
+
+.who-belongs-title{
+        font-family: "Libre Baskerville", serif ;
+    font-size: 20px;
+    font-weight: 600;
+   text-align: center;
+   margin-bottom: 10px;
+     padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.who-belongs{
+    display: flex;
+      
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.belongs{
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
+
+.belongs-title{
+        font-family: "Libre Baskerville", serif ;
+    font-size: 18px;
+    font-weight: 600;
+   margin-bottom: 10px;
+
+}
+
+.belongs-point{
+    display: flex;
+    flex: 2;
+}
+
+
+.belongs-point-left{
+display: flex;
+flex-direction: column;
+flex: 1;
+}
+
+.belongs-point-right{
+   display: flex;
+   flex-direction: column;
+   flex: 1;
+}
+
+.b-point-tic{
+    display: flex;
+    gap: 2px;
+}
+
+.b-point-tic img{
+    width: 30px;
+}
+
+.b-point-tic h1{
+      font-family: "Libre Baskerville", serif ;
+    font-size: 18px;
+    font-weight: 400;
+   margin-bottom: 10px;
+}
+
+
+.not-belogns{
+    flex:1;
+    flex-direction: column;
+}
+.not-belongs-points{
+    display: flex;
+    flex-direction:column ;
+}
+
+.points-img{
+    display: flex;
+}
+
+
+.points-img img{
+    width: 40px;
+}
+
+.points-img h1{
+        font-family: "Libre Baskerville", serif ;
+    font-size: 18px;
+    font-weight: 400;
+   margin-bottom: 10px;
+}
+
+
+.not-belongs-title{
+        font-family: "Libre Baskerville", serif ;
+    font-size: 18px;
+    font-weight: 600;
+   margin-bottom: 10px;
+}
+
+
+
+.who-img{
+    flex: 1;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN FIX
+========================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+
+    .nav {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .fellow-earth,
+    .reality-points,
+    .membership-points,
+    .stella-part,
+    .who-belongs {
+        flex-wrap: wrap;
+    }
+
+    .f-point,
+    .r-point,
+    .m-point {
+        flex: 1 1 45%;
+        margin-bottom: 20px;
+    }
+
+    .stella-deff,
+    .our-principles,
+    .stella-index,
+    .belongs,
+    .not-belogns {
+        flex: 1 1 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .logo-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fellow-earth,
+    .reality-points,
+    .membership-points,
+    .stella-part,
+    .who-belongs {
+        flex-direction: column;
+    }
+
+    .f-point,
+    .r-point,
+    .m-point {
+        flex: 1 1 100%;
+    }
+
+    .nav a {
+        font-size: 14px;
+    }
+
+    .reality-title h1 {
+        font-size: 22px;
+    }
+
+    .reality-title h4 {
+        font-size: 16px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+
+    .main {
+        padding: 15px;
+    }
+
+    .nav a {
+        font-size: 12px;
+    }
+
+    .membership-title,
+    .who-belongs-title {
+        font-size: 16px;
+    }
+
+    .stella-deff h1,
+    .stella-index h1 {
+        font-size: 16px;
+    }
+
+    .stella-deff h2,
+    .stella-index h2 {
+        font-size: 14px;
+    }
+
+    .b-point-tic h1,
+    .points-img h1 {
+        font-size: 14px;
+    }
+}
+
+/* =========================
+   TOP PART RESPONSIVE FIX
+========================= */
+
+@media (max-width: 1024px) {
+    .nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .top-part {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .logo-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .nav a {
+        font-size: 14px;
+    }
+
+    .logo img {
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .nav a {
+        font-size: 12px;
+    }
+
+    .logo img {
+        height: 24px;
+    }
+
+    .top-part {
+        padding-bottom: 10px;
+    }
+}
+
+/* =========================
+   TRUST MOMENT (peer equality section)
+========================= */
+
+.trust-moment {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+   background-color: #Faf6f2;;
+    padding: 60px 40px;
+    flex-wrap: wrap;
+}
+
+.trust-img {
+    flex: 1 1 380px;
+    display: flex;
+    flex-direction: column;
+}
+
+.trust-img img {
+    width: 100%;
+    max-width: 420px;
+}
+
+.trust-tag h2 {
+    font-family: "Libre Baskerville", serif;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 600;
+    color: #199A7A;
+    margin-bottom: 6px;
+}
+
+.trust-tag p {
+    font-family: "Libre Baskerville", serif;
+    font-style: italic;
+    font-size: 15px;
+    font-weight: 400;
+    color: #636466;
+    line-height: 1.4;
+}
+
+.trust-content {
+    flex: 1 1 420px;
+}
+
+.trust-content h1 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #1A1A1A;
+    margin-bottom: 20px;
+}
+
+.trust-content p {
+    font-family: "Libre Baskerville", serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #636466;
+    margin-bottom: 20px;
+}
+
+.trust-content .apply {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.trust-content h6 {
+    font-family: "Libre Baskerville", serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #636466;
+}
+
+/* =========================
+   SITE FOOTER
+========================= */
+
+.site-footer {
+    background-color: #4A4B4D;
+    padding: 25px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.footer-nav a {
+    font-family: "Libre Baskerville", serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+.footer-copy {
+    font-family: "Libre Baskerville", serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+/* =========================
+   TRUST MOMENT + FOOTER RESPONSIVE
+========================= */
+
+@media (max-width: 1024px) {
+    .trust-moment {
+        gap: 30px;
+        padding: 40px 30px;
+    }
+
+    .trust-content h1 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .trust-moment {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .trust-img {
+        align-items: center;
+    }
+
+    .trust-content h1 {
+        font-size: 22px;
+    }
+
+    .site-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-nav {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .trust-content h1 {
+        font-size: 19px;
+    }
+
+    .trust-content p,
+    .trust-tag p {
+        font-size: 14px;
+    }
+
+    .footer-nav a,
+    .footer-copy {
+        font-size: 12px;
+    }
+}
+
+

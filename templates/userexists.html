@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Exists — INFINEETIA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body style="background: var(--bg); color: var(--deep); display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
+
+<div id="app" style="width: 100%; max-width: 380px; padding: 20px;">
+    
+    <!-- Branding Header -->
+    <div class="auth-hd" style="text-align: center; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: center; margin-bottom: 12px;">
+           <div class="nav-logo">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" stroke="#9FE1CB" stroke-width="1.5" fill="none"/>
+        <path d="M12 6L17 9V15L12 18L7 15V9L12 6Z" stroke="#1D9E75" stroke-width="1" fill="none"/>
+        <circle cx="12" cy="12" r="2.5" fill="#1D9E75"/>
+      </svg>
+    </div>
+        </div>
+        <!-- Changed text color to var(--deep) to match dashboard -->
+        <div class="nav-wordmark" style="font-size: 24px; color: var(--deep); font-weight: 700; letter-spacing: 1px;">
+            <span>INFIN</span><span style="color: var(--teal);">EETIA</span>
+        </div>
+        <div style="font-size: 10px; letter-spacing: 3px; color: var(--muted); margin-top: 8px; text-transform: uppercase;">
+            Finance Leaders Network
+        </div>
+    
+    
+    
+    <!-- White Card Wrapper -->
+    <div style="background: #fff; border: 1px solid rgba(4, 44, 26, 0.08); border-radius: 12px; padding: 32px; box-shadow: 0 8px 30px rgba(0,0,0,0.03);">
+        
+        <!-- Subtle Alert Icon -->
+        <div style="width: 48px; height: 48px; background: rgba(4, 44, 26, 0.05); color: var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+        </div>
+
+        <h2 style="font-family: 'Syne', sans-serif; font-size: 20px; margin-bottom: 12px; color: var(--deep);">Already Registered</h2>
+        
+        <p style="font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.5;">
+            An account or application with this email address already exists in our system.
+        </p>
+        
+        <!-- Styled Anchor Tag (Acts exactly like a button) -->
+        <a href="{% url 'apply' %}" style="display: block; background: var(--teal); color: #fff; text-decoration: none; padding: 12px; border-radius: 6px; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 14px; transition: opacity 0.2s; margin-bottom: 16px;">
+            ← Back to Apply
+        </a>
+
+        <!-- Helpful Link -->
+        <a href="{% url 'login' %}" style="display: inline-block; font-size: 13px; color: var(--teal); font-weight: 600; text-decoration: none;">
+            Sign in instead
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

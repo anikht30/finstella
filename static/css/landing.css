@@ -1,0 +1,261 @@
+    /* 1. Reset the browser's default spacing */
+        body{
+            margin:0;
+            padding:0;
+        }
+
+        /* 2. The Parent Container */
+
+        .split-layout{
+            display:flex; /* This is the magic command that forces children side-by-side */
+            height:100vh; /* vh stands for viewport height, this makes it exactly as tall as user's screen*/
+        }
+
+        .left-pane{
+            flex:1; /* This tells it to take up exactly 1 equal fraction of the available space */
+            background-color: #F4EFE6;     /* The Finstella Beige */
+            color: #222222;                /* Dark text so we can read it */
+            padding: 30px;                 /* Adds breathing room inside the box */
+            position: relative;  /* This tells the logo "stay inside thie beigebox!" */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        /* 4. The Right Child */
+        .right-pane {
+            flex: 1;                       /* Takes up the other equal fraction of space */
+            background-color: #FFFFFF;     /* The Finstella Black */
+            color: #0B0B0B;                /* White text so we can read it */
+            padding: 30px;   
+            position: relative;
+            align-items: center;
+            justify-content: center;    
+            display: flex;
+            flex-direction: column;          
+        }
+
+
+
+        .brand-logo img { 
+            height: 32px; 
+           top:30px;
+           left:30px;
+           position:absolute;
+     
+        }
+
+  .hero-content {
+            position: relative;
+            left: 0;             /* NEW: Anchors left */
+            right: 0;            /* NEW: Anchors right */
+            max-width: 550px; 
+            margin: 0 auto;      /* Now this works perfectly again! */
+            text-align: center;
+            margin-top: 60px;
+        }
+        .hero-content h1{
+            font-family:"Libre Baskerville", serif;
+            font-size:30px;
+            line-height:1.1;
+            color: #636466; 
+            font-weight: 200;
+            
+           
+        }
+
+        .hero-content u{
+            text-decoration-color:#0AB89C;
+            text-decoration-thickness :2.5px;
+        }
+        
+        .hero-content h1 .large-text{
+            font-family: "Libre Baskerville", serif;
+            font-size:34px;
+            line-height:1.1;
+            margin-bottom: 24px;
+            color: #636466;
+            font-weight:600;
+            letter-spacing:0px; /* Spaces the letters out to look premium */
+            
+        }
+        
+
+        .hero-content p{
+            font-family: "Libre Baskerville", serif;
+            font-size:15px;
+            line-height: 1.2;   /* Gives the paragraph breathing room to read easily */
+            color: #636466;
+            margin-bottom: 40px;
+
+        }
+
+        .apply-btn{
+           font-family:"Libre Baskerville", serif;
+            text-decoration:none;
+            transition:opticity 0.2s;
+            font-size: 12px;
+            color:#0B0B0B;
+          
+
+        }
+
+
+
+
+        .apply-btn:hover{
+             opacity: 0.7; /* Makes it slightly transparent when they hover over it */
+            text-decoration: underline; /* A subtle underline on hover is great for usability */
+        }
+
+
+
+
+
+      
+        /* 2. Style the new Why link */
+
+
+        /* 3. Add a hover effect */
+
+        
+        .why-link{
+            font-family:"Libre Baskerville", serif;
+            text-decoration:none;
+            color:#0B0B0B;
+            transition:opticity 0.2s;
+            font-size: 12px;
+
+
+            
+        }
+
+        .why-link:hover {
+            opacity: 0.7; /* Makes it slightly transparent when they hover over it */
+            text-decoration: underline; /* A subtle underline on hover is great for usability */
+        }
+
+  
+        .top-nav{
+            display:flex;
+            justify-content:flex-end;
+            gap:31px;
+            width: 100%;
+            
+            
+        }
+
+        .top-nav a{
+            font-family:"Libre Baskerville", serif;
+            font-size:11px;
+            color:#199A7A;
+            font-weight:500;
+            justify-content: left;
+            
+        }
+
+        .top-nav a:hover{
+            opacity:0.7;
+           
+            text-decoration:underline; /* A subtle underline on hover is great for usability */
+        }
+
+        .btn-sign-in:hover{
+            background-color: #199A7A;
+            color: #F4EFE6;
+
+        }
+
+        .btn-sign-in{
+            border:1px solid #199A7A;
+            padding:8px 20px;
+            /* border-radius:20px; */
+
+        }
+
+       .illustration-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centers vertically */
+            align-items: center;     /* Centers horizontally */
+            
+        }
+
+
+        /* 2. Styling the Placeholder Box (Delete this later when you add the real image) */
+        .house-placeholder {
+            width: 350px;
+            /* height: 250px; */
+            height: 350px;
+            border: 1px dashed rgba(255, 255, 255, 0.2); /* A faint white dashed line */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+        }
+
+                /* 2. Style the new text container */
+        .trust-text-container {
+            width: 350px;       /* Matches the exact width of the image placeholder above it! */
+            text-align: left;   /* Forces the text to stick to the left side of this box */
+            align-items: center;
+        }   
+
+        /* 3. The Teal Italic Title */
+        .trust-title {
+            font-family:"Libre Baskerville", serif;
+            font-style: italic;     /* Gives it that elegant, editorial slant */
+            font-size: 22px;
+            color: #199A7A;         /* The Finstella Teal */
+            margin-top: 40px;       /* Pushes it down away from the image */
+            margin-bottom: 2px;
+            font-weight: 600;
+            text-align:left;
+             line-height:1.1;
+             justify-content: center;
+        }
+
+        /* 4. The Grey Subtext */   
+        .trust-desc {
+           font-family:"Libre Baskerville", serif;
+            font-size: 11px;
+            line-height: 1px;
+            color: #AAAAAA;         /* A soft grey so it doesn't clash with the white navigation */
+        }
+
+        .bottom-pane{
+            position:fixed;
+            left: 50%;
+            right: 50%;
+            bottom: 10px;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            transform: translateX(-50%);
+             font-family:"Libre Baskerville", serif;
+             font-size: 11px;
+             color: #636466; 
+        }
+
+
+
+        /* Hide all slides by default */
+.carousel-slide {
+    display: none; 
+    animation: fadeEffect 1s; /* 1-second fade in */
+}
+
+/* Only show the active slide */
+.carousel-slide.active {
+    display: block; 
+}
+
+/* The smooth fade-in animation */
+@keyframes fadeEffect {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

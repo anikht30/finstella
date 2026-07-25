@@ -1,0 +1,358 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>finstella {% block title %}{%endblock%}</title>
+    
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/thread-details.css'%}">
+     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
+     
+
+
+</head>
+<body>
+<header>
+        <div class="header">
+           
+            <div class="logo">
+                <a href={% url 'dashboard'%}>
+                <img src="{% static 'icons/finstella.svg' %}" alt="">
+                </a>
+            </div>
+            
+
+            <div class="search">
+                <input type="search" name="search" id="search" placeholder="Search topics, discussions or members...">
+                <img src="{% static 'icons/search.svg' %}" class="search-icon" alt="">
+            </div>
+
+<!-- 1. HTML: Replace your entire <div class="notify-profile"> section with this -->
+<div class="notify-profile">
+    
+    <div class="notification">
+        <img src="{% static 'icons/notification-bell.svg' %}" alt="Notifications">
+    </div>
+
+    <div class="message">
+        <img src="{% static 'icons/mail.svg' %}" alt="Messages">
+    </div>
+
+    <!-- The 'profile' div is now the anchor for the dropdown -->
+    <div class="profile" onclick="toggleProfileMenu(event)">
+        
+        <div class="profile-text">
+            <p>
+            <span class="user-name">{{ request.user.first_name }} {{ request.user.last_name }}</span>
+            <br>
+            <span class="user-title">{{ request.user.title }}</span>
+            </p>
+        </div>
+
+        <div class="profile-icon">
+            {% if request.user.profile_picture %}
+                <img src="{{ request.user.profile_picture.url }}" alt="{{ request.user.first_name }}">
+            {% else %}
+                <div class="expert-initial">
+                    {{ request.user.first_name|first }}{{ request.user.last_name|first }}
+                </div>
+            {% endif %}
+        </div>
+        
+        <!-- Three Dots Icon -->
+        <div class="dots-icon">⋮</div>
+{% comment %} ⋮ {% endcomment %}
+        <!-- The Dropdown Menu is placed directly INSIDE the profile div -->
+        <div id="profileMenu" class="dropdown-content">
+            <a href="{% url 'profile' %}">My Profile</a>
+            <a href="#">Settings</a>
+            <hr style="margin: 0; border: 0; border-top: 1px solid #E2E8F0;">
+            <a href="{% url 'logout' %}" style="color: #EA580C;">Sign Out</a>
+        </div>
+        
+    </div> <!-- Closes .profile -->
+    
+</div> <!-- Closes .notify-profile -->
+
+
+        
+</div> <!-- Closes .header -->
+        
+</header>
+
+    <main class="main-container">
+        <!--left side bar start-->
+       <aside class="left-sidebar">
+            <!--Menu list start-->
+            <nav class="menu-list">
+                <a href={%url 'dashboard'%} class="menu">
+                    <img src={%static 'icons/home.svg'%} alt="">
+                    Dashboard
+                </a>
+                <a href={%url 'active_discussion'%} class="menu">
+                    <img src={%static 'icons/conversation.svg'%} alt="">
+                    Active Discussion
+                </a>
+                <a href={% url "my_discussion"%} class="menu">
+                    <img src={%static 'icons/mydiscussion.svg'%} alt="">
+                    My Discussions
+                </a>
+
+                <a href={% url "open_queries"%} class="menu">
+                    <img src={%static 'icons/mydiscussion.svg'%} alt="">
+                    Open Queries
+                </a> 
+                
+                <a href={%url 'member_directory'%} class="menu">
+                    <img src={%static 'icons/bookmark.svg'%} alt="">
+                    Member Directory
+                </a>
+   
+                <a href="#" class="menu">
+                    <img src={%static 'icons/Knowledge.svg'%} alt="">
+                    Knowledge Vault
+                </a>
+                <a href="#" class="menu">
+                    <img src={%static 'icons/expertcircle.svg'%} alt="">
+                    Expert Circles
+                </a>
+                
+                <a href="#" class="menu">
+                    <img src={%static 'icons/bookmark.svg'%} alt="">
+                    Webinar & Events
+                </a>
+               
+            </nav>
+            <!--menu list end-->
+            
+
+            <!--forum dashboard-->
+            <div class="forum-dashboard">
+                <div class="dashboard-card">
+                    <img src={%static 'icons/active discussion icon 1.svg'%} alt="" class="icon1">
+                    {% comment %} <img src="" alt=""> {% endcomment %}
+                    <h1>249</h1>
+                    <h5>Active Discussion</h5>
+                    <h6><span class="high-light">12%</span> vs Last Month</h6>
+                </div>
+                <div class="dashboard-card">
+                    <img src={%static 'icons/questions solved 2.svg'%} alt="" class="icon2">
+                    {% comment %} <img src="{% static 'icons/search.svg' %}" alt=""> {% endcomment %}
+                    <h1>18,412</h1>
+                    <h5>Questions Solved</h5>
+                    <h6><span class="high-light">18%</span> vs Last Month</h6>
+                </div>
+                <div class="dashboard-card">
+                   <img src={%static 'icons/finance leaders icon 3.svg'%} alt="" class="icon3">
+                    {% comment %} <img src="{% static 'icons/search.svg' %}" alt=""> {% endcomment %}
+                    <h1>3,247</h1>
+                    <h5>Finance Leaders</h5>
+                    <h6><span class="high-light">14%</span> vs Last Month</h6>
+                </div>
+                <div class="dashboard-card">
+                     <img src={%static 'icons/expert insights icon 4.svg'%} alt="" class="icon4">
+                    {% comment %} <img src="{% static 'icons/search.svg' %}" alt=""> {% endcomment %}
+                    <h1>86</h1>
+                    <h5>Expert Insights</h5>
+                    <h6><span class="high-light-low">10%</span> vs Last Month</h6>
+                </div>
+            </div>
+            <!--forum dashboard end-->
+
+            <!--quick action start-->
+            <nav class="menu-list">
+
+                {% comment %} <h4>Quick Actions</h4> {% endcomment %}
+
+                <a href="#" class="menu">
+                    <img src={%static 'icons/home.svg'%} alt="">
+                    Join an Expert Circle
+                </a>
+                <a href="#" class="menu">
+                    <img src={%static 'icons/conversation.svg'%} alt="">
+                    Explore Knowledge Vault
+                </a>
+                <a href="#" class="menu">
+                    <img src={%static 'icons/Knowledge.svg'%} alt="">
+                    Invite a Peer
+                </a>
+                <a href="#" class="menu">
+                    <img src={%static 'icons/expertcircle.svg'%} alt="">
+                    Give Feedback
+                </a>
+               
+            </nav>
+            <!--quick action end-->
+
+
+          
+
+            
+       </aside>    
+        <!--left side bar end-->
+
+
+
+         <section class="main-content">
+         {% block maincontent %}
+         
+         {% endblock %}
+
+         </section>
+
+        <aside class="right-sidebar">
+
+            <!-- active expert box start-->
+
+          <div class="active-expert-box">
+            
+            <!-- active title-->
+            <div class="active-title">
+              <h4>Active Experts</h4>
+              <a href="{% url 'member_directory' %}">View all</a>
+            </div>
+              <!-- active title end-->
+
+             {% for member in members%}
+            <div class="active-expert">
+                
+                 
+                  <div class="expert-icon">
+                     <a href={%url 'member_profile'  member.id %}>
+                    {% if member.profile_picture%}
+                    <img src="{{ member.profile_picture.url }}" alt={{ member.first_name }}>
+                    {% else %}
+                    <div class="expert-initial">
+                        {{ member.first_name|first }}{{ member.last_name|first }}
+                    </div>
+                    {% endif%}
+                </a>
+                      </div>   
+
+                  <div class="expert-text">
+                  <h5>
+                  {{ member.first_name }} {{ member.last_name }}
+                  </h5>
+
+                  <p>{{ member.title }}</p>
+                  </div>
+
+                
+                  </div>
+                 {%endfor%}
+         
+          </div>
+            <!-- active expert box end-->
+         
+            <!--industry pulse start-->
+            <div class="pulse-card">
+                <div class="pulse-header">
+                    <h3>Industry Pulse</h3>
+                    <a href="#">View report</a>
+                </div>
+                
+                <div class="pulse-subtitle">Top challenge this quarter</div>
+                <div class="pulse-challenge">Cash Flow Management</div>
+                <div class="pulse-agree">89 CFOs agree</div>
+                
+                <div class="progress-ring-container">
+                    <div class="progress-ring">
+                        <span class="progress-value">89%</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="pulse-action-btn">See Full Pulse Report &rarr;</a>
+            </div>
+
+            <!--industry pulse end-->
+          
+
+
+
+
+
+
+            <!-- Category List start-->
+
+          <div class="active-expert-box">
+            
+            <!-- active title-->
+            <div class="active-title">
+              <h4>Trending Category</h4>
+              <a href="#">View all</a>
+            </div>
+              <!-- active title end-->
+
+             {% for category in categories%}
+            <div class="category-list"  style:"border:none">
+                
+                 
+
+                  <div class="expert-text">
+                  <P>
+                   {{category.name }}
+                  </P>
+
+                 
+                  </div>
+
+                
+                  </div>
+                 {%endfor%}
+         
+          </div>
+            <!-- Category  end-->
+    
+
+
+
+
+
+
+        </aside>
+    </main>
+
+
+
+</style>
+
+
+<!-- 3. JAVASCRIPT: Add this before your closing </body> tag -->
+<script>
+function toggleProfileMenu(event) {
+    // This prevents the menu from instantly closing if you click a link inside it
+    console.log(event)
+    if (event && event.target.closest('.dropdown-content')) {
+        return;
+    }
+    document.getElementById("profileMenu").classList.toggle("show-menu");
+}
+
+// Close the dropdown if the user clicks anywhere outside of it
+window.onclick = function(event) {
+    // Specifically checks if you clicked outside the .profile div
+    if (!event.target.closest('.profile')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show-menu')) {
+                openDropdown.classList.remove('show-menu');
+            }
+        }
+    }
+}
+</script>
+</body>
+</html>

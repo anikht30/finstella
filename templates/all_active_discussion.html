@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+{%load static%}
+
+
+{% block title %} | Conversation
+{% if page_number %} | {{ page_number }}{% endif %}
+{%endblock%}
+
+{% block maincontent %}
+
+<!-- Active Discussion div start-->
+          <div class="active-discussion-box">
+
+            <div class="active-discussion-title">
+                <h4>Active Discussions</h4>
+                {% comment %} <a href={%url "acive_discussion"%}>View all</a> {% endcomment %}
+            </div>
+
+           {% for thread in threads  %}     
+           <article>
+                <div class="thread">
+                    
+                    <div class="thred-details">
+                    
+                     
+                    <div class="author-thred">   
+                    
+                    <div class="author-details">
+                        <div class="author-icon">
+                            <a href={%url 'member_profile'  thread.author.id %}>
+                        {% if thread.author.profile_picture %}
+                            <img src="{{ thread.author.profile_picture.url }}" alt="{{ thread.author.first_name }}">
+                            {% else %}
+                        <div class="initial">
+                            {{ thread.author.first_name|first }}{{ thread.author.last_name|first }}
+                        </div>
+                            {% endif %}
+                    </a>
+                        </div>
+                         
+                        <div class="author-name">
+                         
+                            <h4>{{thread.author.first_name}} {{thread.author.last_name}}</h4>
+                            <h6>{{ thread.author.title }} at {{ thread.author.company }}</h6>
+                        </div>
+
+                    </div> <!--author details end-->
+
+
+
+
+                    <a href="{% url 'thread_detail' thread.id %}" style="text-decoration: none; color: inherit; display: block;">    
+                    <div class="thread-cateogory">   
+                    <h5> {{thread.category}} </h5>
+                    
+                    {% comment %} <h6 class="time-ago">{{ thread.created_at|timesince }} ago</h6> {% endcomment %}
+                    </div>
+                    </div>
+                    <h2>{{thread.title}}</h2>
+                    <p>{{thread.content}}</p>
+                    </a>
+                    </div>
+                    
+ 
+                </div>
+                <div class="thread-belongs" style="color: #199A7A ;">
+                    <div class="time-ago">                   
+                    <h5>(Posted on {{ thread.created_at|date:"M j, Y"}})</h5> 
+                    </div>
+                    
+
+
+                    {%if thread.replies.count%}
+                    <div class="thread-response"><h5>|</h5></div>    
+                    <div class="thread-response">
+                      {% comment %} <i class="fas fa-book"></i> {% endcomment %}
+                      <h5>{{ thread.replies.count }} {%if thread.replies.count == 1 %}Response {%else%}Responses{%endif%}</h5>
+                    </div>
+                    
+                    <div class="thread-response"><h5>|</h5></div>    
+                         <div class="thread-peers">
+                       {% comment %} <i class="fas fa-book"></i> {% endcomment %}
+                       <h5>{{ thread.unique_author_count}} {%if thread.unique_author_count == 1 %}Peer {%else%}Peers{%endif%} Participate</h5>   
+                         
+                    </div>
+                    {% endif %}
+                    
+                </div>
+        
+
+           </article>    
+           {% endfor %}
+
+           {% if threads.has_other_pages %}
+            <div class="pagination-container">
+                
+                {% if threads.has_previous %}
+                    <a href="?page={{ threads.previous_page_number }}" class="page-btn">&laquo; Prev</a>
+                {% else %}
+                    <span class="page-btn disabled">&laquo; Prev</span>
+                {% endif %}
+
+                <div class="page-numbers">
+                    {% for num in threads.paginator.page_range %}
+                        {% if threads.number == num %}
+                            <span class="page-btn active-page">{{ num }}</span>
+                        {% elif num > threads.number|add:'-3' and num < threads.number|add:'3' %}
+                            <a href="?page={{ num }}" class="page-btn">{{ num }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                {% if threads.has_next %}
+                    <a href="?page={{ threads.next_page_number }}" class="page-btn">Next &raquo;</a>
+                {% else %}
+                    <span class="page-btn disabled">Next &raquo;</span>
+                {% endif %}
+
+            </div>
+            {% endif %}
+
+
+
+          </div>
+
+          <!-- Active Discussion div end -->
+
+
+{% endblock %}
+
+
+

@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply — INFINEETIA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body style=" color: var(--deep); display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 40px 20px;">
+
+<div id="app" style="width: 100%; max-width: 480px;"> 
+    
+    <!-- Branding Header -->
+    <div class="auth-hd" style="text-align: center; margin-bottom: 28px;">
+        <div style="display: flex; justify-content: center; margin-bottom: 12px;">
+           <div class="nav-logo">
+      
+    </div>
+        </div>
+        <div class="nav-wordmark" style="font-size: 24px; color: var(--deep); font-weight: 700; letter-spacing: 1px;">
+           <img src={%static 'finstella.svg' %} alt="">
+        </div>
+        <div style="font-size: 10px; letter-spacing: 3px; color: var(--muted); margin-top: 8px; margin-bottom: 12px; text-transform: uppercase;">
+           
+        </div>
+        {% comment %} <p style="font-size: 12px; color: var(--muted); line-height: 1.6;">Membership is vetted — CFOs \ Finance Leaders only.</p> {% endcomment %}
+    </div>
+    
+    <!-- Application Form with Clean White Card Styling -->
+    <form method="POST" action="{% url 'apply' %}" style="background:  #Faf6f2; border: 1px solid rgba(4, 44, 26, 0.08); border-radius: 12px; padding: 32px; box-shadow: 0 8px 30px rgba(0,0,0,0.03);">
+        {% csrf_token %}
+        
+        <!-- Error Messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <div style="background: rgba(224, 62, 62, 0.1); border: 1px solid rgba(224, 62, 62, 0.3); color: var(--danger); font-size: 12px; padding: 10px; border-radius: 6px; margin-bottom: 16px; text-align: center;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Row 1: Side-by-side Names -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="fl">
+                <label for="first_name" style="color: var(--deep); font-weight: 600;">First Name</label>
+                <input type="text" id="first_name" name="first_name" class="inp" autocomplete="given-name" required style="background: #fff; color: var(--deep); border: 1px solid rgba(4, 44, 26, 0.15);" />
+            </div>
+            <div class="fl">
+                <label for="last_name" style="color: var(--deep); font-weight: 600;">Last Name</label>
+                <input type="text" id="last_name" name="last_name" class="inp" autocomplete="family-name" required style="background: #fff; color: var(--deep); border: 1px solid rgba(4, 44, 26, 0.15);" />
+            </div>
+        </div>
+
+        <!-- Row 2: Email -->
+        <div class="fl" style="margin-bottom: 16px;">
+            <label for="email" style="color: var(--deep); font-weight: 600;">Work Email</label>
+            <input type="email" id="email" name="email" class="inp" autocomplete="email" required style="background: #fff; color: var(--deep); border: 1px solid rgba(4, 44, 26, 0.15);" />
+        </div>
+
+        <!-- Row 3: Side-by-side Professional Info -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="fl">
+                <label for="title" style="color: var(--deep); font-weight: 600;">Current Title</label>
+                <input type="text" id="title" name="title" class="inp" placeholder="e.g. CFO" autocomplete="organization-title" required style="background: #fff; color: var(--deep); border: 1px solid rgba(4, 44, 26, 0.15);" />
+            </div>
+            <div class="fl">
+                <label for="company" style="color: var(--deep); font-weight: 600;">Company</label>
+                <input type="text" id="company" name="company" class="inp" autocomplete="organization" required style="background: #fff; color: var(--deep); border: 1px solid rgba(4, 44, 26, 0.15);" />
+            </div>
+        </div>
+
+        <!-- Row 4: LinkedIn -->
+        <div class="fl" style="margin-bottom: 28px;">
+            <label for="linkedin_url" style="color: var(--deep); font-weight: 600;">LinkedIn Profile URL</label>
+            <input type="url" id="linkedin_url" name="linkedin_url" class="inp" placeholder="https://linkedin.com/in/..." autocomplete="url" style="background: #fff; color: var(--deep); border: 1px solid rgba(4, 44, 26, 0.15);" />
+        </div>
+        
+        <button type="submit" class="form-submit" style="background:#199A7A; border: none; transition: transform 0.2s;">Submit Application</button>
+        
+        <div style="margin-top: 24px; text-align: center; border-top: 1px solid rgba(4, 44, 26, 0.08); padding-top: 16px;">
+            <a href="{% url 'landing_page' %}" style="display: inline-block; font-size: 11px; color: var(--muted); text-decoration: none; transition: color 0.2s;">
+                ← Back to Home
+            </a>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

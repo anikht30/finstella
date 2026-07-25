@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{%load static%}
+
+{% block title %} | Member Directory
+{% if page_number %} | {{ page_number }}{% endif %}
+{%endblock%}
+
+   {% block maincontent %}
+
+    <section class="" style=" background:#fff; border: 1px solid #e7e8e9; border-radius: 12px; padding:5px 10px">
+  <div class="section-wrap23">
+    
+    <div class="active-discussion-title" style="padding:5px 10px 11px 30px;">
+        <h4>Member Directory</h4>
+    </div>
+    {% comment %} <h2 class="sec-h2" style="margin-bottom: 32px;">Verified Finance Leaders</h2> {% endcomment %}
+
+    <!-- MEMBER GRID -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+        
+        {% for member in members %}
+        <div class="f-card" style="display: flex; gap: 16px; align-items: center; padding: 10px; ">
+            <!-- Avatar Circle -->
+            <a href="{% url 'member_profile' member.id %}" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: inherit; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+              
+    {% if member.profile_picture %}
+        <img src="{{ member.profile_picture.url }}" alt="{{ member.first_name }}" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(4, 44, 26, 0.05); box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    {% else %}
+        <div style="width: 48px; height: 48px; border-radius: 50%;  background:#f7fdfb; color: rgb(15, 110, 86); display: flex; align-items: center; justify-content: center; font-family: inherit; font-size: 14px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            {{ member.first_name|first }}{{ member.last_name|first }}
+        </div>
+    {% endif %}
+    </a>
+            <!-- Member Info -->
+            <div>
+                <div style="font-family: inherit; font-weight: 600; font-size: 14px; color: var(--deep); margin-bottom: 4px;">
+                    {{ member.first_name }} {{ member.last_name }}
+                </div>
+                <div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">
+                    {{ member.title }} at {{ member.company }}
+                </div>
+                
+                {% comment %} {% if member.linkedin_url %}
+                <a href="{{ member.linkedin_url }}" target="_blank" style="font-size: 11px; color: var(--teal); text-decoration: none; font-weight: 600;">
+                    View LinkedIn →
+                </a>
+                {% endif %} {% endcomment %}
+            </div>
+        </div>
+        {% empty %}
+        <p style="color: var(--muted); font-size: 14px;">No active members found in the directory.</p>
+        {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+</style>
+
+
+<!-- 3. JAVASCRIPT: Add this before your closing </body> tag -->
+<script>
+function toggleProfileMenu(event) {
+    // This prevents the menu from instantly closing if you click a link inside it
+    console.log(event)
+    if (event && event.target.closest('.dropdown-content')) {
+        return;
+    }
+    document.getElementById("profileMenu").classList.toggle("show-menu");
+}
+
+// Close the dropdown if the user clicks anywhere outside of it
+window.onclick = function(event) {
+    // Specifically checks if you clicked outside the .profile div
+    if (!event.target.closest('.profile')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show-menu')) {
+                openDropdown.classList.remove('show-menu');
+            }
+        }
+    }
+}
+</script>
+
+
+
+
+
+
+   {% endblock %}

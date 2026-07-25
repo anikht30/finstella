@@ -1,0 +1,1155 @@
+/* Shree Ganeshay Namahh */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: inter,Syne,"Plus Jakarta Sans",sans-serif;
+    /* font-family: "Libre Baskerville", serif; */
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    background:#f7fdfb;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 5px;
+    grid-auto-rows: 50px;
+    padding: 15px;
+    padding-bottom: 25px;
+   
+
+}
+
+header{
+ position: sticky;
+    top: 0;
+    z-index: 1000; 
+   background:#f7fdfb;
+   border-bottom: 1px solid#E2E8F0;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    /* text-align: center; */
+    grid-column: span 2;
+    align-items: center;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* max-width: 800px; */
+    grid-column: span 7;
+    height: 60px;
+    
+}
+
+.notify-profile {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column: span 3;
+}
+
+.notification, 
+.message {
+    display: flex;
+    grid-column: span 1;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.profile {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(9, 1fr);
+    grid-column: span 4;
+    cursor: pointer;
+    position: relative;
+}
+
+.profile-text {
+    display: grid;
+    grid-column: span 7;
+    justify-content: right;
+    align-items: center;
+    line-height: 1;
+      
+}
+
+.profile-text p{
+    text-align: right;
+    padding-right: 5px;
+}
+
+.user-name{
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    text-transform: capitalize;
+}
+
+
+.user-title{
+
+    font-size: 12px;
+    font-family: inherit;
+    color: rgb(15, 110, 86);
+    text-transform: uppercase;
+    font-weight: 400;
+   
+    
+}
+
+
+
+.profile-icon {
+    /* display: flex; */
+    /* grid-column: span 2; */
+    justify-content: center;
+    align-items: center;
+}
+
+
+.dots-icon {
+    display: flex;
+    font-size: 22px;
+    font-weight: bold;
+    color: #64748B;
+    /* margin-left: 5px; */
+    /* padding-bottom: 5px;  */
+    /* Adjusts vertical alignment */
+    /* grid-column: span 1; */
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+
+/* Dropdown Positioning */
+
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    right: 0;
+    top: 100%; /* Changed to 100% to drop it directly below the profile */
+    margin-top: 8px;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 24px rgba(0,0,0,0.12);
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    z-index: 1000;
+    overflow: hidden;
+    
+    /* I removed grid-column: span 3; because it breaks absolute positioning */
+}
+
+.dropdown-content a {
+    color: #1E293B;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: #F8FAFC;
+}
+
+/* Toggled by JavaScript to show the menu */
+.show-menu {
+    display: block;
+}
+
+
+.sing-out{
+   display: flex;
+    /* width: 40px; */
+    grid-column: span 1; /* Changed from 1 to span 1 */
+    align-items: center; /* Added this to vertically center the button */
+    justify-content: center; /* Added this to horizontally center it */
+  
+
+}
+
+.sing-out a:hover{
+    background-color: rgb(187, 226, 187);
+    color: #fff;
+    
+}
+
+
+.sing-out a{
+ text-decoration: none;
+ color: #000;
+ font-size: 10px;
+ font-weight: 500;
+   padding: 2px 5px;
+   border-radius: 12px;
+}
+
+
+
+
+.logo img {
+    width: 180px;
+}
+
+.search input {
+    width: 100%;
+    padding: 14px 50px 14px 20px;
+    border: 1px solid #e7e8e9;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.notification img,
+.message img {
+    width: 25px;
+}
+
+.profile-icon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+
+
+.main-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 10px;
+    /* max-width: 1600px; */
+    /* margin: 0 auto; */
+    padding: 15px;
+}
+
+.left-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    grid-column: span 2;
+    position: sticky;
+    top:20px;
+    align-self: start;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    border-radius: 12px;
+    border: 1px solid #e7e8e9;
+    grid-column: span 2;
+    font-size: 14px;
+    padding: 20px 0 20px 20px;
+    background-color: #fff;
+}
+
+.menu {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+    padding: 5px 5px;
+}
+
+.menu:hover {
+    background-color: rgb(138, 215, 248);
+    opacity: 0.7;
+    color: rgb(11, 11, 128);
+}
+
+.menu img {
+    width: 20px;
+    height: 20px;
+    fill: red;
+}
+
+
+
+/* forum-dashboard start */
+.forum-dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    /* width: 100%; */
+    grid-column: span 2;
+}
+
+.dashboard-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #e7e8e9;
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+    grid-column: span 1;
+    padding: 5px;
+    line-height: 2;
+}
+
+
+.dashboard-card h1{
+    font-size: 16px;
+}
+
+.dashboard-card h5{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+.dashboard-card h6{
+    font-size: 12px;
+    font-weight: 400;
+    font-family: inherit;
+}
+
+
+.dashboard-card img {
+    width: 40px;
+    height: 40px;
+    /* background-color: red; */
+    margin-bottom: 5px;
+    margin-top  :7px;
+    border-radius: 12px;
+}
+
+.dashboard-card i {
+    width: 30px;
+    height: 30px;
+    /* background-color:#f1f4fa; */
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 12px;
+}
+
+.high-light{
+    color: #199A7A;;
+}
+
+
+.high-light-low{
+    color:red;
+}
+/* .icon1{
+background-color:#ecf0f9;
+}
+
+/* ecf0f9 */
+.icon2{
+background-color: #ecf6ed;
+}
+.icon3{
+background-color: #f8f2f8;
+}
+.icon4{
+background-color: #fdf0e5;
+} 
+
+
+
+
+
+
+
+
+/* forum-dashboard end */
+
+.post-question {
+    display: flex;
+    border: 1px solid #e7e8e9;
+    padding:10px 30px 10px 45px;
+    border-radius: 12px;
+    background-color: #FFF;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: space-between; /* This naturally pushes the image to the right */
+}
+
+.post-img{
+    display: flex;
+    width: 0 auto;
+     justify-content: center;
+   
+    /* background-color: red; */
+    
+}
+.post-img img {
+    width: 300px;
+    padding-right: 60px;
+    align-items: center;
+    /* background-color: green; */
+    object-fit: cover;
+}
+
+.post-title h1 {
+    font-weight: 400;
+    font-family: libre;
+    font-size: 40px;
+
+}
+.italic {
+    font-style: italic;
+    font-weight: 400;
+    font-family: libre;
+}
+
+
+
+
+.post-title p {
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+
+.btn-hero-new {
+    display: flex;
+    text-decoration: none;
+    color: #fff;
+    /* background-color: #1E60D0; */
+    background-color: #199A7A;
+    padding: 5px 10px;
+    border-radius: 8px;
+    align-items: center;
+    gap: 10px;
+    width: 90%;
+    font-size: 14px;
+    justify-content: space-between;
+    transition: background-color 0.3s ease;
+    cursor: url('pen.svg') 0 24, auto;
+}
+
+.btn-hero-post{
+     display: flex;
+    text-decoration: none;
+    color: #fff;
+    /* background-color: #1E60D0; */
+    background-color: #199A7A;
+    padding: 5px 5px;
+    border-radius: 6px;
+    align-items: center;
+    /* gap: 10px; */
+    width: 20%;
+    font-size: 14px;
+    text-align: center;
+    justify-content: center;
+    border: none;
+    /* justify-content: space-between; */
+    transition: background-color 0.3s ease;
+    cursor: url('pen.svg') 0 24, auto;
+
+}
+
+
+
+
+.btn-hero-new:hover {
+    color:  #199A7A;
+    background-color: #fff;
+    /* border-color: #000; */
+    border: 1px solid;
+    cursor: url('pen.svg') 0 24, auto;
+}
+
+.btn-hero-post:hover{
+    color:  #199A7A;
+    background-color: #fff;
+    /* border-color: #000; */
+    border: 1px solid;
+}
+
+
+
+.btn-hero-new img {
+    width: 20px;
+}
+
+
+.main-content {
+    display: flex;
+    border-radius: 12px;
+    flex-direction: column;
+    /* border: 1px solid #8080801a; */
+    /* padding: 5px; */
+    grid-column: span 7;
+}
+
+/* activity discussion box start */
+.active-discussion-box {
+    display: flex;
+    flex-direction: column;
+    /* margin-top: 20px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 12px;
+    border: 1px solid #e7e8e9;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.active-discussion-title {
+    display: flex;
+    justify-content: space-between;
+    /* margin-bottom: 20px; */
+    padding: 10px 30px;
+}
+
+.active-discussion-title h4 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: rgb(15, 110, 86);
+}
+
+.active-discussion-title a {
+    text-decoration: none;
+    color: #1E60D0;
+     /* color: rgb(15, 110, 86); */
+     /* background-color: rgb(225, 245, 238); */
+    display: inline;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 5px;
+    border-radius: 12px;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border: 1px solid #e7e8e9;
+    border-radius: 12px;
+    /* box-shadow: 0px 2px 4px rgba(41, 128, 185, 0.3); */
+    padding: 5px;
+
+    /* background-color: #F4EFE6; */
+}
+
+
+
+
+
+
+
+.thread {
+    display: flex;
+    gap: 10px;
+    padding-left: 30px;
+    padding-right: 20px;
+}
+.thred-details{
+    flex-grow: 1;
+}
+
+.author-icon img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+     object-fit: cover;
+    
+}
+
+
+
+
+.author-thred{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.author-details{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+
+
+.author-name h4{
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    text-transform: capitalize;
+}
+
+.author-name h6{
+    background-color: #fff;
+    font-size: 12;
+    font-family: inherit;
+    color: rgb(15, 110, 86);
+    text-transform: uppercase;
+    font-weight: 400;
+}   
+
+
+.thred-details h5 {
+    
+    /* background-color:#e7e8e9; */
+    background-color: rgb(225, 245, 238);
+    font-size: 11px;
+    /* color: #939598; */
+     color: rgb(15, 110, 86);
+    padding: 2px 5px;
+    width: auto;
+    display: inline-block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+   
+}
+
+
+
+.thred-details h2 {
+    font-family: Lora;
+    font-weight: 300; 
+    font-size: 30px;
+    margin-bottom: 15px;
+    
+    color: #042C1A;
+}
+
+
+.thred-details p{
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.thread-cateogory{
+    justify-content: flex-end;
+    display: flex;
+    font-weight: 400;
+
+    
+}
+
+
+.thread-cateogory h5{
+     text-transform: uppercase;
+     font-weight: 400;
+     font-family: inherit;
+     font-size: 8px;
+
+}
+
+
+
+.thread-response h5,
+.thread-peers h5,
+.time-ago h5{
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 400;
+    
+    
+
+}
+
+.thread-belongs {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    font-weight: 400;
+    gap: 5px;
+}
+
+.thread-response{
+    display: flex;
+    gap: 5px;
+}
+
+.thread-peers{
+    display: flex;
+    gap: 5px;
+}
+
+
+.initial {
+  display: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: rgb(15, 110, 86);
+
+    /* border: 1px solid rgb(15, 110, 86); */
+    object-fit: cover;
+    background: #f7fdfb;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+/* activity discussion box end */
+
+.right-sidebar {
+    display: flex;
+    flex-direction: column;
+    grid-column: span 3;
+    gap: 10px;
+    position: sticky;
+    top:20px;
+    align-self: start;
+   
+}
+
+.active-expert-box {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    border-radius: 12px;
+    border: 1px solid #e7e8e9;
+    padding: 5px 10px;
+     background-color: #fff;
+     
+   
+
+}
+
+.active-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 20px; */
+    padding: 10px 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.active-title h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.active-title a {
+    text-decoration: none;
+    color: #1E60D0;
+}
+
+.active-expert {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 5px;
+    /* border: 1px solid #e7e8e9; */
+    padding: 2px 5px;
+    border-radius: 12px;
+    
+    
+}
+
+
+.category-list {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #e7e8e9; 
+    /* border: 1px solid #e7e8e9; */
+    padding: 10px 5px;
+    /* border-radius: 12px; */
+    
+    
+}
+
+.category-list:before{
+    content:  "→";
+}
+
+
+
+.expert-icon {
+    flex-shrink: 0;
+}
+
+.expert-icon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.expert-initial {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: rgb(15, 110, 86);
+
+    /* border: 1px solid rgb(15, 110, 86); */
+    object-fit: cover;
+    background: #f7fdfb;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+
+}
+
+.expert-text{
+    line-height: 1;
+}
+.expert-text h5 {
+    margin: 0;
+    font-size: 14px;
+    text-transform: capitalize;
+    
+}
+
+.expert-text p {
+    margin: 5px 0 0;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+
+
+ .pulse-card {
+            background-color: #fff;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            grid-column: span 3;
+        }
+
+        .pulse-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .pulse-header h3 {
+            font-size: 16px;
+            color: #1E293B;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .pulse-header a {
+            font-size: 13px;
+            color: #2563EB;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .pulse-subtitle {
+            font-size: 12px;
+            color: #64748B;
+            margin-bottom: 4px;
+        }
+
+        .pulse-challenge {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1E293B;
+            margin-bottom: 4px;
+        }
+
+        .pulse-agree {
+            font-size: 13px;
+            color: #64748B;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        /* The Circular Progress Ring */
+        .progress-ring-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 24px;
+            padding-left: 10px;
+        }
+
+        .progress-ring {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            /* This gradient creates the ring effect. 89% blue, the rest is light gray */
+            background: conic-gradient(#2563EB 89%, #E2E8F0 89%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* The inner white circle to make it a donut */
+        .progress-ring::before {
+            content: "";
+            position: absolute;
+            width: 76px; /* slightly smaller than outer container */
+            height: 76px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .progress-value {
+            position: relative; /* Keeps it above the inner white circle */
+            font-size: 24px;
+            font-weight: 700;
+            color: #1E293B;
+        }
+
+        .pulse-action-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            text-align: center;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            background: #fff;
+            color: #2563EB;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .pulse-action-btn:hover {
+            border-color: #CBD5E1;
+            background-color: #F8FAFC;
+        }
+
+
+
+
+/* Pagination Container */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+    padding: 20px 0 10px 0;
+    border-top: 1px solid #E2E8F0;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 8px;
+}
+
+/* Base style for all pagination buttons */
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    border: 1px solid #E2E8F0;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+/* Hover state for clickable buttons */
+.page-btn:hover:not(.disabled):not(.active-page) {
+    background-color: #F8FAFC;
+    border-color: #CBD5E1;
+    color: #0F172A;
+}
+
+/* The active (current) page */
+.active-page {
+    background-color: #2563EB; /* A nice primary blue */
+    color: #ffffff;
+    border-color: #2563EB;
+    cursor: default;
+}
+
+/* Disabled state (when there is no previous/next page) */
+.page-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #F1F5F9;
+}
+
+
+
+/* pop up window */
+
+
+/* The Dark Overlay Background */
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stays in place when scrolling */
+    z-index: 9999; /* Sits on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.6); /* Dark semi-transparent background */
+    backdrop-filter: blur(4px); /* Optional: adds a nice blur to the background */
+    
+    /* Used to center the modal box */
+    align-items: center; 
+    justify-content: center;
+}
+
+/* Toggled via JS to show the modal */
+.modal-overlay.show-modal {
+    display: flex;
+}
+
+/* The actual white popup box */
+.modal-content {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 700px;
+    position: relative; /* Needed to anchor the close button */
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+    
+    /* Ensures it doesn't get taller than the screen on small laptops/monitors */
+    max-height: 90vh;
+    overflow-y: auto; 
+   
+}
+
+/* The 'X' Close Button */
+.close-btn {
+    position: absolute;
+    top: 1px;
+    right: 24px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #94A3B8;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #0F172A; /* Darkens on hover */
+}
+
+
+
+.discussion-btns{
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+    /* padding-bottom: 10px; */
+    position: sticky;
+    top:20px;
+    padding-left:40px ;
+    align-items: end;
+       
+}
+
+.discussion-btns a{
+    display: inline-block;
+    background-color: #199A7A;
+    
+    /* border-radius: 10px; */
+    /* border: 1px 1px 0 1px solid#199A7A; */
+    border-top: 1px solid #199A7A ;
+    border-left: 1px solid #199A7A ;
+    border-right: 1px solid #199A7A ;
+    
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 15px;   
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 10px 10px 0 0;
+    /* width: 130px; */
+}
+
+/* Apply a default styling to both buttons */
+#active-discussion, 
+#open-query,
+#my-discussion{
+    padding: 5px 15px;
+    background-color: #fff;
+    color: #199A7A;
+    text-decoration: none; /* Removes the underline from the <a> tag */
+    display: inline-block; 
+}
+
+/* Hover effect works for inactive buttons */
+#active-discussion:hover, 
+#open-query:hover,
+#my-discussion:hover{
+    background-color: #199A7A;
+    color: #fff;
+}
+
+/* The active state styles */
+.active-tab {
+    padding: 5px 15px !important;
+    background-color: #199A7A !important;
+    border: none;
+    color: #fff !important;
+    border-radius: 12px 12px 0 0;
+    cursor: default;
+}
+
+
+/* #active-discussion-thred{
+
+} */
+#open-quer-thred{
+
+    display: none;
+
+}
+
+#mydiscthred{
+    display: none;
+}

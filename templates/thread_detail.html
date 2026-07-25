@@ -1,0 +1,238 @@
+{% extends "layout.html" %}
+
+
+{% block maincontent %}
+
+{% comment %} <section class="forum-preview" style="padding-top: 100px; min-height: 100vh;"> {% endcomment %}
+ 
+    
+    <!-- MAIN THREAD CARD - Added display: block; to force vertical stacking -->
+     <div class="active-discussion-box">
+        <div class="thread" >
+                    
+                    <div class="thred-details" >
+                    
+                     
+                    <div class="author-thred">   
+                    
+                    <div class="author-details">
+                        <div class="author-icon">
+                         <a href={%url 'member_profile'  thread.author.id %}>
+                        {% if thread.author.profile_picture %}
+                            <img src="{{ thread.author.profile_picture.url }}" alt="{{ thread.author.first_name }}">
+                            {% else %}
+                        <div class="initial">
+                            {{ thread.author.first_name|first }}{{ thread.author.last_name|first }}
+                        </div>
+                            {% endif %}
+                    </a>
+                        </div>
+
+                        <div class="author-name">
+                            <h4>{{thread.author.first_name}} {{thread.author.last_name}}</h4>
+                            <h6>{{ thread.author.title }} at {{ thread.author.company }}</h6>
+                        </div>
+
+                    </div> <!--author details end-->
+
+
+
+
+                    {% comment %} <a href="{% url 'thread_detail' thread.id %}" style="text-decoration: none; color: inherit; display: block;">     {% endcomment %}
+                    <div class="thread-cateogory" style="display: block;">   
+                    <h5> {{thread.category}} </h5>
+                    
+                    {% comment %} <h6 class="time-ago">{{ thread.created_at|timesince }} ago</h6> {% endcomment %}
+                    </div>
+                    </div>
+                    <h2>{{thread.title}}</h2>
+                    <p>{{thread.content}}</p>
+                    {% comment %} </a> {% endcomment %}
+                    </div>
+                    
+ 
+                </div>
+                <div class="thread-belongs" style="color: #199A7A ;">
+                    <div class="time-ago">                   
+                    <h5>(Posted on {{ thread.created_at|date:"M j, Y"}})</h5> 
+                    </div>
+                    
+
+
+                    {%if thread.replies.count%}
+                    <div class="thread-response"><h5>|</h5></div>    
+                    <div class="thread-response">
+                      {% comment %} <i class="fas fa-book"></i> {% endcomment %}
+                      <h5>{{ thread.replies.count }} {%if thread.replies.count == 1 %}Response {%else%}Responses{%endif%}</h5>
+                    </div>
+                    
+                    <div class="thread-response"><h5>|</h5></div>    
+                         <div class="thread-peers">
+                       {% comment %} <i class="fas fa-book"></i> {% endcomment %}
+                       <h5>{{ thread.unique_author_count}} {%if thread.unique_author_count == 1 %}Peer {%else%}Peers{%endif%} Participate</h5>   
+                         
+                    </div>
+                    {% endif %}
+                    
+                </div>
+        
+        
+     <!-- REPLY FORM -->
+    <div class="contribute" style="padding-bottom:10px">
+        <h3>Responding your query</h3>
+        <form method="POST" >
+            {% csrf_token %}
+            <div class="fl" style="margin-bottom: 5px;">
+                {% comment %} <textarea name="content" placeholder="Share your insight..." required style="height: 100px; background: var(--bg); border: 1px solid rgba(4, 44, 26, 0.15); color: var(--deep);"></textarea> {% endcomment %}
+                {% comment %} <textarea name="content" placeholder="response..." required ></textarea> {% endcomment %}
+                <textarea name="content" placeholder="Write your response..." required style="width: 100%; height: 80px; background: #fff; border: 1px solid rgba(4, 44, 26, 0.15); border-radius: 6px; padding: 12px; font-family: 'Lora', serif; font-size: 13px; color: var(--deep); margin-bottom: 12px; box-sizing: border-box;"></textarea>
+            
+            </div>
+            <button type="submit" class="btn-hero-post">Post</button>
+        </form>
+    </div>
+
+    <!-- REPLIES SECTION -->
+    {% if thread.replies.count %}
+   <div class="total-response" > {{ thread.replies.count }} Total Responses</div>
+    {%endif%}
+    {% for reply in replies %}
+    <div class="thread-box">
+        <div class="f-body">
+            
+            <div style="margin-bottom: 12px;">
+                <!-- REPLIES AUTHOR -->
+
+                <div class="author-details">
+                        <div class="author-icon">
+                         <a href={%url 'member_profile'  reply.author.id %}>
+                        {% if reply.author.profile_picture %}
+                            <img src="{{ reply.author.profile_picture.url }}" alt="{{ reply.author.first_name }}">
+                            {% else %}
+                        <div class="initial" style="text-decoration:none">
+                            {{ reply.author.first_name|first }}{{ reply.author.last_name|first }}
+                        </div>
+                            {% endif %}
+                    </a>
+                        </div>
+
+                        <div class="author-name">
+                            <h4>{{reply.author.first_name}} {{reply.author.last_name}}</h4>
+                            <h6>{{ reply.author.title }} at {{ reply.author.company }}</h6>
+                        </div>
+
+                    </div> <!--author details end-->
+
+</div>
+            
+            <div class="reply-content">
+                {{ reply.content|linebreaks }}
+            </div>
+
+            <div style="display: flex; gap: 16px; align-items: center font-family;justify-content:space-between">
+                
+
+                
+                <button onclick="toggleReplyForm({{ reply.id }})" class="reply-btn">
+                    Reply to {{reply.author.first_name}}
+                </button>
+               <div>
+                {% if reply.sub_replies.all %}
+                <button onclick="toggleNestedReplies({{ reply.id }})" class="reply-btn" id="collapse-btn-{{ reply.id }}">
+                    View {{ reply.sub_replies.count }} {% if reply.sub_replies.count == 1%} Reply {%else%}Replies{%endif%} 
+                </button>
+                <button class="reply-btn">|</button>
+                {% endif %}
+                
+
+
+                <button class="reply-btn" style="justify-self: flex-end;cursor: pointer; font-size:10px;text-decoration: none;">
+                    (Replied on {{ reply.created_at|date:"M j, Y"}})
+                </button>
+                </div>
+                
+               
+            </div>
+
+            <form class="fl" id="reply-form-{{ reply.id }}" method="POST" action="{% url 'add_subreply' reply.id %}" style="display: none; margin-top: 16px; background: rgba(4, 44, 26, 0.02); padding: 16px; border-radius: 8px; border: 1px solid #e7e8e9;">
+                {% csrf_token %}
+                <textarea name="content" placeholder="Write your response..." required style="width: 100%; height: 80px; background: #fff; border: 1px solid rgba(4, 44, 26, 0.15); border-radius: 6px; padding: 12px; font-family: inherit; font-size: 13px; margin-bottom: 12px; box-sizing: border-box;"></textarea>
+                <div style="display: flex; justify-content: flex-end; gap: 8px;">
+                    <button type="button" onclick="toggleReplyForm({{ reply.id }})" style="background: none; border: none; color: var(--muted); font-size: 12px; font-weight: 600; cursor: pointer;">Cancel</button>
+                    <button type="submit" style="background: var(--teal); color: #fff; border: none; padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer;">Post Reply</button>
+                </div>
+            </form>
+
+            {% if reply.sub_replies.all %}
+                <div id="nested-replies-{{ reply.id }}" style="display: none; margin-top: 24px; padding-left: 20px; ">
+                    {% for sub in reply.sub_replies.all %}
+                        <div style="margin-bottom: 16px;">
+                           <!-- NESTED SUB-REPLIES AUTHOR -->
+<div class="sub-reply" style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px;">
+      <a href="{% url 'member_profile' sub.author.id %}" style="display: flex; align-items: center; gap: 8px; text-decoration: none; color: inherit; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+    {% if sub.author.profile_picture %}
+        <img src="{{ sub.author.profile_picture.url }}" alt="{{ sub.author.first_name }}" style="width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(4, 44, 26, 0.1); margin-top: 2px;">
+    {% else %}
+        <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--teal); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; margin-top: 2px;">
+            {{ sub.author.first_name|first }}{{ sub.author.last_name|first }}
+        </div>
+    {% endif %}
+    </a>
+    <div>
+        <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px;">
+            <span style="font-weight: 600; color: var(--deep); font-size: 13px;">{{ sub.author.first_name }} {{ sub.author.last_name }}</span>
+            {% comment %} <span style="font-size: 11px; color: var(--muted);">{{ sub.created_at|timesince }} ago</span> {% endcomment %}
+           <span class="reply-btn">(Replied on {{ reply.created_at|date:"M j, Y"}})</span>
+        </div>
+        <div style="font-size: 13.5px; line-height: 1.5; color: var(--deep);">
+            {{ sub.content|linebreaks }}
+        </div>
+    </div>
+</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+    {% endfor %}
+   
+
+ 
+{% comment %} </section> {% endcomment %}
+
+
+
+
+<script>
+    // Handles the reply text box toggle
+    function toggleReplyForm(replyId) {
+        const form = document.getElementById('reply-form-' + replyId);
+        if (form.style.display === 'none' || form.style.display === '') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    }
+
+    // Handles the Hide/View collapse functionality for sub-replies
+    function toggleNestedReplies(replyId) {
+        const container = document.getElementById('nested-replies-' + replyId);
+        const btn = document.getElementById('collapse-btn-' + replyId);
+        
+        const currentText = btn.innerText;
+
+        if (container.style.display === 'none') {
+            container.style.display = 'block';
+            btn.innerText = currentText.replace('View', 'Hide');
+        } else {
+            container.style.display = 'none';
+            btn.innerText = currentText.replace('Hide', 'View');
+        }
+    }
+</script>
+
+
+
+{% endblock %}
