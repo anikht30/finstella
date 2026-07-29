@@ -1,0 +1,2640 @@
+[
+{
+    "model": "sessions.session",
+    "pk": "07hrkizqj2hid4udp0uyj6zpx9gz475l",
+    "fields": {
+        "session_data": ".eJxVjLsOwyAUQ_-FuUIBLq-O3fMNiMujpK1ACslU9d9LpAztZvvYfhPn9624vafVLZFciSSX3wx9eKZ6gPjw9d5oaHVbF6RHhZ6007nF9Lqd3b-D4nsZa55BYZpAK8YlMCvM8BKQ62gMRDHpiIozbdEIr1BZzGFonwW3CFqTzxe1Qzb9:1woywm:xCFD6499uAX9Z9NwkSUk5ADwY0Kq7rGsdNk_XOB_TVQ",
+        "expire_date": "2026-08-12T07:43:24.925Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "0mgndphfqcdoz9799lfr3rh7gbp3h2cf",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQhN-FsyEilB-P3vsMZFl2pWogKe3J-O62SQ96m8z3zbxFhHUpce00xymLq1Di9NslwCfVHeQH1HuT2OoyT0nuijxol2PL9Lod7t9BgV629cABvU6WOGhjHFgytAV0-ey9p8TeMiNnZQCdvnhj2TDngEpBcDCIzxf3RTiN:1wms45:C8amczQvOs-lmyDJenpaQmc9kCd-0Zt1AqRc7zVfRVg",
+        "expire_date": "2026-08-06T11:58:13.631Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "46sb87ouphj2bvzxc9jkdv3vnew5homs",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQhN-FsyEilB-P3vsMZFl2pWogKe3J-O62SQ96m8z3zbxFhHUpce00xymLq1Di9NslwCfVHeQH1HuT2OoyT0nuijxol2PL9Lod7t9BgV629cABvU6WOGhjHFgytAV0-ey9p8TeMiNnZQCdvnhj2TDngEpBcDCIzxf3RTiN:1wYJuR:zdXN3sgHdNCaQrbKlY6t3etncSsjs_RQ3AcDPmxbJuQ",
+        "expire_date": "2026-06-27T08:40:07.545Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "7d0k4fdq822f0q5nh9h133m6xuf6mr1y",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQhN-FsyEilB-P3vsMZFl2pWogKe3J-O62SQ96m8z3zbxFhHUpce00xymLq1Di9NslwCfVHeQH1HuT2OoyT0nuijxol2PL9Lod7t9BgV629cABvU6WOGhjHFgytAV0-ey9p8TeMiNnZQCdvnhj2TDngEpBcDCIzxf3RTiN:1wolGz:GW0lN5U5WEnpz4iomn6orIqirYszasTCBHfbWXitofw",
+        "expire_date": "2026-08-11T17:07:21.465Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "7ejo7o21javxynb36q5vwujoex00fa5m",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hBgKoJL9z0DmYFBqgaS0q6Md7dNutDtf-_9twi4LiWsnecwJXEVVpx-N8L45LqD9MB6bzK2uswTyV2RB-1ybIlft8P9OyjYy1Z7YEtRXUB7Ao-E-WwhZhWHZEAZ77z1GQ2ABUhmMFETOCbWyM5tovh8AdzPN9M:1woapR:duOp6oajbFqN7TSo-zJX5RWRN49iMafq7vwAOK3E97I",
+        "expire_date": "2026-08-11T05:58:13.706Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "92pjwk1sgpbt6a5cw2ptucigdub5a6kz",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQhN-FsyEilB-P3vsMZFl2pWogKe3J-O62SQ96m8z3zbxFhHUpce00xymLq1Di9NslwCfVHeQH1HuT2OoyT0nuijxol2PL9Lod7t9BgV629cABvU6WOGhjHFgytAV0-ey9p8TeMiNnZQCdvnhj2TDngEpBcDCIzxf3RTiN:1wlVZa:nGRps4KHt2SsbH07THIhNvyFdqn1K04U4i8HwGpj3dY",
+        "expire_date": "2026-08-02T17:45:06.112Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "b9kxohupbteioa83swhmi8w8yek1n0yy",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hBgKoJL9z0DmYFBqgaS0q6Md7dNutDtf-_9twi4LiWsnecwJXEV2orT70gYn1x3kh5Y703GVpd5Irkr8qBdji3x63a4fwcFe9lqD2wpqgtoT-CRMJ8txKzikAwo4523PqMBsADJDCZqAsfEGtm5TRSfLwDPOAQ:1wd3Bg:VQFvZn-UqcfnuJ9ljyG4ooaSQn2WyuS77lhYCTicfBY",
+        "expire_date": "2026-07-10T09:49:28.369Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "bh650qkgg8z9sgmdqglpnmr9u91jr0dc",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQhN-FsyEilB-P3vsMZFl2pWogKe3J-O62SQ96m8z3zbxFhHUpce00xymLq1Di9NslwCfVHeQH1HuT2OoyT0nuijxol2PL9Lod7t9BgV629cABvU6WOGhjHFgytAV0-ey9p8TeMiNnZQCdvnhj2TDngEpBcDCIzxf3RTiN:1woxdV:DdG5pBGfDBo_4r-1Np0Ej_n9zJ4Vn2OjJuFnzpZyvP0",
+        "expire_date": "2026-08-12T06:19:25.214Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "exukm96kzkntylvkgrjf77qkqiqdhvox",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hBgKoJL9z0DmYFBqgaS0q6Md7dNutDtf-_9twi4LiWsnecwJXEV2orT70gYn1x3kh5Y703GVpd5Irkr8qBdji3x63a4fwcFe9lqD2wpqgtoT-CRMJ8txKzikAwo4523PqMBsADJDCZqAsfEGtm5TRSfLwDPOAQ:1wespA:s67_gkxHHre4aW3oPxMYrFgC7GqDIw0Q3OkbBTeuREc",
+        "expire_date": "2026-07-15T11:09:48.340Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ff001hk015cnwmqgsbyaqh6a2i501sc3",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQhN-FsyEilB-P3vsMZFl2pWogKe3J-O62SQ96m8z3zbxFhHUpce00xymLq1Di9NslwCfVHeQH1HuT2OoyT0nuijxol2PL9Lod7t9BgV629cABvU6WOGhjHFgytAV0-ey9p8TeMiNnZQCdvnhj2TDngEpBcDCIzxf3RTiN:1wbuiz:m4YOvM0B8WC6t2QwUIZNtyQ3bcOPkV92NYp-u_7IhL4",
+        "expire_date": "2026-07-07T06:35:09.414Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ih3ydnwtp11slp19idztlb7ce3k5qx8c",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hBgKoJL9z0DmYFBqgaS0q6Md7dNutDtf-_9twi4LiWsnecwJXEVVpx-N8L45LqD9MB6bzK2uswTyV2RB-1ybIlft8P9OyjYy1Z7YEtRXUB7Ao-E-WwhZhWHZEAZ77z1GQ2ABUhmMFETOCbWyM5tovh8AdzPN9M:1wms5Q:cfmh17lwdq1Nq5aFNgcH7WwibVilwI0wpPcqu-2Kt9w",
+        "expire_date": "2026-08-06T11:59:36.176Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "jcuhupu9szzrhfw9af842uk2wejxndq8",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQhN-FsyEilB-P3vsMZFl2pWogKe3J-O62SQ96m8z3zbxFhHUpce00xymLq1Di9NslwCfVHeQH1HuT2OoyT0nuijxol2PL9Lod7t9BgV629cABvU6WOGhjHFgytAV0-ey9p8TeMiNnZQCdvnhj2TDngEpBcDCIzxf3RTiN:1wXjR0:zTMyzaITsr0m8pGbq30JKhU-SpQHrmtB6-zZVa5_UTo",
+        "expire_date": "2026-06-25T17:43:18.180Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "pqvwqsiccs065ul2fakshl8743sh0n2f",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQhN-FsyEilB-P3vsMZFl2pWogKe3J-O62SQ96m8z3zbxFhHUpce00xymLq1Di9NslwCfVHeQH1HuT2OoyT0nuijxol2PL9Lod7t9BgV629cABvU6WOGhjHFgytAV0-ey9p8TeMiNnZQCdvnhj2TDngEpBcDCIzxf3RTiN:1wYITa:O3KsHO-N-mY-MwK4SiL8X_5SCP0SYXjc62b2sLEnIDE",
+        "expire_date": "2026-06-27T07:08:18.888Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ta2dmvu5l880wwwxlglqg5zia1jr1ul3",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hBgKoJL9z0DmYFBqgaS0q6Md7dNutDtf-_9twi4LiWsnecwJXEVVpx-N8L45LqD9MB6bzK2uswTyV2RB-1ybIlft8P9OyjYy1Z7YEtRXUB7Ao-E-WwhZhWHZEAZ77z1GQ2ABUhmMFETOCbWyM5tovh8AdzPN9M:1wlijT:Y4I2Ax2AVNqzWw7zkMBxoMSergyqCO7vhcg1Z4wiyoo",
+        "expire_date": "2026-08-03T07:48:11.010Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "y2dcrj08hd9g15gezjh2sccsx37ih2gx",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hBgKoJL9z0DmYFBqgaS0q6Md7dNutDtf-_9twi4LiWsnecwJXEVVpx-N8L45LqD9MB6bzK2uswTyV2RB-1ybIlft8P9OyjYy1Z7YEtRXUB7Ao-E-WwhZhWHZEAZ77z1GQ2ABUhmMFETOCbWyM5tovh8AdzPN9M:1woapR:duOp6oajbFqN7TSo-zJX5RWRN49iMafq7vwAOK3E97I",
+        "expire_date": "2026-08-11T05:58:13.012Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ycqokl5a4x0j5syje8q2cugkts776cbf",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hBgKoJL9z0DmYFBqgaS0q6Md7dNutDtf-_9twi4LiWsnecwJXEVVpx-N8L45LqD9MB6bzK2uswTyV2RB-1ybIlft8P9OyjYy1Z7YEtRXUB7Ao-E-WwhZhWHZEAZ77z1GQ2ABUhmMFETOCbWyM5tovh8AdzPN9M:1wp04e:zXjEs6p1J8eJ2XPUBv8dH96cw-tOnqF0RlEx6MMo7E0",
+        "expire_date": "2026-08-12T08:55:36.326Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "zh8p5o1w04fsj8b87wtf7e3cd9abzf6c",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQhN-FsyEilB-P3vsMZFl2pWogKe3J-O62SQ96m8z3zbxFhHUpce00xymLq1Di9NslwCfVHeQH1HuT2OoyT0nuijxol2PL9Lod7t9BgV629cABvU6WOGhjHFgytAV0-ey9p8TeMiNnZQCdvnhj2TDngEpBcDCIzxf3RTiN:1wYJ1Y:GyoiS4y5mP0-enIbluKVArC5bfb6V_XrsM1pSSGQ7cs",
+        "expire_date": "2026-06-27T07:43:24.220Z"
+    }
+},
+{
+    "model": "forum.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$tvPiYqFDgkzbDaTxJIXkXo$4ulzZsMyytcFnou64N4m9CN60A5mgpwA/jQ3DKzOuqc=",
+        "last_login": "2026-07-29T06:19:25.206Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "Aniket",
+        "last_name": "Khatu",
+        "email": "aniket@asapadvisors.co.in",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-09T11:33:22Z",
+        "title": "CFO",
+        "company": "ASAP",
+        "linkedin_url": "https://www.google.co.in",
+        "is_active_subscriber": false,
+        "profile_picture": "avatars/cropped_profile_9RnNHT4.jpg",
+        "about": "This is me aniket anant khatu",
+        "mobileno": "8169890195",
+        "middle_name": "Anant",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "forum.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$nVKP6ZSrm3YkkWL8oKEWIr$gAlFPpQVThZ4PJ1ep0kzZAIfBm7ic3RXwXs7TMQG9I0=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "j.thorne@vertexindustrial.com",
+        "first_name": "James",
+        "last_name": "Thorne",
+        "email": "j.thorne@vertexindustrial.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-14T15:46:40Z",
+        "title": "CFO",
+        "company": "Vertex Industrial",
+        "linkedin_url": "https://www.linkedin.com/company/asapadvisors/",
+        "is_active_subscriber": false,
+        "profile_picture": "",
+        "about": null,
+        "mobileno": null,
+        "middle_name": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "forum.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$P7cdod77p3bErNO0kNO8pZ$pLO/CcbDTofmUVGsMhIFJkfu10GSCGDM7nCKfI7rgSo=",
+        "last_login": "2026-07-25T18:14:57.711Z",
+        "is_superuser": false,
+        "username": "arahman@luminahealth.net",
+        "first_name": "Aisha",
+        "last_name": "Rahman",
+        "email": "arahman@luminahealth.net",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-14T15:48:11Z",
+        "title": "VP of Finance",
+        "company": "Lumina Health Partners",
+        "linkedin_url": "https://www.linkedin.com/company/asapadvisors/",
+        "is_active_subscriber": false,
+        "profile_picture": "",
+        "about": null,
+        "mobileno": null,
+        "middle_name": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "forum.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$7eSWiSKRTmx5qcpwdZAB3e$Y5ocBPStnb0AEItUd15HW3c/cPH63+pDUrXAzG0HyaU=",
+        "last_login": "2026-07-25T14:55:02.664Z",
+        "is_superuser": false,
+        "username": "twright@aegisfinancial.com",
+        "first_name": "Thomas",
+        "last_name": "Wright",
+        "email": "twright@aegisfinancial.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-14T15:49:26Z",
+        "title": "CFO",
+        "company": "Aegis Financial Strategies",
+        "linkedin_url": "https://www.linkedin.com/company/asapadvisors/",
+        "is_active_subscriber": false,
+        "profile_picture": "",
+        "about": null,
+        "mobileno": null,
+        "middle_name": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "forum.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$3R96aiUq8IokvUfJ8QshAV$M9wrjek8xuh1qRoJ3hcgLyl0x5yQYCj4ud17Ijt+EWA=",
+        "last_login": "2026-07-29T07:43:24.919Z",
+        "is_superuser": false,
+        "username": "c.deschamps@quantumretail.com",
+        "first_name": "Chloe",
+        "last_name": "Deschamps",
+        "email": "c.deschamps@quantumretail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-14T15:50:49Z",
+        "title": "Director of FP&A",
+        "company": "Quantum Retail Group",
+        "linkedin_url": "https://www.linkedin.com/company/asapadvisors/",
+        "is_active_subscriber": false,
+        "profile_picture": "avatars/Will_Smith_32335923807.jpg",
+        "about": "",
+        "mobileno": null,
+        "middle_name": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "forum.customuser",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$bQzKVXFlGzFalukU2nEoeb$oHfGe1apTUubVKnER4tMn7ouFkH8QupUwtVICFw3lEA=",
+        "last_login": "2026-07-29T08:55:36.318Z",
+        "is_superuser": false,
+        "username": "nitin@asapadvisors.co.in",
+        "first_name": "nitin",
+        "last_name": "jain",
+        "email": "nitin@asapadvisors.co.in",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-26T09:47:25Z",
+        "title": "Director - Digital Marketing",
+        "company": "ASAP Adviisors",
+        "linkedin_url": "https://www.linkedin.com/in/nitinnsethi/",
+        "is_active_subscriber": false,
+        "profile_picture": "avatars/cropped_profile_KxhL2tg.jpg",
+        "about": "hello this is my brief executive summary",
+        "mobileno": "9867791173",
+        "middle_name": "narendra",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 6,
+    "fields": {
+        "name": "Capital Allocation & Treasury",
+        "slug": "capital-allocation-treasury"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 7,
+    "fields": {
+        "name": "FP&A & Forecasting",
+        "slug": "fpa-forecasting"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 8,
+    "fields": {
+        "name": "Risk Management & Compliance",
+        "slug": "risk-management-compliance"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 9,
+    "fields": {
+        "name": "Board & Investor Relations",
+        "slug": "board-investor-relations"
+    }
+},
+{
+    "model": "forum.thread",
+    "pk": 4,
+    "fields": {
+        "title": "Rolling Forecasts vs. Annual Budgets in High-Inflation Environments",
+        "content": "We are finding that our traditional annual budgeting process is becoming obsolete within the first quarter due to supply chain volatility and inflation. Has anyone successfully transitioned their entire organization to a 12-month rolling forecast? How did you handle the pushback from department heads who prefer fixed targets?",
+        "category": 7,
+        "author": [
+            "arahman@luminahealth.net"
+        ],
+        "created_at": "2026-06-14T15:53:28.425Z",
+        "upvotes": 0,
+        "is_pinned": false
+    }
+},
+{
+    "model": "forum.thread",
+    "pk": 5,
+    "fields": {
+        "title": "Yield Optimization for Excess Cash Reserves",
+        "content": "With interest rates holding steady, we are re-evaluating our short-term investment strategy for our excess cash. Beyond standard money market funds and short-duration T-bills, are any of you utilizing corporate bond ladders or other instruments to pick up an extra 50-100 bps without taking on undue risk?",
+        "category": 6,
+        "author": [
+            "twright@aegisfinancial.com"
+        ],
+        "created_at": "2026-06-14T15:54:03.234Z",
+        "upvotes": 0,
+        "is_pinned": false
+    }
+},
+{
+    "model": "forum.thread",
+    "pk": 6,
+    "fields": {
+        "title": "Structuring the ESG Narrative for Q3 Earnings",
+        "content": "Our institutional investors are asking for more granular data on our ESG initiatives, specifically around Scope 3 emissions. The internal data is still a bit messy. How are you structuring this narrative in your earnings calls without over-promising or drowning the board in unverified metrics?",
+        "category": 9,
+        "author": [
+            "j.thorne@vertexindustrial.com"
+        ],
+        "created_at": "2026-06-14T15:54:35.929Z",
+        "upvotes": 0,
+        "is_pinned": false
+    }
+},
+{
+    "model": "forum.thread",
+    "pk": 7,
+    "fields": {
+        "title": "Cyber Insurance Premiums are Doubling ∙ Self-Insure or Pay?",
+        "content": "We just received our renewal quote for our enterprise cyber liability policy, and the premium has increased by 110%∙despite us having zero claims and significantly upgrading our infosec architecture. At what point does it make more financial sense to self-insure a portion of this risk?",
+        "category": 8,
+        "author": [
+            "c.deschamps@quantumretail.com"
+        ],
+        "created_at": "2026-06-14T15:55:07.977Z",
+        "upvotes": 0,
+        "is_pinned": false
+    }
+},
+{
+    "model": "forum.thread",
+    "pk": 8,
+    "fields": {
+        "title": "FP&A",
+        "content": "We just received our renewal quote for our enterprise cyber liability policy, and the premium has increased by 110%∙despite us having zero claims and significantly upgrading our infosec architecture. At what point does it make more financial sense to self-insure a portion of this risk?",
+        "category": 7,
+        "author": [
+            "admin"
+        ],
+        "created_at": "2026-06-15T07:20:46.456Z",
+        "upvotes": 0,
+        "is_pinned": false
+    }
+},
+{
+    "model": "forum.thread",
+    "pk": 9,
+    "fields": {
+        "title": "Test",
+        "content": "We just received our renewal quote for our enterprise cyber liability policy, and the premium has increased by 110%∙despite us having zero claims and significantly upgrading our infosec architecture. At what point does it make more financial sense to self-insure a portion of this risk?",
+        "category": 7,
+        "author": [
+            "admin"
+        ],
+        "created_at": "2026-06-22T13:00:44.268Z",
+        "upvotes": 0,
+        "is_pinned": false
+    }
+},
+{
+    "model": "forum.thread",
+    "pk": 10,
+    "fields": {
+        "title": "Financial Advice",
+        "content": "We just received our renewal quote for our enterprise cyber liability policy, and the premium has increased by 110%∙despite us having zero claims and significantly upgrading our infosec architecture. At what point does it make more financial sense to self-insure a portion of this risk?",
+        "category": 6,
+        "author": [
+            "admin"
+        ],
+        "created_at": "2026-07-01T17:31:19.914Z",
+        "upvotes": 0,
+        "is_pinned": false
+    }
+},
+{
+    "model": "forum.thread",
+    "pk": 11,
+    "fields": {
+        "title": "AI is Future Now",
+        "content": "We just received our renewal quote for our enterprise cyber liability policy, and the premium has increased by 110%∙despite us having zero claims and significantly upgrading our infosec architecture. At what point does it make more financial sense to self-insure a portion of this risk?",
+        "category": 9,
+        "author": [
+            "admin"
+        ],
+        "created_at": "2026-07-03T12:30:39.481Z",
+        "upvotes": 0,
+        "is_pinned": false
+    }
+},
+{
+    "model": "forum.thread",
+    "pk": 12,
+    "fields": {
+        "title": "New Discussion",
+        "content": "New Discussion",
+        "category": 6,
+        "author": [
+            "admin"
+        ],
+        "created_at": "2026-07-15T08:33:31.928Z",
+        "upvotes": 0,
+        "is_pinned": false
+    }
+},
+{
+    "model": "forum.thread",
+    "pk": 13,
+    "fields": {
+        "title": "My new Query",
+        "content": "test Query",
+        "category": 7,
+        "author": [
+            "admin"
+        ],
+        "created_at": "2026-07-15T09:13:29.140Z",
+        "upvotes": 0,
+        "is_pinned": false
+    }
+},
+{
+    "model": "forum.thread",
+    "pk": 14,
+    "fields": {
+        "title": "test query",
+        "content": "i am sharing a test query. do not reply",
+        "category": 6,
+        "author": [
+            "nitin@asapadvisors.co.in"
+        ],
+        "created_at": "2026-07-20T05:55:07.404Z",
+        "upvotes": 0,
+        "is_pinned": false
+    }
+},
+{
+    "model": "forum.thread",
+    "pk": 15,
+    "fields": {
+        "title": "reduce the bar",
+        "content": "test reduce the bar",
+        "category": 9,
+        "author": [
+            "nitin@asapadvisors.co.in"
+        ],
+        "created_at": "2026-07-28T10:28:29.165Z",
+        "upvotes": 0,
+        "is_pinned": false
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 6,
+    "fields": {
+        "thread": 4,
+        "author": [
+            "twright@aegisfinancial.com"
+        ],
+        "content": "We made this switch last year. The secret wasn't changing the timeline, it was changing the method to driver-based forecasting. Instead of asking department heads for their total spend, we only ask them to forecast their key drivers (e.g., headcount, marketing lead targets) and the system calculates the financial impact automatically. It removed 80% of the friction.",
+        "created_at": "2026-06-14T15:56:19.295Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 7,
+    "fields": {
+        "thread": 4,
+        "author": [
+            "c.deschamps@quantumretail.com"
+        ],
+        "content": "To handle the pushback, we compromised. We still lock in an \"Annual Operating Plan\" (AOP) for compensation and bonus targets, but the operational forecast rolls every 12 months. Department heads get their fixed targets, but Treasury gets the dynamic cash flow visibility we need.",
+        "created_at": "2026-06-14T15:56:39.161Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 8,
+    "fields": {
+        "thread": 5,
+        "author": [
+            "j.thorne@vertexindustrial.com"
+        ],
+        "content": "We have started layering into a 1-to-3-year investment-grade corporate bond ladder. We hold to maturity, so we ignore the mark-to-market noise on our P&L, and it's yielding about 65 bps over our standard money market sweeps right now.",
+        "created_at": "2026-06-14T15:56:57.960Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 9,
+    "fields": {
+        "thread": 5,
+        "author": [
+            "arahman@luminahealth.net"
+        ],
+        "content": "Just be incredibly careful with your duration risk. We looked at a similar laddering strategy but ultimately decided against it after running a stress test on our Q4 liquidity needs. We settled for commercial paper from Tier-1 banks instead∙slightly lower yield, but much easier to liquidate if M&A opportunities pop up.",
+        "created_at": "2026-06-14T15:57:26.995Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 10,
+    "fields": {
+        "thread": 6,
+        "author": [
+            "c.deschamps@quantumretail.com"
+        ],
+        "content": "Do not try to boil the ocean. Our board advised us to stick strictly to the SASB (Sustainability Accounting Standards Board) framework for our specific industry. We only report on the 4 or 5 metrics that are actually material to our financial performance.",
+        "created_at": "2026-06-14T15:57:53.268Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 11,
+    "fields": {
+        "thread": 6,
+        "author": [
+            "twright@aegisfinancial.com"
+        ],
+        "content": "For Scope 3 emissions specifically, we added a massive disclaimer to our earnings deck stating that the data is based on \"supplier estimates and industry averages.\" Institutional investors know Scope 3 is currently a guessing game; they just want to see that you have a methodology in place, not perfection.",
+        "created_at": "2026-06-14T15:58:05.921Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 12,
+    "fields": {
+        "thread": 7,
+        "author": [
+            "arahman@luminahealth.net"
+        ],
+        "content": "We hit this exact wall at renewal. We decided to take a much higher retention (deductible) of $5M to bring the premium down, and we self-insure that $5M gap. It hurts if we get hit, but paying double premiums for 5 years with no claims mathematically made zero sense.",
+        "created_at": "2026-06-14T15:58:21.834Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 13,
+    "fields": {
+        "thread": 7,
+        "author": [
+            "j.thorne@vertexindustrial.com"
+        ],
+        "content": "Before you self-insure, did you have your CISO present your updated architecture directly to the underwriters? We refused to just fill out the broker's questionnaire. We hosted a 60-minute technical deep dive with the underwriting team to prove our SOC2 compliance and endpoint detection. It knocked 20% off the initial renewal quote.",
+        "created_at": "2026-06-14T15:58:33.068Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 14,
+    "fields": {
+        "thread": 7,
+        "author": [
+            "admin"
+        ],
+        "content": "test",
+        "created_at": "2026-06-15T08:21:06.913Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 15,
+    "fields": {
+        "thread": 8,
+        "author": [
+            "admin"
+        ],
+        "content": "hi",
+        "created_at": "2026-06-19T10:03:03.404Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 16,
+    "fields": {
+        "thread": 10,
+        "author": [
+            "admin"
+        ],
+        "content": "yes it's right\r\n",
+        "created_at": "2026-07-01T17:31:44.815Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 17,
+    "fields": {
+        "thread": 7,
+        "author": [
+            "admin"
+        ],
+        "content": "new reply",
+        "created_at": "2026-07-06T03:27:23.868Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 18,
+    "fields": {
+        "thread": 7,
+        "author": [
+            "admin"
+        ],
+        "content": "hi",
+        "created_at": "2026-07-06T04:33:29.963Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 19,
+    "fields": {
+        "thread": 8,
+        "author": [
+            "admin"
+        ],
+        "content": "This is the test reponse",
+        "created_at": "2026-07-09T09:56:26.981Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 20,
+    "fields": {
+        "thread": 10,
+        "author": [
+            "nitin@asapadvisors.co.in"
+        ],
+        "content": "a quick brown fox jumps over a hated lazy dog",
+        "created_at": "2026-07-14T06:06:28.214Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 21,
+    "fields": {
+        "thread": 7,
+        "author": [
+            "nitin@asapadvisors.co.in"
+        ],
+        "content": "this is my response",
+        "created_at": "2026-07-14T10:23:32.872Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 22,
+    "fields": {
+        "thread": 13,
+        "author": [
+            "admin"
+        ],
+        "content": "test answer",
+        "created_at": "2026-07-16T06:52:41.280Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 23,
+    "fields": {
+        "thread": 14,
+        "author": [
+            "nitin@asapadvisors.co.in"
+        ],
+        "content": "i still want to reply",
+        "created_at": "2026-07-20T05:55:27.403Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 24,
+    "fields": {
+        "thread": 14,
+        "author": [
+            "admin"
+        ],
+        "content": "test",
+        "created_at": "2026-07-23T16:50:08.683Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 25,
+    "fields": {
+        "thread": 12,
+        "author": [
+            "nitin@asapadvisors.co.in"
+        ],
+        "content": "hi",
+        "created_at": "2026-07-24T11:40:17.976Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 26,
+    "fields": {
+        "thread": 11,
+        "author": [
+            "nitin@asapadvisors.co.in"
+        ],
+        "content": "my test reply",
+        "created_at": "2026-07-24T11:45:55.061Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 27,
+    "fields": {
+        "thread": 9,
+        "author": [
+            "nitin@asapadvisors.co.in"
+        ],
+        "content": "test response",
+        "created_at": "2026-07-28T07:17:24.180Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 28,
+    "fields": {
+        "thread": 14,
+        "author": [
+            "admin"
+        ],
+        "content": "This is the new reply for notification",
+        "created_at": "2026-07-29T07:12:01.144Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 29,
+    "fields": {
+        "thread": 14,
+        "author": [
+            "admin"
+        ],
+        "content": "notification testing 2",
+        "created_at": "2026-07-29T07:13:38.986Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 30,
+    "fields": {
+        "thread": 14,
+        "author": [
+            "admin"
+        ],
+        "content": "notification testing 3",
+        "created_at": "2026-07-29T07:16:20.401Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 31,
+    "fields": {
+        "thread": 14,
+        "author": [
+            "admin"
+        ],
+        "content": "notification testing 4",
+        "created_at": "2026-07-29T07:20:41.162Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 32,
+    "fields": {
+        "thread": 14,
+        "author": [
+            "admin"
+        ],
+        "content": "notification test 5",
+        "created_at": "2026-07-29T07:22:37.232Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 33,
+    "fields": {
+        "thread": 14,
+        "author": [
+            "admin"
+        ],
+        "content": "notification test 5",
+        "created_at": "2026-07-29T07:23:57.310Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 34,
+    "fields": {
+        "thread": 14,
+        "author": [
+            "admin"
+        ],
+        "content": "notification testing 6",
+        "created_at": "2026-07-29T07:29:06.182Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 35,
+    "fields": {
+        "thread": 14,
+        "author": [
+            "admin"
+        ],
+        "content": "notification testing 6",
+        "created_at": "2026-07-29T07:29:37.523Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 36,
+    "fields": {
+        "thread": 7,
+        "author": [
+            "admin"
+        ],
+        "content": "Notification testing 1",
+        "created_at": "2026-07-29T07:43:54.896Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 37,
+    "fields": {
+        "thread": 7,
+        "author": [
+            "admin"
+        ],
+        "content": "notification test 2",
+        "created_at": "2026-07-29T07:48:57.864Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 38,
+    "fields": {
+        "thread": 7,
+        "author": [
+            "admin"
+        ],
+        "content": "notification test 3\r\n",
+        "created_at": "2026-07-29T09:05:22.919Z"
+    }
+},
+{
+    "model": "forum.reply",
+    "pk": 39,
+    "fields": {
+        "thread": 7,
+        "author": [
+            "admin"
+        ],
+        "content": "notification test 4",
+        "created_at": "2026-07-29T09:05:55.146Z"
+    }
+},
+{
+    "model": "forum.subreply",
+    "pk": 6,
+    "fields": {
+        "reply": 12,
+        "author": [
+            "admin"
+        ],
+        "content": "great!!",
+        "created_at": "2026-06-19T10:02:01.461Z"
+    }
+},
+{
+    "model": "forum.subreply",
+    "pk": 7,
+    "fields": {
+        "reply": 12,
+        "author": [
+            "admin"
+        ],
+        "content": "nice",
+        "created_at": "2026-06-19T10:02:33.879Z"
+    }
+},
+{
+    "model": "forum.subreply",
+    "pk": 8,
+    "fields": {
+        "reply": 15,
+        "author": [
+            "admin"
+        ],
+        "content": "nice",
+        "created_at": "2026-06-19T10:03:13.365Z"
+    }
+},
+{
+    "model": "forum.subreply",
+    "pk": 9,
+    "fields": {
+        "reply": 7,
+        "author": [
+            "admin"
+        ],
+        "content": "hi",
+        "created_at": "2026-06-19T10:12:19.412Z"
+    }
+},
+{
+    "model": "forum.subreply",
+    "pk": 10,
+    "fields": {
+        "reply": 15,
+        "author": [
+            "admin"
+        ],
+        "content": "hi\r\n",
+        "created_at": "2026-06-19T10:28:44.463Z"
+    }
+},
+{
+    "model": "forum.subreply",
+    "pk": 11,
+    "fields": {
+        "reply": 16,
+        "author": [
+            "admin"
+        ],
+        "content": "ok",
+        "created_at": "2026-07-01T17:32:00.415Z"
+    }
+},
+{
+    "model": "forum.subreply",
+    "pk": 12,
+    "fields": {
+        "reply": 17,
+        "author": [
+            "nitin@asapadvisors.co.in"
+        ],
+        "content": "hi",
+        "created_at": "2026-07-13T11:24:50.778Z"
+    }
+},
+{
+    "model": "forum.subreply",
+    "pk": 13,
+    "fields": {
+        "reply": 16,
+        "author": [
+            "admin"
+        ],
+        "content": "new reply",
+        "created_at": "2026-07-16T07:00:13.547Z"
+    }
+},
+{
+    "model": "forum.event",
+    "pk": 1,
+    "fields": {
+        "title": "Tally Prime 7.1",
+        "description": "This is the event for new tally rel 7.1",
+        "event_type": "WEBINAR",
+        "start_time": "2026-07-30T16:00:00Z",
+        "end_time": "2026-07-30T18:01:00Z",
+        "location": null,
+        "meeting_link": null,
+        "participation_fee": null,
+        "author": [
+            "admin"
+        ],
+        "is_approved": true,
+        "max_attendees": null,
+        "created_at": "2026-07-26T11:19:07.535Z",
+        "updated_at": "2026-07-26T11:19:30.777Z"
+    }
+},
+{
+    "model": "forum.event",
+    "pk": 2,
+    "fields": {
+        "title": "Tally with AI",
+        "description": "Live AI use case for Tally Prime",
+        "event_type": "EVENT",
+        "start_time": "2026-07-28T12:00:00Z",
+        "end_time": "2026-07-26T16:00:00Z",
+        "location": "Borivali",
+        "meeting_link": null,
+        "participation_fee": "500",
+        "author": [
+            "admin"
+        ],
+        "is_approved": true,
+        "max_attendees": null,
+        "created_at": "2026-07-26T11:22:04.082Z",
+        "updated_at": "2026-07-26T11:22:18.050Z"
+    }
+},
+{
+    "model": "forum.event",
+    "pk": 3,
+    "fields": {
+        "title": "AI Tools",
+        "description": "AI tools for buissness",
+        "event_type": "WEBINAR",
+        "start_time": "2026-07-28T06:00:00Z",
+        "end_time": "2026-07-28T07:00:00Z",
+        "location": null,
+        "meeting_link": null,
+        "participation_fee": null,
+        "author": [
+            "admin"
+        ],
+        "is_approved": true,
+        "max_attendees": null,
+        "created_at": "2026-07-26T12:28:20.223Z",
+        "updated_at": "2026-07-26T12:28:20.223Z"
+    }
+},
+{
+    "model": "forum.eventregistration",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "event": 1,
+        "registered_at": "2026-07-26T11:32:24.872Z"
+    }
+},
+{
+    "model": "forum.eventregistration",
+    "pk": 2,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "event": 2,
+        "registered_at": "2026-07-26T11:32:58.008Z"
+    }
+},
+{
+    "model": "forum.eventregistration",
+    "pk": 3,
+    "fields": {
+        "user": [
+            "nitin@asapadvisors.co.in"
+        ],
+        "event": 1,
+        "registered_at": "2026-07-28T05:37:44.078Z"
+    }
+},
+{
+    "model": "forum.eventregistration",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "nitin@asapadvisors.co.in"
+        ],
+        "event": 2,
+        "registered_at": "2026-07-28T05:58:18.819Z"
+    }
+},
+{
+    "model": "forum.eventregistration",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "admin"
+        ],
+        "event": 3,
+        "registered_at": "2026-07-28T13:05:47.055Z"
+    }
+},
+{
+    "model": "forum.notifications",
+    "pk": 1,
+    "fields": {
+        "recipient": [
+            "nitin@asapadvisors.co.in"
+        ],
+        "actor": [
+            "admin"
+        ],
+        "message": "Aniket replied to your discussion : test query....",
+        "link": "f/thread/{instance.thread.id}/",
+        "is_read": false,
+        "created_at": "2026-07-29T07:23:57.355Z"
+    }
+},
+{
+    "model": "forum.notifications",
+    "pk": 2,
+    "fields": {
+        "recipient": [
+            "nitin@asapadvisors.co.in"
+        ],
+        "actor": [
+            "admin"
+        ],
+        "message": "Aniket replied to your discussion : test query....",
+        "link": "/thread/14/",
+        "is_read": true,
+        "created_at": "2026-07-29T07:29:37.589Z"
+    }
+},
+{
+    "model": "forum.notifications",
+    "pk": 3,
+    "fields": {
+        "recipient": [
+            "c.deschamps@quantumretail.com"
+        ],
+        "actor": [
+            "admin"
+        ],
+        "message": "Aniket replied to your discussion : Cyber Insurance Premiums are D....",
+        "link": "/thread/7/",
+        "is_read": true,
+        "created_at": "2026-07-29T07:43:54.941Z"
+    }
+},
+{
+    "model": "forum.notifications",
+    "pk": 4,
+    "fields": {
+        "recipient": [
+            "c.deschamps@quantumretail.com"
+        ],
+        "actor": [
+            "admin"
+        ],
+        "message": "Aniket replied to your discussion : Cyber Insurance Premiums are D....",
+        "link": "/thread/7/",
+        "is_read": true,
+        "created_at": "2026-07-29T07:48:57.910Z"
+    }
+},
+{
+    "model": "forum.notifications",
+    "pk": 5,
+    "fields": {
+        "recipient": [
+            "c.deschamps@quantumretail.com"
+        ],
+        "actor": [
+            "admin"
+        ],
+        "message": "Aniket replied to your discussion : Cyber Insurance Premiums are D....",
+        "link": "/thread/7/",
+        "is_read": false,
+        "created_at": "2026-07-29T09:05:22.930Z"
+    }
+},
+{
+    "model": "forum.notifications",
+    "pk": 6,
+    "fields": {
+        "recipient": [
+            "c.deschamps@quantumretail.com"
+        ],
+        "actor": [
+            "admin"
+        ],
+        "message": "Aniket replied to your discussion : Cyber Insurance Premiums are D....",
+        "link": "/thread/7/",
+        "is_read": false,
+        "created_at": "2026-07-29T09:05:55.186Z"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-06-09T11:50:50.564Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "1",
+        "object_repr": "Aniket Khatu None",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-06-11T04:39:02.198Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "category"
+        ],
+        "object_id": "1",
+        "object_repr": "FP&A",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-06-11T04:39:06.569Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "category"
+        ],
+        "object_id": "1",
+        "object_repr": "FP&A",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-06-11T04:44:35.809Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "category"
+        ],
+        "object_id": "1",
+        "object_repr": "FP&A",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Slug\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-06-11T04:55:42.777Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "category"
+        ],
+        "object_id": "2",
+        "object_repr": "Leadership",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-06-11T04:56:02.064Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "category"
+        ],
+        "object_id": "3",
+        "object_repr": "Treasury & Cash",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2026-06-11T04:56:17.884Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "category"
+        ],
+        "object_id": "4",
+        "object_repr": "M&A",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2026-06-11T05:00:00.675Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "category"
+        ],
+        "object_id": "5",
+        "object_repr": "CFO and Finanace",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2026-06-11T05:00:05.753Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "category"
+        ],
+        "object_id": "5",
+        "object_repr": "CFO and Finanace",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2026-06-11T05:02:50.712Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "1",
+        "object_repr": "Google Finanace",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2026-06-11T05:03:28.368Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "reply"
+        ],
+        "object_id": "1",
+        "object_repr": "Reply by Aniket on Google Finanace",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2026-06-11T05:03:40.191Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "reply"
+        ],
+        "object_id": "2",
+        "object_repr": "Reply by Aniket on Google Finanace",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2026-06-11T16:23:51.203Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "1",
+        "object_repr": "Google Finanace",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Content\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2026-06-11T17:13:35.549Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "2",
+        "object_repr": "this is very fresh discussion",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Upvotes\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2026-06-11T17:58:17.250Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "2",
+        "object_repr": "Aniket khatu ASAP",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is active subscriber\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2026-06-11T17:58:49.143Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "2",
+        "object_repr": "Aniket khatu ASAP",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Active\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2026-06-11T18:01:56.411Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "2",
+        "object_repr": "Aniket khatu ASAP",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Linkedin url\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2026-06-12T04:41:40.241Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "2",
+        "object_repr": "this is very fresh discussion ok",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Title\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2026-06-13T06:07:44.200Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "event"
+        ],
+        "object_id": "1",
+        "object_repr": "Leadership - June 24, 2026",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2026-06-13T06:28:50.852Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "1",
+        "object_repr": "Google Finanace",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Content\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2026-06-14T15:40:19.097Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "2",
+        "object_repr": "Aniket khatu ASAP",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2026-06-14T15:40:19.097Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "3",
+        "object_repr": "Aniket Khatu ASAP",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2026-06-14T15:40:19.097Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "9",
+        "object_repr": "David Chen GlobalCorp Logistics",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2026-06-14T15:40:19.097Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "5",
+        "object_repr": "David Chen GlobalCorp Logistics",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2026-06-14T15:40:19.097Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "10",
+        "object_repr": "Elena Rodriguez HealthPlus",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2026-06-14T15:40:19.097Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "6",
+        "object_repr": "Elena Rodriguez HealthPlus",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2026-06-14T15:40:19.097Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "11",
+        "object_repr": "Marcus Johnson Finerve Banking",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2026-06-14T15:40:19.097Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "7",
+        "object_repr": "Marcus Johnson Finerve Banking",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2026-06-14T15:40:19.097Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "8",
+        "object_repr": "Sarah Jenkins TechNova",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2026-06-14T15:40:19.097Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "4",
+        "object_repr": "Sarah Jenkins TechNova",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2026-06-14T15:43:42.049Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "category"
+        ],
+        "object_id": "6",
+        "object_repr": "Capital Allocation & Treasury",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2026-06-14T15:44:18.423Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "category"
+        ],
+        "object_id": "7",
+        "object_repr": "FP&A & Forecasting",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2026-06-14T15:44:25.340Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "category"
+        ],
+        "object_id": "8",
+        "object_repr": "Risk Management & Compliance",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2026-06-14T15:44:32.324Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "category"
+        ],
+        "object_id": "9",
+        "object_repr": "Board & Investor Relations",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2026-06-14T15:46:41.981Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "12",
+        "object_repr": "  None",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2026-06-14T15:47:38.176Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "12",
+        "object_repr": "James Thorne Vertex Industrial",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\", \"Title\", \"Company\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2026-06-14T15:48:13.549Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "13",
+        "object_repr": "  None",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2026-06-14T15:49:00.331Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "13",
+        "object_repr": "Aisha Rahman Lumina Health Partners",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\", \"Title\", \"Company\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2026-06-14T15:49:28.279Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "14",
+        "object_repr": "  None",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2026-06-14T15:50:24.362Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "14",
+        "object_repr": "Thomas Wright Aegis Financial Strategies",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\", \"Title\", \"Company\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2026-06-14T15:50:51.414Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "15",
+        "object_repr": "  None",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2026-06-14T15:51:37.138Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "15",
+        "object_repr": "Chloe Deschamps Quantum Retail Group",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Email address\", \"Title\", \"Company\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2026-06-14T15:53:28.450Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "4",
+        "object_repr": "Rolling Forecasts vs. Annual Budgets in High-Inflation Environments",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+        "action_time": "2026-06-14T15:54:03.269Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "5",
+        "object_repr": "Yield Optimization for Excess Cash Reserves",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+        "action_time": "2026-06-14T15:54:35.964Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "6",
+        "object_repr": "Structuring the ESG Narrative for Q3 Earnings",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+        "action_time": "2026-06-14T15:55:08.012Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "7",
+        "object_repr": "Cyber Insurance Premiums are Doubling ∙ Self-Insure or Pay?",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+        "action_time": "2026-06-14T15:56:19.330Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "reply"
+        ],
+        "object_id": "6",
+        "object_repr": "Reply by Thomas on Rolling Forecasts vs. Annual Budgets in High-Inflation Environments",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+        "action_time": "2026-06-14T15:56:39.165Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "reply"
+        ],
+        "object_id": "7",
+        "object_repr": "Reply by Chloe on Rolling Forecasts vs. Annual Budgets in High-Inflation Environments",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+        "action_time": "2026-06-14T15:56:57.994Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "reply"
+        ],
+        "object_id": "8",
+        "object_repr": "Reply by James on Yield Optimization for Excess Cash Reserves",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+        "action_time": "2026-06-14T15:57:27.030Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "reply"
+        ],
+        "object_id": "9",
+        "object_repr": "Reply by Aisha on Yield Optimization for Excess Cash Reserves",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+        "action_time": "2026-06-14T15:57:53.272Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "reply"
+        ],
+        "object_id": "10",
+        "object_repr": "Reply by Chloe on Structuring the ESG Narrative for Q3 Earnings",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+        "action_time": "2026-06-14T15:58:05.956Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "reply"
+        ],
+        "object_id": "11",
+        "object_repr": "Reply by Thomas on Structuring the ESG Narrative for Q3 Earnings",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+        "action_time": "2026-06-14T15:58:21.868Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "reply"
+        ],
+        "object_id": "12",
+        "object_repr": "Reply by Aisha on Cyber Insurance Premiums are Doubling ∙ Self-Insure or Pay?",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 54,
+    "fields": {
+        "action_time": "2026-06-14T15:58:33.103Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "reply"
+        ],
+        "object_id": "13",
+        "object_repr": "Reply by James on Cyber Insurance Premiums are Doubling ∙ Self-Insure or Pay?",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 55,
+    "fields": {
+        "action_time": "2026-06-14T17:40:41.065Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "13",
+        "object_repr": "Aisha Rahman Lumina Health Partners",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Linkedin url\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 56,
+    "fields": {
+        "action_time": "2026-06-14T17:40:49.471Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "15",
+        "object_repr": "Chloe Deschamps Quantum Retail Group",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Linkedin url\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 57,
+    "fields": {
+        "action_time": "2026-06-14T17:43:13.022Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "12",
+        "object_repr": "James Thorne Vertex Industrial",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Linkedin url\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 58,
+    "fields": {
+        "action_time": "2026-06-14T17:43:20.245Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "14",
+        "object_repr": "Thomas Wright Aegis Financial Strategies",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Linkedin url\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 59,
+    "fields": {
+        "action_time": "2026-06-15T07:23:22.141Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "event"
+        ],
+        "object_id": "2",
+        "object_repr": "Leadership - June 17, 2026",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 60,
+    "fields": {
+        "action_time": "2026-06-19T09:14:34.432Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "subreply"
+        ],
+        "object_id": "1",
+        "object_repr": "SubReply object (1)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 61,
+    "fields": {
+        "action_time": "2026-06-19T09:14:41.736Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "subreply"
+        ],
+        "object_id": "1",
+        "object_repr": "SubReply object (1)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 62,
+    "fields": {
+        "action_time": "2026-06-19T10:01:44.713Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "subreply"
+        ],
+        "object_id": "5",
+        "object_repr": "SubReply object (5)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 63,
+    "fields": {
+        "action_time": "2026-06-19T10:01:44.714Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "subreply"
+        ],
+        "object_id": "4",
+        "object_repr": "SubReply object (4)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 64,
+    "fields": {
+        "action_time": "2026-06-19T10:01:44.714Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "subreply"
+        ],
+        "object_id": "3",
+        "object_repr": "SubReply object (3)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 65,
+    "fields": {
+        "action_time": "2026-06-19T10:01:44.714Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "subreply"
+        ],
+        "object_id": "2",
+        "object_repr": "SubReply object (2)",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 66,
+    "fields": {
+        "action_time": "2026-06-19T18:59:49.406Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "15",
+        "object_repr": "Chloe Deschamps Quantum Retail Group",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 67,
+    "fields": {
+        "action_time": "2026-06-26T09:47:52.527Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "16",
+        "object_repr": "nitin jain ASAP Adviisors",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 68,
+    "fields": {
+        "action_time": "2026-06-26T09:49:17.258Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "16",
+        "object_repr": "nitin jain ASAP Adviisors",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Active\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 69,
+    "fields": {
+        "action_time": "2026-07-03T12:31:15.951Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "11",
+        "object_repr": "AI is Future Now",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Title\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 70,
+    "fields": {
+        "action_time": "2026-07-09T12:15:21.083Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "11",
+        "object_repr": "AI is Future Now",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Content\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 71,
+    "fields": {
+        "action_time": "2026-07-09T12:15:29.788Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "9",
+        "object_repr": "Test",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Content\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 72,
+    "fields": {
+        "action_time": "2026-07-09T12:15:36.304Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "8",
+        "object_repr": "FP&A",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Content\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 73,
+    "fields": {
+        "action_time": "2026-07-09T12:15:43.616Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "10",
+        "object_repr": "Finacial Advice",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Content\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 74,
+    "fields": {
+        "action_time": "2026-07-09T12:50:22.654Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "thread"
+        ],
+        "object_id": "10",
+        "object_repr": "Financial Advice",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Title\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 75,
+    "fields": {
+        "action_time": "2026-07-25T16:52:54.517Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "1",
+        "object_repr": "Aniket Khatu ASAP",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Mobileno\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 76,
+    "fields": {
+        "action_time": "2026-07-26T09:32:41.124Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "customuser"
+        ],
+        "object_id": "1",
+        "object_repr": "Aniket Khatu ASAP",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Middle name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 77,
+    "fields": {
+        "action_time": "2026-07-26T11:19:30.782Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "event"
+        ],
+        "object_id": "1",
+        "object_repr": "[Webinar (Online)] Tally Prime 7.1",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is approved\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 78,
+    "fields": {
+        "action_time": "2026-07-26T11:22:18.053Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "event"
+        ],
+        "object_id": "2",
+        "object_repr": "[Event (In-Person)] Tally with AI",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is approved\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 79,
+    "fields": {
+        "action_time": "2026-07-26T12:28:20.226Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "forum",
+            "event"
+        ],
+        "object_id": "3",
+        "object_repr": "[Webinar (Online)] AI Tools",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+}
+]

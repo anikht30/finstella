@@ -362,7 +362,7 @@
             <!-- active title-->
             <div class="active-title">
               <h4>Active Experts</h4>
-              <a href="{% url 'member_directory' %}">View all</a>
+              <a href="{% url 'member_directory' %}" >View all</a>
             </div>
               <!-- active title end-->
 
@@ -371,7 +371,7 @@
                 
                  
                   <div class="expert-icon">
-                     <a href={%url 'member_profile'  member.id %}>
+                     <a href={%url 'member_profile'  member.id %} style="text-decoration:none">
                     {% if member.profile_picture%}
                     <img src="{{ member.profile_picture.url }}" alt={{ member.first_name }}>
                     {% else %}
@@ -381,15 +381,18 @@
                     {% endif%}
                 </a>
                       </div>   
-
+                       <a href={%url 'member_profile'  member.id %} style="text-decoration:none">
                   <div class="expert-text">
                   <h5>
+                   
                   {{ member.first_name }} {{ member.last_name }}
+                  
                   </h5>
 
                   <p>{{ member.title }}</p>
+             
                   </div>
-
+                </a>
                 
                   </div>
                  {%endfor%}

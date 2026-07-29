@@ -828,8 +828,13 @@ article:hover{
     padding: 10px 5px;
     line-height: .8;
     /* border-radius: 12px; */
-    
-    
+     transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+
+.category-list:hover{
+    transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.05);
 }
 
 .category-list p{
@@ -880,6 +885,7 @@ article:hover{
     margin: 0;
     font-size: 14px;
     text-transform: capitalize;
+    color:#000
     
 }
 
@@ -888,6 +894,8 @@ article:hover{
     font-size: 12px;
     font-weight: 400;
     text-transform: uppercase;
+    color: rgb(15, 110, 86);
+
 }
 
 
