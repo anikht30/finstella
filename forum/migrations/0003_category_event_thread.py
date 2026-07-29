@@ -22,16 +22,9 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name_plural': 'Categories',
             },
-        ),
-        migrations.CreateModel(
-            name='Event',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200)),
-                ('date', models.DateTimeField()),
-                ('event_type', models.CharField(choices=[('Webinar', 'Webinar'), ('In-person', 'In-person')], max_length=20)),
-            ],
-        ),
+        )
+        
+        ,
         migrations.CreateModel(
             name='Thread',
             fields=[

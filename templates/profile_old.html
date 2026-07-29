@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{{ profile_user.first_name }}'s Executive Profile — INFINEETIA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body style="background-color: var(--bg); color: var(--deep); font-family: 'Lora', serif;">
+
+<!-- Reusing your standard Navigation -->
+<nav style="display: flex; justify-content: space-between; align-items: center; padding: 16px 40px; background: #fff; border-bottom: 1px solid rgba(4,44,26,0.08);">
+    <div class="nav-brand" style="display: flex; align-items: center; gap: 12px;">
+        <div class="nav-wordmark" style="font-size: 20px; font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: 1px;">
+            <span>INFIN</span><span style="color: var(--teal);">EETIA</span>
+        </div>
+    </div>
+    <div class="nav-links" style="display: flex; gap: 24px; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 13px;">
+        {% comment %} <a href="{% url 'dashboard' %}" style="text-decoration: none; color: var(--deep);">Dashboard</a> {% endcomment %}
+       <div class="nav-links">
+    <a href="{% url 'dashboard' %}" class="btn-ghost" style="padding: 6px 14px;">← Back to Dashboard</a>
+  </div>
+        {% comment %} <a href="{% url 'edit_profile' %}" style="text-decoration: none; color: var(--teal);">Edit Profile</a> {% endcomment %}
+    </div>
+</nav>
+
+<div style="max-width: 1100px; margin: 60px auto; padding: 0 24px; display: grid; grid-template-columns: 350px 1fr; gap: 40px;">
+    
+    <!-- LEFT COLUMN: The Executive Bio Card -->
+   <div>
+        <div style="background: #fff; border-radius: 12px; border: 1px solid rgba(4, 44, 26, 0.08); box-shadow: 0 4px 20px rgba(0,0,0,0.02); padding: 32px; display: block;">
+            
+            <div style="text-align: center;">
+                
+                {% if profile_user.profile_picture %}
+                    <img src="{{ profile_user.profile_picture.url }}" alt="{{ profile_user.first_name }}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 24px auto; border: 2px solid rgba(4, 44, 26, 0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: block;">
+                {% else %}
+                    <div style="width: 100px; height: 100px; border-radius: 50%; background: var(--deep); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 700; margin: 0 auto 24px auto;">
+                        {{ profile_user.first_name|first }}{{ profile_user.last_name|first }}
+                    </div>
+                {% endif %}
+                
+                <h1 style="font-family: 'Syne', sans-serif; font-size: 24px; color: var(--deep); margin-bottom: 4px; line-height: 1.2;">
+                    {{ profile_user.first_name }} {{ profile_user.last_name }}
+                </h1>
+                
+                <div style="font-size: 14px; color: var(--teal); font-weight: 600; font-family: 'Syne', sans-serif; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.5px;">
+                    {% if profile_user.title and profile_user.company and profile_user.title != "None" %}
+                        {{ profile_user.title }} at {{ profile_user.company }}
+                    {% else %}
+                        Finance Executive
+                    {% endif %}
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid rgba(4, 44, 26, 0.08); margin-bottom: 24px;">
+
+            <div style="text-align: left;">
+                
+                {% if profile_user.about %}
+                <div style="margin-bottom: 24px;">
+                    <div style="font-family: 'Syne', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 8px;">Executive Summary</div>
+                    <div style="font-size: 14px; line-height: 1.6; color: var(--deep);">
+                        {{ profile_user.about|linebreaks }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <div style="margin-bottom: 16px;">
+                    <div style="font-family: 'Syne', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px;">Work Email</div>
+                    <div style="font-size: 14px; color: var(--deep);">{{ profile_user.email }}</div>
+                </div>
+
+                {% if profile_user.linkedin_url %}
+                <div style="margin-bottom: 24px;">
+                    <div style="font-family: 'Syne', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px;">LinkedIn Profile</div>
+                    <a href="{{ profile_user.linkedin_url }}" target="_blank" style="font-size: 14px; color: var(--teal); text-decoration: none;">View LinkedIn ↗</a>
+                </div>
+                {% endif %}
+                
+            </div>
+
+            <a href="{% url 'edit_profile' %}" style="display: block; text-align: center; width: 100%; padding: 12px; background: rgba(4, 44, 26, 0.04); border: 1px solid rgba(4, 44, 26, 0.1); border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--deep); text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s; box-sizing: border-box; margin-top: 24px;">
+                Edit Profile
+            </a>
+            
+        </div>
+    </div>
+    <!-- RIGHT COLUMN: Recent Activity -->
+    <div>
+        <!-- Recent Discussions Started -->
+        <div class="sec-eyebrow" style="font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 16px;">
+            Recent Discussions Started
+        </div>
+        
+        {% if recent_threads %}
+            <div style="background: #fff; border-radius: 12px; border: 1px solid rgba(4, 44, 26, 0.08); margin-bottom: 40px; overflow: hidden;">
+                {% for thread in recent_threads %}
+                <a href="{% url 'thread_detail' thread.id %}" style="display: block; padding: 20px 24px; border-bottom: 1px solid rgba(4, 44, 26, 0.05); text-decoration: none; transition: background 0.2s;">
+                    <div style="font-family: 'Syne', sans-serif; font-size: 11px; color: var(--teal); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">{{ thread.category.name }}</div>
+                    <div style="font-size: 16px; font-weight: 600; color: var(--deep); margin-bottom: 4px;">{{ thread.title }}</div>
+                    <div style="font-size: 12px; color: var(--muted);">{{ thread.created_at|timesince }} ago · {{ thread.replies.count }} Responses</div>
+                </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div style="padding: 24px; background: rgba(4, 44, 26, 0.02); border-radius: 8px; border: 1px dashed rgba(4, 44, 26, 0.1); color: var(--muted); font-size: 14px; font-style: italic; margin-bottom: 40px;">
+                You haven't started any discussions yet.
+            </div>
+        {% endif %}
+
+        <!-- Recent Responses -->
+        <div class="sec-eyebrow" style="font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 16px;">
+            Recent Responses
+        </div>
+
+        {% if recent_replies %}
+            <div style="background: #fff; border-radius: 12px; border: 1px solid rgba(4, 44, 26, 0.08); overflow: hidden;">
+                {% for reply in recent_replies %}
+                <a href="{% url 'thread_detail' reply.thread.id %}" style="display: block; padding: 20px 24px; border-bottom: 1px solid rgba(4, 44, 26, 0.05); text-decoration: none; transition: background 0.2s;">
+                    <div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">
+                        Replied to: <span style="font-weight: 600; color: var(--deep);">{{ reply.thread.title }}</span>
+                    </div>
+                    <div style="font-size: 14px; line-height: 1.6; color: var(--deep); font-style: italic;">
+                        "{{ reply.content|truncatechars:120 }}"
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div style="padding: 24px; background: rgba(4, 44, 26, 0.02); border-radius: 8px; border: 1px dashed rgba(4, 44, 26, 0.1); color: var(--muted); font-size: 14px; font-style: italic;">
+                You haven't posted any responses yet.
+            </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

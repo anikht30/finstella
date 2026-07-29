@@ -1,0 +1,310 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %} | Webinars & Events{% endblock %}
+
+{% block maincontent %}
+<style>
+    /* --- Event Cards Grid --- */
+    .events-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 24px;
+        margin-top: 10px;
+        margin-bottom: 60px;
+        padding:10px;
+        background:#fff;
+        border-radius: 12px;
+        border: 1px solid #e7e8e9;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        
+    }
+    
+
+    .event-card {
+        background: #fff;
+        border-radius: 12px;
+        border: 1px solid rgba(4, 44, 26, 0.08);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .event-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    }
+
+    .event-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-family: 'Syne', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+        align-self: flex-start;
+    }
+    .badge-webinar { background: #E0F2FE; color: #0284C7; } /* Blueish */
+    .badge-event { background: #FEF08A; color: #B45309; } /* Yellowish */
+
+    .event-title {
+        font-family: 'Lora', serif;
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--deep);
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+
+    .event-detail {
+        font-family: 'Syne', sans-serif;
+        font-size: 13px;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+
+    .event-desc {
+        font-family: 'Syne', sans-serif;
+        font-size: 14px;
+        color: var(--deep);
+        line-height: 1.5;
+        margin: 16px 0;
+        flex-grow: 1; /* Pushes the button to the bottom */
+    }
+
+    /* --- The Toggle Switch in Modal --- */
+    .type-toggle-container {
+        display: flex;
+        background: rgba(4, 44, 26, 0.05);
+        border-radius: 8px;
+        padding: 4px;
+        margin-bottom: 24px;
+    }
+    .type-toggle-btn {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 6px;
+        background: transparent;
+        font-family: 'Syne', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--muted);
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .type-toggle-btn.active {
+        background: #fff;
+        color: var(--teal);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+</style>
+
+<div class="post-question" style="text-align: center;">
+    <div class="post-title">
+        <h1>
+            Webinars & <span class="italic">Events</span>
+        </h1>
+        <br>
+        <p style="font-family: 'Syne', sans-serif; color: var(--muted); font-size: 15px;">
+            Join exclusive leadership sessions or host your own.<br>Connect, learn, and grow together.
+        </p>
+        
+        <button class="btn-hero-new" onclick="openEventModal()" style="margin-top: 20px; background: var(--teal); color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+            + Submit an Event
+        </button>
+    </div>
+</div>
+
+<div class="events-grid">
+    {% for event in events %}
+    <div class="event-card">
+        <!-- 1. The Badge -->
+        {% if event.event_type == 'WEBINAR' %}
+            <span class="event-badge badge-webinar">Webinar</span>
+        {% else %}
+            <span class="event-badge badge-event">Live Event</span>
+        {% endif %}
+
+        <!-- 2. The Title -->
+        <h2 class="event-title">{{ event.title }}</h2>
+
+        <!-- 3. Time and Author Details -->
+        <div class="event-detail">
+            <strong>When:</strong> {{ event.start_time|date:"M j, Y - g:i A" }}
+        </div>
+        <div class="event-detail">
+            <strong>Host:</strong> {{ event.author.first_name }} {{ event.author.last_name }} 
+            {% if event.author.company %}({{ event.author.company }}){% endif %}
+        </div>
+        
+        <!-- 4. Dynamic Location/Link Details -->
+        {% if event.event_type == 'WEBINAR' %}
+            <div class="event-detail" style="color: #0284C7;">
+                <strong>Link:</strong> <a href="{{ event.meeting_link }}" target="_blank" style="color: inherit;">Access Meeting ↗</a>
+            </div>
+        {% else %}
+            <div class="event-detail" style="color: #B45309;">
+                <strong>Location:</strong> {{ event.location }}
+            </div>
+            {% if event.participation_fee %}
+            <div class="event-detail">
+                <strong>Fee:</strong> {{ event.participation_fee }}
+            </div>
+            {% endif %}
+        {% endif %}
+
+        <!-- 5. The Summary -->
+        <div class="event-desc">
+            {{ event.description|truncatechars:120 }}
+        </div>
+
+        <!-- 6. The Registration Button (Logic for Phase 4) -->
+        {% if event.id in registered_event_ids %}
+            <button disabled style="width: 100%; padding: 12px; background: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: bold; cursor: not-allowed;">
+                ✓ Registered
+            </button>
+        {% else %}
+            <!-- We will wire this form up in the final step! -->
+            <form action="{% url 'register_for_event' %}" method="POST" style="margin: 0;">
+                {% csrf_token %}
+                <input type="hidden" name="event_id" value="{{ event.id }}">
+                <button type="submit" class="btn-hero" style="width: 100%; padding: 12px; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background 0.2s;">
+                    Click To Register
+                </button>
+            </form>
+        {% endif %}
+    </div>
+    {% empty %}
+        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: #fff; border-radius: 12px; color: var(--muted); border: 1px dashed rgba(4,44,26,0.2);">
+            No upcoming events at the moment. Be the first to host one!
+        </div>
+    {% endfor %}
+</div>
+
+<div id="eventModalOverlay" class="modal-overlay">
+    <div class="modal-content cta-inner" style="max-width: 600px;">
+        <span class="close-btn" onclick="closeEventModal()">&times;</span>
+        
+        <div class="sec-eyebrow" style="justify-content: flex-start; margin-bottom: 12px;">Host a Session</div>
+        
+        <!-- The Javascript Toggle Buttons -->
+        <div class="type-toggle-container">
+            <button class="type-toggle-btn active" id="btn-webinar" onclick="setEventType('WEBINAR')">Webinar (Online)</button>
+            <button class="type-toggle-btn" id="btn-event" onclick="setEventType('EVENT')">Event (Offline)</button>
+        </div>
+
+        <div class="cta-form" style="text-align: left; font-family: inherit;">
+            <form method="POST" action="{% url 'create_event' %}">
+                {% csrf_token %}
+                <!-- Hidden input that changes when they click the toggle buttons above -->
+                <input type="hidden" name="event_type" id="input-event-type" value="WEBINAR">
+
+                <!-- ROW 1: Title -->
+                <div class="fl" style="margin-bottom: 20px;">
+                    <label>Event / Webinar Topic *</label>
+                    <input type="text" name="title" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 14px;"/>
+                </div>
+
+                <!-- ROW 2: Dates (Grid for side-by-side) -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+                    <div class="fl">
+                        <label>Start Time *</label>
+                        <input type="datetime-local" name="start_time" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 13px;"/>
+                    </div>
+                    <div class="fl">
+                        <label>End Time *</label>
+                        <input type="datetime-local" name="end_time" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 13px;"/>
+                    </div>
+                </div>
+
+                <!-- ROW 3: Conditional Fields (Handled by JS) -->
+                <div id="webinar-fields" style="display: block; margin-bottom: 20px;">
+                    <div class="fl">
+                        <label>Meeting Link (Zoom, Teams, etc.)</label>
+                        <input type="url" name="meeting_link" placeholder="https://..." style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 14px;"/>
+                    </div>
+                </div>
+
+                <div id="event-fields" style="display: none; margin-bottom: 20px;">
+                    <div class="fl" style="margin-bottom: 16px;">
+                        <label>Venue Address / City *</label>
+                        <input type="text" name="location" placeholder="e.g., Grand Hyatt, Mumbai" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 14px;"/>
+                    </div>
+                    <div class="fl">
+                        <label>Participation Fee (If any)</label>
+                        <input type="text" name="participation_fee" placeholder="e.g., Free, ₹1500" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 14px;"/>
+                    </div>
+                </div>
+
+                <!-- ROW 4: Description -->
+                <div class="fl" style="margin-bottom: 24px;">
+                    <label>A short summary / brief *</label>
+                    <textarea name="description" required style="width: 100%; height: 100px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; resize: vertical; font-family: 'Syne', sans-serif; font-size: 14px;"></textarea>
+                </div>
+                
+                <button type="submit" class="form-submit" style="background: var(--teal); width: 100%; padding: 12px; border-radius: 6px; color: white; border: none; font-weight: bold; cursor: pointer; font-family: inherit;">Submit for Approval</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- MODAL LOGIC ---
+    function openEventModal() {
+        document.getElementById('eventModalOverlay').classList.add('show-modal');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeEventModal() {
+        document.getElementById('eventModalOverlay').classList.remove('show-modal');
+        document.body.style.overflow = 'auto';
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('eventModalOverlay');
+        if (event.target === modal) {
+            closeEventModal();
+        }
+    }
+
+    // --- FORM TOGGLE LOGIC ---
+    // This dynamically hides and shows fields based on whether "Webinar" or "Event" is clicked
+    function setEventType(type) {
+        const btnWebinar = document.getElementById('btn-webinar');
+        const btnEvent = document.getElementById('btn-event');
+        const hiddenInput = document.getElementById('input-event-type');
+        
+        const webinarFields = document.getElementById('webinar-fields');
+        const eventFields = document.getElementById('event-fields');
+
+        if (type === 'WEBINAR') {
+            // Update Buttons
+            btnWebinar.classList.add('active');
+            btnEvent.classList.remove('active');
+            // Update hidden input for backend
+            hiddenInput.value = 'WEBINAR';
+            // Swap visible fields
+            webinarFields.style.display = 'block';
+            eventFields.style.display = 'none';
+        } else {
+            // Update Buttons
+            btnEvent.classList.add('active');
+            btnWebinar.classList.remove('active');
+            // Update hidden input for backend
+            hiddenInput.value = 'EVENT';
+            // Swap visible fields
+            eventFields.style.display = 'block';
+            webinarFields.style.display = 'none';
+        }
+    }
+</script>
+{% endblock %}

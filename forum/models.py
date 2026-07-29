@@ -4,6 +4,7 @@ from django.core.files import File
 from PIL import Image
 from io import BytesIO
 import os
+from django.conf import settings #Safely connect to your CustomUser/Profile model
 
 
 class CustomUser(AbstractUser):
@@ -16,6 +17,8 @@ class CustomUser(AbstractUser):
 
     profile_picture = models.ImageField(upload_to='avatars/', null=True, blank=True)
     about = models.TextField(null=True, blank=True, help_text='A Brief executive bio.')
+    mobileno = models.CharField(max_length=15, blank=True, null=True)
+    middle_name=models.CharField(max_length=150,blank=True,null=True)
 
     # def save(self, *args, **kwargs):
     #     # 1. CHECK IF THE IMAGE IS NEW
@@ -107,20 +110,20 @@ class Thread(models.Model):
         return self.title
 
 
-class Event(models.Model):
-    EVENT_TYPES = [
-        ('Webinar','Webinar'),
-        ('In-person','In-person')
-    ]
+# class Event(models.Model):
+#     EVENT_TYPES = [
+#         ('Webinar','Webinar'),
+#         ('In-person','In-person')
+#     ]
 
-    title = models.CharField(max_length=200)
-    date = models.DateTimeField()
-    event_type=models.CharField(max_length=20, choices=EVENT_TYPES)
+#     title = models.CharField(max_length=200)
+#     date = models.DateTimeField()
+#     event_type=models.CharField(max_length=20, choices=EVENT_TYPES)
 
-    # Allow multiple users to rsvp to multiple events
+#     # Allow multiple users to rsvp to multiple events
 
-    def __str__(self):
-        return f"{self.title} - {self.date.strftime('%B %d, %Y')}"
+#     def __str__(self):
+#         return f"{self.title} - {self.date.strftime('%B %d, %Y')}"
 
 
 class Reply(models.Model):
@@ -145,3 +148,91 @@ class SubReply(models.Model):
 
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+
+
+class Event(models.Model):
+    EVENT_TYPES=(
+       ('WEBINAR', 'Webinar (Online)'),
+       ('EVENT', 'Event (In-Person)'),
+    )
+
+    # 1. The Core Details
+    title = models.CharField(max_length=200, verbose_name="Topic")
+    description = models.TextField(verbose_name="Summary / Brief")
+    event_type = models.CharField(max_length=20, choices=EVENT_TYPES, default='WEBINAR')
+    
+    # 2. Date and Time
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField(blank=True, null=True) 
+    
+    # 3. Dynamic Fields (Shown based on Webinar vs Event)
+    location = models.CharField(max_length=255, blank=True, null=True, help_text="City or Full Address (For Events)")
+    meeting_link = models.URLField(blank=True, null=True, help_text="Zoom, Meet, or Teams link (For Webinars)")
+    participation_fee = models.CharField(max_length=100, blank=True, null=True, help_text="e.g., 'Free', '$50', '₹1500'")
+    
+    # 4. Background Data (User never types this!)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='hosted_events')
+    
+    # 5. Moderation & Limits
+    is_approved = models.BooleanField(default=False, help_text="Must be checked by Admin for the event to show publicly.")
+    max_attendees = models.PositiveIntegerField(blank=True, null=True, help_text="Leave blank for unlimited.")
+    
+    # 6. Timestamps
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-start_time'] # Shows newest events first
+
+    def __str__(self):
+        return f"[{self.get_event_type_display()}] {self.title}"
+
+
+class EventRegistration(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='event_registrations')
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='registrations')
+    registered_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        # CRITICAL: This prevents a user from registering for the exact same event twice!
+        unique_together = ('user', 'event')
+
+    def __str__(self):
+        return f"{self.user.first_name} registered for: {self.event.title}"
+
+
+
+
+# class for the notification table
+
+class Notifications(models.Model):
+    # 1. who receives the notification?
+    recipient = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="notifications")
+
+    # 2. who triggered it? 
+
+    actor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="actions", null=True, blank=True)
+
+    # what dose it say?
+
+    message = models.CharField(max_length=255)
+
+    # where do it goes when it clicked?
+
+    link = models.CharField(max_length=255, null=True, blank=True)
+
+    # has the user seen it yet 
+
+    is_read = models.BooleanField(default=False)
+
+    # notification crete time
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at'] # show newest notification first
+
+    def __str__(self):
+        return f"To {self.recipient.first_name}: {self.message}"

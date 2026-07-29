@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Edit Profile — INFINEETIA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Cropper.js CSS and JS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
+    
+    <style>
+        /* Forces the form to left-align, fixing the messy centering in the screenshot */
+        .cta-form { text-align: left; }
+        .cta-form label { 
+            display: block; 
+            text-align: left; 
+            margin-bottom: 8px; 
+            font-family: 'Syne', sans-serif; 
+            font-size: 11px; 
+            font-weight: 700; 
+            color: var(--teal); 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+        /* Styles the native Django text inputs to match your premium theme */
+        .cta-form input[type="text"], 
+        .cta-form input[type="url"], 
+        .cta-form textarea { 
+            width: 100%; 
+            padding: 12px 16px; 
+            border: 1px solid rgba(4, 44, 26, 0.15); 
+            border-radius: 6px; 
+            font-family: 'Lora', serif; 
+            font-size: 15px; 
+            color: var(--deep); 
+            box-sizing: border-box; 
+            background: #fff;
+        }
+        .cta-form textarea { height: 120px; resize: vertical; }
+
+        .crop-modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.7); /* Dark background */
+    backdrop-filter: blur(4px);
+    align-items: center; 
+    justify-content: center;
+}
+
+.crop-modal-overlay.show-modal {
+    display: flex;
+}
+
+.crop-modal-content {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+
+    </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L20 7V17L12 22L4 17V7L12 2Z" stroke="#9FE1CB" stroke-width="1.5" fill="none"/>
+        <path d="M12 6L17 9V15L12 18L7 15V9L12 6Z" stroke="#1D9E75" stroke-width="1" fill="none"/>
+        <circle cx="12" cy="12" r="2.5" fill="#1D9E75"/>
+      </svg>
+    </div>
+    <div class="nav-wordmark" style="font-size: 24px; color: var(--deep); font-weight: 700; letter-spacing: 1px;">
+        <span>INFIN</span><span style="color: var(--teal);">EETIA</span>
+    </div>
+    <span class="nav-divider"></span>
+    <span class="nav-tag">Finance Leaders Network</span>
+  </div>
+  <div class="nav-links">
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+    <a href="{% url 'profile' %}">My Profile</a>
+  </div>
+</nav>
+
+<section class="cta-section" style="padding-top: 60px;">
+  <div class="cta-inner" style="max-width: 750px; margin: 0 auto;">
+    <div class="sec-eyebrow">Executive Profile</div>
+    <h2 class="sec-h2">Update your <em>credentials</em></h2>
+    <p class="sec-sub">Ensure your executive summary, title, and company are up to date for the network.</p>
+    
+    <div class="cta-form" style="background: #fff; padding: 40px; border-radius: 12px; border: 1px solid rgba(4,44,26,0.08); box-shadow: 0 4px 20px rgba(0,0,0,0.02);">
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(4,44,26,0.08);">
+            
+            <div style="width: 88px; height: 88px; border-radius: 50%; background: var(--deep); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                {% if user.profile_picture %}
+                    <img id="avatar-preview" src="{{ user.profile_picture.url }}" style="width: 100%; height: 100%; object-fit: cover;">
+                {% else %}
+                    <span id="avatar-initials">{{ user.first_name|first }}{{ user.last_name|first }}</span>
+                    <img id="avatar-preview" src="" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="id_profile_picture" style="display: inline-block; cursor: pointer; background: #fff; border: 1px solid rgba(4,44,26,0.15); padding: 10px 20px; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--deep); transition: all 0.2s; margin-bottom: 4px;">
+                    Upload New Photo
+                </label>
+                <div style="font-size: 12px; color: var(--muted); font-family: 'Lora', serif; text-transform: none;">Recommended: Square image (JPG or PNG)</div>
+                
+                <!-- FIX: Removed the conflicting onchange="previewImage(event)" -->
+                <input type="file" name="profile_picture" id="id_profile_picture" accept="image/*" style="display: none;">
+            </div>
+        </div>
+
+        <div class="form-row">
+          <div class="fl">
+            <label>Current Title</label>
+            {{ form.title }}
+          </div>
+          <div class="fl">
+            <label>Company</label>
+            {{ form.company }}
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top: 24px;">
+          <div class="fl" style="width: 100%;">
+            <label>LinkedIn URL</label>
+            {{ form.linkedin_url }}
+          </div>
+        </div>
+
+        <div class="form-row" style="margin-top: 24px;">
+          <div class="fl" style="width: 100%;">
+            <label>Executive Summary</label>
+            {{ form.about }}
+          </div>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(4,44,26,0.08);">
+          <a href="{% url 'profile' %}" style="text-decoration: none; color: var(--muted); font-family: 'Syne', sans-serif; font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px;">Cancel</a>
+          <button type="submit" class="form-submit" style="width: auto; padding: 12px 32px;">Save Changes</button>
+        </div>
+        
+      </form>
+
+
+     <!-- The Cropping Modal (Hidden by default) -->
+<div id="cropModalOverlay" class="crop-modal-overlay">
+    <div class="crop-modal-content">
+        <h3 style="margin-top: 0;">Adjust your picture</h3>
+        
+        <!-- Cropper needs a fixed-height container to work perfectly -->
+        <div style="width: 100%; height: 350px; background: #f8fafc; margin-bottom: 15px;">
+            <img id="imageToCrop" src="" alt="Picture to crop" style="display: block; max-width: 100%;">
+        </div>
+        
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <button type="button" id="cancelCropBtn" style="padding: 8px 16px; border-radius: 6px; border: 1px solid #cbd5e1; background: white; cursor: pointer;">Cancel</button>
+            <button type="button" id="cropBtn" style="padding: 8px 16px; border-radius: 6px; border: none; background: #1E60D0; color: white; cursor: pointer;">Apply Crop</button>
+        </div>
+    </div>
+</div>
+
+<!-- end of cropping img-->
+
+
+</section>
+
+
+<script>
+    const fileInput = document.getElementById('id_profile_picture'); 
+    const cropModalOverlay = document.getElementById('cropModalOverlay');
+    const imageToCrop = document.getElementById('imageToCrop');
+    const cropBtn = document.getElementById('cropBtn');
+    const cancelCropBtn = document.getElementById('cancelCropBtn');
+    
+    // FIX 1: Point to the correct IDs in your HTML
+    const profilePreview = document.getElementById('avatar-preview'); 
+    const avatarInitials = document.getElementById('avatar-initials'); 
+    
+    let cropper;
+
+    // 1. When the user selects a file...
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            // Show the modal
+            cropModalOverlay.classList.add('show-modal');
+            
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+            
+            // Load the image into the cropper
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                imageToCrop.src = event.target.result;
+                
+                // Destroy old cropper if they selected a new image
+                if (cropper) { cropper.destroy(); }
+                
+                // Start Cropper.js
+                cropper = new Cropper(imageToCrop, {
+                    aspectRatio: 1, // Forces a perfect square
+                    viewMode: 1,    // Restricts the crop box to the image bounds
+                    background: false,
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // 2. When they click Cancel...
+    cancelCropBtn.addEventListener('click', () => {
+        cropModalOverlay.classList.remove('show-modal');
+        document.body.style.overflow = 'auto';
+        fileInput.value = ''; // Reset the file input
+    });
+
+    // 3. When they click "Apply Crop"...
+    cropBtn.addEventListener('click', () => {
+        if (!cropper) return;
+
+        cropper.getCroppedCanvas({
+            width: 512,
+            height: 512
+        }).toBlob((blob) => {
+            
+            // MAGIC 1: Update the live preview circle immediately!
+            const objectUrl = URL.createObjectURL(blob);
+            profilePreview.src = objectUrl;
+            profilePreview.style.display = 'block'; // Make sure the image is visible
+            
+            // If they had initials showing, hide them!
+            if (avatarInitials) {
+                avatarInitials.style.display = 'none';
+            }
+            
+            // MAGIC 2: Put the file into the Django form
+            let croppedFile = new File([blob], "cropped_profile.jpg", { type: "image/jpeg" });
+            let dataTransfer = new DataTransfer();
+            dataTransfer.items.add(croppedFile);
+            fileInput.files = dataTransfer.files;
+
+            // Close the modal
+            cropModalOverlay.classList.remove('show-modal');
+            document.body.style.overflow = 'auto'; // Restore background scrolling
+            
+        }, 'image/jpeg', 0.9);
+
+      });
+
+    // FIX 2: Removed the redundant previewImage function that was breaking the cropper!
+</script>
+
+</body>
+</html>

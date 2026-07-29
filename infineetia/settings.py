@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-o1z8*!5o7%hqw9x(lb=d12tj)x_m0$c-#1jii@ko40f0c&#nks
 DEBUG = True
 
 #ALLOWED_HOSTS = ['192.168.2.30','10.136.232.6','192.168.0.106','192.168.2.46','localhost']
-ALLOWED_HOSTS = ['192.168.2.46','192.168.0.104','localhost','0.0.0.0','192.168.2.68']
+ALLOWED_HOSTS = ['192.168.2.46','192.168.0.104','localhost','0.0.0.0','192.168.2.68','192.168.0.101']
 
 # Application definition
 
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     #custom app
-    'forum',
+    'forum.apps.ForumConfig',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +65,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #custom global context_processors
+                'forum.context_processors.global_forum_app_data',
             ],
         },
     },

@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from forum.views import landing_page,apply_view,userexists,login_view,logout_view,dashboard_view,thread_detail_view,create_thread_view,member_directory_view,add_subreply,profile_view,edit_profile,member_profile
-from forum.views import all_active_discussion_view,all_new_discussion_view,my_discussion_view
+from forum.views import all_active_discussion_view,all_new_discussion_view,my_discussion_view,events_page,create_event,register_for_event
+from forum.views import mark_notification_read
 #template view to quickly show temporary dashboard
 from django.views.generic import TemplateView
 from django.conf import settings
@@ -44,7 +45,11 @@ urlpatterns = [
     path('fellowship/',TemplateView.as_view(template_name='fellowship.html'),name='fellowship'),
     path('active_discussion/',all_active_discussion_view,name="active_discussion"),
     path('open_queries/',all_new_discussion_view,name="open_queries"),
-    path('my_discussion/',my_discussion_view,name="my_discussion")
+    path('my_discussion/',my_discussion_view,name="my_discussion"),
+    path('events/', events_page, name='events_page'),
+    path('events/create/', create_event, name='create_event'),
+    path('events/register/', register_for_event, name='register_for_event'),
+    path('notifications/read/<int:notification_id>',mark_notification_read,name='mark_notification_read'),
 
 ]
 

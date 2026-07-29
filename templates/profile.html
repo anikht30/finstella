@@ -1,144 +1,152 @@
+{% extends "layout.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{{ profile_user.first_name }}'s Executive Profile — INFINEETIA</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body style="background-color: var(--bg); color: var(--deep); font-family: 'Lora', serif;">
 
-<!-- Reusing your standard Navigation -->
-<nav style="display: flex; justify-content: space-between; align-items: center; padding: 16px 40px; background: #fff; border-bottom: 1px solid rgba(4,44,26,0.08);">
-    <div class="nav-brand" style="display: flex; align-items: center; gap: 12px;">
-        <div class="nav-wordmark" style="font-size: 20px; font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: 1px;">
-            <span>INFIN</span><span style="color: var(--teal);">EETIA</span>
-        </div>
-    </div>
-    <div class="nav-links" style="display: flex; gap: 24px; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 13px;">
-        {% comment %} <a href="{% url 'dashboard' %}" style="text-decoration: none; color: var(--deep);">Dashboard</a> {% endcomment %}
-       <div class="nav-links">
-    <a href="{% url 'dashboard' %}" class="btn-ghost" style="padding: 6px 14px;">← Back to Dashboard</a>
-  </div>
-        {% comment %} <a href="{% url 'edit_profile' %}" style="text-decoration: none; color: var(--teal);">Edit Profile</a> {% endcomment %}
-    </div>
-</nav>
+{% block title %} | Profile{% endblock %}
 
-<div style="max-width: 1100px; margin: 60px auto; padding: 0 24px; display: grid; grid-template-columns: 350px 1fr; gap: 40px;">
+
+{% block maincontent%}
+
+<main class="profile-container">
     
-    <!-- LEFT COLUMN: The Executive Bio Card -->
-   <div>
-        <div style="background: #fff; border-radius: 12px; border: 1px solid rgba(4, 44, 26, 0.08); box-shadow: 0 4px 20px rgba(0,0,0,0.02); padding: 32px; display: block;">
+    <!-- TOP SECTION: Profile Header -->
+    <div class="profile-header-card">
+        <div class="profile-info-flex">
             
-            <div style="text-align: center;">
-                
+            <div class="profile-picture-wrapper">
                 {% if profile_user.profile_picture %}
-                    <img src="{{ profile_user.profile_picture.url }}" alt="{{ profile_user.first_name }}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 24px auto; border: 2px solid rgba(4, 44, 26, 0.05); box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: block;">
+                    <img src="{{ profile_user.profile_picture.url }}" alt="{{ profile_user.first_name }}">
                 {% else %}
-                    <div style="width: 100px; height: 100px; border-radius: 50%; background: var(--deep); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 700; margin: 0 auto 24px auto;">
-                        {{ profile_user.first_name|first }}{{ profile_user.last_name|first }}
-                    </div>
+                    {{ profile_user.first_name|first }}{{ profile_user.last_name|first }}
                 {% endif %}
-                
-                <h1 style="font-family: 'Syne', sans-serif; font-size: 24px; color: var(--deep); margin-bottom: 4px; line-height: 1.2;">
-                    {{ profile_user.first_name }} {{ profile_user.last_name }}
-                </h1>
-                
-                <div style="font-size: 14px; color: var(--teal); font-weight: 600; font-family: 'Syne', sans-serif; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.5px;">
-                    {% if profile_user.title and profile_user.company and profile_user.title != "None" %}
-                        {{ profile_user.title }} at {{ profile_user.company }}
-                    {% else %}
-                        Finance Executive
+            </div>
+
+            <div class="profile-details">
+                <h2>
+                    Profile 
+                    <!-- Edit Button (Only visible if the logged in user is viewing their own profile) -->
+                    {% if request.user == profile_user %}
+                        <a href="{% url 'edit_profile' %}" title="Edit Profile" style="color: #000; display: flex; align-items: center;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </a>
                     {% endif %}
-                </div>
+                </h2>
+                <h1>{{ profile_user.first_name }} {{ profile_user.last_name }}</h1>
+                <p style="color: #1E293B; font-weight: 500;">
+                    {% if profile_user.company %}{{ profile_user.company }}{% endif %}
+                </p>
+                <p>
+                    {% if profile_user.title and profile_user.title != "None" %}{{ profile_user.title }}{% endif %}
+                </p>
+                {% comment %} <p>Mumbai, Maharashtra, India</p> <!-- Update this if you add a location field to your model --> {% endcomment %}
             </div>
-
-            <hr style="border: none; border-top: 1px solid rgba(4, 44, 26, 0.08); margin-bottom: 24px;">
-
-            <div style="text-align: left;">
-                
-                {% if profile_user.about %}
-                <div style="margin-bottom: 24px;">
-                    <div style="font-family: 'Syne', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 8px;">Executive Summary</div>
-                    <div style="font-size: 14px; line-height: 1.6; color: var(--deep);">
-                        {{ profile_user.about|linebreaks }}
-                    </div>
-                </div>
-                {% endif %}
-
-                <div style="margin-bottom: 16px;">
-                    <div style="font-family: 'Syne', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px;">Work Email</div>
-                    <div style="font-size: 14px; color: var(--deep);">{{ profile_user.email }}</div>
-                </div>
-
-                {% if profile_user.linkedin_url %}
-                <div style="margin-bottom: 24px;">
-                    <div style="font-family: 'Syne', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px;">LinkedIn Profile</div>
-                    <a href="{{ profile_user.linkedin_url }}" target="_blank" style="font-size: 14px; color: var(--teal); text-decoration: none;">View LinkedIn ↗</a>
-                </div>
-                {% endif %}
-                
-            </div>
-
-            <a href="{% url 'edit_profile' %}" style="display: block; text-align: center; width: 100%; padding: 12px; background: rgba(4, 44, 26, 0.04); border: 1px solid rgba(4, 44, 26, 0.1); border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--deep); text-decoration: none; text-transform: uppercase; letter-spacing: 0.5px; transition: background 0.2s; box-sizing: border-box; margin-top: 24px;">
-                Edit Profile
-            </a>
-            
         </div>
+
+        {% if profile_user.about %}
+            <div class="profile-bio">
+                {{ profile_user.about|linebreaks }}
+            </div>
+        {% endif %}
     </div>
-    <!-- RIGHT COLUMN: Recent Activity -->
-    <div>
-        <!-- Recent Discussions Started -->
-        <div class="sec-eyebrow" style="font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 16px;">
-            Recent Discussions Started
-        </div>
+
+    <!-- MIDDLE SECTION: The Tabs -->
+    <div class="tabs-container">
         
-        {% if recent_threads %}
-            <div style="background: #fff; border-radius: 12px; border: 1px solid rgba(4, 44, 26, 0.08); margin-bottom: 40px; overflow: hidden;">
-                {% for thread in recent_threads %}
-                <a href="{% url 'thread_detail' thread.id %}" style="display: block; padding: 20px 24px; border-bottom: 1px solid rgba(4, 44, 26, 0.05); text-decoration: none; transition: background 0.2s;">
-                    <div style="font-family: 'Syne', sans-serif; font-size: 11px; color: var(--teal); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">{{ thread.category.name }}</div>
-                    <div style="font-size: 16px; font-weight: 600; color: var(--deep); margin-bottom: 4px;">{{ thread.title }}</div>
-                    <div style="font-size: 12px; color: var(--muted);">{{ thread.created_at|timesince }} ago · {{ thread.replies.count }} Responses</div>
-                </a>
-                {% endfor %}
-            </div>
-        {% else %}
-            <div style="padding: 24px; background: rgba(4, 44, 26, 0.02); border-radius: 8px; border: 1px dashed rgba(4, 44, 26, 0.1); color: var(--muted); font-size: 14px; font-style: italic; margin-bottom: 40px;">
-                You haven't started any discussions yet.
-            </div>
-        {% endif %}
+        <button class="tab-btn active" onclick="openTab(event, 'tab-contact')">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Contact Info
+        </button>
 
-        <!-- Recent Responses -->
-        <div class="sec-eyebrow" style="font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 16px;">
+        <button class="tab-btn" onclick="openTab(event, 'tab-discussions')">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            Recent Discussions
+        </button>
+
+        <button class="tab-btn" onclick="openTab(event, 'tab-responses')">
+            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
             Recent Responses
-        </div>
-
-        {% if recent_replies %}
-            <div style="background: #fff; border-radius: 12px; border: 1px solid rgba(4, 44, 26, 0.08); overflow: hidden;">
-                {% for reply in recent_replies %}
-                <a href="{% url 'thread_detail' reply.thread.id %}" style="display: block; padding: 20px 24px; border-bottom: 1px solid rgba(4, 44, 26, 0.05); text-decoration: none; transition: background 0.2s;">
-                    <div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">
-                        Replied to: <span style="font-weight: 600; color: var(--deep);">{{ reply.thread.title }}</span>
-                    </div>
-                    <div style="font-size: 14px; line-height: 1.6; color: var(--deep); font-style: italic;">
-                        "{{ reply.content|truncatechars:120 }}"
-                    </div>
-                </a>
-                {% endfor %}
-            </div>
-        {% else %}
-            <div style="padding: 24px; background: rgba(4, 44, 26, 0.02); border-radius: 8px; border: 1px dashed rgba(4, 44, 26, 0.1); color: var(--muted); font-size: 14px; font-style: italic;">
-                You haven't posted any responses yet.
-            </div>
-        {% endif %}
+        </button>
 
     </div>
 
-</div>
+    <!-- BOTTOM SECTION: Tab Contents -->
+    
+    <!-- 1. Contact Info Tab -->
+    <div id="tab-contact" class="tab-content active">
+        <div class="content-card">
+            <div style="margin-bottom: 20px;">
+                <div style="font-family: 'Syne', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #94A3B8; margin-bottom: 4px;">Work Email</div>
+                <div style="font-size: 15px; color: #1E293B; font-weight: 500;">
+                    <a href="mailto:{{ profile_user.email }}" style="color: #1E293B; text-decoration: none;">{{ profile_user.email }}</a>
+                </div>
+            </div>
 
-</body>
-</html>
+            {% if profile_user.linkedin_url %}
+            <div>
+                <div style="font-family: 'Syne', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #94A3B8; margin-bottom: 4px;">LinkedIn Profile</div>
+                <a href="{{ profile_user.linkedin_url }}" target="_blank" style="font-size: 15px; color: #20B2AA; text-decoration: none; font-weight: 600;">View LinkedIn Profile ↗</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- 2. Recent Discussions Tab -->
+    <div id="tab-discussions" class="tab-content">
+        {% if recent_threads %}
+            {% for thread in recent_threads %}
+                <a href="{% url 'thread_detail' thread.id %}" class="content-card" style="display: block; text-decoration: none; transition: border-color 0.2s;">
+                    <div style="font-family: inherit; font-size: 11px; color: #20B2AA; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">{{ thread.category.name }}</div>
+                    <div style="font-size: 18px; font-weight: 600; color: #1E293B; margin-bottom: 6px;">{{ thread.title }}</div>
+                    <div style="font-size: 13px; color: #64748B; font-family: inherit;">{{ thread.created_at|timesince }} ago · {{ thread.replies.count }} Responses</div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <div class="content-card" style="text-align: center; color: #94A3B8; font-style: italic;">
+                This user hasn't started any discussions yet.
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- 3. Recent Responses Tab -->
+    <div id="tab-responses" class="tab-content">
+        {% if recent_replies %}
+            {% for reply in recent_replies %}
+                <a href="{% url 'thread_detail' reply.thread.id %}" class="content-card" style="display: block; text-decoration: none; transition: border-color 0.2s;">
+                    <div style="font-size: 13px; color: #64748B; margin-bottom: 10px; font-family: inherit;">
+                        Replied to: <span style="font-weight: 600; color: #1E293B;">{{ reply.thread.title }}</span>
+                    </div>
+                    <div style="font-size: 15px; line-height: 1.6; color: #475569; font-style: italic; border-left: 3px solid #20B2AA; padding-left: 12px;">
+                        "{{ reply.content|truncatechars:150 }}"
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <div class="content-card" style="text-align: center; color: #94A3B8; font-style: italic;">
+                This user hasn't posted any responses yet.
+            </div>
+        {% endif %}
+    </div>
+
+</main>
+
+<script>
+    function openTab(evt, tabId) {
+        // 1. Hide all tab contents
+        var tabContents = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabContents.length; i++) {
+            tabContents[i].classList.remove("active");
+        }
+
+        // 2. Remove "active" class from all tab buttons
+        var tabBtns = document.getElementsByClassName("tab-btn");
+        for (var i = 0; i < tabBtns.length; i++) {
+            tabBtns[i].classList.remove("active");
+        }
+
+        // 3. Show the current tab, and add an "active" class to the button that opened the tab
+        
+        document.getElementById(tabId).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    };
+</script>
+
+{% endblock %}

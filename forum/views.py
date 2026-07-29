@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from .models import CustomUser, Thread, Category,Reply,Event,SubReply
+from .models import CustomUser, Thread, Category,Reply,Event,SubReply,EventRegistration,Notifications
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .forms import ProfileUpdateForm
@@ -10,7 +10,80 @@ from django.db.models import Q
 
 
 
+@login_required
+def events_page(request):
+    # 1. Fetch only the approved events
+    upcoming_events = Event.objects.filter(is_approved=True)#.order_range(['start_time'])
+    
+    # 2. Get a list of IDs for events this user is already registered for
+    # (This allows us to change the "Register" button to "Registered" on the front end)
+    registered_event_ids = EventRegistration.objects.filter(user=request.user).values_list('event_id', flat=True)
+    
+    context = {
+        'events': upcoming_events,
+        'registered_event_ids': registered_event_ids
+    }
+    return render(request, 'events_list.html', context)
 
+
+@login_required
+def create_event(request):
+    if request.method == "POST":
+        # 1. Manually grab the data from the HTML popup form
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        event_type = request.POST.get('event_type')
+        start_time = request.POST.get('start_time')
+        end_time = request.POST.get('end_time')
+        
+        # Grab the conditional fields based on what they picked
+        location = request.POST.get('location') if event_type == 'EVENT' else None
+        participation_fee = request.POST.get('participation_fee') if event_type == 'EVENT' else None
+        meeting_link = request.POST.get('meeting_link') if event_type == 'WEBINAR' else None
+
+        # 2. Create the Event in the database
+        Event.objects.create(
+            title=title,
+            description=description,
+            event_type=event_type,
+            start_time=start_time,
+            end_time=end_time,
+            location=location,
+            participation_fee=participation_fee,
+            meeting_link=meeting_link,
+            author=request.user,
+            is_approved=False # Forces it to wait for admin approval
+        )
+        
+        # 3. Add a success message to show the user
+        messages.success(request, "Your event was submitted successfully! Our team will review it shortly.")
+        
+        # 4. Redirect them back to the events page
+        return redirect('events_page')
+        
+    return redirect('events_page')
+
+
+
+
+@login_required
+def register_for_event(request):
+    if request.method == "POST":
+        event_id = request.POST.get('event_id')
+        event = get_object_or_404(Event, id=event_id)
+        
+        # get_or_create safely creates the registration, or ignores it if they already registered
+        registration, created = EventRegistration.objects.get_or_create(
+            user=request.user,
+            event=event
+        )
+        
+        if created:
+            messages.success(request, f"You have successfully registered for {event.title}!")
+        else:
+            messages.info(request, "You are already registered for this event.")
+            
+    return redirect('events_page')
 
 
 def landing_page(request):
@@ -122,31 +195,16 @@ def dashboard_view(request):
 
     # fetch my discussion
     my_discussion_thred = Thread.objects.select_related('author','category').filter(Q(author=request.user) | Q(replies__author=request.user) ).order_by('-created_at')[:5]
-        
-    # 2. fetch all categories for sidebar
-
-    categories = Category.objects.all()
-
-    # fetch events that happen after today, order by date (showing next 5)
-
-    upcoming_events = Event.objects.filter(date__gte=timezone.now()).order_by('date')[:5]
-
-    # members list
-    members = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')[:5]
-
+    
     # 3. Package the data into a dictionary to send to html
-
-    
-    
 
     context={
         'threads':threads,
         'threads_new':threads_new,
-        'categories':categories,
-        'upcoming_events':upcoming_events,
-        'members':members,
+        # 'upcoming_events':upcoming_events,
         'my_discussion_thred':my_discussion_thred,
-    }
+        
+      }
 
     
     return render(request,'dashboard.html',context)
@@ -175,13 +233,13 @@ def thread_detail_view(request,thread_id):
     replies = thread.replies.prefetch_related('sub_replies','sub_replies__author').all()
 
     # members list
-    members = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')[:5]
+    # members = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')[:5]
 
 
     context = {
         'thread':thread,
         'replies':replies,
-        'members':members,
+        # 'members':members,
     }
 
     return render(request,'thread_detail.html',context)
@@ -326,7 +384,7 @@ def member_profile(request, user_id):
 
 @login_required
 def all_active_discussion_view(request):
-    threads_all = Thread.objects.select_related('author','category').filter(replies__isnull=False).order_by('-created_at')
+    threads_all = Thread.objects.select_related('author','category').filter(replies__isnull=False).order_by('-created_at').distinct()
     
     # 2. Set up the Paginator to show 5 threads per page
     paginator = Paginator(threads_all, 5)
@@ -344,14 +402,14 @@ def all_active_discussion_view(request):
 
     # 2. fetch all categories for sidebar
 
-    categories = Category.objects.all()
+    # categories = Category.objects.all()
 
     # fetch events that happen after today, order by date (showing next 5)
 
     # upcoming_events = Event.objects.filter(date__gte=timezone.now()).order_by('date')[:5]
 
     # members list
-    members = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')[:5]
+    # members = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')[:5]
 
     # 3. Package the data into a dictionary to send to html
 
@@ -361,9 +419,9 @@ def all_active_discussion_view(request):
     context={
         'threads':threads,
         #'threads_new':threads_new,
-        'categories':categories,
+        # 'categories':categories,
         #'upcoming_events':upcoming_events,
-        'members':members,
+        # 'members':members,
         'page_number':page_number
     }
 
@@ -394,14 +452,14 @@ def all_new_discussion_view(request):
     
     # 2. fetch all categories for sidebar
 
-    categories = Category.objects.all()
+    # categories = Category.objects.all()
 
     # fetch events that happen after today, order by date (showing next 5)
 
     # upcoming_events = Event.objects.filter(date__gte=timezone.now()).order_by('date')[:5]
 
     # members list
-    members = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')[:5]
+    # members = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')[:5]
 
     # 3. Package the data into a dictionary to send to html
 
@@ -411,9 +469,9 @@ def all_new_discussion_view(request):
     context={
         'threads':threads,
         #'threads_new':threads_new,
-        'categories':categories,
+        # 'categories':categories,
         #'upcoming_events':upcoming_events,
-        'members':members,
+        # 'members':members,
         'page_number':page_number,
     }
 
@@ -446,14 +504,14 @@ def my_discussion_view(request):
 
     # 2. fetch all categories for sidebar
 
-    categories = Category.objects.all()
+    # categories = Category.objects.all()
 
     # fetch events that happen after today, order by date (showing next 5)
 
     # upcoming_events = Event.objects.filter(date__gte=timezone.now()).order_by('date')[:5]
 
     # members list
-    members = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')[:5]
+    # members = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')[:5]
 
     # 3. Package the data into a dictionary to send to html
 
@@ -463,9 +521,9 @@ def my_discussion_view(request):
     context={
         'threads':threads,
         #'threads_new':threads_new,
-        'categories':categories,
+        # 'categories':categories,
         #'upcoming_events':upcoming_events,
-        'members':members,
+        # 'members':members,
         'page_number':page_number,
     }
 
@@ -473,3 +531,19 @@ def my_discussion_view(request):
     return render(request,'my_discussions.html',context)
 
 
+@login_required
+def mark_notification_read(request, notification_id):
+    # find the specific notification and ensure it belongs to the loged in user
+    notification = get_object_or_404(Notifications, id=notification_id, recipient=request.user)
+
+    # mark it as read and save it!
+
+    notification.is_read=True
+    notification.save()
+
+    # Redirect the user to the thread link we saved in the signal
+
+    if notification.link:
+        return redirect(notification.link)
+
+    return redirect('dashboard') #fall back if there is no link

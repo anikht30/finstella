@@ -1,0 +1,183 @@
+ 
+        .profile-section {
+            /* max-width: 1000px; */
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            border: 1px solid #e7e8e9;
+        }
+ 
+ /* --- THE NEW HEADER DESIGN --- */
+        .header-titles {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header-titles h1 {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-weight: 600;
+            font-size: 42px;
+            /* color: #20B2AA;  */
+            /* The vibrant teal from your screenshot */
+            margin-bottom: 8px;
+        }
+        .header-titles p {
+            color: #888;
+            font-family: 'Syne', sans-serif;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        /* --- THE CSS GRID LAYOUT --- */
+        .new-profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 25px;
+            align-items: start;
+        }
+
+        /* --- THE REUSABLE FIELD BOX --- */
+        .field-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #e7e8e9;
+            border-radius: 12px; /* Creates the pill shape */
+            padding: 12px 20px;
+            background-color: #ffffff;
+            transition: box-shadow 0.2s;
+        }
+        .field-box:focus-within {
+            box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.2);
+        }
+        .field-box span {
+            /* color: #20B2AA; */
+            font-family: inherit;
+            /* font-family: 'Syne', sans-serif; */
+            font-weight: 700;
+            font-size: 13px;
+            margin-right: 12px;
+            white-space: nowrap;
+        }
+        
+        /* This forces Django's inputs to blend invisibly into our custom box */
+        .field-box input, 
+        .field-box textarea {
+            flex-grow: 1;
+            border: none !important;
+            outline: none !important;
+            background: transparent !important;
+            color: #1E293B;
+            font-family: inherit;
+            /* font-family: 'Syne', sans-serif; */
+            font-size: 14px;
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 100%;
+        }
+
+        /* --- TEXTAREA SPECIAL RULES --- */
+        .textarea-box {
+            grid-column: 1 / -1; /* Spans the whole bottom row */
+            align-items: flex-start;
+            border-radius: 20px;
+            min-height: 150px;
+        }
+        .textarea-box span {
+            margin-top: 3px;
+        }
+        .textarea-box textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* --- PROFILE PICTURE UPLOAD BOX --- */
+        .photo-upload-cell {
+            grid-row: span 2; /* Fits perfectly next to First & Middle Name */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            height: 100%;
+        }
+        .avatar-circle {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-color: var(--deep);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .photo-upload-box {
+            /* border: 1px solid #20B2AA; */
+            border: 1px solid #e7e8e9;
+            border-radius: 12px;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex-grow: 1;
+            height: 100%;
+            cursor: pointer;
+            background: #fff;
+            transition: background 0.2s;
+        }
+        .photo-upload-box:hover {
+            background: #f0fdfc;
+        }
+        .photo-upload-box strong {
+            /* color: #20B2AA; */
+            /* font-family: 'Syne', sans-serif; */
+            font-family: inherit;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+        .photo-upload-box small {
+            color: #888;
+            font-size: 10px;
+        }
+
+        /* Submit Button Container */
+        .submit-row {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        /* --- RESPONSIVE FIX FOR MOBILE --- */
+        @media (max-width: 768px) {
+            .new-profile-grid { grid-template-columns: 1fr; }
+            .photo-upload-cell { grid-row: span 1; }
+        }
+
+        /* --- CROPPER MODAL STYLES (Unchanged) --- */
+        .crop-modal-overlay {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+            align-items: center; 
+            justify-content: center;
+        }
+        .crop-modal-overlay.show-modal { display: flex; }
+        .crop-modal-content {
+            background-color: #ffffff;
+            padding: 24px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.2);
+        }

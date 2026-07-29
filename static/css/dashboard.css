@@ -52,7 +52,9 @@ header{
     /* max-width: 800px; */
     grid-column: span 7;
     height: 60px;
-    
+   /* max-width: 500px;  */
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+   border-radius: 12px;
 }
 
 .notify-profile {
@@ -69,6 +71,18 @@ header{
     align-items: center;
     position: relative;
 }
+
+
+.notification-dropdown {
+    min-width: 280px; 
+    right: -50px; /* Centers it a bit better under the bell */
+}
+
+.notification-dropdown a:hover {
+    background-color: #F8FAFC;
+}
+
+
 
 .profile {
     display: grid;
@@ -251,6 +265,7 @@ header{
     /* max-width: 1600px; */
     /* margin: 0 auto; */
     padding: 15px;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); */
 }
 
 .left-sidebar {
@@ -273,6 +288,8 @@ header{
     font-size: 14px;
     padding: 20px 0 20px 20px;
     background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+   
 }
 
 .menu {
@@ -282,12 +299,12 @@ header{
     text-decoration: none;
     color: #000;
     padding: 5px 5px;
+     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .menu:hover {
-    background-color: rgb(138, 215, 248);
-    opacity: 0.7;
-    color: rgb(11, 11, 128);
+   transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.05);
 }
 
 .menu img {
@@ -315,7 +332,7 @@ header{
     background-color: #ffffff;
     border: 1px solid #e7e8e9;
     border-radius: 12px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     grid-column: span 1;
     padding: 5px;
     line-height: 2;
@@ -398,6 +415,7 @@ background-color: #fdf0e5;
     align-items: center;
     margin-bottom: 10px;
     justify-content: space-between; /* This naturally pushes the image to the right */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .post-img{
@@ -508,6 +526,7 @@ background-color: #fdf0e5;
     /* border: 1px solid #8080801a; */
     /* padding: 5px; */
     grid-column: span 7;
+    animation: fadeIn 0.3s ease;
 }
 
 /* activity discussion box start */
@@ -521,6 +540,8 @@ background-color: #fdf0e5;
     border: 1px solid #e7e8e9;
     background-color: #fff;
     margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    
 }
 
 .active-discussion-title {
@@ -552,11 +573,12 @@ background-color: #fdf0e5;
 article {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border: 1px solid #e7e8e9;
     border-radius: 12px;
     /* box-shadow: 0px 2px 4px rgba(41, 128, 185, 0.3); */
     padding: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
 
     /* background-color: #F4EFE6; */
 }
@@ -573,6 +595,13 @@ article {
     padding-left: 30px;
     padding-right: 20px;
 }
+
+article:hover{
+    transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+
 .thred-details{
     flex-grow: 1;
 }
@@ -741,6 +770,7 @@ article {
     border: 1px solid #e7e8e9;
     padding: 5px 10px;
      background-color: #fff;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
      
    
 
@@ -776,26 +806,38 @@ article {
     /* border: 1px solid #e7e8e9; */
     padding: 2px 5px;
     border-radius: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
     
     
 }
 
+.active-expert:hover{
+    transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
 
 .category-list {
-    display: flex;
+    /* display: flex; */
     justify-content: flex-start;
-    gap: 15px;
+    /* gap: 15px; */
     align-items: center;
     margin-bottom: 5px;
-    border-bottom: 1px solid #e7e8e9; 
+    /* border-bottom: 1px solid #e7e8e9;  */
     /* border: 1px solid #e7e8e9; */
     padding: 10px 5px;
+    line-height: .8;
     /* border-radius: 12px; */
     
     
 }
 
-.category-list:before{
+.category-list p{
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.category-list p:before{
     content:  "→";
 }
 
@@ -854,9 +896,10 @@ article {
             background-color: #fff;
             border: 1px solid #E2E8F0;
             border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            padding: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             grid-column: span 3;
+            align-items: center;
         }
 
         .pulse-header {
@@ -897,14 +940,14 @@ article {
             font-size: 13px;
             color: #64748B;
             font-weight: 500;
-            margin-bottom: 24px;
+            /* margin-bottom: 24px; */
         }
 
         /* The Circular Progress Ring */
         .progress-ring-container {
             display: flex;
             justify-content: flex-start;
-            margin-bottom: 24px;
+            margin-bottom: 10px;
             padding-left: 10px;
         }
 
@@ -958,7 +1001,18 @@ article {
         }
 
 
+.category-text {
+    display: flex;
+    justify-content: space-between; /* Pushes the name to the left and count to the right */
+    gap:10px;
+    align-items: center; /* Vertically centers the text */
+}
 
+/* Optional: Remove default margins from P and H6 so they line up perfectly */
+.category-text p, 
+.category-text h6 {
+    margin: 0; 
+}
 
 /* Pagination Container */
 .pagination-container {
@@ -1132,7 +1186,7 @@ article {
 
 /* The active state styles */
 .active-tab {
-    padding: 5px 15px !important;
+    padding: 7px 15px !important;
     background-color: #199A7A !important;
     border: none;
     color: #fff !important;
@@ -1144,7 +1198,7 @@ article {
 /* #active-discussion-thred{
 
 } */
-#open-quer-thred{
+/* #open-quer-thred{
 
     display: none;
 
@@ -1152,4 +1206,138 @@ article {
 
 #mydiscthred{
     display: none;
-}
+} */
+
+/* profile card css start*/
+
+ .profile-card {
+            width: 100%;
+            max-width: 320px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .card-cover {
+            height: 55px;
+           background-color: #199A7A;
+            position: relative;
+        }
+
+        .verification-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .card-avatar-wrapper {
+            display: flex;
+            justify-content: center;
+            /* padding-left: 20px; */
+            margin-top: -45px; /* Pulls the avatar up over the cover */
+            position: relative;
+        }
+
+        .card-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            background-color: #e2e8f0;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .expert-initial-avtar{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            background: #f7fdfb;
+            color: rgb(15, 110, 86);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 500;
+            text-transform: uppercase;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+
+
+
+        .card-info {
+            text-align: center;
+            padding: 5px 20px 5px;
+        }
+
+        .card-name {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1E293B;
+            margin: 0 0 4px 0;
+        }
+
+        .card-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: #199A7A; /* Teal color */
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0 4px 0;
+        }
+
+        .card-location {
+            font-size: 12px;
+            color: #64748B;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .card-divider {
+            height: 1px;
+            background-color: #E2E8F0;
+            margin: 0 20px;
+            border: none;
+        }
+
+        .card-bio {
+            padding: 5px 20px;
+            font-size: 12px;
+            color: #475569;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 25px;
+        }
+
+        .action-icon {
+            color: #199A7A; /* Teal */
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-icon:hover {
+            transform: translateY(-2px);
+            opacity: 0.8;
+        }
+        
+        .action-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+
+/* profile card css end */
