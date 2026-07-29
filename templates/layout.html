@@ -369,7 +369,7 @@
              {% for member in members%}
             <div class="active-expert">
                 
-                 
+                 {% comment %} just a comment {% endcomment %}
                   <div class="expert-icon">
                      <a href={%url 'member_profile'  member.id %} style="text-decoration:none">
                     {% if member.profile_picture%}
