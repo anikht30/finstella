@@ -905,7 +905,7 @@ article:hover{
             background-color: #fff;
             border: 1px solid #E2E8F0;
             border-radius: 12px;
-            padding: 10px;
+            padding: 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             grid-column: span 3;
             align-items: center;
@@ -919,10 +919,11 @@ article:hover{
         }
 
         .pulse-header h3 {
-            font-size: 16px;
+             font-size: 14px;
+            font-weight: 600;
             color: #1E293B;
             margin: 0;
-            font-weight: 700;
+            
         }
 
         .pulse-header a {
@@ -956,8 +957,9 @@ article:hover{
         .progress-ring-container {
             display: flex;
             justify-content: flex-start;
-            margin-bottom: 10px;
+            /* margin-bottom: 10px; */
             padding-left: 10px;
+            align-items: center;
         }
 
         .progress-ring {

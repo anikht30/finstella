@@ -402,15 +402,16 @@
          
             <!--industry pulse start-->
             <div class="pulse-card">
-                <div class="active-title">
-                    <h4>Industry Pulse</h4>
+                <div style="display:flex;">
+                 
+                <div>  
+                <div class="pulse-header">
+                    <h3>Industry Pulse</h3>
                     {% comment %} <a href="#">View report</a> {% endcomment %}
                 </div>
                 
 
-                <div style="display:flex">
-                 
-                <div>    
+                  
                 <div class="pulse-subtitle">Top challenge this quarter</div>
                 <div class="pulse-challenge">{{categories.0.name}}</div>
                 <div class="pulse-agree">Total Discussions {{categories.0.total_threads}}</div>

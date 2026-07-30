@@ -10,7 +10,7 @@ def global_forum_app_data(request):
     if request.user.is_authenticated:
          # 2. fetch all categories for sidebar
 
-        categories = Category.objects.all().annotate(total_threads=Count('threads')).order_by('-total_threads')
+        categories = Category.objects.all().annotate(total_threads=Count('threads')).order_by('-total_threads')[:5]
         # order_by(Thread.objects.all().count)
 
 
