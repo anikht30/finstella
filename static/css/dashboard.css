@@ -469,8 +469,8 @@ background-color: #fdf0e5;
     width: 90%;
     font-size: 14px;
     justify-content: space-between;
-    transition: background-color 0.3s ease;
-    cursor: url('pen.svg') 0 24, auto;
+     transition: transform 0.2s, box-shadow 0.2s;
+    
 }
 
 .btn-hero-post{
@@ -489,7 +489,7 @@ background-color: #fdf0e5;
     justify-content: center;
     border: none;
     /* justify-content: space-between; */
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s, box-shadow 0.2s;
     cursor: url('pen.svg') 0 24, auto;
 
 }
@@ -498,18 +498,20 @@ background-color: #fdf0e5;
 
 
 .btn-hero-new:hover {
-    color:  #199A7A;
+     transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    /* color:  #199A7A;
     background-color: #fff;
-    /* border-color: #000; */
     border: 1px solid;
-    cursor: url('pen.svg') 0 24, auto;
+    cursor: url('pen.svg') 0 24, auto; */
 }
 
 .btn-hero-post:hover{
-    color:  #199A7A;
+     transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    /* color:  #199A7A;
     background-color: #fff;
-    /* border-color: #000; */
-    border: 1px solid;
+    border: 1px solid; */
 }
 
 
@@ -905,7 +907,7 @@ article:hover{
             background-color: #fff;
             border: 1px solid #E2E8F0;
             border-radius: 12px;
-            padding: 15px;
+            padding: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             grid-column: span 3;
             align-items: center;
@@ -915,7 +917,7 @@ article:hover{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .pulse-header h3 {
@@ -1240,9 +1242,11 @@ article:hover{
 
         .verification-badge {
             position: absolute;
-            top: 12px;
-            right: 12px;
+            top: 8px;
+            right: 55px;
             color: rgba(255, 255, 255, 0.6);
+         
+            
         }
 
         .card-avatar-wrapper {

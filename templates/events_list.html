@@ -6,6 +6,34 @@
 {% block maincontent %}
 <style>
     /* --- Event Cards Grid --- */
+
+    .webinar-img{
+    display: flex;
+    width: 0 auto;
+     {% comment %} justify-content: center; {% endcomment %}
+        transition: transform 0.2s, box-shadow 0.2s;
+    /* background-color: red; */
+    }
+
+    .webinar-img:hover{
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        cursor: pointer;
+    }
+
+    .webinar-img img {
+    width: 100px;
+    margin-right: 20px;
+    align-items: center;
+    /* background-color: green; */
+    object-fit: cover;
+
+    
+    }
+
+
+
+
     .events-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -41,7 +69,7 @@
         display: inline-block;
         padding: 4px 10px;
         border-radius: 6px;
-        font-family: 'Syne', sans-serif;
+        font-family: inherit;
         font-size: 11px;
         font-weight: 700;
         text-transform: uppercase;
@@ -53,7 +81,7 @@
     .badge-event { background: #FEF08A; color: #B45309; } /* Yellowish */
 
     .event-title {
-        font-family: 'Lora', serif;
+        font-family: inherit;
         font-size: 20px;
         font-weight: 600;
         color: var(--deep);
@@ -62,7 +90,7 @@
     }
 
     .event-detail {
-        font-family: 'Syne', sans-serif;
+        font-family: inherit;
         font-size: 13px;
         color: var(--muted);
         display: flex;
@@ -72,7 +100,7 @@
     }
 
     .event-desc {
-        font-family: 'Syne', sans-serif;
+        font-family: inherit;
         font-size: 14px;
         color: var(--deep);
         line-height: 1.5;
@@ -94,7 +122,7 @@
         border: none;
         border-radius: 6px;
         background: transparent;
-        font-family: 'Syne', sans-serif;
+        font-family:inherit;
         font-weight: 600;
         font-size: 14px;
         color: var(--muted);
@@ -114,14 +142,17 @@
             Webinars & <span class="italic">Events</span>
         </h1>
         <br>
-        <p style="font-family: 'Syne', sans-serif; color: var(--muted); font-size: 15px;">
+        <p style="font-family: inherit; color: var(--muted); font-size: 15px;">
             Join exclusive leadership sessions or host your own.<br>Connect, learn, and grow together.
         </p>
         
-        <button class="btn-hero-new" onclick="openEventModal()" style="margin-top: 20px; background: var(--teal); color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+        {% comment %} <button class="btn-hero-new" onclick="openEventModal()" style="margin-top: 20px; background: var(--teal); color: white; padding: 12px 24px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
             + Submit an Event
-        </button>
+        </button> {% endcomment %}
     </div>
+     <div class="webinar-img">
+                <img src={% static "icons/Host Webinar or Event.svg"%} type="button" onclick="openEventModal()" alt="">
+     </div>
 </div>
 
 <div class="events-grid">
@@ -211,18 +242,18 @@
                 <!-- ROW 1: Title -->
                 <div class="fl" style="margin-bottom: 20px;">
                     <label>Event / Webinar Topic *</label>
-                    <input type="text" name="title" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 14px;"/>
+                    <input type="text" name="title" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Syne', inherit; font-size: 14px;"/>
                 </div>
 
                 <!-- ROW 2: Dates (Grid for side-by-side) -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
                     <div class="fl">
                         <label>Start Time *</label>
-                        <input type="datetime-local" name="start_time" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 13px;"/>
+                        <input type="datetime-local" name="start_time" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit; font-size: 13px;"/>
                     </div>
                     <div class="fl">
                         <label>End Time *</label>
-                        <input type="datetime-local" name="end_time" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 13px;"/>
+                        <input type="datetime-local" name="end_time" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit; font-size: 13px;"/>
                     </div>
                 </div>
 
@@ -230,18 +261,18 @@
                 <div id="webinar-fields" style="display: block; margin-bottom: 20px;">
                     <div class="fl">
                         <label>Meeting Link (Zoom, Teams, etc.)</label>
-                        <input type="url" name="meeting_link" placeholder="https://..." style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 14px;"/>
+                        <input type="url" name="meeting_link" placeholder="https://..." style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit; font-size: 14px;"/>
                     </div>
                 </div>
 
                 <div id="event-fields" style="display: none; margin-bottom: 20px;">
                     <div class="fl" style="margin-bottom: 16px;">
                         <label>Venue Address / City *</label>
-                        <input type="text" name="location" placeholder="e.g., Grand Hyatt, Mumbai" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 14px;"/>
+                        <input type="text" name="location" placeholder="e.g., Grand Hyatt, Mumbai" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit; font-size: 14px;"/>
                     </div>
                     <div class="fl">
                         <label>Participation Fee (If any)</label>
-                        <input type="text" name="participation_fee" placeholder="e.g., Free, ₹1500" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: 'Syne', sans-serif; font-size: 14px;"/>
+                        <input type="text" name="participation_fee" placeholder="e.g., Free, ₹1500" style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit; font-size: 14px;"/>
                     </div>
                 </div>
 

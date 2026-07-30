@@ -206,11 +206,13 @@
         
           <!-- New Discussion div start-->
           <div class="active-discussion-box tab-content" id="open-quer-thred">
-
+            {% if threads_new %}
             <div class="active-discussion-title">
                 <h4>Open Queries</h4>
-                <a href="{% url 'open_queries' %}">View all</a>
+                {% if threads_new %}<a href="{% url 'open_queries' %}">View all</a>{% endif %}
             </div>
+
+            
 
            {% for thread in threads_new %}     
            <article>
@@ -267,19 +269,37 @@
                         <h5>(Posted on {{ thread.created_at|date:"M j, Y" }})</h5>
                     </div>
                 </div> <!-- end of thread-belongs -->
+            
                
+
+
            </article>    
            {% endfor %}
 
            <div class="active-discussion-title" style="padding: 5px 30px;">
                 <h4></h4>
-                <a href="{% url 'open_queries' %}">View all</a>
+                {% if threads_new %}<a href="{% url 'open_queries' %}">View all</a>{% endif %}
             </div>
+
+             <div> 
+            
+                      
+           
+          </div>
+          {% else %}
+         <div style="text-align: center; padding: 50px 20px; border-radius: 12px; background: #fff; border: 1px solid #cbd5e1; margin-bottom: 10px;margin-top:10px">
+        <h3 style="font-size: 18px; color: #1E293B; font-weight: 600; margin-bottom: 8px; font-family: 'Lora', serif;">It's quiet in here. Too quiet.</h3>
+        <p style="font-size: 14px; color: #64748B; margin-bottom: 20px;">There are no open queries at the moment. Be the spark, drop a question and let the community weigh in!</p>
+        <button onclick="openDiscussionModal()" style="background: #f7fdfb; color: #199A7A; border: 1px solid #199A7A; padding: 8px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s;">
+            Start a Discussion
+        </button>
+    </div>
+           {% endif %} 
 
           </div>
           <!-- New Discussion div end -->
 
-
+         
 
 
 
@@ -289,7 +309,7 @@
 
           <!-- My Discussion div start-->
           <div class="active-discussion-box tab-content" id="mydiscthred">
-
+            {% if my_discussion_thred %}
             <div class="active-discussion-title">
                 <h4>My Discussion</h4>
                 <a href={%url 'my_discussion'%}>View all</a>
@@ -359,7 +379,15 @@
                 <h4></h4>
                 <a href="{% url 'my_discussion' %}">View all</a>
             </div>
-
+            {% else %}
+            <div style="text-align: center; padding: 50px 20px; border-radius: 12px; background: #fff; border: 1px solid #cbd5e1; margin-bottom: 10px;margin-top:10px;">
+        <h3 style="font-size: 18px; color: #1E293B; font-weight: 600; margin-bottom: 8px; font-family: 'Lora', serif;">Your board is a blank slate.</h3>
+        <p style="font-size: 14px; color: #64748B; margin-bottom: 20px;">You haven't posted any queries yet. Facing a challenge? Run it by your peers.</p>
+        <button onclick="openDiscussionModal()" style="background: #199A7A; color: white; border: none; padding: 8px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s;">
+            Post Your First Query
+        </button>
+    </div>
+            {% endif %}
           </div>
 
           <!-- New Discussion div end -->

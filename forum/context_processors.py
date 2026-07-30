@@ -10,7 +10,8 @@ def global_forum_app_data(request):
     if request.user.is_authenticated:
          # 2. fetch all categories for sidebar
 
-        categories = Category.objects.all().annotate(total_threads=Count('threads')).order_by('-total_threads')[:5]
+        categories = Category.objects.all().annotate(total_threads=Count('threads')).order_by('-total_threads')
+        topics = Category.objects.all().annotate(total_threads=Count('threads')).order_by('-total_threads')[:5]
         # order_by(Thread.objects.all().count)
 
 
@@ -54,6 +55,7 @@ def global_forum_app_data(request):
             'percentage':percentage,
             'unread_notifications_count':unread_notifications_count,
             'unread_notifications':unread_notifications,
+            'topics':topics,
 
 
 
