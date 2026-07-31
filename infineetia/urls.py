@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from forum.views import landing_page,apply_view,userexists,login_view,logout_view,dashboard_view,thread_detail_view,create_thread_view,member_directory_view,add_subreply,profile_view,edit_profile,member_profile
 from forum.views import all_active_discussion_view,all_new_discussion_view,my_discussion_view,events_page,create_event,register_for_event
-from forum.views import mark_notification_read
+from forum.views import mark_notification_read,category_list_view
 #template view to quickly show temporary dashboard
 from django.views.generic import TemplateView
 from django.conf import settings
@@ -50,6 +50,7 @@ urlpatterns = [
     path('events/create/', create_event, name='create_event'),
     path('events/register/', register_for_event, name='register_for_event'),
     path('notifications/read/<int:notification_id>',mark_notification_read,name='mark_notification_read'),
+    path('topics/',category_list_view,name='topics')
 
 ]
 

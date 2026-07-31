@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>finstella {% block title %}{%endblock%}</title>
-    
+    <link rel="icon" type="image/png" href="{% static 'icons/finstellaBrowser.png' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/thread-details.css'%}">
@@ -445,7 +445,7 @@
             <!-- active title-->
             <div class="active-title">
               <h4>Trending Topics</h4>
-              <a href="#">View all</a>
+              <a href="{% url 'topics'%}">View all</a>
             </div>
               <!-- active title end-->
 

@@ -151,15 +151,16 @@
                                 </div><!-- end of author-name -->
 
                             </div> <!-- end of author-details -->
-                        </div> <!-- FIXED: Added missing closing div for author-thred here! -->
-
-                        <!-- 2. THREAD CONTENT (Clickable) -->
-                        <a href="{% url 'thread_detail' thread.id %}" style="text-decoration: none; color: inherit; display: block;">    
+                              <a href="{% url 'thread_detail' thread.id %}" style="text-decoration: none; color: inherit; display: block;">    
                             
                             <div class="thread-cateogory">   
                                 <h5>{{ thread.category }}</h5>
                                 {% comment %} <h6 class="time-ago">{{ thread.created_at|timesince }} ago</h6> {% endcomment %}
                             </div> <!-- end of thread-cateogory -->
+                      
+                        </div> <!-- FIXED: Added missing closing div for author-thred here! -->
+
+                        <!-- 2. THREAD CONTENT (Clickable) -->
                             
                             <!-- FIXED: Removed the extra random </div> that was sitting here -->
                             
@@ -246,16 +247,17 @@
                                 </div><!-- end of author-name -->
 
                             </div> <!-- end of author-details -->
-                        </div> <!-- FIXED: Added missing closing div for author-thred here! -->
-
-
-                        <!-- 2. THREAD CONTENT (Clickable) -->
-                        <a href="{% url 'thread_detail' thread.id %}" style="text-decoration: none; color: inherit; display: block;">    
+                             <a href="{% url 'thread_detail' thread.id %}" style="text-decoration: none; color: inherit; display: block;">    
                             
                             <div class="thread-cateogory">   
                                 <h5>{{ thread.category }}</h5>
                                 {% comment %} <h6 class="time-ago">{{ thread.created_at|timesince }} ago</h6> {% endcomment %}
                             </div> <!-- end of thread-cateogory -->
+                       
+                        </div> <!-- FIXED: Added missing closing div for author-thred here! -->
+
+
+                        <!-- 2. THREAD CONTENT (Clickable) -->
                             
                             <!-- FIXED: Removed the extra random </div> that was sitting here -->
                             
@@ -347,10 +349,6 @@
                         </div>
 
                     </div> <!--author details end-->
-
-
-                    </div>
-
                     <a href="{% url 'thread_detail' thread.id %}" style="text-decoration: none; color: inherit; display: block;">    
                     <div class="thread-cateogory">   
                     <h5> {{thread.category}} </h5>
@@ -358,6 +356,10 @@
                     {% comment %} <h6 class="time-ago">{{ thread.created_at|timesince }} ago</h6> {% endcomment %}
                     
                     </div>
+
+
+                    </div>
+
                     <h2>{{thread.title}}</h2>
                     <p>{{thread.content}}</p>
                     </a>

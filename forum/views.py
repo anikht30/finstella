@@ -7,6 +7,7 @@ from django.utils import timezone
 from .forms import ProfileUpdateForm
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.db.models import Count
 
 
 
@@ -318,6 +319,18 @@ def member_directory_view(request):
     }
     return render(request, 'members.html', context)
 
+
+@login_required(login_url='login')
+def category_list_view(request):
+    #fetch all category
+
+    categories = Category.objects.all().annotate(total_threads=Count('threads')).order_by('-total_threads')
+
+    context = {
+        'categories':categories
+    }
+
+    return render(request, 'topics.html',context)
 
 
 @login_required(login_url='login')
