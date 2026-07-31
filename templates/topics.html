@@ -1,0 +1,49 @@
+<!-- Shree Ganeshay Namahhh...-->
+
+{% extends "layout.html" %}
+
+
+{% load static %}
+
+{% block title %} | Topics{%endblock%}
+
+
+
+{% block maincontent %}
+
+<!-- Active Discussion div start-->
+          <div class="active-discussion-box">
+
+            <div class="active-discussion-title">
+                <h4>Topics</h4>
+            </div>
+
+
+           {% for category in categories%}
+            
+                <div class="category-list" style="border:1px solid #e7e8e9; border-radius: 12px;padding: 20px 30px;">
+        
+                 
+
+                  <div class="category-text" style="category-text:before:none;">
+                  <h5 style="font-family:inherit; font-weight:500; font-size:12px;">
+                   {{category.name }} 
+                  </h5>
+                  <h5 style="font-family:inherit; font-weight:500; font-size:12px;">{{category.total_threads}}</h5>
+                 
+                  </div>
+
+                
+                  </div>
+   
+
+
+           {% endfor %}
+
+
+          </div>
+
+          <!-- Active Discussion div end -->
+
+
+{% endblock %}
