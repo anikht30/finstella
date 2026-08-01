@@ -6,7 +6,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>finstella {% block title %}{%endblock%}</title>
+    <title>{% if unread_notifications_count > 0 %}
+                
+                    ({{ unread_notifications_count }})
+            
+            {% endif %}finstella {% block title %}{%endblock%}</title>
     <link rel="icon" type="image/png" href="{% static 'icons/finstellaBrowser.png' %}">
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -40,10 +44,19 @@
             </div>
             
 
-            <div class="search">
+          <form action="{% url 'global_search' %}" method="GET" class="search">
+    <input type="text" name="q" placeholder="Search discussions, members, topics..." value="{{ request.GET.q|default:'' }}" required>
+    
+    <!-- FIX: Move class="search-icon" to the button, and set the img width to 100% -->
+    <button type="submit" class="search-icon" style="background: none; border: none; padding: 0; outline: none; display: flex; align-items: center; justify-content: center;">
+        <img src="{% static 'icons/search.svg' %}" alt="Search" style="width: 100%; height: 100%; pointer-events: none;">
+    </button>
+</form>
+
+            {% comment %} <div class="search">
                 <input type="search" name="search" id="search" placeholder="Search topics, discussions or members...">
                 <img src="{% static 'icons/search.svg' %}" class="search-icon" alt="">
-            </div>
+            </div> {% endcomment %}
 
 <!-- 1. HTML: Replace your entire <div class="notify-profile"> section with this -->
 <div class="notify-profile">
@@ -228,51 +241,38 @@
 
 
             <!--Menu list start-->
-            <nav class="menu-list">
-                <a href={%url 'dashboard'%} class="menu">
-                    <img src={%static 'icons/home.svg'%} alt="">
-                    Dashboard
-                </a>
-                <a href={%url 'active_discussion'%} class="menu">
-                    <img src={%static 'icons/conversation.svg'%} alt="">
-                    Active Discussion
-                </a>
-               
-
-                <a href={% url "open_queries"%} class="menu">
-                    <img src={%static 'icons/mydiscussion.svg'%} alt="">
-                    Open Queries
-                </a> 
-                
-                <a href={% url "my_discussion"%} class="menu">
-                    <img src={%static 'icons/mydiscussion.svg'%} alt="">
-                    My Discussions
-                </a>
-                
-                <a href={%url 'member_directory'%} class="menu">
-                    <img src={%static 'icons/bookmark.svg'%} alt="">
-                    Member Directory
-                </a>
-   
-                <a href="#" class="menu">
-                    <img src={%static 'icons/Knowledge.svg'%} alt="">
-                    Knowledge Vault
-                </a>
-          
-          
-                {% comment %} <a href="#" class="menu">
-                    <img src={%static 'icons/expertcircle.svg'%} alt="">
-                    Expert Circles
-                </a>
-                 {% endcomment %}
-          
-                 <a href={% url "events_page"%} class="menu">
-                    <img src={%static 'icons/bookmark.svg'%} alt="">
-                    Webinar & Events
-                </a>
-               
-            </nav>
-            <!--menu list end-->
+    <nav class="menu-list">
+        
+        <a href="{% url 'dashboard' %}" class="menu">
+            <img src="{% static 'icons/home.svg' %}" alt="">
+            Dashboard
+        </a>
+        <a href="{% url 'active_discussion' %}" class="menu">
+            <img src="{% static 'icons/conversation.svg' %}" alt="">
+            Active Discussion
+        </a>
+        <a href="{% url 'open_queries' %}" class="menu {% if request.resolver_match.url_name == 'open_queries' %}active{% endif %}">
+            <img src="{% static 'icons/mydiscussion.svg' %}" alt="">
+            Open Queries
+        </a> 
+        <a href="{% url 'my_discussion' %}" class="menu {% if request.resolver_match.url_name == 'my_discussion' %}active{% endif %}">
+            <img src="{% static 'icons/mydiscussion.svg' %}" alt="">
+            My Discussions
+        </a>
+        <a href="{% url 'member_directory' %}" class="menu {% if request.resolver_match.url_name == 'member_directory' %}active{% endif %}">
+            <img src="{% static 'icons/bookmark.svg' %}" alt="">
+            Member Directory
+        </a>
+        <a href="#" class="menu">
+            <img src="{% static 'icons/Knowledge.svg' %}" alt="">
+            Knowledge Vault
+        </a>
+        <a href="{% url 'events_page' %}" class="menu {% if request.resolver_match.url_name == 'events_page' %}active{% endif %}">
+            <img src="{% static 'icons/bookmark.svg' %}" alt="">
+            Webinar & Events
+        </a>
+    </nav>
+    <!--menu list end-->
             
 
             <!--forum dashboard-->
@@ -325,11 +325,11 @@
                     Explore Knowledge Vault
                 </a> {% endcomment %}
                 
-                <a href="#" class="menu">
+                <a href="{% url 'invite_peer' %}" class="menu">
                     <img src={%static 'icons/Knowledge.svg'%} alt="">
                     Invite a Peer
                 </a>
-                <a href="#" class="menu">
+                <a href="{% url 'feedback' %}" class="menu">
                     <img src={%static 'icons/expertcircle.svg'%} alt="">
                     Give Feedback
                 </a>
@@ -453,14 +453,16 @@
             <div class="category-list"  style:"border:none">
                 
                  
-
+                    <a href="{% url 'topic_details' category.id %}" style="text-decoration:none;color:#000;">
                   <div class="category-text">
+                    
                   <P>
                    {{category.name }} 
                   </P>
                   <h6>{{category.total_threads}}</h6>
                  
                   </div>
+                  </a>
 
                 
                   </div>
@@ -532,6 +534,28 @@ window.onclick = function(event) {
 }
 
 <!--notification drop down scrip end-->
+
+<!-- for active menu-->
+    document.addEventListener("DOMContentLoaded", function() {
+        // 1. Get the current URL path the browser is looking at
+        const currentPath = window.location.pathname;
+        
+        // 2. Find every link that has the class "menu"
+        const menuLinks = document.querySelectorAll('.menu');
+        
+        // 3. Loop through them
+        menuLinks.forEach(link => {
+            // If the link's href matches the current browser path exactly...
+            if (link.getAttribute('href') === currentPath) {
+                // Add the active-menu class!
+                link.classList.add('active-menu');
+            } else {
+                // Make sure others don't have it
+                link.classList.remove('active-menu');
+            }
+        });
+    });
+
 
 </script>
 </body>

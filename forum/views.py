@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from .models import CustomUser, Thread, Category,Reply,Event,SubReply,EventRegistration,Notifications
+from django.contrib.auth import authenticate, login, logout, get_user_model
+from .models import CustomUser, Thread, Category,Reply,Event,SubReply,EventRegistration,Notifications,Feedback
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .forms import ProfileUpdateForm
@@ -9,6 +9,8 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.db.models import Count
 
+
+User = get_user_model()
 
 
 @login_required
@@ -334,6 +336,25 @@ def category_list_view(request):
 
 
 @login_required(login_url='login')
+def category_details(request, category_id):
+    # 1 Grab the specific category (or show 404 if it didn't exist)
+    category = get_object_or_404(Category, id=category_id)
+
+    # 2 filtered thread data of selected category
+
+    threads= Thread.objects.filter(category=category).order_by('-created_at')
+
+
+    context= {
+        'category':category,
+        'threads':threads,
+    }
+    # 3 return data
+
+    return render(request,'topic_details.html',context )
+
+
+@login_required(login_url='login')
 def profile_view(request):
     #get currently log-in cfo
     user = request.user
@@ -560,3 +581,72 @@ def mark_notification_read(request, notification_id):
         return redirect(notification.link)
 
     return redirect('dashboard') #fall back if there is no link
+
+@login_required(login_url='login')
+def global_search(request):
+    #1. Grab the search word from the URL (e.g., ?q=finance)
+    
+    query = request.GET.get('q','')
+
+    threads = []
+    members = []
+    categories = []
+
+    if query:
+        # 2. Search Discussions (Matches Title OR Content)
+
+        threads = Thread.objects.filter(
+            Q(title__icontains=query) | Q(content__icontains=query)
+            ).distinct().order_by('-created_at')
+
+        # 3. Search Members (Matches First Name, Last Name, or Company)
+        members = User.objects.filter(
+            Q(first_name__icontains=query) | 
+            Q(last_name__icontains=query) | 
+            Q(company__icontains=query)
+        ).distinct()
+
+        # 4. Search Categories (Matches Category Name)
+        categories = Category.objects.filter(
+            name__icontains=query
+        ).distinct()
+
+
+    context = {
+            'query': query,
+            'threads': threads,
+            'members': members,
+            'categories': categories,
+    }
+
+
+           # 5. Send all results to the template
+    return render(request, 'search_results.html',context)
+
+@login_required
+def feedback(request):
+    if request.method == 'POST':
+        # Grab the data from the HTML form
+        f_type = request.POST.get('feedback_type')
+        title = request.POST.get('title')
+        details = request.POST.get('details')
+        
+        # Save it to the database
+        Feedback.objects.create(
+            user=request.user,
+            feedback_type=f_type,
+            title=title,
+            details=details
+        )
+        
+        # Show a success message and redirect
+        messages.success(request, "Thank you! Your feedback has been sent directly to the founding team.")
+        return redirect('dashboard') # Or wherever you want them to go
+        
+   
+    return render(request,'feedback_page.html')
+
+@login_required
+def invite_peer(request):
+    return render(request, 'invite_a_peer_page.html')
+

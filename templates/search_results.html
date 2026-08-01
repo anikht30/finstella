@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Search Results for "{{ query }}"{% endblock %}
+
+{% block maincontent %}
+<div class="active-discussion-box">
+    <div class="active-discussion-title">
+                <h4>Search</h4>
+                {% comment %} <a href={%url "acive_discussion"%}>View all</a> {% endcomment %}
+                  <a href="javascript:history.back()" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back
+            </a>
+
+            </div>
+
+    <div class="main-content" style="grid-column: span 12; padding:10px 10px;">
+        
+        <h1 style="font-family: 'Lora', serif; color: #1E293B; margin-bottom: 30px;">
+            Search Results for <span style="color: #199A7A; font-style: italic;">"{{ query }}"</span>
+        </h1>
+
+        <!-- ============================================== -->
+        <!-- 1. CATEGORY RESULTS -->
+        <!-- ============================================== -->
+        {% if categories %}
+            <h3 style="font-size: 14px; text-transform: uppercase; color: #64748B; margin-bottom: 10px; border-bottom: 1px solid #E2E8F0; padding-bottom: 5px;">Topics</h3>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px;">
+                {% for category in categories %}
+                    <a href="{% url 'topic_details' category.id %}" style="background: #E2E8F0; color: #1E293B; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 13px; font-weight: 600;">
+                        # {{ category.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- ============================================== -->
+        <!-- 2. MEMBER RESULTS -->
+        <!-- ============================================== -->
+        {% if members %}
+            <h3 style="font-size: 14px; text-transform: uppercase; color: #64748B; margin-bottom: 10px; border-bottom: 1px solid #E2E8F0; padding-bottom: 5px;">Members</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; margin-bottom: 30px;">
+                {% for member in members %}
+                    <a href="{% url 'member_profile' member.id %}" style="display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid #E2E8F0; padding: 12px; border-radius: 12px; text-decoration: none; transition: transform 0.2s;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #f7fdfb; color: #199A7A; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                            {% if member.profile_picture %}
+                                <img src="{{ member.profile_picture.url }}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                            {% else %}
+                                {{ member.first_name|first }}{{ member.last_name|first }}
+                            {% endif %}
+                        </div>
+                        <div>
+                            <div style="color: #1E293B; font-weight: 600; font-size: 14px;">{{ member.first_name }} {{ member.last_name }}</div>
+                            <div style="color: #199A7A; font-size: 11px; text-transform: uppercase;">{{ member.title }}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- ============================================== -->
+        <!-- 3. DISCUSSION RESULTS -->
+        <!-- ============================================== -->
+        {% if threads %}
+            <h3 style="font-size: 14px; text-transform: uppercase; color: #64748B; margin-bottom: 10px; border-bottom: 1px solid #E2E8F0; padding-bottom: 5px;">Discussions</h3>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                {% for thread in threads %}
+                    <article>
+                        <div class="thread" style="padding: 15px;">
+                            <div class="thred-details">
+                                <a href="{% url 'thread_detail' thread.id %}" style="text-decoration: none; color: inherit; display: block;">    
+                                    <div class="thread-cateogory">   
+                                        <h5>{{ thread.category.name }}</h5>
+                                    </div>
+                                    <h2 style="font-size: 22px; margin-bottom: 8px;">{{ thread.title }}</h2>
+                                    <p style="font-size: 14px; color: #475569;">{{ thread.content|truncatechars:150 }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- ============================================== -->
+        <!-- 4. NO RESULTS STATE -->
+        <!-- ============================================== -->
+        {% if not threads and not members and not categories %}
+            <div style="text-align: center; padding: 60px 20px; background: #fff; border-radius: 12px; border: 1px dashed #cbd5e1;">
+                <h3 style="font-size: 18px; color: #1E293B; font-weight: 600; margin-bottom: 8px; font-family: 'Lora', serif;">No results found.</h3>
+                <p style="font-size: 14px; color: #64748B;">We couldn't find any discussions, members, or topics matching "{{ query }}".</p>
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

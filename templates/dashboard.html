@@ -120,7 +120,7 @@
 
             <div class="active-discussion-title">
                 <h4>Active Discussions</h4>
-                <a href="{% url 'active_discussion' %}">View all</a>
+                <a href="{% url 'active_discussion' %}" class="active-discussion-title-view">View all</a>
             </div>
 
            {% for thread in threads %}     
@@ -196,7 +196,7 @@
 
            <div class="active-discussion-title" style="padding: 5px 30px;">
                 <h4></h4>
-                <a href="{% url 'active_discussion' %}">View all</a>
+                <a href="{% url 'active_discussion' %}" class="active-discussion-title-view">View all</a>
             </div>
 
           </div>
@@ -214,7 +214,7 @@
             {% if threads_new %}
             <div class="active-discussion-title">
                 <h4>Open Queries</h4>
-                {% if threads_new %}<a href="{% url 'open_queries' %}">View all</a>{% endif %}
+                {% if threads_new %}<a href="{% url 'open_queries' %}" class="active-discussion-title-view">View all</a>{% endif %}
             </div>
 
             
@@ -284,7 +284,7 @@
 
            <div class="active-discussion-title" style="padding: 5px 30px;">
                 <h4></h4>
-                {% if threads_new %}<a href="{% url 'open_queries' %}">View all</a>{% endif %}
+                {% if threads_new %}<a href="{% url 'open_queries' %}" class="active-discussion-title-view">View all</a>{% endif %}
             </div>
 
              <div> 
@@ -318,7 +318,7 @@
             {% if my_discussion_thred %}
             <div class="active-discussion-title">
                 <h4>My Discussion</h4>
-                <a href={%url 'my_discussion'%}>View all</a>
+                <a href={%url 'my_discussion'%} class="active-discussion-title-view">View all</a>
             </div>
 
            {% for thread in my_discussion_thred  %}     
@@ -383,7 +383,7 @@
            {% endfor %}
             <div class="active-discussion-title" style="padding: 5px 30px;">
                 <h4></h4>
-                <a href="{% url 'my_discussion' %}">View all</a>
+                <a href="{% url 'my_discussion' %}" class="active-discussion-title-view">View all</a>
             </div>
             {% else %}
             <div style="text-align: center; padding: 50px 20px; border-radius: 12px; background: #fff; border: 1px solid #cbd5e1; margin-bottom: 10px;margin-top:10px;">

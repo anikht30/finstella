@@ -196,6 +196,7 @@
             color: rgba(255, 255, 255, 0.4);
             font-family: 'Inter', sans-serif;
             font-size: 12px;
+            
         }
 
                 /* 2. Style the new text container */
@@ -258,4 +259,44 @@
 @keyframes fadeEffect {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+
+.right-pane {
+position: relative;
+
+}
+
+.bottom-pane {
+
+/* bottom: 24px;  */
+/* left: 0; */
+/* height: 5vh; */
+width: 100%;
+text-align: center;
+justify-content: center;
+padding: 0 20px;
+border-top: 2px double #E2E8F0;
+padding-top: 10px;
+
+}
+
+.bottom-pane h6 {
+color: #64748B; 
+font-family: 'Syne', sans-serif; 
+font-size: 12px;
+font-weight: 500;
+margin: 0;
+line-height: 1.5;
+}
+
+.bottom-pane a {
+color: #199A7A; 
+text-decoration: none;
+transition: color 0.2s, text-decoration 0.2s;
+}
+
+.bottom-pane a:hover {
+color: #128266;
+text-decoration: underline;
 }

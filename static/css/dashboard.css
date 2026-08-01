@@ -303,6 +303,21 @@ header{
      transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* Add this to your existing .menu styles */
+    .menu {
+        /* ... existing styles ... */
+        border-left: 4px solid transparent; /* Prevents jumping */
+    }
+
+    /* The Active State */
+    .menu.active-menu {
+        border-left: 4px solid #199A7A; /* The green pipe */
+        background-color: #f7fdfb; /* Slight tint */
+        font-weight: 600;
+        color: #199A7A; /* Optional: Make text green */
+    }
+
+
 .menu:hover {
    transform: translateY(-2px);
         box-shadow: 0 8px 25px rgba(0,0,0,0.05);
@@ -561,11 +576,9 @@ background-color: #fdf0e5;
     color: rgb(15, 110, 86);
 }
 
-.active-discussion-title a {
+.active-discussion-title-view {
     text-decoration: none;
     color: #1E60D0;
-     /* color: rgb(15, 110, 86); */
-     /* background-color: rgb(225, 245, 238); */
     display: inline;
     font-size: 12px;
     font-weight: 600;
@@ -1357,3 +1370,37 @@ article:hover{
         }
 
 /* profile card css end */
+
+
+
+
+.back-link {
+display: inline-flex;
+align-items: center;
+gap: 4px;
+text-decoration: none;
+color: #64748B;
+font-family: 'Syne', sans-serif;
+font-weight: 600;
+font-size: 13px;
+/* margin-bottom: 20px; */
+transition: color 0.2s ease;
+}
+
+/* Optional: Make the text turn green on hover */
+.back-link:hover {
+color: #199A7A;
+}
+
+/* Targets the arrow icon specifically */
+.back-link svg {
+transition: transform 0.2s ease-in-out;
+}
+
+
+.back-link:hover svg {
+transform: translateX(-4px);
+}
+
+
+

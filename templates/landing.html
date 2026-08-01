@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href={%static 'css/landing.css'%}>  
-  
+     <link rel="icon" type="image/png" href="{% static 'icons/finstellaBrowser.png' %}">
 
 
 
@@ -130,14 +130,16 @@
 
     </div>
 
-
-    
-    <div class="bottom-pane">
+        <!-- THE NEW FOOTER -->
+   
+    {% comment %} <div class="bottom-pane">
         <h6>'By proceeding to Sign Up or Sign in, you agree to Finstella’s User Agreement, Privacy Policy, and Cookie Policy.'</h6>
-    </div>       
+    </div>        {% endcomment %}
 
     </div>
+</div>
 
+ 
 
 
 
@@ -164,6 +166,10 @@
     });
 </script>
 
+    <div class="bottom-pane">
+        <h6>By proceeding to Sign Up or Sign In, you agree to Finstella's <a href="#">User Agreement</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a>.</h6>
+    </div>       
     
 </body>
+
 </html>

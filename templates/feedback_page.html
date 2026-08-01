@@ -1,0 +1,273 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %} | Give Feedback{% endblock %}
+
+{% block maincontent %}
+<style>
+    .feedback-container {
+        /* max-width: 600px; */
+        /* margin: 40px auto; */
+        background: #fff;
+        border-radius: 12px;
+        /* border: 1px solid #E2E8F0; */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        /* padding: 40px; */
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+
+    .feedback-header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-radius: 12px;
+        border: 1px solid #E2E8F0;
+        /* background-color: #199A7A;; */
+        padding:10px 15px;
+    }
+
+    .feedback-header h1 {
+        font-family: 'Lora', serif;
+        font-size: 28px;
+        color: #042C1A;
+        margin-bottom: 10px;
+    }
+
+    .feedback-header p {
+        font-size: 15px;
+        color: #64748B;
+        line-height: 1.6;
+    }
+
+    .feedback-form-group {
+        margin-bottom: 24px;
+        border: 1px solid #E2E8F0;
+        border-radius: 12px;
+        padding:10px;
+        /* --- NEW INTERACTIVE STYLE --- */
+        transition: opacity 0.3s ease; 
+    }
+    
+    /* --- NEW INTERACTIVE STYLE --- */
+    .feedback-form-group.dimmed {
+        opacity: 0.5; /* Dims sections the user isn't focused on */
+    }
+
+    .feedback-form-group label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: #1E293B;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Custom Radio Buttons for Category Selection */
+    .category-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 12px;
+    }
+
+    .category-radio {
+        display: none; /* Hide the actual radio button */
+    }
+
+    .category-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+        border: 1px solid #E2E8F0;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        color: #475569;
+        transition: all 0.2s;
+        text-align: center;
+    }
+
+    /* Change style when the hidden radio is checked */
+    .category-radio:checked + .category-label {
+        background: #f0fdfa; /* Light teal bg */
+        border-color: #199A7A;
+        color: #042C1A;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(25, 154, 122, 0.1);
+    }
+
+    .feedback-input {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid #CBD5E1;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 15px;
+        color: #1E293B;
+        transition: border-color 0.2s, opacity 0.15s ease; /* Added opacity transition for smooth placeholder changes */
+    }
+
+    .feedback-input:focus {
+        outline: none;
+        border-color: #199A7A;
+        box-shadow: 0 0 0 3px rgba(25, 154, 122, 0.1);
+    }
+
+    textarea.feedback-input {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    .submit-btn {
+        width: 100%;
+        background: #199A7A;
+        color: #fff;
+        border: none;
+        padding: 16px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s, background 0.2s;
+    }
+
+    .submit-btn:hover {
+        background: #128266;
+        transform: translateY(-2px);
+    }
+    
+    /* --- NEW INTERACTIVE STYLES --- */
+    .char-counter {
+        font-size: 12px;
+        color: #94A3B8;
+        float: right;
+        font-weight: 500;
+        font-family: monospace;
+        text-transform: none; /* overrides the label uppercase */
+        letter-spacing: normal;
+    }
+    .char-counter.limit-near { color: #F59E0B; } /* Orange */
+    .char-counter.limit-reached { color: #EF4444; } /* Red */
+    
+</style>
+
+    <div class="active-discussion-box">
+    <div class="main-content" style="grid-column: span 12;">
+        
+        <div class="feedback-container">
+            <div class="feedback-header post-title">
+                <h1>Shape the Future of <span class="italic">Finstella</span></h1>
+                <p class="post-title">Your insights drive our community forward. Let us know what's working, what's missing, and how we can elevate your experience.</p>
+            </div>
+
+            <form action="{% url 'feedback' %}" method="POST">
+                {% csrf_token %}
+
+                <div class="feedback-form-group">
+                    <label>What kind of feedback do you have?</label>
+                    <div class="category-options">
+                        
+                        <input type="radio" name="feedback_type" id="type_feature" value="Feature Request" class="category-radio" checked>
+                        <label for="type_feature" class="category-label">Feature Idea</label>
+                        
+                        <input type="radio" name="feedback_type" id="type_bug" value="Bug Report" class="category-radio">
+                        <label for="type_bug" class="category-label">Report a Bug</label>
+                        
+                        <input type="radio" name="feedback_type" id="type_community" value="Community Suggestion" class="category-radio">
+                        <label for="type_community" class="category-label">Community Vibe</label>
+                    </div>
+                </div>
+
+                <div class="feedback-form-group" id="group-title">
+                    <label for="feedback_title" id="label_title">Brief Summary</label>
+                    <input type="text" id="feedback_title" name="title" class="feedback-input" placeholder="e.g., Add a dark mode option" required>
+                </div>
+
+                <div class="feedback-form-group" id="group-details">
+                    <label for="feedback_details">
+                        The Details
+                        <!-- --- NEW INTERACTIVE SPAN --- -->
+                        <span id="char_count" class="char-counter">0 / 1000</span>
+                    </label>
+                    <textarea id="feedback_details" name="details" class="feedback-input" placeholder="Tell us more about your idea or the issue you encountered..." maxlength="1000" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Send to the Founding Team</button>
+            </form>
+        </div>
+
+    </div>
+    </div>
+
+<!-- --- NEW INTERACTIVE LOGIC --- -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const radios = document.querySelectorAll('input[name="feedback_type"]');
+        const titleLabel = document.getElementById('label_title');
+        const titleInput = document.getElementById('feedback_title');
+        const detailsInput = document.getElementById('feedback_details');
+        const charCount = document.getElementById('char_count');
+        const groups = document.querySelectorAll('.feedback-form-group');
+
+        // 1. DYNAMIC PLACEHOLDERS BASED ON CATEGORY
+        radios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Add a quick visual flash to inputs to show they changed
+                titleInput.style.opacity = '0';
+                detailsInput.style.opacity = '0';
+
+                setTimeout(() => {
+                    if (this.value === 'Bug Report') {
+                        titleLabel.textContent = "Bug Summary";
+                        titleInput.placeholder = "e.g., The search bar crashes on mobile";
+                        detailsInput.placeholder = "1. What were you trying to do?\n2. What happened instead?\n3. What device/browser are you using?";
+                    } else if (this.value === 'Feature Request') {
+                        titleLabel.textContent = "Feature Name";
+                        titleInput.placeholder = "e.g., Add a dark mode option";
+                        detailsInput.placeholder = "Describe your idea. What specific problem does it solve for you as a finance leader?";
+                    } else {
+                        titleLabel.textContent = "Brief Summary";
+                        titleInput.placeholder = "e.g., Hosting regional meetups";
+                        detailsInput.placeholder = "Tell us what's on your mind...";
+                    }
+                    
+                    titleInput.style.opacity = '1';
+                    detailsInput.style.opacity = '1';
+                }, 150); // Matches CSS transition time
+            });
+        });
+
+        // 2. LIVE CHARACTER COUNTER
+        detailsInput.addEventListener('input', function() {
+            const currentLen = this.value.length;
+            const maxLen = this.maxLength;
+            charCount.textContent = `${currentLen} / ${maxLen}`;
+
+            // Color coding based on limits
+            if (currentLen >= maxLen) {
+                charCount.className = 'char-counter limit-reached';
+            } else if (currentLen >= maxLen * 0.8) {
+                charCount.className = 'char-counter limit-near';
+            } else {
+                charCount.className = 'char-counter';
+            }
+        });
+
+        // 3. FOCUS DIMMING (Highlights the section being worked on)
+        const inputs = [titleInput, detailsInput];
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                groups.forEach(g => {
+                    if (!g.contains(input)) g.classList.add('dimmed');
+                });
+            });
+            input.addEventListener('blur', () => {
+                groups.forEach(g => g.classList.remove('dimmed'));
+            });
+        });
+    });
+</script>
+
+{% endblock %}

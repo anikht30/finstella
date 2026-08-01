@@ -236,3 +236,22 @@ class Notifications(models.Model):
 
     def __str__(self):
         return f"To {self.recipient.first_name}: {self.message}"
+
+
+
+
+class Feedback(models.Model):
+    TYPES = (
+        ('Feature Request', 'Feature Request'),
+        ('Bug Report', 'Bug Report'),
+        ('Community Suggestion', 'Community Suggestion'),
+        )
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    feedback_type = models.CharField(max_length=50, choices=TYPES)
+    title = models.CharField(max_length=200)
+    details = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"[{self.feedback_type}] {self.title} by {self.user.first_name}"

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser,Category,Thread,Event,Reply,SubReply,EventRegistration,Notifications
+from .models import CustomUser,Category,Thread,Event,Reply,SubReply,EventRegistration,Notifications,Feedback
 
 
 
@@ -20,7 +20,7 @@ admin.site.register(Thread)
 # admin.site.register(Event)
 admin.site.register(Reply)
 admin.site.register(SubReply)
-
+admin.site.register(Feedback)
 
 
 @admin.register(Event)
