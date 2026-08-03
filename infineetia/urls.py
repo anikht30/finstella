@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from forum.views import landing_page,apply_view,userexists,login_view,logout_view,dashboard_view,thread_detail_view,create_thread_view,member_directory_view,add_subreply,profile_view,edit_profile,member_profile
 from forum.views import all_active_discussion_view,all_new_discussion_view,my_discussion_view,events_page,create_event,register_for_event
-from forum.views import mark_notification_read,category_list_view,category_details,global_search,feedback,invite_peer
+from forum.views import mark_notification_read,category_list_view,category_details,global_search,feedback,invite_peer,knowledge_vault,toggle_bookmark,private_workspace,delete_note,edit_note
 #template view to quickly show temporary dashboard
 from django.views.generic import TemplateView
 from django.conf import settings
@@ -55,6 +55,12 @@ urlpatterns = [
     path('search/', global_search, name='global_search'),
     path('feedback/', feedback, name='feedback'),
     path('invite_peer/',invite_peer,name='invite_peer'),
+    path('knowledge-vault/', knowledge_vault, name='knowledge_vault'),
+    path('thread/<int:thread_id>/bookmark/',toggle_bookmark, name='toggle_bookmark'),
+     path('workspace/', private_workspace, name='private_workspace'),
+    path('workspace/note/<int:note_id>/delete/', delete_note, name='delete_note'),
+    path('workspace/note/<int:note_id>/edit/', edit_note, name='edit_note'),
+
 
 ]
 

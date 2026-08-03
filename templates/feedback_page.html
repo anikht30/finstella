@@ -13,7 +13,7 @@
         /* border: 1px solid #E2E8F0; */
         box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         /* padding: 40px; */
-        margin-top:10px;
+        margin-top:1px;
         margin-bottom:10px;
     }
 
@@ -154,6 +154,18 @@
 </style>
 
     <div class="active-discussion-box">
+    <div class="active-discussion-title">
+                <h4>Feedback</h4>
+                {% comment %} <a href={%url "acive_discussion"%}>View all</a> {% endcomment %}
+                   <a href="javascript:history.back()" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back
+            </a>
+
+            </div>    
+
+
+
     <div class="main-content" style="grid-column: span 12;">
         
         <div class="feedback-container">

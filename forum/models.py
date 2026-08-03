@@ -100,6 +100,8 @@ class Thread(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     upvotes = models.IntegerField(default=0)
     is_pinned = models.BooleanField(default=False)
+    # This creates a hidden relationship between users and threads they want to save
+    saved_by = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='saved_threads', blank=True)
 
     @property
     def unique_author_count(self):
@@ -255,3 +257,25 @@ class Feedback(models.Model):
 
     def __str__(self):
         return f"[{self.feedback_type}] {self.title} by {self.user.first_name}"
+
+
+
+
+class PrivateNote(models.Model):
+    # Strictly ties the note to the specific user. 
+    # If the user is deleted, their notes are deleted (CASCADE).
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='private_notes')
+    
+    title = models.CharField(max_length=200, blank=True)
+    content = models.TextField()
+    
+    # Automatically tracks when the note was created and last edited
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        # Puts the most recently edited notes at the top of the list
+        ordering = ['-updated_at']
+
+    def __str__(self):
+        return f"{self.title} - {self.user.username}"

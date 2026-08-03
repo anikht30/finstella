@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Knowledge Vault{% endblock %}
+
+{% block maincontent %}
+<div class="active-discussion-box tab-content active" id="vault-thred" style="display: block;">
+
+    <div class="active-discussion-title" style="margin-bottom: 5px;">
+        <h4>
+            {% comment %} <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 8px; padding-bottom: 3px;">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg> {% endcomment %}
+            Knowledge Vault
+        </h4>
+         <a href="javascript:history.back()" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back
+            </a>
+        {% comment %} <p style="color: #64748B; font-size: 13px; font-weight: 500;">Your personal collection of saved insights and discussions.</p> {% endcomment %}
+    </div>
+
+    {% for thread in saved_threads %}     
+    <article>
+        <div class="thread">
+            <div class="thred-details">
+                <!-- AUTHOR SECTION -->
+                <div class="author-thred">   
+                    <div class="author-details">
+                        <div class="author-icon">
+                            <a href="{% url 'member_profile' thread.author.id %}">
+                                {% if thread.author.profile_picture %}
+                                    <img src="{{ thread.author.profile_picture.url }}" alt="{{ thread.author.first_name }}">
+                                {% else %}
+                                    <div class="initial">
+                                        {{ thread.author.first_name|first }}{{ thread.author.last_name|first }}
+                                    </div>
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class="author-name">
+                            <h4>{{ thread.author.first_name }} {{ thread.author.last_name }}</h4>
+                            <h6>{{ thread.author.title }} at {{ thread.author.company }}</h6>
+                        </div>
+                    </div> 
+
+                     <a href="{% url 'thread_detail' thread.id %}" style="text-decoration: none; color: inherit; display: block;">    
+                    <div class="thread-cateogory">   
+                    <h5> {{thread.category}} </h5>
+                    
+                    {% comment %} <h6 class="time-ago">{{ thread.created_at|timesince }} ago</h6> {% endcomment %}
+                    </div>
+                    </div>
+                    <h2>{{thread.title}}</h2>
+                    <p>{{thread.content}}</p>
+                    </a>
+                    </div>
+                    
+        </div> 
+        
+        <!-- FOOTER & REMOVE BUTTON -->
+        <div class="thread-belongs" style="justify-content: space-between; align-items: center;">
+            <div class="time-ago" style="color: #199A7A;">                   
+                <h5>(Posted on {{ thread.created_at|date:"M j, Y" }})</h5>
+            </div>
+            
+            <!-- Remove from Vault Button -->
+            <form action="{% url 'toggle_bookmark' thread.id %}" method="POST" style="margin: 0;">
+                {% csrf_token %}
+                <button type="submit" style="background: none; border: none; color: #EF4444; font-weight: 600; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 5px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path><line x1="18" y1="9" x2="6" y2="9"></line></svg>
+                    Remove
+                </button>
+            </form>
+        </div> 
+    </article>    
+    
+    {% empty %}
+    <div style="text-align: center; padding: 60px 20px; background: #fff; border-radius: 12px; border: 1px solid #cbd5e1; margin-top: 10px;margin-bottom:10px;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="1.5" style="margin-bottom: 15px;">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <h3 style="font-size: 18px; color: #1E293B; font-weight: 600; margin-bottom: 8px; font-family: 'Lora', serif;">Your vault is empty.</h3>
+        <p style="font-size: 14px; color: #64748B;">When you find a discussion you want to reference later, click the "Save" icon to add it here.</p>
+    </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

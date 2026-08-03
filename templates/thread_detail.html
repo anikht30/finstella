@@ -85,6 +85,22 @@
                          
                     </div>
                     {% endif %}
+
+                    <form action="{% url 'toggle_bookmark' thread.id %}" method="POST" style="display: inline-block;">
+    {% csrf_token %}
+    <button type="submit" style="background: none; border: none; cursor: pointer; color: #64748B; display: flex; align-items: center; gap: 5px; font-weight: 600; font-family: 'Syne', sans-serif;">
+        
+        <!-- If the user has already saved it, show a filled-in icon. If not, show an outline. -->
+        {% if request.user in thread.saved_by.all %}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#199A7A" stroke="#199A7A" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+            Saved
+        {% else %}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+            Save to Vault
+        {% endif %}
+        
+    </button>
+</form>
                     
                 </div>
         

@@ -34,6 +34,46 @@
 
 </head>
 <body>
+     <!-- GLOBAL MESSAGES SYSTEM -->
+    {% if messages %}
+        <div id="toast-container" style="position: fixed; top: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 10px;">
+            {% for message in messages %}
+                <div class="finstella-toast" style="background: #ffffff; border-left: 4px solid {% if message.tags == 'error' %}#EF4444{% else %}#199A7A{% endif %}; box-shadow: 0 10px 25px rgba(0,0,0,0.1); padding: 16px 24px; border-radius: 8px; display: flex; align-items: center; gap: 12px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600; color: #1E293B; min-width: 250px; transform: translateX(120%); animation: slideIn 0.4s forwards ease-out;">
+                    
+                    {% if message.tags == 'error' %}
+                        <!-- Red Error Icon -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    {% else %}
+                        <!-- Green Success Icon -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#199A7A" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    {% endif %}
+                    
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Animation & Auto-Close Logic -->
+        <style>
+            @keyframes slideIn {
+                to { transform: translateX(0); }
+            }
+            @keyframes fadeOut {
+                to { opacity: 0; transform: translateY(-10px); }
+            }
+        </style>
+        <script>
+            // Make the toasts disappear automatically after 4 seconds
+            setTimeout(function() {
+                const toasts = document.querySelectorAll('.finstella-toast');
+                toasts.forEach(toast => {
+                    toast.style.animation = 'fadeOut 0.4s forwards ease-in';
+                    // Remove from the DOM completely after fade out
+                    setTimeout(() => toast.remove(), 400); 
+                });
+            }, 4000);
+        </script>
+    {% endif %}
 <header>
         <div class="header">
            
@@ -162,6 +202,7 @@
         </div>
 
         <!-- Overlapping Profile Picture -->
+         <a href="{% url 'profile' %}" style="text-decoration:none">
    <div class="card-avatar-wrapper">
              {% if request.user.profile_picture %}
                 <img src="{{ request.user.profile_picture.url }}" alt="{{ request.user.first_name }}" class="card-avatar">
@@ -171,6 +212,7 @@
                 </div>
              {% endif %}
         </div>
+        </a>
 
         <!-- Identity Details -->
         <div class="card-info">
@@ -263,7 +305,7 @@
             <img src="{% static 'icons/bookmark.svg' %}" alt="">
             Member Directory
         </a>
-        <a href="#" class="menu">
+        <a href="{% url 'knowledge_vault' %}" class="menu">
             <img src="{% static 'icons/Knowledge.svg' %}" alt="">
             Knowledge Vault
         </a>
@@ -271,6 +313,10 @@
             <img src="{% static 'icons/bookmark.svg' %}" alt="">
             Webinar & Events
         </a>
+        <a href="{% url 'private_workspace' %}" class="menu {% if request.resolver_match.url_name == 'private_workspace' %}active-menu{% endif %}">
+        <img src="{% static 'icons/expertcircle.svg' %}" alt=""> <!-- Use whatever icon fits best -->
+        My Workspace
+    </a>
     </nav>
     <!--menu list end-->
             

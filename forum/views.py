@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, get_user_model
-from .models import CustomUser, Thread, Category,Reply,Event,SubReply,EventRegistration,Notifications,Feedback
+from .models import CustomUser, Thread, Category,Reply,Event,SubReply,EventRegistration,Notifications,Feedback,PrivateNote
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .forms import ProfileUpdateForm
@@ -384,6 +384,7 @@ def edit_profile(request):
         form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
+            messages.success(request,"Profile Updated Successfully!")
             return redirect('profile')
         
     else:
@@ -650,3 +651,97 @@ def feedback(request):
 def invite_peer(request):
     return render(request, 'invite_a_peer_page.html')
 
+
+
+
+# The knowledge valut page
+@login_required
+def knowledge_vault(request):
+     
+     # This fetches ONLY the threads the logged-in user has saved
+     saved_threads = request.user.saved_threads.all().order_by('-created_at')
+     context = {
+         'saved_threads':saved_threads
+     }
+
+     return render(request, 'knowledge_vault.html',context) 
+
+
+
+# button login save / unsave 
+@login_required
+def toggle_bookmark(request, thread_id):
+    thread = get_object_or_404(Thread, id=thread_id)
+
+    # if its save already save it remove it (unsave)
+    if request.user in thread.saved_by.all():
+        thread.saved_by.remove(request.user)
+        messages.success(request,"Removed from Knowledge Vault")
+
+    # if they haven't saved it, add it (save)
+    else:
+        thread.saved_by.add(request.user)
+        messages.success(request, "Saved to Knowledge Vault")
+
+    # sends right back to the exact page user were just on
+
+    return redirect(request.META.get('HTTP_REFERER', 'dashboard'))
+
+
+
+@login_required
+def private_workspace(request):
+    # 1. Handle saving a new note
+    if request.method == 'POST':
+        title = request.POST.get('title', '').strip()
+        content = request.POST.get('content', '').strip()
+        
+        # Give it a default title if the user left it blank
+        if not title and content:
+            title = "Untitled Note"
+            
+        if content:
+            PrivateNote.objects.create(
+                user=request.user, 
+                title=title, 
+                content=content
+            )
+            messages.success(request, "Note saved to your private workspace.")
+            return redirect('private_workspace')
+
+    # 2. Fetch all existing notes ONLY for the logged-in user
+    notes = PrivateNote.objects.filter(user=request.user)
+    
+    return render(request, 'private_workspace.html', {'notes': notes})
+
+@login_required
+def delete_note(request, note_id):
+    # Ensure they can only delete their OWN notes
+    note = get_object_or_404(PrivateNote, id=note_id, user=request.user)
+    
+    if request.method == 'POST':
+        note.delete()
+        messages.success(request, "Note deleted.")
+        
+    return redirect('private_workspace')
+
+@login_required
+def edit_note(request, note_id):
+    # Ensure they can only edit their OWN notes
+    note = get_object_or_404(PrivateNote, id=note_id, user=request.user)
+    
+    if request.method == 'POST':
+        title = request.POST.get('title', '').strip()
+        content = request.POST.get('content', '').strip()
+        
+        if not title and content:
+            title = "Untitled Note"
+            
+        if content:
+            note.title = title
+            note.content = content
+            note.save()
+            messages.success(request, "Note updated successfully.")
+            return redirect('private_workspace')
+            
+    return render(request, 'edit_note.html', {'note': note})

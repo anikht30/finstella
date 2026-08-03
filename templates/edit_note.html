@@ -1,0 +1,143 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Editing Note - {{ note.title }}{% endblock %}
+
+{% block maincontent %}
+<style>
+    .workspace-header {
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .workspace-header h1 {
+        font-family: 'Lora', serif;
+        font-size: 32px;
+        color: #199A7A;
+        font-style: italic;
+        margin-bottom: 4px;
+    }
+    
+    .workspace-header p {
+        color: #64748B;
+        font-family: 'Syne', sans-serif;
+        font-size: 14px;
+    }
+
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: #f1f5f9;
+        color: #64748B;
+        border-radius: 50%;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .back-btn:hover {
+        background: #e2e8f0;
+        color: #1E293B;
+    }
+
+    /* Note Input Area (Focus Mode) */
+    .note-edit-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        padding: 30px;
+        margin-bottom: 40px;
+        border: 1px solid #199A7A; /* Green border immediately indicates edit mode */
+    }
+
+    .note-title-input {
+        width: 100%;
+        border: none;
+        font-family: 'Syne', sans-serif;
+        font-size: 22px;
+        font-weight: 600;
+        color: #1E293B;
+        margin-bottom: 20px;
+        outline: none;
+        background: transparent;
+    }
+
+    .note-content-input {
+        width: 100%;
+        border: none;
+        font-family: 'Syne', sans-serif;
+        font-size: 15px;
+        color: #475569;
+        min-height: 400px; /* Taller default height for editing */
+        resize: vertical;
+        outline: none;
+        background: transparent;
+        line-height: 1.7;
+    }
+
+    .note-submit-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        border-top: 1px solid #F1F5F9;
+        padding-top: 20px;
+    }
+
+    .update-note-btn {
+        background: #199A7A;
+        color: #fff;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+        font-family: inherit;
+        font-size: 15px;
+    }
+    
+    .update-note-btn:hover {
+        background: #128266;
+    }
+</style>
+
+<div class="active-discussion-box">
+<div class="main-content" style="grid-column: span 12;">
+    
+    <div class="workspace-header">
+        <a href="{% url 'private_workspace' %}" class="back-btn" title="Back to Workspace">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </a>
+        <div>
+            <h1>Edit Note</h1>
+            <p>Focus Mode</p>
+        </div>
+    </div>
+
+    <!-- UPDATE NOTE FORM -->
+    <div class="note-edit-card">
+        <form action="{% url 'edit_note' note.id %}" method="POST">
+            {% csrf_token %}
+            <!-- Value attribute pre-loads the existing title -->
+            <input type="text" name="title" class="note-title-input" value="{{ note.title }}" placeholder="Give your note a title (optional)...">
+            
+            <!-- Textarea must wrap its content inside the tags, not using a value attribute -->
+            <textarea name="content" class="note-content-input" placeholder="Start typing your private notes here..." required>{{ note.content }}</textarea>
+            
+            <div class="note-submit-bar">
+                <span style="font-size: 12px; color: #94A3B8; font-family: 'Syne', sans-serif;">
+                    Last edited: {{ note.updated_at|date:"g:i A \o\n M j, Y" }}
+                </span>
+                <button type="submit" class="update-note-btn">Update Note</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+</div>
+{% endblock %}

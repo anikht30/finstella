@@ -61,7 +61,7 @@
             <div class="active-discussion-title">
                 <h4>Discussion on {{category.name}}</h4>
                 {% comment %} <a href={%url "acive_discussion"%}>View all</a> {% endcomment %}
-                       <a href="javascript:history.back()" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: #64748B; font-family: inherit; font-weight: 600; font-size: 13px; transition: color 0.2s;">
+                       <a href="javascript:history.back()" class="back-link">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             Back
             </a>
@@ -144,7 +144,7 @@
            
            {% empty %}
 
-        <div style="text-align: center; padding: 50px 20px; border-radius: 12px; background: #fff; border: 1px dashed #cbd5e1; margin-bottom: 10px;">
+        <div style="text-align: center; padding: 50px 20px; border-radius: 12px; background: #fff; border: 1px solid #cbd5e1; margin-bottom: 10px;">
     <h3 style="font-size: 18px; color: #1E293B; font-weight: 600; margin-bottom: 8px; font-family: 'Lora', serif;">This topic is waiting for a leader.</h3>
     <p style="font-size: 14px; color: #64748B; margin-bottom: 20px;">There are no discussions in this category yet. Take the initiative and spark the conversation.</p>
     <button onclick="openDiscussionModal()" style="background: #199A7A; color: white; border: none; padding: 8px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: all 0.2s;">
