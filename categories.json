@@ -1,0 +1,146 @@
+[
+{
+    "model": "forum.category",
+    "pk": 6,
+    "fields": {
+        "name": "Capital Allocation & Treasury",
+        "slug": "capital-allocation-treasury"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 7,
+    "fields": {
+        "name": "FP&A & Forecasting",
+        "slug": "fpa-forecasting"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 8,
+    "fields": {
+        "name": "Risk Management & Compliance",
+        "slug": "risk-management-compliance"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 9,
+    "fields": {
+        "name": "Board & Investor Relations",
+        "slug": "board-investor-relations"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 10,
+    "fields": {
+        "name": "Precision planning",
+        "slug": "precision-planning"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 11,
+    "fields": {
+        "name": "Cybersecurity threats",
+        "slug": "cybersecurity-threats"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 12,
+    "fields": {
+        "name": "Real-time data",
+        "slug": "real-time-data"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 13,
+    "fields": {
+        "name": "Cash flow monitoring",
+        "slug": "cash-flow-monitoring"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 14,
+    "fields": {
+        "name": "Managing debt",
+        "slug": "managing-debt"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 15,
+    "fields": {
+        "name": "Tax compliance",
+        "slug": "tax-compliance"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 16,
+    "fields": {
+        "name": "Complex operations",
+        "slug": "complex-operations"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 17,
+    "fields": {
+        "name": "Optimizing processes",
+        "slug": "optimizing-processes"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 18,
+    "fields": {
+        "name": "Lack of business insights",
+        "slug": "lack-of-business-insights"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 19,
+    "fields": {
+        "name": "Manual tasks",
+        "slug": "manual-tasks"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 20,
+    "fields": {
+        "name": "Lack of collaboration",
+        "slug": "lack-of-collaboration"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 21,
+    "fields": {
+        "name": "Disconnected systems",
+        "slug": "disconnected-systems"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 22,
+    "fields": {
+        "name": "Sticking to budgets",
+        "slug": "sticking-to-budgets"
+    }
+},
+{
+    "model": "forum.category",
+    "pk": 23,
+    "fields": {
+        "name": "Spend management and cost control",
+        "slug": "spend-management-and-cost-control"
+    }
+}
+]
