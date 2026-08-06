@@ -1311,6 +1311,7 @@ article:hover{
             font-weight: 500;
             color: #1E293B;
             margin: 0 0 4px 0;
+            text-transform: capitalize;
         }
 
         .card-title {

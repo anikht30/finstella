@@ -1,0 +1,140 @@
+{% extends "fellowship.html" %}
+{% load static %}
+
+{% block loginlogout %}
+
+<div style="display: flex; flex-direction: column; align-items: flex-end; width: 100%;">
+    
+    <!-- Login Form with Clean White Card Styling -->
+    <form method="POST" action="{% url 'login' %}" style="display: flex; flex-direction: row; gap: 10px; align-items: flex-start; justify-content: flex-end;">
+        {% csrf_token %}
+        
+        <!-- Error Messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <div style="background: rgba(224, 62, 62, 0.1); border: 1px solid rgba(224, 62, 62, 0.3); color: #EF4444; font-size: 13px; padding: 12px; border-radius: 6px; margin-bottom: 16px; text-align: center; font-weight: 500; position: absolute; top: -50px; right: 0;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <!-- Grid Layout to Perfectly Align Inputs, Links, and Pipe -->
+        <div style="display: grid; grid-template-columns: 260px auto 260px; row-gap: 8px; column-gap: 10px; align-items: center;">
+            
+            <!-- Row 1: Inputs -->
+            <input type="text" name="username" placeholder="Work Email" autocomplete="username" required 
+                style="width: 100%; padding: 6px 14px; background: rgba(255, 255, 255, 0.95); border: 1px solid #CBD5E1; border-radius: 6px; font-size: 14px; color: #1E293B; outline: none; transition: border 0.2s; font-family: 'Inter', sans-serif;" 
+                onfocus="this.style.borderColor='#199A7A'" 
+                onblur="this.style.borderColor='#CBD5E1'" />
+            
+            <div></div> <!-- Empty middle space for the gap -->
+
+            <input type="password" name="password" placeholder="Password" autocomplete="current-password" required 
+                style="width: 100%; padding: 6px 14px; background: rgba(255, 255, 255, 0.95); border: 1px solid #CBD5E1; border-radius: 6px; font-size: 14px; color: #1E293B; outline: none; transition: border 0.2s; font-family: 'Inter', sans-serif;" 
+                onfocus="this.style.borderColor='#199A7A'" 
+                onblur="this.style.borderColor='#CBD5E1'" />
+
+            <!-- Row 2: Links & Pipe -->
+        
+        
+        
+        <div style="text-align: right;">
+            <a href="javascript:void(0);" onclick="document.getElementById('applyModal').style.display='flex'" style="font-size: 13px; color: #199A7A; text-decoration: none; font-family: 'Inter', sans-serif; font-weight: 600; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Apply for membership</a>
+        </div>
+        
+        <div style="text-align: center; color: #94A3B8; font-size: 14px; line-height: 1;">|</div>
+        
+        <div style="text-align: left;">
+            <a href="{% url 'password_reset' %}" style="font-size: 13px; color: #64748B; text-decoration: none; font-family: 'Inter', sans-serif; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#199A7A'" onmouseout="this.style.color='#64748B'">Forgot password?</a>
+        </div>
+       
+            
+           
+        </div>
+
+        <!-- Action Button -->
+        <button type="submit" 
+            style="padding: 6px 20px; background: #199A7A; color: white; font-weight: 600; font-size: 14px; border: 1px solid #199A7A; border-radius: 6px; cursor: pointer; transition: background 0.2s; font-family: 'Inter', sans-serif; white-space: nowrap; height: fit-content;" 
+            onmouseover="this.style.background='#128266'" 
+            onmouseout="this.style.background='#199A7A'">
+            Sign In
+        </button>
+        
+    </form>
+
+</div>
+
+<!-- Membership Application Modal (Hidden by default) -->
+<div id="applyModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center;">
+    
+    <div style="background: #Faf6f2; width: 90%; max-width: 500px; border: 1px solid rgba(4, 44, 26, 0.08); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); position: relative; padding: 32px; animation: modalFadeIn 0.3s ease-out;">
+        
+        <!-- Close Button -->
+        <button onclick="document.getElementById('applyModal').style.display='none'" style="position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 28px; color: #94A3B8; cursor: pointer; transition: color 0.2s;" onmouseover="this.style.color='#1E293B'" onmouseout="this.style.color='#94A3B8'">
+            &times;
+        </button>
+        
+        <!-- Branding Header -->
+        <div style="text-align: center; margin-bottom: 24px;">
+            <div style="font-family: 'Lora', serif; font-size: 28px; color: #199A7A; font-weight: 700; font-style: italic; margin-bottom: 8px;">
+                Request Access
+            </div>
+            <p style="font-family: 'Syne', sans-serif; font-size: 13px; color: #64748B; line-height: 1.5; margin: 0;">
+                Membership is vetted — CFOs & Finance Leaders only.
+            </p>
+        </div>
+        
+        <form action="{% url 'apply' %}" method="POST">
+            {% csrf_token %}
+            
+            <!-- Row 1: Side-by-side Names -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                <div style="display: flex; flex-direction: column; text-align: left;">
+                    <label for="first_name" style="font-family: 'Syne', sans-serif; font-size: 12px; color: #1E293B; font-weight: 600; margin-bottom: 6px;">First Name</label>
+                    <input type="text" id="first_name" name="first_name" autocomplete="given-name" required style="width: 100%; padding: 10px 14px; background: #fff; color: #1E293B; border: 1px solid rgba(4, 44, 26, 0.15); border-radius: 8px; outline: none; font-family: 'Syne', sans-serif; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#199A7A'" onblur="this.style.borderColor='rgba(4, 44, 26, 0.15)'" />
+                </div>
+                <div style="display: flex; flex-direction: column; text-align: left;">
+                    <label for="last_name" style="font-family: 'Syne', sans-serif; font-size: 12px; color: #1E293B; font-weight: 600; margin-bottom: 6px;">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" autocomplete="family-name" required style="width: 100%; padding: 10px 14px; background: #fff; color: #1E293B; border: 1px solid rgba(4, 44, 26, 0.15); border-radius: 8px; outline: none; font-family: 'Syne', sans-serif; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#199A7A'" onblur="this.style.borderColor='rgba(4, 44, 26, 0.15)'" />
+                </div>
+            </div>
+
+            <!-- Row 2: Email -->
+            <div style="display: flex; flex-direction: column; text-align: left; margin-bottom: 16px;">
+                <label for="email" style="font-family: 'Syne', sans-serif; font-size: 12px; color: #1E293B; font-weight: 600; margin-bottom: 6px;">Work Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" required style="width: 100%; padding: 10px 14px; background: #fff; color: #1E293B; border: 1px solid rgba(4, 44, 26, 0.15); border-radius: 8px; outline: none; font-family: 'Syne', sans-serif; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#199A7A'" onblur="this.style.borderColor='rgba(4, 44, 26, 0.15)'" />
+            </div>
+
+            <!-- Row 3: Side-by-side Professional Info -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                <div style="display: flex; flex-direction: column; text-align: left;">
+                    <label for="title" style="font-family: 'Syne', sans-serif; font-size: 12px; color: #1E293B; font-weight: 600; margin-bottom: 6px;">Current Title</label>
+                    <input type="text" id="title" name="title" placeholder="e.g. CFO" autocomplete="organization-title" required style="width: 100%; padding: 10px 14px; background: #fff; color: #1E293B; border: 1px solid rgba(4, 44, 26, 0.15); border-radius: 8px; outline: none; font-family: 'Syne', sans-serif; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#199A7A'" onblur="this.style.borderColor='rgba(4, 44, 26, 0.15)'" />
+                </div>
+                <div style="display: flex; flex-direction: column; text-align: left;">
+                    <label for="company" style="font-family: 'Syne', sans-serif; font-size: 12px; color: #1E293B; font-weight: 600; margin-bottom: 6px;">Company</label>
+                    <input type="text" id="company" name="company" autocomplete="organization" required style="width: 100%; padding: 10px 14px; background: #fff; color: #1E293B; border: 1px solid rgba(4, 44, 26, 0.15); border-radius: 8px; outline: none; font-family: 'Syne', sans-serif; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#199A7A'" onblur="this.style.borderColor='rgba(4, 44, 26, 0.15)'" />
+                </div>
+            </div>
+
+            <!-- Row 4: LinkedIn -->
+            <div style="display: flex; flex-direction: column; text-align: left; margin-bottom: 28px;">
+                <label for="linkedin_url" style="font-family: 'Syne', sans-serif; font-size: 12px; color: #1E293B; font-weight: 600; margin-bottom: 6px;">LinkedIn Profile URL</label>
+                <input type="url" id="linkedin_url" name="linkedin_url" placeholder="https://linkedin.com/in/..." autocomplete="url" required style="width: 100%; padding: 10px 14px; background: #fff; color: #1E293B; border: 1px solid rgba(4, 44, 26, 0.15); border-radius: 8px; outline: none; font-family: 'Syne', sans-serif; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#199A7A'" onblur="this.style.borderColor='rgba(4, 44, 26, 0.15)'" />
+            </div>
+            
+            <button type="submit" style="width: 100%; padding: 12px; background: #199A7A; color: white; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 15px; border: none; border-radius: 8px; cursor: pointer; transition: background 0.2s, transform 0.1s;" onmouseover="this.style.background='#128266'" onmouseout="this.style.background='#199A7A'" onmousedown="this.style.transform='scale(0.98)'" onmouseup="this.style.transform='scale(1)'">
+                Submit Application
+            </button>
+        </form>
+    </div>
+</div>
+
+<style>
+    @keyframes modalFadeIn {
+        from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+</style>
+
+{% endblock %}

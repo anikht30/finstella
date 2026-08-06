@@ -1,8 +1,10 @@
 
-{% extends "layout.html" %}
+{% extends "layout_dashboard.html" %}
 {%load static%}
 
   {% block title %} | Dashboard{%endblock%}
+
+  {% block  reportname %}<h4>Dashboard</h4>{% endblock  %}
 
    {% block maincontent %}
         <div class="post-question">
@@ -27,12 +29,12 @@
 <!-- 2. THE MODAL HTML (Paste this near the bottom of your body tag) -->
 <div id="queryModalOverlay" class="modal-overlay">
     <!-- Modal Content Box -->
-    <div class="modal-content cta-inner">
+    <div class="modal-content cta-inner" >
         
         <!-- Close Button -->
         <span class="close-btn" onclick="closeDiscussionModal()">&times;</span>
         
-        <div class="sec-eyebrow" style="justify-content: flex-start; padding-left:20px; font-family-inherit;font-weight:600;font-size:12px;">New Query</div>
+        <div class="sec-eyebrow" style="justify-content: flex-start; padding-left:20px; font-family-inherit;font-weight:600;font-size:12px;animation: modalFadeIn 0.3s ease-out;">New Query</div>
         {% comment %} <h2 class="sec-h2" style="text-align: left; margin-bottom: 24px;">What's on your mind?</h2> {% endcomment %}
 
         <div class="cta-form" style="text-align: left; padding:10px; font-family:inherit;">

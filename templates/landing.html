@@ -46,10 +46,11 @@
                 </p>
 
                 <div class="cta-group">
-                    <a href="{% url 'apply'%}" class="apply-btn">Apply to become a member</a>
-                    <span style= "color:#199A7A; font-size:20px; font-weight:700">|</span>
+                    <a href="{% url 'login' %}" class="apply-btn">Why become a Member →</a>
+                    {% comment %} <span style= "color:#199A7A; font-size:20px; font-weight:700">|</span> {% endcomment %}
                     {% comment %} <h6> | </h6> {% endcomment %}
-                    <a href="{% url 'fellowship' %}" class="why-link">About the fellowship →</a>
+                    {% comment %} <a href="{% url 'fellowship' %}" class="why-link">About the fellowship →</a> {% endcomment %}
+                    {% comment %} <a href="{% url 'login' %}" class="why-link">Members Login →</a> {% endcomment %}
                 </div>
 
                 
@@ -64,7 +65,8 @@
 
 
         <div class="right-pane">
-           <div class='top-nav'>
+          
+     <div class='top-nav'>
                {% comment %} <a href="#">Home</a>
                <a href="#">Members</a>
                <a href="#">Message</a>
@@ -76,6 +78,7 @@
            
            </div>
 
+          
   
   
   
@@ -167,7 +170,7 @@
 </script>
 
     <div class="bottom-pane">
-        <h6>By proceeding to Sign Up or Sign In, you agree to Finstella's <a href="#">User Agreement</a>, <a href="#">Privacy Policy</a>, and <a href="#">Cookie Policy</a>.</h6>
+        <h6>By proceeding to Sign Up or Sign In, you agree to Finstella's <a href="{% url 'terms' %}">Terms & Conditions</a>, <a href="{% url 'privacy' %}">Privacy Policy</a>, <a href="{% url 'disclaimer' %}">Disclaimer</a> and <a href="{% url 'about' %}">About Us</a>.</h6>
     </div>       
     
 </body>

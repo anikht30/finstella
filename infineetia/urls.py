@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from forum.views import landing_page,apply_view,userexists,login_view,logout_view,dashboard_view,thread_detail_view,create_thread_view,member_directory_view,add_subreply,profile_view,edit_profile,member_profile
 from forum.views import all_active_discussion_view,all_new_discussion_view,my_discussion_view,events_page,create_event,register_for_event
 from forum.views import mark_notification_read,category_list_view,category_details,global_search,feedback,invite_peer,knowledge_vault,toggle_bookmark,private_workspace,delete_note,edit_note
@@ -23,9 +23,11 @@ from forum.views import mark_notification_read,category_list_view,category_detai
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('admin/doc/',include('django.contrib.admindocs.urls')),
     path('', landing_page, name='landing_page'),
     path('apply/',apply_view, name='apply'),
     path('userexists/',userexists, name='userexists'),
@@ -57,12 +59,24 @@ urlpatterns = [
     path('invite_peer/',invite_peer,name='invite_peer'),
     path('knowledge-vault/', knowledge_vault, name='knowledge_vault'),
     path('thread/<int:thread_id>/bookmark/',toggle_bookmark, name='toggle_bookmark'),
-     path('workspace/', private_workspace, name='private_workspace'),
+    path('workspace/', private_workspace, name='private_workspace'),
     path('workspace/note/<int:note_id>/delete/', delete_note, name='delete_note'),
     path('workspace/note/<int:note_id>/edit/', edit_note, name='edit_note'),
+    path('about-us/',TemplateView.as_view(template_name='about.html'), name='about'),
+    path('privacy-policy/', TemplateView.as_view(template_name='privacy.html'), name='privacy'),
+    path('terms-and-conditions/', TemplateView.as_view(template_name='terms.html'), name='terms'),
+    path('disclaimer/', TemplateView.as_view(template_name='disclaimer.html'), name='disclaimer'),
+
+    #password set url
+    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='password_reset_form.html'), name='password_reset'),
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
 
 
 ]
+
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

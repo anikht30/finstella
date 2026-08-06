@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions — Finstella</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="{% static 'icons/finstellaBrowser.png' %}">
+    
+    <style>
+        body { background: #F8FAFC; margin: 0; padding: 0; font-family: 'Syne', sans-serif; color: #1E293B; }
+        
+        .public-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #fff; border-bottom: 1px solid #E2E8F0; }
+        .public-nav img { height: 30px; }
+        .back-link { color: #64748B; text-decoration: none; font-weight: 600; font-size: 14px; transition: color 0.2s; }
+        .back-link:hover { color: #199A7A; }
+        
+        .legal-container { max-width: 800px; margin: 60px auto; background: #fff; padding: 50px 60px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #E2E8F0; }
+        .legal-header { text-align: center; margin-bottom: 40px; }
+        .legal-header h1 { font-family: 'Lora', serif; font-size: 36px; color: #199A7A; font-style: italic; margin-bottom: 10px; margin-top: 0; }
+        
+        .legal-content h3 { font-family: 'Syne', sans-serif; font-size: 18px; color: #1E293B; margin-top: 35px; margin-bottom: 15px; }
+        .legal-content p { font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 16px; }
+        .legal-content ul { margin-bottom: 20px; padding-left: 20px; }
+        .legal-content li { font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 10px; }
+        .legal-content strong { color: #1E293B; }
+        
+        @media (max-width: 768px) {
+            .public-nav { padding: 15px 20px; }
+            .legal-container { padding: 30px 20px; margin: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="public-nav">
+        <a href="/">
+            <img src="{% static 'finstella.svg' %}" alt="Finstella Logo">
+        </a>
+        <a href="/" class="back-link">← Back to Home</a>
+    </nav>
+    
+    <div style="padding: 0 20px;">
+        <div class="legal-container">
+            <div class="legal-header">
+                <h1>Terms & Conditions</h1>
+            </div>
+            
+            <div class="legal-content">
+                <p>Welcome to Finstella. These Terms & Conditions ("Terms") govern your access to and use of our peer network, query forum, update sharing features, and event management platform. By accessing or using Finstella, you enter into a binding legal contract with the Company.</p>
+
+                <h3>1. Eligibility and Professional Verification</h3>
+                <p>Access to Finstella is restricted to certified, practicing, or accredited finance professional leaders, including but not limited to Chartered Accountants, Certified Public Accountants, CFA Charterholders, corporate finance executives, investment analysts, tax advisors, and financial consultants. You warrant that all information provided during registration is accurate and truthful. We reserve the absolute right to suspend or reject any application or account failing professional verification standards.</p>
+
+                <h3>2. Account Responsibilities</h3>
+                <p>You are solely responsible for maintaining the confidentiality of your login credentials and for all activities occurring under your account. You agree to notify us immediately of any unauthorized access or security breach. Accounts are non-transferable.</p>
+
+                <h3>3. User Conduct and Professional Forum Rules</h3>
+                <p>Users must adhere to professional decorum. You expressly agree NOT to:</p>
+                <ul>
+                    <li>Post or transmit any material that is confidential, proprietary, or subject to Non-Disclosure Agreements (NDAs), trade secret protections, or insider trading restrictions.</li>
+                    <li>Post identifying client data, sensitive personal information, or proprietary financial models without explicit authorization.</li>
+                    <li>Submit material that is fraudulent, misleading, defamatory, obscene, harassing, or illegal.</li>
+                    <li>Engage in uncompetitive behavior, market manipulation, or price-fixing collusion under antitrust and competition laws.</li>
+                    <li>Engage in unsolicited commercial promotion, spamming, cold prospecting, or mass harvesting of member contact information.</li>
+                    <li>Upload malware, viruses, or run automated web scrapers, bots, or data mining software against the Platform.</li>
+                </ul>
+
+                <h3>4. Content Ownership and License</h3>
+                <ul>
+                    <li><strong>Your Content:</strong> You retain ownership of all intellectual property rights in the technical queries, responses, articles, and updates you publish on Finstella.</li>
+                    <li><strong>License to Platform:</strong> By posting content on or through Finstella, you grant us a worldwide, non-exclusive, royalty-free, sublicensable license to host, display, reproduce, distribute, format, and translate your content for the operation, promotional, and analytical purposes of the Platform.</li>
+                </ul>
+
+                <h3>5. Webinars and Offline Events Participation</h3>
+                <p>The Platform organizes and hosts digital webinars and offline physical networking events:</p>
+                <ul>
+                    <li><strong>Code of Conduct:</strong> Attendees must exhibit professional conduct at all events. The Company reserves the right to remove any individual engaging in disruptive behavior without refund.</li>
+                    <li><strong>Event Recordings & Photography:</strong> Virtual webinars and physical events may be recorded, livestreamed, or photographed. By attending, you grant the Platform the right to use your voice, image, and statements in post-event recordings, educational archives, and marketing materials.</li>
+                    <li><strong>Ticketing & Access:</strong> Access tickets are personal to the registrant and cannot be resold or shared without prior written consent.</li>
+                </ul>
+
+                <h3>6. Intellectual Property Rights</h3>
+                <p>All rights, title, and interest in and to Finstella (excluding user-generated content), including software, interface designs, trademarks, logos, domain names, and branding elements, are the exclusive property of the Company or its licensors.</p>
+
+                <h3>7. Limitation of Liability and Indemnification</h3>
+                <p>To the maximum extent permitted by law, the Company, its directors, employees, and affiliates shall not be liable for any indirect, incidental, consequential, special, or punitive damages, or any loss of profits, revenue, data, or business opportunities arising out of or in connection with your use of Finstella.</p>
+                <p>You agree to indemnify, defend, and hold harmless the Company from and against any claims, damages, liabilities, costs, and expenses (including legal fees) arising from your breach of these Terms or infringement of third-party rights.</p>
+
+                <h3>8. Governing Law and Dispute Resolution</h3>
+                <p>These Terms shall be governed by and construed in accordance with the laws of Mumbai (Maharashtra, India), without regard to its conflict of law principles. Any dispute arising out of or relating to these Terms shall be resolved through binding arbitration or in the competent courts of Mumbai City.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

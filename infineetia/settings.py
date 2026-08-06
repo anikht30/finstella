@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admindocs',
     
     #custom app
     'forum.apps.ForumConfig',
@@ -140,3 +141,23 @@ MEDIA_ROOT = BASE_DIR / 'media'
 AUTH_USER_MODEL = 'forum.CustomUser'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+
+
+
+# ADD THIS TO THE BOTTOM OF YOUR SETTINGS.PY FILE
+
+# --- EMAIL CONFIGURATION ---
+# For development/testing, this prints the "Forgot Password" email to your terminal 
+# instead of actually sending it to a real email address.
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Note: When you are ready to go live, you will replace the line above with your real SMTP settings:
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'aniket@asapadvisors.co.in'
+EMAIL_HOST_PASSWORD = 'Anvay@141830'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'aniket@asapadvisors.co.in'
+# ... existing code ...

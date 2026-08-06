@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — Finstella</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="{% static 'icons/finstellaBrowser.png' %}">
+    
+    <style>
+        body { background: #F8FAFC; margin: 0; padding: 0; font-family: 'Syne', sans-serif; color: #1E293B; }
+        
+        /* Clean public navigation bar */
+        .public-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #fff; border-bottom: 1px solid #E2E8F0; }
+        .public-nav img { height: 30px; }
+        .back-link { color: #64748B; text-decoration: none; font-weight: 600; font-size: 14px; transition: color 0.2s; }
+        .back-link:hover { color: #199A7A; }
+        
+        /* Legal content container */
+        .legal-container { max-width: 800px; margin: 60px auto; background: #fff; padding: 50px 60px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #E2E8F0; }
+        .legal-header { text-align: center; margin-bottom: 40px; }
+        .legal-header h1 { font-family: 'Lora', serif; font-size: 36px; color: #199A7A; font-style: italic; margin-bottom: 10px; margin-top: 0; }
+        
+        .legal-content h2 { font-family: 'Syne', sans-serif; font-size: 20px; color: #1E293B; margin-top: 35px; margin-bottom: 15px; border-bottom: 1px solid #F1F5F9; padding-bottom: 8px; }
+        .legal-content p { font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 16px; }
+        .legal-content ul { margin-bottom: 20px; padding-left: 20px; }
+        .legal-content li { font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 10px; }
+        .legal-content strong { color: #1E293B; }
+        
+        @media (max-width: 768px) {
+            .public-nav { padding: 15px 20px; }
+            .legal-container { padding: 30px 20px; margin: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="public-nav">
+        <a href="/">
+            <img src="{% static 'finstella.svg' %}" alt="Finstella Logo">
+        </a>
+        <a href="/" class="back-link">← Back to Home</a>
+    </nav>
+    
+    <div style="padding: 0 20px;">
+        <div class="legal-container">
+            <div class="legal-header">
+                <h1>About Us</h1>
+            </div>
+            
+            <div class="legal-content">
+                <h2>Who We Are</h2>
+                <p>Finstella is an exclusive, invite-only network built specifically for finance leaders. Designed to bridge the gap between complex regulatory landscapes and everyday practical execution, our platform serves as a trusted digital sanctuary where corporate leaders, advisors, analysts, and practitioners gather to share knowledge, solve real-world technical queries, and elevate the industry together.</p>
+
+                <h2>Our Mission</h2>
+                <p>To empower financial minds globally by fostering a collaborative, high-integrity ecosystem where peer expertise, real-time insights, and professional growth converge.</p>
+
+                <h2>What We Do</h2>
+                <ul>
+                    <li><strong>Peer Query Exchange:</strong> Navigate complex accounting standards, tax interpretations, and corporate finance challenges by posing queries directly to a network of vetted peers and subject matter experts.</li>
+                    <li><strong>Industry & Regulatory Updates:</strong> Stay ahead of market shifts, compliance mandates, and statutory updates with curated insights and technical notes shared directly by community members.</li>
+                    <li><strong>Virtual Webinars & Masterclasses:</strong> Join interactive, expert-led digital sessions covering cutting-edge financial strategies, regulatory updates, and emerging fintech tools.</li>
+                    <li><strong>Offline Events & Networking:</strong> Connect face-to-face with fellow finance leaders, industry veterans, and peers through localized roundtables, conferences, and networking events.</li>
+                </ul>
+
+                <h2>Why Join Us?</h2>
+                <ul>
+                    <li><strong>Verified Expertise:</strong> We strictly verify our members to ensure a high trust-to-noise ratio, fostering high-level technical discussions without commercial spam or self-promotion.</li>
+                    <li><strong>Actionable Knowledge:</strong> Go beyond theoretical textbooks. Get practical, peer-tested solutions to the real-world operational challenges you face every day.</li>
+                    <li><strong>Holistic Professional Growth:</strong> Whether you are looking to solve a quick technical doubt, host a webinar, or expand your physical professional network, our platform provides the tools to advance your career and business.</li>
+                </ul>
+
+                <h2>Our Values</h2>
+                <ul>
+                    <li><strong>Integrity First:</strong> We uphold strict professional standards, confidentiality, and mutual respect across all peer interactions.</li>
+                    <li><strong>Collaborative Excellence:</strong> We believe the collective intelligence of verified professionals far outweighs isolated expertise.</li>
+                    <li><strong>Continuous Learning:</strong> In a rapidly changing financial world, we provide the continuous education needed to stay at the forefront of the industry.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+ <div class="bottom-pane">
+        <h6>By proceeding to Sign Up or Sign In, you agree to Finstella's <a href="{% url 'terms' %}">Terms & Conditions</a>, <a href="{% url 'privacy' %}">Privacy Policy</a>, <a href="{% url 'disclaimer' %}">Disclaimer</a> and <a href="{% url 'about' %}">About Us</a>.</h6>
+    </div>  
+</body>
+</html>

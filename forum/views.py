@@ -175,7 +175,8 @@ def login_view(request):
             messages.error(request,"Invalid credentials or your account is pending approval.")
             return redirect('login')
     
-    return render(request, 'login.html')
+    # return render(request, 'login.html')
+    return render(request, 'fellowship_login.html')
 
 
 def logout_view(request):

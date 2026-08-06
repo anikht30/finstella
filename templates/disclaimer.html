@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer — Finstella</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="{% static 'icons/finstellaBrowser.png' %}">
+    
+    <style>
+        body { background: #F8FAFC; margin: 0; padding: 0; font-family: 'Syne', sans-serif; color: #1E293B; }
+        
+        .public-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #fff; border-bottom: 1px solid #E2E8F0; }
+        .public-nav img { height: 30px; }
+        .back-link { color: #64748B; text-decoration: none; font-weight: 600; font-size: 14px; transition: color 0.2s; }
+        .back-link:hover { color: #199A7A; }
+        
+        .legal-container { max-width: 800px; margin: 60px auto; background: #fff; padding: 50px 60px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #E2E8F0; }
+        .legal-header { text-align: center; margin-bottom: 40px; }
+        .legal-header h1 { font-family: 'Lora', serif; font-size: 36px; color: #199A7A; font-style: italic; margin-bottom: 10px; margin-top: 0; }
+        
+        .critical-notice { background: #FEF2F2; border-left: 4px solid #EF4444; padding: 20px; border-radius: 6px; margin-bottom: 35px; }
+        .critical-notice p { color: #991B1B; font-size: 15px; font-weight: 600; margin: 0; line-height: 1.6; }
+        
+        .legal-content h3 { font-family: 'Syne', sans-serif; font-size: 18px; color: #1E293B; margin-top: 35px; margin-bottom: 15px; }
+        .legal-content p { font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 16px; }
+        
+        @media (max-width: 768px) {
+            .public-nav { padding: 15px 20px; }
+            .legal-container { padding: 30px 20px; margin: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="public-nav">
+        <a href="/">
+            <img src="{% static 'finstella.svg' %}" alt="Finstella Logo">
+        </a>
+        <a href="/" class="back-link">← Back to Home</a>
+    </nav>
+    
+    <div style="padding: 0 20px;">
+        <div class="legal-container">
+            <div class="legal-header">
+                <h1>Website & Professional Disclaimer</h1>
+            </div>
+            
+            <div class="legal-content">
+                
+                <div class="critical-notice">
+                    <p>CRITICAL NOTICE: All information, content, peer responses, updates, webinars, and materials published on or accessible through Finstella are provided solely for general informational, educational, and peer-networking purposes only.</p>
+                </div>
+
+                <h3>1. No Professional Finance, Accounting, Tax, or Legal Advice</h3>
+                <p>The Platform does NOT provide formal accounting, audit, tax, financial, investment, or legal advice. Content shared by members, guest speakers, webinar hosts, or platform administrators does not constitute a formal professional-client relationship, financial advisory engagement, or statutory audit opinion.</p>
+
+                <h3>2. Peer Responses and Query Disclaimer</h3>
+                <p>Queries posted on Finstella are answered by peer members acting in their individual capacity. Answers and opinions expressed are solely those of the individual contributors and do not represent the positions of their employers, professional bodies, or the Company. While we promote high professional standards, Finstella makes no guarantees or warranties as to the accuracy, completeness, timeliness, or applicability of any peer answer, technical interpretation, or shared regulation update.</p>
+
+                <h3>3. User Due Diligence Required</h3>
+                <p>Users are strictly advised and expected to conduct independent verification, review applicable statutory standards, consult relevant official tax codes, accounting standards (e.g., IFRS, US GAAP), and seek specialized legal/financial counsel prior to executing transactions, relying on peer interpretations, or advising third-party clients based on platform discussions.</p>
+
+                <h3>4. External Links & Third-Party Content</h3>
+                <p>Finstella may contain links to external third-party websites, news portals, regulatory databases, or tools. The Company does not sponsor, endorse, guarantee, or assume responsibility for the accuracy or reliability of third-party information or services linked across the platform.</p>
+
+                <h3>5. "As-Is" and "As-Available" Provision</h3>
+                <p>Finstella, its content, webinars, and event services are provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, whether express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, non-infringement, or uninterrupted platform uptime.</p>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

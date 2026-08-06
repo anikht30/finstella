@@ -6,6 +6,9 @@
 {% if page_number %} | {{ page_number }}{% endif %}
 {%endblock%}
 
+
+{% block  reportname %}<h4>{{category.name}}</h4>{% endblock  %}
+
 {% block maincontent %}
               <!-- Pop up Window-->
 
@@ -56,18 +59,7 @@
             <!--Pop up window end-->
 
 <!-- Active Discussion div start-->
-          <div class="active-discussion-box">
-
-            <div class="active-discussion-title">
-                <h4>Discussion on {{category.name}}</h4>
-                {% comment %} <a href={%url "acive_discussion"%}>View all</a> {% endcomment %}
-                       <a href="javascript:history.back()" class="back-link">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Back
-            </a>
-
-            </div>
-
+         
            {% for thread in threads  %}     
            <article>
                 <div class="thread">
@@ -186,7 +178,7 @@
 
 
 
-          </div>
+ 
 
           <!-- Active Discussion div end -->
 
