@@ -8,8 +8,141 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Syne', sans-serif;
+            background-color: #F8FAFC;
+        }
+
+        /* This covers the entire screen and sits on top of everything else */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #ffffff;
+            z-index: 99999; /* Ensures it is above navbars and content */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+        }
+
+        /* When this class is added by JS, it fades out smoothly */
+        .fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .flag-box {
+            width: 240px;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+            /* A gentle waving animation */
+            animation: gentleWave 3s ease-in-out infinite;
+        }
+
+        @keyframes gentleWave {
+            0% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-4px) rotate(1deg); }
+            50% { transform: translateY(0px) rotate(0deg); }
+            75% { transform: translateY(4px) rotate(-1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .stripe {
+            flex: 1; /* Makes all 3 stripes exactly equal height */
+            width: 100%;
+        }
+
+        .saffron { background-color: #FF9933; }
+        .white { 
+            background-color: #FFFFFF; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+        .green { background-color: #138808; }
+
+        .chakra {
+            width: 44px;
+            height: 44px;
+            /* Spin animation for the wheel */
+            animation: spin 8s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .greeting {
+            margin-top: 30px;
+            font-family: 'Lora', serif;
+            font-size: 24px;
+            color: #1E293B;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: slideUpFade 1s ease forwards 0.5s; /* Delays text slightly */
+        }
+
+        @keyframes slideUpFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dummy-content {
+            padding: 60px 40px;
+            text-align: center;
+        }
+    </style>
+
+
+
 </head>
 <body>
+ <div id="splash-screen">
+        <div class="flag-box">
+            <div class="stripe saffron"></div>
+            
+            <div class="stripe white">
+                <!-- SVG Code for a perfect Ashoka Chakra with 24 spokes -->
+                <svg class="chakra" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#000080" stroke-width="4"/>
+                    <g stroke="#000080" stroke-width="2">
+                        <line x1="50" y1="5" x2="50" y2="95" transform="rotate(0 50 50)"/>
+                        <line x1="50" y1="5" x2="50" y2="95" transform="rotate(15 50 50)"/>
+                        <line x1="50" y1="5" x2="50" y2="95" transform="rotate(30 50 50)"/>
+                        <line x1="50" y1="5" x2="50" y2="95" transform="rotate(45 50 50)"/>
+                        <line x1="50" y1="5" x2="50" y2="95" transform="rotate(60 50 50)"/>
+                        <line x1="50" y1="5" x2="50" y2="95" transform="rotate(75 50 50)"/>
+                        <line x1="50" y1="5" x2="50" y2="95" transform="rotate(90 50 50)"/>
+                        <line x1="50" y1="5" x2="50" y2="95" transform="rotate(105 50 50)"/>
+                        <line x1="50" y1="5" x2="50" y2="95" transform="rotate(120 50 50)"/>
+                        <line x1="50" y1="5" x2="50" y2="95" transform="rotate(135 50 50)"/>
+                        <line x1="50" y1="5" x2="50" y2="95" transform="rotate(150 50 50)"/>
+                        <line x1="50" y1="5" x2="50" y2="95" transform="rotate(165 50 50)"/>
+                    </g>
+                </svg>
+            </div>
+            
+            <div class="stripe green"></div>
+        </div>
+        
+        <div class="greeting">Happy Independence Day</div>
+    </div>
 
 <nav>
   <div class="nav-brand">
@@ -123,6 +256,37 @@
 </footer>
 
 <script>
+
+
+        // This waits for the page to fully load, then starts a timer
+        window.addEventListener('load', function() {
+            
+            // Adjust this number to change how long the flag stays on screen.
+            // 2500 = 2.5 seconds
+            const displayTime = 2500; 
+
+            setTimeout(function() {
+                const splash = document.getElementById('splash-screen');
+                
+                // 1. Add the CSS class that triggers the fade out transition
+                splash.classList.add('fade-out');
+                
+                // 2. Wait for the CSS transition to finish (600ms), then completely remove it from the HTML so it doesn't block clicks
+                setTimeout(function() {
+                    splash.style.display = 'none';
+                }, 600);
+
+            }, displayTime);
+        });
+    
+
+
+
+
+
+
+
+
 // Subtle nav shadow on scroll
 window.addEventListener('scroll',()=>{
   const nav=document.querySelector('nav');

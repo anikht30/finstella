@@ -347,7 +347,7 @@ flex-direction: column;
 
 .reality-title h4{
     font-family: "Libre Baskerville", serif ;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 400;
     color: #0AB89C;
     margin-bottom: 5px;
@@ -362,7 +362,9 @@ flex-direction: column;
 }
 
 
-
+.p-point-head{
+    font-weight: 600;
+}
 
 .reality-points{
     display: flex;
@@ -460,10 +462,15 @@ flex-direction: column;
       padding-top: 20px;
     padding-left: 30px;
     padding-right: 30px;
+
 }
 
 .stella-deff{
     flex: 1;
+    display: flex;
+    /* gap: 8px; */
+    flex-direction: column;
+     z-index: 10;
 }
 
 
@@ -480,6 +487,7 @@ flex-direction: column;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.1;
+    margin-bottom: 12px;
 }
 
 
@@ -502,7 +510,7 @@ flex-direction: column;
     font-size: 20px;
     font-weight: 600;
     line-height: 1.1;
-    margin-left: 40px;
+    margin-left: 25px;
 }
 
 .p-img img{
@@ -521,6 +529,8 @@ flex-direction: column;
 
 .principle-img{
     display: flex;
+    gap: 5px;
+    margin-bottom: 5px;
     
 }
 
@@ -548,22 +558,25 @@ flex-direction: column;
 }
 
 
-.index-tic{
-    display: flex;
-    gap: 2px;
-   
+
+.index-tic {
+display: flex;
+gap: 5px;
+align-items: center; 
+margin-bottom: 5px; }
+
+.tic img {
+width: 20px;
+display: block; 
 }
 
-.tic img{
-    width: 30px;
+.index h1 {
+font-family: "Libre Baskerville", serif;
+font-size: 18px;
+font-weight: 600;
+line-height: 1.1;
+margin: 0; 
 }
-
-.index h1{
-    font-family: "Libre Baskerville", serif ;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1.1;
-} 
 
 
 .stella-index h3{
@@ -627,11 +640,14 @@ flex: 1;
 
 .b-point-tic{
     display: flex;
-    gap: 2px;
+    gap: 5px;
+    margin-bottom: 5px;
+    align-items: center;
+
 }
 
 .b-point-tic img{
-    width: 30px;
+    width: 20px;
 }
 
 .b-point-tic h1{
@@ -639,6 +655,7 @@ flex: 1;
     font-size: 18px;
     font-weight: 400;
    margin-bottom: 10px;
+   margin: 0;
 }
 
 
@@ -649,15 +666,19 @@ flex: 1;
 .not-belongs-points{
     display: flex;
     flex-direction:column ;
+    gap: 5px;
+    margin-bottom: 5px;
+    justify-content: center;
 }
 
 .points-img{
     display: flex;
+    gap: 5px;
 }
 
 
 .points-img img{
-    width: 40px;
+    width: 20px;
 }
 
 .points-img h1{
@@ -665,6 +686,7 @@ flex: 1;
     font-size: 18px;
     font-weight: 400;
    margin-bottom: 10px;
+   margin: 0;
 }
 
 
@@ -679,6 +701,11 @@ flex: 1;
 
 .who-img{
     flex: 1;
+}
+
+.who-img img{
+    width: 350px;
+    height: auto;
 }
 
 

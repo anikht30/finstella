@@ -1,14 +1,15 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Document</title>
-    <link rel="stylesheet" href={%static 'css/fellow.css' %}>
+    <link rel="stylesheet" href="{% static 'css/fellow.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">  
 </head>
 <body>
   
@@ -17,7 +18,7 @@
             
             <div class="logo-nav">
                 <div class="logo">
-                    <img src={% static "finstella.svg" %} alt="">
+                    <img src="{% static 'finstella.svg' %}" alt="">
                 </div>
                 
                 <div class="nav">
@@ -27,29 +28,22 @@
                       <a href="#">EVENTS</a>  
                       <a href="#">MEMBER STORIES</a>  
                       <a href="#"> APPLY FOR MEMBERSHIP</a>   {% endcomment %}
-
                 </div>
-
             </div>
-
-
 
             <div class="d-earth">
                 <div class="fellow" >
                     <div class="fellow-content" >
                         <div class="fellow-content-img">
-                      <img src={% static 'icons/the best decisions.svg'%} alt="">
+                      <img src="{% static 'icons/the best decisions.svg' %}" alt="">
                         </div>
                          {% block loginlogout %}{% endblock %}
                     </div>
                 
-                   
-                
-                
                    <div class="fellow-points">
                         <div class="f-point">
                             
-                            <img src={%static 'icons/shield-check.svg'%} alt="">
+                            <img src="{% static 'icons/shield-check.svg' %}" alt="">
                             <p>
                                 Trusted Peers
                                 <br>
@@ -70,10 +64,8 @@
                             </div>
                         </div>
     
-
-
                         <div class="f-point">
-                            <img src={%static 'icons/lock.svg'%} alt="">
+                            <img src="{% static 'icons/lock.svg' %}" alt="">
                             <p>
                                 Private & Protected
                                 <br>
@@ -93,7 +85,7 @@
                         </div>
     
                         <div class="f-point">
-                            <img src={%static 'icons/users.svg'%} alt="">
+                            <img src="{% static 'icons/users.svg' %}" alt="">
                             <p>
                                 Peer To Peer
                                 <br>
@@ -112,9 +104,8 @@
                             </div>
                         </div>
         
-
                         <div class="f-point">
-                            <img src={%static 'icons/broadcast.svg'%} alt="">
+                            <img src="{% static 'icons/broadcast.svg' %}" alt="">
                             <p>
                                 Signal Over Noise<br><br>
                                 No vendors. No pitches.<br>                                
@@ -126,75 +117,60 @@
                     <div class="apply">
                         {% comment %} <a href="#" type=btn>APPLY FOR MEMBERSHIP</a> {% endcomment %}
                         <h6> *Membership by invitation and review only.</h6>
-
                     </div>
 
                 </div>
-                {% comment %} <div class="earth">
-                   
-                    <div class="earth-part">
-                        <div class="earth-img">                        
-                        <img src="" alt="">
-                        </div>
-
-                    </div>
-
-                </div> {% endcomment %}
-
             </div>
-            
-
- 
         </div>
 
         <div class="reality">
             <div class="reality-title">
                 <h4>THE REALITY EVERY FINANCE LEADER FACES</h4>
-                <h1>Every quarter brings a new challenge.</h1>
+                <h1>Every quarter brings a new challenge</h1>
             </div>
             <div class="reality-points">
                 <div class="r-point">
-                    <img src={%static 'icons/chart growth.svg'%} alt="">
+                    <img src="{% static 'icons/chart growth.svg' %}" alt="">
                     <p>Managing Board
                         <br>
-                       expectations 
+                       Expectations 
                     </p>
                 </div>
                 <div class="r-point">
-                    <img src={%static 'icons/globe.svg'%} alt="">
-                    <p>Balancing buisness priorities
+                    <img src="{% static 'icons/globe.svg' %}" alt="">
+                    <p>Balancing Buisness Priorities
                         <br>
-                       with finance controls
+                       with Finance Controls
                     </p>
                 </div>
                 <div class="r-point">
-                <img src={%static 'icons/gear.svg'%} alt="">
-                    <p>Transforming finance
+                <img src="{% static 'icons/gear.svg' %}" alt="">
+                    <p>Transforming Finance
                         <br>
-                       functions
+                       Functions
                     </p>
                 </div>
                 <div class="r-point">
-                   <img src={%static 'icons/users.svg'%} alt="">
-                    <p>Aligning compliances
+                   <img src="{% static 'icons/users.svg' %}" alt="">
+                    <p>Aligning Compliances
                         <br>
-                       with buisness realities
+                       with Buisness Realities
                     </p>
                 </div>
                 <div class="r-point">
-                    <img src={%static 'icons/bank.svg'%} alt="">
-                    <p>Evaluating technology
+                    <img src="{% static 'icons/bank.svg' %}" alt="">
+                    <p>Evaluating Technology
                         <br>
-                       investments
+                       Investments
                     </p>
                 </div>
                 <div class="r-point">
-                    <img src={%static 'icons/balance scale.svg'%} alt="">
+                    <img src="{% static 'icons/balance scale.svg' %}" alt="">
                     <p>Prepairing for M&A,
                         <br>
-                        restructing or
+                        Restructuring or
                         <br>
-                        fundraising
+                        Fundraising
                         
                     </p>
                 </div>
@@ -204,29 +180,28 @@
                 <p>
                     The answers rarely exist in textbooks. More often, they exist in the experience of someone
                     <br>
-                    who has already walked the same path. That is why Finostella exists.
+                    who has already walked the same path. That is why Finstella exists.
                 </p>
             </div>
-
         </div>
 
         <div class="membership">
             <div class="membership-title">WHAT MEMBERSHIP GIVES YOU</div>
             <div class="membership-points">
                 <div class='m-point'>
-                    <img src={%static 'icons/users.svg'%} alt="">
+                    <img src="{% static 'icons/users.svg' %}" alt="">
                     <h1>Access</h1>
                     
                     <p>Private discussions with
                         <br>
                         vetted finance leaders
                         <br>
-                        across industries
+                        across industries.
                     </p>
 
                 </div>
                 <div class='m-point'>
-                     <img src={%static 'icons/light bulb.svg'%} alt="">
+                     <img src="{% static 'icons/light bulb.svg' %}" alt="">
                     <h1>Perspective</h1>
                     <p>Real-world experiences
                         <br>
@@ -237,17 +212,17 @@
                 </div>
                 
                 <div class='m-point'>
-                     <img src={%static 'icons/megaphone.svg'%} alt="">
+                     <img src="{% static 'icons/megaphone.svg' %}" alt="">
                     <h1>Influence</h1>
                     <p>Contribute to the collective
                         <br>
-                        thinking shaping the future
+                        thinking, shaping the future
                         <br>
                         of finance.
                     </p>
                 </div>
                 <div class='m-point'>
-                    <img src={%static 'icons/shield-check.svg'%} alt="">
+                    <img src="{% static 'icons/shield-check.svg' %}" alt="">
                     <h1>Trust</h1>
                     <p>A confidential environment
                         <br>
@@ -257,18 +232,21 @@
                     </p>
                 </div>
             </div>
-
         </div>
 
         <div class="stella-part">
+          
             <div class="stella-deff">
-                <h1>
-                    THE FINOSTELLA DIFFERENCE
+                  <h1>
+                    THE FINSTELLA DIFFERENCE
                 </h1>
                 <h2>Most communities reward attention.
                     <br>
-                We reward contribution.</h2>
-
+                We reward contribution.
+                <br>
+        
+            </h2>
+                    
                 <h2>
                     Most events focus on speakers.
                     <br>
@@ -298,44 +276,44 @@
                 </h3>    
 
             </div>
-            <div class="our-principles">
+            <div class="stella-deff"><!--"our-principles">-->
                 <h1>OUR FOUR PRINCIPLES</h1>
                 <div class="principle-img">
-                    <div class="p-img">
-                        <img src={%static 'icons/diamond.svg'%} alt="">
+                    <div class="tic">
+                        <img src="{% static 'icons/check circle.svg' %}" alt="">
                     </div>
                     <div class="p-point">
                         <p>
-                            Earned Membership
+                            <span class="p-point-head">Earned Membership</span>
                             <br>
-                            <br>
+                            
                             Verified members only.
                             Entry barrier ensuring quality members.
                         </p>
                     </div>
                 </div>
                 <div class="principle-img">
-                     <div class="p-img">
-                        <img src={%static 'icons/diamond.svg'%} alt="">
-                     </div>
+                     <div class="tic">
+                        <img src="{% static 'icons/check circle.svg' %}" alt="">
+                    </div>
                     <div class="p-point">
                         <p>
-                            Absolute Trust
+                            <span class="p-point-head">Absolute Trust</span>
                             <br>
-                            <br>
+                            
                             Chatham House as the floor, not the ceiling.
                             What is shared here belongs only to those in the room.
                         </p>
                     </div>
                 </div>
                 <div class="principle-img">
-                     <div class="p-img">
-                        <img src={%static 'icons/diamond.svg'%} alt="">
-                     </div>
+                     <div class="tic">
+                        <img src="{% static 'icons/check circle.svg' %}" alt="">
+                    </div>
                     <div class="p-point">
-                       <p>Peer Equality
+                       <p><span class="p-point-head">Peer Equality</span>
                         <br>
-                        <br>
+                        
                         No sponsors. No keynotes. No hierarchy.
                         Every voice carries equal weight.
                        </p>
@@ -343,21 +321,21 @@
                     </div>
                 </div>
                 <div class="principle-img">
-                     <div class="p-img">
-                        <img src={%static 'icons/diamond.svg'%} alt="">
-                     </div>
+                     <div class="tic">
+                        <img src="{% static 'icons/check circle.svg' %}" alt="">
+                    </div>
                     <div class="p-point">
                         <p>
-                            Pure Signal
+                           <span class="p-point-head"> Pure Signal</span>
                             <br>
-                            <br>
+                        
                             No vendor pitches. No algorithms. No agenda.
                             Only unfiltered peer wisdom.
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="stella-index">
+             <div class="stella-deff"><!--"our-principles">-->
                 <h1>
                     THE STELLA INDEX
                     
@@ -369,21 +347,20 @@
                     Finance Leaders
                     <br>
                     <br>
-                    Finostella's proprietary peer sentiment
+                    Finstella's proprietary peer sentiment
                     tracker. The unfiltered view of finance leaders
                     on macro conditions,
                     capital allocation, talent markets and
                     strategic risk.
                     <br>
                     <br>
-                    <br>
-                    <br>
+                    
                 </h2>
                 
                 <div class="index-tic">
                 
                 <div class="tic">
-                    <img src={%static 'icons/check circle.svg'%} alt="">
+                    <img src="{% static 'icons/check circle.svg' %}" alt="">
                 </div>
                 <div class="index">
                     <h1>
@@ -394,7 +371,7 @@
                 </div>
                 <div class="index-tic">
                 <div class="tic">
-                    <img src={%static 'icons/check circle.svg'%} alt="">
+                    <img src="{% static 'icons/check circle.svg' %}" alt="">
                 </div>
                 <div class="index">
                     <h1>
@@ -405,126 +382,122 @@
                 </div>
                 <div class="index-tic">
                           <div class="tic">
-                    <img src={%static 'icons/check circle.svg'%} alt="">
+                    <img src="{% static 'icons/check circle.svg' %}" alt="">
                 </div>
                 <div class="index">
                     <h1>
                         Cited By Boards
                     </h1>
                 </div>
-          
+                   
                 </div>
                 
-                <h3>Explore The Stella Index</h2>
-
+                    <br>
+                    <h2>Explore The Stella Index</h2>
+                
             </div>
         </div>
 
-        <div class="who-belongs-title">
-                WHO BELONGS HERE
-        </div>
+        <!-- Main Outer Wrapper: Flexbox to put Image on Left, Content on Right -->
+        <div class="who-section-wrapper" style="display: flex; gap: 40px; align-items: flex-start; padding: 10px;">
 
-        <div class="who-belongs">
-
-
-            <div class="belongs">
-                <div class="belongs-title">
-                    YOU BELONG HERE IF YOU ARE A:
-                </div>  <!--belongs-title-->
-
-                <div class="belongs-point">
-                    <div class="belongs-point-left">
-
-                        <div class="b-point-tic">
-                                <img src={%static 'icons/check circle.svg'%} alt="">
-                                <h1>CFO</h1>
-                        </div>
-
-                        <div class="b-point-tic">
-                                <img src={%static 'icons/check circle.svg'%} alt="">
-                                <h1> Group CFO </h1>
-                        </div>
-
-                        <div class="b-point-tic">
-                                <img src={%static 'icons/check circle.svg'%} alt="">
-                                <h1>Finance Director</h1>
-                        </div>
-
-                        <div class="b-point-tic">
-                                <img src={%static 'icons/check circle.svg'%} alt="">
-                                <h1>Treasury Leader</h1>
-                        </div>
-                    
-                    </div><!--belongs-point-left-->
-                    
-                    
-                    <div class="belongs-point-right">
-                        
-                        <div class="b-point-tic">
-                                <img src={%static 'icons/check circle.svg'%} alt="">
-                                <h1>Controller</h1>
-                        </div>
-                        
-                        <div class="b-point-tic">
-                                <img src={%static 'icons/check circle.svg'%} alt="">
-                                <h1>Head of FP&A</h1>
-                        </div>
-                        
-                        <div class="b-point-tic">
-                                <img src={%static 'icons/check circle.svg'%} alt="">
-                                <h1>Finance Transformation Leader</h1>
-                        </div>
-                       
-                        <div class="b-point-tic">
-                                <img src={%static 'icons/check circle.svg'%} alt="">
-                                <h1>VP / Senior Finance Leader</h1>
-                        </div>
-                    
-                    </div> <!--belongs-point-right-->
-
-                </div>  <!--belongs-point-->
-            </div><!--belongs-->
-            
-               <div class="not-belogns">
-                <div class="not-belongs-title">
-                 THIS FELLOWSHIP IS NOT FOR:
-                </div>
-                <div class="not-belongs-points">
-                   
-                    <div class="points-img">
-                        <img src={%static 'icons/x circle.svg'%} alt="">
-                        <h1>Vendors</h1>
-                    </div>
-                    
-                    <div class="points-img">
-                        <img src={%static 'icons/x circle.svg'%} alt="">
-                        <h1>Consultants Selling Services</h1>
-                    </div>
-                    
-                    <div class="points-img">
-                        <img src={%static 'icons/x circle.svg'%} alt="">
-                        <h1>Recruiters</h1>
-                    </div>
-                    
-                    <div class="points-img">
-                         <img src={%static 'icons/x circle.svg'%} alt="">
-                     <h1>Junior Professionals</h1>
-                    </div>
-
-                </div>
-
+            <!-- LEFT SIDE: The Image -->
+            <div class="who-img" style="flex: 1;align-items:center;">
+                <img src="{% static 'icons/Finstella Membership Card.png' %}" alt="Finstella Membership Card" style="width: 100%; max-width: 400px;">
             </div>
-         
 
+            <!-- RIGHT SIDE: The Content Column -->
+            <div class="who-content" style="flex: 2; display: flex; flex-direction: column;">
+                
+                <!-- TOP OF RIGHT SIDE: The Title -->
+                <div class="who-belongs-title" style="text-align: center; padding: 0 0 10px 0; margin: 0;">
+                    WHO BELONGS HERE
+                </div>
 
+                <!-- BOTTOM OF RIGHT SIDE: The Two Lists Side-by-Side -->
+                <div class="who-lists" style="display: flex; gap: 30px;">
+                    
+                    <!-- List 1: Belongs -->
+                    <div class="belongs" style="flex: 1;">
+                        <div class="belongs-title">
+                            YOU BELONG HERE IF YOU ARE A:
+                        </div>
+                        
+                        <!-- Inner flex for left/right columns of the 'Belongs' list -->
+                        <div class="belongs-point" style="display: flex; gap: 15px;">
+                            <div class="belongs-point-left" style="flex: 1;">
+                                <div class="b-point-tic">
+                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
+                                    <h1>CFO</h1>
+                                </div>
+                                <div class="b-point-tic">
+                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
+                                    <h1>Group CFO</h1>
+                                </div>
+                                <div class="b-point-tic">
+                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
+                                    <h1>Finance Director</h1>
+                                </div>
+                                <div class="b-point-tic">
+                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
+                                    <h1>Treasury Leader</h1>
+                                </div>
+                            </div>
+                            <div class="belongs-point-right" style="flex: 1;">
+                                <div class="b-point-tic">
+                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
+                                    <h1>Controller</h1>
+                                </div>
+                                <div class="b-point-tic">
+                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
+                                    <h1>Head of FP&A</h1>
+                                </div>
+                                <div class="b-point-tic">
+                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
+                                    <h1>Finance Transformation Leader</h1>
+                                </div>
+                                <div class="b-point-tic">
+                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
+                                    <h1>VP / Senior Finance Leader</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- List 2: Not Belongs -->
+                    <div class="not-belogns" style="flex: 1;">
+                        <div class="not-belongs-title">
+                            THIS FELLOWSHIP IS NOT FOR:
+                        </div>
+                        <div class="not-belongs-points">
+                            <div class="points-img">
+                                <img src="{% static 'icons/x circle.svg' %}" alt="">
+                                <h1>Vendors</h1>
+                            </div>
+                            <div class="points-img">
+                                <img src="{% static 'icons/x circle.svg' %}" alt="">
+                                <h1>Consultants Selling Services</h1>
+                            </div>
+                            <div class="points-img">
+                                <img src="{% static 'icons/x circle.svg' %}" alt="">
+                                <h1>Recruiters</h1>
+                            </div>
+                            <div class="points-img">
+                                <img src="{% static 'icons/x circle.svg' %}" alt="">
+                                <h1>Junior Professionals</h1>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div><!-- /who-lists -->
+                
+            </div><!-- /who-content -->
             
-            
-            <div class="who-img"></div>
-        </div>
+        </div><!-- /who-section-wrapper -->     
 
         <div class="trust-moment">
             <div class="trust-img">
-                <img src={% static 'icons/peer equality image.svg' %} alt="A circle of seated peers in conversation">
+                <img src="{% static 'icons/peer equality image.svg' %}" alt="A circle of seated peers in conversation">
                 <div class="trust-tag">
                     <h2>peer equality</h2>
                     <p>No sponsors. No keynotes. No hierarchy.
@@ -556,23 +529,11 @@
             </div>
         </div>
 
-          <div class="site-footer">
-        <div class="footer-nav">
-            <a href="#">WHY JOIN</a>
-            <a href="#">OUR COMMUNITY</a>
-            <a href="#">THE STELL INEX</a>
-            <a href="#">EVENTS</a>
-            <a href="#">MEMBER STORIES</a>
-        </div>
-        <div class="footer-copy">
-            &copy; 2026 Finstella. All rights reserved
-        </div>
-    </div>  
-
+         <div class="bottom-pane">
+        <h6>By proceeding to Sign Up or Sign In, you agree to Finstella's <a href="{% url 'terms' %}">Terms & Conditions</a>, <a href="{% url 'privacy' %}">Privacy Policy</a>, <a href="{% url 'disclaimer' %}">Disclaimer</a> and <a href="{% url 'about' %}">About Us</a>.</h6>
+    </div>   
 
     </div><!--main-->
-
-
 
 </body>
 </html>

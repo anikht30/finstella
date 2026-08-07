@@ -4,18 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>finstella</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href={%static 'css/landing.css'%}>  
      <link rel="icon" type="image/png" href="{% static 'icons/finstellaBrowser.png' %}">
-
-
+  
 
 
 </head>
 <body>
+    
     <div class="split-layout">
         
         
@@ -146,29 +147,17 @@
 
 
 
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Find all the slides inside our carousel
-        let slides = document.querySelectorAll("#valueCarousel .carousel-slide");
-        let currentSlideIndex = 0;
+<script>
 
-        // Only run the timer if there is more than 1 slide
-        if (slides.length > 1) {
-            setInterval(function() {
-                // 1. Remove the 'active' class from the current slide
-                slides[currentSlideIndex].classList.remove("active");
-                
-                // 2. Move to the next slide (and loop back to 0 if we hit the end)
-                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-                
-                // 3. Add the 'active' class to the new slide
-                slides[currentSlideIndex].classList.add("active");
-                
-            }, 5000); // 5000 milliseconds = 5 seconds
-        }
-    });
+
+     
+
+// Subtle nav shadow on scroll
+window.addEventListener('scroll',()=>{
+  const nav=document.querySelector('nav');
+  nav.style.boxShadow=window.scrollY>20?'0 2px 20px rgba(4,44,26,.08)':'none';
+});
 </script>
-
     <div class="bottom-pane">
         <h6>By proceeding to Sign Up or Sign In, you agree to Finstella's <a href="{% url 'terms' %}">Terms & Conditions</a>, <a href="{% url 'privacy' %}">Privacy Policy</a>, <a href="{% url 'disclaimer' %}">Disclaimer</a> and <a href="{% url 'about' %}">About Us</a>.</h6>
     </div>       

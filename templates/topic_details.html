@@ -30,8 +30,9 @@
                 
                 <div class="fl" style="margin-bottom: 20px;">
                     <label style="padding-left:10px;">Category</label>
-                    <select name="category" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family:inherit;">
-                        <option value="" disabled selected>Select a topic area...</option>
+                    <select name="category" value = "{{category.id}}" required style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family:inherit;">
+                        {% comment %} <option value="" disabled selected>Select a topic area...</option> {% endcomment %}
+                        <option value="{{category.id}}" selected>{{category.name}}</option>
                         {% for category in categories %}
                             <option value="{{ category.id }}">{{ category.name }}</option>
                         {% endfor %}

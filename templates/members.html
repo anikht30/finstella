@@ -30,10 +30,10 @@
             {{ member.first_name|first }}{{ member.last_name|first }}
         </div>
     {% endif %}
-    </a>
+    
             <!-- Member Info -->
             <div>
-                <div style="font-family: inherit; font-weight: 600; font-size: 14px; color: var(--deep); margin-bottom: 4px;">
+                <div style="font-family: inherit; font-weight: 600; font-size: 14px; color: var(--deep); margin-bottom: 4px;text-transform:capitalize;">
                     {{ member.first_name }} {{ member.last_name }}
                 </div>
                 <div style="font-size: 12px; color: var(--muted); margin-bottom: 8px;">
@@ -46,6 +46,7 @@
                 </a>
                 {% endif %} {% endcomment %}
             </div>
+            </a>
         </div>
         {% empty %}
         <p style="color: var(--muted); font-size: 14px;">No active members found in the directory.</p>

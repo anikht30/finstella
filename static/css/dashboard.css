@@ -565,7 +565,9 @@ background-color: #fdf0e5;
 
 .active-discussion-title {
     display: flex;
-    justify-content: space-between;
+    justify-content:flex-start; 
+    gap: 5px;
+    /* space-between; */
     /* margin-bottom: 20px; */
     padding: 10px 30px;
 }

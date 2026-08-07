@@ -40,7 +40,7 @@ Member Profile
                         </a>
                     {% endif %}
                 </h2>
-                <h1>{{ profile_user.first_name }} {{ profile_user.last_name }}</h1>
+                <h1 style=" text-transform: capitalize;">{{ profile_user.first_name }} {{ profile_user.last_name }}</h1>
                 <p style="color: #1E293B; font-weight: 500;">
                     {% if profile_user.company %}{{ profile_user.company }}{% endif %}
                 </p>
