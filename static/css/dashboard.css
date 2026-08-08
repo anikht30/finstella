@@ -8,7 +8,7 @@
     /* font-family: "Libre Baskerville", serif; */
 }
 
-body {
+html,body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -16,6 +16,7 @@ body {
     max-width: 1600px;
     margin: 0 auto;
     background:#f7fdfb;
+    /* overflow-x: hidden; <-- ADD THIS LINE to act as a safety net */
 }
 
 .header {
@@ -565,7 +566,7 @@ background-color: #fdf0e5;
 
 .active-discussion-title {
     display: flex;
-    justify-content:flex-start; 
+    justify-content:space-between; 
     gap: 5px;
     /* space-between; */
     /* margin-bottom: 20px; */
@@ -1408,3 +1409,169 @@ transform: translateX(-4px);
 
 
 
+/* ==========================================
+   MOBILE RESPONSIVE LAYOUT (Dashboard)
+   ========================================== */
+
+/* Hide mobile elements on desktop */
+.hamburger { display: none; }
+.sidebar-overlay { display: none; }
+
+@media (max-width: 992px) {
+
+
+/* -------------------------------------------
+       TWO-ROW GRID HEADER (Mobile App Layout)
+       ------------------------------------------- */
+    .header {
+        display: grid !important;
+        grid-template-columns: min-content 1fr min-content min-content !important;
+        grid-template-areas: 
+            "hamburger logo .       profile"
+            "search    search notif message" !important;
+        row-gap: 12px !important;
+        column-gap: 8px !important; /* Tightens the horizontal gap between all icons */
+        padding: 10px 15px !important;
+        align-items: center !important;
+    }
+
+    .notify-profile { display: contents !important; }
+
+    /* --- Row 1 --- */
+    .hamburger { grid-area: hamburger !important; display: flex !important; margin: 0 !important; }
+    .logo { grid-area: logo !important; display: flex !important; justify-content: flex-start !important; }
+    
+    /* Make the profile a flexible box to align text and image */
+    .profile { 
+        grid-area: profile !important; 
+        justify-self: end !important; 
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important; /* Adds perfect breathing space between the name and the photo */
+    }
+
+    /* Un-hide the text and format it for mobile */
+    .profile-text {
+        display: block !important;
+        text-align: right !important;
+        line-height: 1.2 !important;
+    }
+    .user-name { font-size: 13px !important; font-weight: 600 !important; }
+    .user-title { font-size: 11px !important; }
+
+    /* --- Row 2 --- */
+    .search { grid-area: search !important; width: 100% !important; max-width: none !important; margin: 0 !important; height: 42px !important; }
+    
+    /* Push the notification bell slightly away from the search bar */
+    .notification { grid-area: notif !important; justify-self: end !important; display: flex !important; margin-left: 8px !important;}
+    .message { grid-area: message !important; justify-self: end !important; display: flex !important; }
+
+    /* --- Mobile Sizing --- */
+    .logo img { width: 125px !important; } /* Scaled down slightly so the profile name has room */
+    .profile-icon img, .expert-initial { width: 36px !important; height: 36px !important; font-size: 12px !important; }
+    .notification img, .message img { width: 24px !important; }
+
+    /* Hard-hide the 3 dots */
+    .dots-icon { display: none !important; }
+
+    /* 2. Main Layout Stacking */
+    .main-container {
+        display: flex; /* Changes from 12-column grid to flex */
+        flex-direction: column;
+        padding: 15px 10px;
+    }
+    
+    /* 3. Right Sidebar Un-Sticky */
+    .right-sidebar {
+        position: static;
+        margin-top: 30px;
+        width: 100%;            /* Forces the container to be full width */
+        align-self: stretch;    /* Overrides the desktop shrink-wrap rule */
+    }
+    
+    /* 4. Slide-Out Left Sidebar (Drawer) */
+    .left-sidebar {
+        position: fixed;
+        top: 0;
+        left: -320px; /* Hidden off-screen by default */
+        width: 280px;
+        height: 100vh;
+        background-color: #f7fdfb;
+        z-index: 10001; /* Keeps it above everything */
+        overflow-y: auto;
+        transition: left 0.3s ease; /* The smooth sliding animation */
+        padding: 20px;
+        box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+        margin: 0;
+    }
+    
+    .left-sidebar.show-sidebar {
+        left: 0; /* Brings it onto the screen */
+    }
+    
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(2px);
+        z-index: 10000; /* Just below the sidebar */
+        /* display is toggled by JS */
+    }
+
+    /* 5. Forum Dashboard Cards 2x2 Grid */
+    .forum-dashboard {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Stacks the 4 boxes in a 2x2 grid */
+    }
+
+/* -------------------------------------------
+       HORIZONTAL SCROLL FIXES (Inside Mobile Query)
+       ------------------------------------------- */
+
+    /* Fix 1: Make the thread footer wrap to a second line instead of stretching */
+    .thread-belongs {
+        flex-wrap: wrap;
+        justify-content: flex-start; /* Aligns to left on mobile so it looks cleaner */
+        padding: 10px;
+        gap: 8px;
+    }
+
+    /* Fix 2: Stack the Hero section and shrink the image */
+    .post-question {
+        flex-direction: column;
+        padding: 20px 15px;
+        text-align: center;
+    }
+    .post-img img {
+        width: 100%;
+        max-width: 180px; /* Shrinks the chat bubble to fit phone screens */
+        padding-right: 0;
+        margin-top: 20px;
+    }
+    .btn-hero-new {
+        width: 100%;
+        justify-content: center; /* Centers the button text */
+    }
+
+    /* Fix 3: Make the tabs scrollable horizontally if they are too wide */
+    .tabs-container {
+        padding-left: 10px !important;
+        display: flex;
+        overflow-x: auto; /* Allows swiping left/right on tabs */
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch; /* Smooth swiping on iOS */
+        scrollbar-width: none; /* Hides scrollbar on Firefox */
+    }
+    .tabs-container::-webkit-scrollbar {
+        display: none; /* Hides scrollbar on Chrome/Safari */
+    }
+/* Make sure the inner cards expand to fill the new full-width sidebar */
+    .active-expert-box,
+    .pulse-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    }

@@ -147,21 +147,46 @@
 
 
 
-<script>
 
 
      
-
-// Subtle nav shadow on scroll
-window.addEventListener('scroll',()=>{
-  const nav=document.querySelector('nav');
-  nav.style.boxShadow=window.scrollY>20?'0 2px 20px rgba(4,44,26,.08)':'none';
-});
-</script>
     <div class="bottom-pane">
         <h6>By proceeding to Sign Up or Sign In, you agree to Finstella's <a href="{% url 'terms' %}">Terms & Conditions</a>, <a href="{% url 'privacy' %}">Privacy Policy</a>, <a href="{% url 'disclaimer' %}">Disclaimer</a> and <a href="{% url 'about' %}">About Us</a>.</h6>
     </div>       
+
     
+
+
+<script>
+    // 1. CAROUSEL LOGIC
+    document.addEventListener("DOMContentLoaded", function() {
+        let slides = document.querySelectorAll(".carousel-slide");
+        let currentSlide = 0;
+
+        function showNextSlide() {
+            // Remove 'active' class from the current slide
+            slides[currentSlide].classList.remove("active");
+            
+            // Calculate the next slide index (loops back to 0 when it hits the end)
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            // Add 'active' class to the new slide so it fades in
+            slides[currentSlide].classList.add("active");
+        }
+
+        // Change the slide every 3.5 seconds (3500 milliseconds)
+        setInterval(showNextSlide, 3500);
+    });
+
+    // 2. Subtle nav shadow on scroll
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (nav) {
+            nav.style.boxShadow = window.scrollY > 20 ? '0 2px 20px rgba(4,44,26,.08)' : 'none';
+        }
+    });
+</script>
+
 </body>
 
 </html>

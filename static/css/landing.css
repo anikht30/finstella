@@ -300,3 +300,109 @@ transition: color 0.2s, text-decoration 0.2s;
 color: #128266;
 text-decoration: underline;
 }
+
+
+/* ==========================================
+   MOBILE & TABLET RESPONSIVE STYLES
+   ========================================== */
+@media (max-width: 768px) {
+
+    /* 1. Stack the left and right panes vertically */
+    .split-layout {
+        flex-direction: column;
+        height: auto;           /* Removes fixed 100vh height to prevent mobile scrolling bugs */
+        min-height: 100vh;
+        position: relative; /* <-- ADD THIS LINE */
+    }
+
+    /* 2. Adjust pane padding for small screens */
+    .left-pane {
+        padding: 70px 20px 40px 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .right-pane {
+        padding: 40px 20px;
+        width: 100%;
+        box-sizing: border-box;
+        position: static; /* <-- ADD THIS LINE to allow the button to move to the top */
+    }
+
+    /* 3. Keep brand logo anchored nicely */
+    .brand-logo img {
+        top: 20px;
+        left: 20px;
+        height: 26px;
+    }
+
+    /* 4. Scale down hero text so it fits small displays */
+    .hero-content {
+        margin-top: 20px;
+        max-width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 22px;
+    }
+
+    .hero-content h1 .large-text {
+        font-size: 24px;
+    }
+
+    .hero-content p {
+        font-size: 13px;
+        margin-bottom: 24px;
+    }
+
+    /* 5. Make the Value Carousel elements fluid */
+    .house-placeholder {
+        width: 100%;
+        max-width: 320px;       /* Fits narrow phone screens like iPhone SE */
+        height: auto;
+    }
+
+    .house-placeholder img {
+        width: 100%;
+        height: auto;
+    }
+
+    .trust-text-container {
+        width: 100%;
+        max-width: 320px;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .trust-title {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .trust-desc {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+
+    /* 6. Center top navigation on mobile */
+    .top-nav {
+       position: absolute;  /* Pulls it out of normal flow */
+        top: 15px;           /* Aligns vertically with the logo */
+        right: 20px;         /* Pins it to the right edge */
+        width: auto;         /* Prevents it from stretching across the screen */
+        margin-bottom: 0;
+        z-index: 10;         /* Ensures it stays clickable on top of everything else */
+    }
+
+    /* 7. Un-fix the bottom footer so it flows naturally at the end */
+    .bottom-pane {
+        position: relative;
+        left: 0;
+        right: 0;
+        transform: none;
+        width: 100%;
+        margin-top: 30px;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+}

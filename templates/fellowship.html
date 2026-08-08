@@ -398,102 +398,50 @@
             </div>
         </div>
 
-        <!-- Main Outer Wrapper: Flexbox to put Image on Left, Content on Right -->
-        <div class="who-section-wrapper" style="display: flex; gap: 40px; align-items: flex-start; padding: 10px;">
+<!-- Main Outer Wrapper -->
+<div class="who-section-wrapper">
+    <!-- LEFT SIDE: The Image -->
+    <div class="who-img">
+        <img src="{% static 'icons/Finstella Membership Card.png' %}" alt="Finstella Membership Card">
+    </div>
 
-            <!-- LEFT SIDE: The Image -->
-            <div class="who-img" style="flex: 1;align-items:center;">
-                <img src="{% static 'icons/Finstella Membership Card.png' %}" alt="Finstella Membership Card" style="width: 100%; max-width: 400px;">
+    <!-- RIGHT SIDE: The Content Column -->
+    <div class="who-content">
+        <div class="who-belongs-title">WHO BELONGS HERE</div>
+
+        <div class="who-lists">
+            <!-- List 1: Belongs -->
+            <div class="belongs">
+                <div class="belongs-title">YOU BELONG HERE IF YOU ARE A:</div>
+                <div class="belongs-point">
+                    <div class="belongs-point-left">
+                        <div class="b-point-tic"><img src="{% static 'icons/check circle.svg' %}" alt=""><h1>CFO</h1></div>
+                        <div class="b-point-tic"><img src="{% static 'icons/check circle.svg' %}" alt=""><h1>Group CFO</h1></div>
+                        <div class="b-point-tic"><img src="{% static 'icons/check circle.svg' %}" alt=""><h1>Finance Director</h1></div>
+                        <div class="b-point-tic"><img src="{% static 'icons/check circle.svg' %}" alt=""><h1>Treasury Leader</h1></div>
+                    </div>
+                    <div class="belongs-point-right">
+                        <div class="b-point-tic"><img src="{% static 'icons/check circle.svg' %}" alt=""><h1>Controller</h1></div>
+                        <div class="b-point-tic"><img src="{% static 'icons/check circle.svg' %}" alt=""><h1>Head of FP&A</h1></div>
+                        <div class="b-point-tic"><img src="{% static 'icons/check circle.svg' %}" alt=""><h1>Finance Transformation Leader</h1></div>
+                        <div class="b-point-tic"><img src="{% static 'icons/check circle.svg' %}" alt=""><h1>VP / Senior Finance Leader</h1></div>
+                    </div>
+                </div>
             </div>
 
-            <!-- RIGHT SIDE: The Content Column -->
-            <div class="who-content" style="flex: 2; display: flex; flex-direction: column;">
-                
-                <!-- TOP OF RIGHT SIDE: The Title -->
-                <div class="who-belongs-title" style="text-align: center; padding: 0 0 10px 0; margin: 0;">
-                    WHO BELONGS HERE
+            <!-- List 2: Not Belongs -->
+            <div class="not-belogns">
+                <div class="not-belongs-title">THIS FELLOWSHIP IS NOT FOR:</div>
+                <div class="not-belongs-points">
+                    <div class="points-img"><img src="{% static 'icons/x circle.svg' %}" alt=""><h1>Vendors</h1></div>
+                    <div class="points-img"><img src="{% static 'icons/x circle.svg' %}" alt=""><h1>Consultants Selling Services</h1></div>
+                    <div class="points-img"><img src="{% static 'icons/x circle.svg' %}" alt=""><h1>Recruiters</h1></div>
+                    <div class="points-img"><img src="{% static 'icons/x circle.svg' %}" alt=""><h1>Junior Professionals</h1></div>
                 </div>
-
-                <!-- BOTTOM OF RIGHT SIDE: The Two Lists Side-by-Side -->
-                <div class="who-lists" style="display: flex; gap: 30px;">
-                    
-                    <!-- List 1: Belongs -->
-                    <div class="belongs" style="flex: 1;">
-                        <div class="belongs-title">
-                            YOU BELONG HERE IF YOU ARE A:
-                        </div>
-                        
-                        <!-- Inner flex for left/right columns of the 'Belongs' list -->
-                        <div class="belongs-point" style="display: flex; gap: 15px;">
-                            <div class="belongs-point-left" style="flex: 1;">
-                                <div class="b-point-tic">
-                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
-                                    <h1>CFO</h1>
-                                </div>
-                                <div class="b-point-tic">
-                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
-                                    <h1>Group CFO</h1>
-                                </div>
-                                <div class="b-point-tic">
-                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
-                                    <h1>Finance Director</h1>
-                                </div>
-                                <div class="b-point-tic">
-                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
-                                    <h1>Treasury Leader</h1>
-                                </div>
-                            </div>
-                            <div class="belongs-point-right" style="flex: 1;">
-                                <div class="b-point-tic">
-                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
-                                    <h1>Controller</h1>
-                                </div>
-                                <div class="b-point-tic">
-                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
-                                    <h1>Head of FP&A</h1>
-                                </div>
-                                <div class="b-point-tic">
-                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
-                                    <h1>Finance Transformation Leader</h1>
-                                </div>
-                                <div class="b-point-tic">
-                                    <img src="{% static 'icons/check circle.svg' %}" alt="">
-                                    <h1>VP / Senior Finance Leader</h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- List 2: Not Belongs -->
-                    <div class="not-belogns" style="flex: 1;">
-                        <div class="not-belongs-title">
-                            THIS FELLOWSHIP IS NOT FOR:
-                        </div>
-                        <div class="not-belongs-points">
-                            <div class="points-img">
-                                <img src="{% static 'icons/x circle.svg' %}" alt="">
-                                <h1>Vendors</h1>
-                            </div>
-                            <div class="points-img">
-                                <img src="{% static 'icons/x circle.svg' %}" alt="">
-                                <h1>Consultants Selling Services</h1>
-                            </div>
-                            <div class="points-img">
-                                <img src="{% static 'icons/x circle.svg' %}" alt="">
-                                <h1>Recruiters</h1>
-                            </div>
-                            <div class="points-img">
-                                <img src="{% static 'icons/x circle.svg' %}" alt="">
-                                <h1>Junior Professionals</h1>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div><!-- /who-lists -->
-                
-            </div><!-- /who-content -->
-            
-        </div><!-- /who-section-wrapper -->     
+            </div>
+        </div>
+    </div>
+</div>    
 
         <div class="trust-moment">
             <div class="trust-img">

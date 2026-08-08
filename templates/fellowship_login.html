@@ -6,7 +6,7 @@
 <div style="display: flex; flex-direction: column; align-items:center"; width: 100%;">
     
     <!-- Login Form with Clean White Card Styling -->
-    <form method="POST" action="{% url 'login' %}" style="display: flex; flex-direction: row; gap: 10px; align-items: flex-start; justify-content: flex-end;">
+    <form method="POST" action="{% url 'login' %}" class="login-form-wrapper">
         {% csrf_token %}
         
         <!-- Error Messages -->
@@ -19,7 +19,7 @@
         {% endif %}
 
         <!-- Grid Layout to Perfectly Align Inputs, Links, and Pipe -->
-        <div style="display: grid; grid-template-columns: 260px auto 260px; row-gap: 8px; column-gap: 10px; align-items: center;">
+        <div class="login-grid">
             
             <!-- Row 1: Inputs -->
             <input type="text" name="username" placeholder="Work Email" autocomplete="username" required 
@@ -42,7 +42,7 @@
             <a href="javascript:void(0);" onclick="document.getElementById('applyModal').style.display='flex'" style="font-size: 13px; color: #199A7A; text-decoration: none; font-family: 'Inter', sans-serif; font-weight: 600; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">*Apply for Membership</a>
         </div>
         
-        <div style="text-align: center; color: #94A3B8; font-size: 14px; line-height: 1;">|</div>
+        <div class="login-pipe">|</div>
         
         <div style="text-align: left;">
             <a href="{% url 'password_reset' %}" style="font-size: 13px; color: #64748B; text-decoration: none; font-family: 'Inter', sans-serif; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='#199A7A'" onmouseout="this.style.color='#64748B'">Forgot password?</a>
@@ -88,7 +88,7 @@
             {% csrf_token %}
             
             <!-- Row 1: Side-by-side Names -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+           <div class="modal-input-row">
                 <div style="display: flex; flex-direction: column; text-align: left;">
                     <label for="first_name" style="font-family: 'Syne', sans-serif; font-size: 12px; color: #1E293B; font-weight: 600; margin-bottom: 6px;">First Name*</label>
                     <input type="text" id="first_name" name="first_name" autocomplete="given-name" required style="width: 100%; padding: 10px 14px; background: #fff; color: #1E293B; border: 1px solid rgba(4, 44, 26, 0.15); border-radius: 8px; outline: none; font-family: 'Syne', sans-serif; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#199A7A'" onblur="this.style.borderColor='rgba(4, 44, 26, 0.15)'" />
@@ -106,7 +106,7 @@
             </div>
 
             <!-- Row 3: Side-by-side Professional Info -->
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+            <div class="modal-input-row">
                 <div style="display: flex; flex-direction: column; text-align: left;">
                     <label for="title" style="font-family: 'Syne', sans-serif; font-size: 12px; color: #1E293B; font-weight: 600; margin-bottom: 6px;">Current Title*</label>
                     <input type="text" id="title" name="title" placeholder="e.g. CFO" autocomplete="organization-title" required style="width: 100%; padding: 10px 14px; background: #fff; color: #1E293B; border: 1px solid rgba(4, 44, 26, 0.15); border-radius: 8px; outline: none; font-family: 'Syne', sans-serif; font-size: 14px; transition: border-color 0.2s;" onfocus="this.style.borderColor='#199A7A'" onblur="this.style.borderColor='rgba(4, 44, 26, 0.15)'" />

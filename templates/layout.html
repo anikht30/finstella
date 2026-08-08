@@ -14,7 +14,7 @@
             {% endif %}finstella {% block title %}{%endblock%}</title>
             
     <link rel="icon" type="image/png" href="{% static 'icons/finstellaBrowser.png' %}">
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}?v=6">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/thread-details.css'%}">
     <link rel="stylesheet" href="{% static 'css/edit_profile.css'%}">
@@ -78,6 +78,14 @@
     {% endif %}
 <header>
         <div class="header">
+           <!-- ADD THIS HAMBURGER ICON -->
+            <div class="hamburger" onclick="toggleSidebar()">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E293B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </div>
            
             <div class="logo">
                 <a href={% url 'dashboard'%}>
@@ -185,6 +193,8 @@
 </header>
 
     <main class="main-container">
+         <!-- ADD THIS OVERLAY LINE -->
+        <div id="sidebar-overlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>  
         <!--left side bar start-->
        <aside class="left-sidebar">
 
@@ -398,7 +408,7 @@
             
             <div class="active-discussion-box">
 
-            <div class="active-discussion-title">
+            <div class="active-discussion-title" style="justify-content:flex-start">
             <a href="javascript:history.back()" class="back-link">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H5M12 19l-7-7 7-7"/></svg>
             </a>
@@ -614,6 +624,22 @@ window.onclick = function(event) {
         });
     });
 
+    // for hamburger menu
+// Sidebar Slide-Out Logic for Mobile
+function toggleSidebar() {
+    const sidebar = document.querySelector('.left-sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    
+    sidebar.classList.toggle('show-sidebar');
+    
+    if (sidebar.classList.contains('show-sidebar')) {
+        overlay.style.display = 'block'; // Show dark overlay
+        document.body.style.overflow = 'hidden'; // Stop background scrolling
+    } else {
+        overlay.style.display = 'none'; // Hide dark overlay
+        document.body.style.overflow = 'auto'; // Restore background scrolling
+    }
+}
 
 </script>
 </body>

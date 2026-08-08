@@ -1046,3 +1046,58 @@ flex: 1;
 }
 
 
+/* ==========================================
+   DESKTOP CLASSES (Replaces Inline Styles)
+   ========================================== */
+/* "Who Belongs" Layout */
+.who-section-wrapper { display: flex; gap: 40px; align-items: flex-start; padding: 10px; }
+.who-img { flex: 1; text-align: center; }
+.who-img img { width: 100%; max-width: 400px; }
+.who-content { flex: 2; display: flex; flex-direction: column; }
+.who-belongs-title { text-align: center; padding-bottom: 10px; margin: 0; }
+.who-lists { display: flex; gap: 30px; }
+.belongs, .not-belogns { flex: 1; display: flex; flex-direction: column; }
+.belongs-point { display: flex; gap: 15px; }
+.belongs-point-left, .belongs-point-right { flex: 1; display: flex; flex-direction: column; }
+
+/* Login Form Layout */
+.login-form-wrapper {
+    display: flex; flex-direction: row; gap: 10px;
+    align-items: flex-start; justify-content: flex-end; width: 100%;
+}
+.login-grid {
+    display: grid; grid-template-columns: 260px auto 260px;
+    row-gap: 8px; column-gap: 10px; align-items: center;
+}
+.login-pipe { text-align: center; color: #94A3B8; font-size: 14px; }
+.modal-input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+
+
+/* ==========================================
+   MOBILE & TABLET RESPONSIVE FIXES
+   ========================================== */
+@media (max-width: 768px) {
+    /* 1. Hero & Login Section */
+    .fellow-content { flex-direction: column; margin-top: 20px; }
+    .fellow-content-img { width: 100%; margin-bottom: 20px; }
+    .login-form-wrapper { justify-content: center; width: 100%; }
+    .login-grid { grid-template-columns: 1fr; width: 100%; max-width: 320px; margin: 0 auto; }
+    .login-grid > div:empty { display: none; } /* Hides empty grid spacers */
+    .login-pipe { display: none; } /* Hides the vertical pipe */
+    .login-grid a { text-align: center; display: block; } /* Centers the text links */
+
+    /* 2. Application Modal */
+    .modal-input-row { grid-template-columns: 1fr; }
+
+    /* 3. The 4 Feature Points */
+    .fellow-points { width: 100%; flex-direction: column; gap: 30px; margin-top: 30px; }
+    .f-point { width: 100%; align-items: center; text-align: center; }
+    .f-point-gap { display: none; } /* Hides the vertical border lines */
+
+    /* 4. "Who Belongs" Section */
+    .who-section-wrapper { flex-direction: column; padding: 20px; }
+    .who-img { width: 100%; margin-bottom: 20px; }
+    .who-content { width: 100%; }
+    .who-lists { flex-direction: column; gap: 30px; }
+    .belongs-point { flex-direction: column; }
+}
