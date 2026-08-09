@@ -155,6 +155,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Add this line:
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
 

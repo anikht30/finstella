@@ -1427,7 +1427,7 @@ transform: translateX(-4px);
         display: grid !important;
         grid-template-columns: min-content 1fr min-content min-content !important;
         grid-template-areas: 
-            "hamburger logo .       profile"
+            "hamburger logo    profile profile"
             "search    search notif message" !important;
         row-gap: 12px !important;
         column-gap: 8px !important; /* Tightens the horizontal gap between all icons */
