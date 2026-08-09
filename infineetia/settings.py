@@ -12,10 +12,16 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+# Load environment variables from the .env file
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
@@ -24,10 +30,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o1z8*!5o7%hqw9x(lb=d12tj)x_m0$c-#1jii@ko40f0c&#nks'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 #ALLOWED_HOSTS = ['192.168.2.30','10.136.232.6','192.168.0.106','192.168.2.46','localhost']
-ALLOWED_HOSTS = ['192.168.2.46','192.168.0.104','localhost','0.0.0.0','192.168.2.68','192.168.0.101']
+#ALLOWED_HOSTS = ['192.168.2.46','192.168.0.104','localhost','0.0.0.0','192.168.2.68','192.168.0.101']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
+
+# 2. Tell Django to trust Cloudflare's HTTPS termination
+# This prevents infinite redirect loops and fixes mixed-content errors.
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
+# 3. Add CSRF Trusted Origins (Crucial for Django 4.0+)
+# Without this, you will get "CSRF Failed: Origin checking failed" when users try to log in or submit forms.
+CSRF_TRUSTED_ORIGINS = [
+    'https://finstella.pro',
+    'https://www.finstella.pro'
+]
+
 
 # Application definition
 
@@ -46,6 +66,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -94,7 +115,7 @@ DATABASES = {
         'USER': 'postgres',          # Your PostgreSQL username (usually 'postgres' locally)
         'PASSWORD': 'Anvay@141830', # Your PostgreSQL password
         'HOST': 'localhost',         # Or '127.0.0.1'
-        'PORT': '5433',              # Default PostgreSQL port
+        'PORT': os.environ.get('DB_PORT'),              # Default PostgreSQL port
     }
 }
 
@@ -134,9 +155,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'forum.CustomUser'
 

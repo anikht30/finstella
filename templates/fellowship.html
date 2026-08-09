@@ -48,7 +48,7 @@
                                 Trusted Peers
                                 <br>
                                 <br>
-                                Vetted. Varified.
+                                Vetted. Verified.
                                 <br>
                                 Relavent
                             </p>
@@ -276,6 +276,10 @@
                 </h3>    
 
             </div>
+
+
+
+
             <div class="stella-deff"><!--"our-principles">-->
                 <h1>OUR FOUR PRINCIPLES</h1>
                 <div class="principle-img">
@@ -287,7 +291,7 @@
                             <span class="p-point-head">Earned Membership</span>
                             <br>
                             
-                            Verified members only.
+                            Verified members only.<br>
                             Entry barrier ensuring quality members.
                         </p>
                     </div>
@@ -301,7 +305,7 @@
                             <span class="p-point-head">Absolute Trust</span>
                             <br>
                             
-                            Chatham House as the floor, not the ceiling.
+                            Chatham House as the floor, not the ceiling.<br>
                             What is shared here belongs only to those in the room.
                         </p>
                     </div>
@@ -314,7 +318,7 @@
                        <p><span class="p-point-head">Peer Equality</span>
                         <br>
                         
-                        No sponsors. No keynotes. No hierarchy.
+                        No sponsors. No keynotes. No hierarchy.<br>
                         Every voice carries equal weight.
                        </p>
 
@@ -329,12 +333,15 @@
                            <span class="p-point-head"> Pure Signal</span>
                             <br>
                         
-                            No vendor pitches. No algorithms. No agenda.
+                            No vendor pitches. No algorithms. No agenda.<br>
                             Only unfiltered peer wisdom.
                         </p>
                     </div>
                 </div>
             </div>
+
+
+
              <div class="stella-deff"><!--"our-principles">-->
                 <h1>
                     THE STELLA INDEX
@@ -347,10 +354,10 @@
                     Finance Leaders
                     <br>
                     <br>
-                    Finstella's proprietary peer sentiment
-                    tracker. The unfiltered view of finance leaders
-                    on macro conditions,
-                    capital allocation, talent markets and
+                    Finstella's proprietary peer sentiment tracker. <br> 
+                    The unfiltered view of finance leaders
+                    on macro <br> conditions,
+                    capital allocation, talent markets and<br>
                     strategic risk.
                     <br>
                     <br>
@@ -444,24 +451,62 @@
 </div>    
 
         <div class="trust-moment">
-            <div class="trust-img">
-                <img src="{% static 'icons/peer equality image.svg' %}" alt="A circle of seated peers in conversation">
-                <div class="trust-tag">
-                    <h2>peer equality</h2>
-                    <p>No sponsors. No keynotes. No hierarchy.
-                        <br>
-                        Every voice carries equal weight in this constellation.
-                    </p>
-                </div>
-            </div>
+  <div class="illustration-box" id="valueCarousel">
+    
+    <div class="carousel-slide active">
+        <div class="house-placeholder">
+            <img src="{% static 'absolute trust image.png' %}" alt="Absolute Trust">
+        </div>
+        <div class="trust-text-container">
+            <p>
+                <span class="trust-title">absolute trust</span><br>
+                <span class="trust-desc">
+                    Chatham House as the floor, not the ceiling.<br>
+                    What is shared here belongs only to those in the room.
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <div class="carousel-slide">
+        <div class="house-placeholder">
+            <img src="{% static 'peer equality image.png' %}" alt="Second Value"> 
+        </div>
+        <div class="trust-text-container">
+            <p>
+                <span class="trust-title">peer equality</span><br>
+                <span class="trust-desc">
+                    No sponsors. No keynotes. No hierarchy.<br>
+                    Every voice carries equal weight in this constellation.
+                </span>
+            </p>
+        </div>
+    </div>
+
+
+    <div class="carousel-slide">
+        <div class="house-placeholder">
+            <img src="{% static 'pure signal.png' %}" alt="Second Value"> 
+        </div>
+        <div class="trust-text-container">
+            <p>
+                <span class="trust-title">pure signal</span><br>
+                <span class="trust-desc">
+                    No vendor pitches. No algorithms. No agenda.<br>
+                    Only the unfiltered wisdom of peers who have been there.
+                </span>
+            </p>
+        </div>
+    </div>
+
+    </div>
+
 
             <div class="trust-content">
-                <h1>The value of a trusted peer is not measured
-                    <br>
+                <h1>The value of a trusted peer is not measured <br>
                     when things are going well.
                 </h1>
                 <h1>It is measured when a critical decision
-                    <br>
                     must be made.
                 </h1>
 
@@ -471,7 +516,7 @@
                 </p>
 
                 <div class="apply">
-                    <a href="#" type=btn>APPLY FOR MEMBERSHIP</a>
+                    <a href="javascript:void(0);" onclick="document.getElementById('applyModal').style.display='flex'" type=btn>APPLY FOR MEMBERSHIP</a>
                 </div>
                 <h6>Membership by invitation and review only.</h6>
             </div>
@@ -479,9 +524,33 @@
 
          <div class="bottom-pane">
         <h6>By proceeding to Sign Up or Sign In, you agree to Finstella's <a href="{% url 'terms' %}">Terms & Conditions</a>, <a href="{% url 'privacy' %}">Privacy Policy</a>, <a href="{% url 'disclaimer' %}">Disclaimer</a> and <a href="{% url 'about' %}">About Us</a>.</h6>
-    </div>   
+        </div>   
 
     </div><!--main-->
+
+
+<script>
+     // 1. CAROUSEL LOGIC
+    document.addEventListener("DOMContentLoaded", function() {
+        let slides = document.querySelectorAll(".carousel-slide");
+        let currentSlide = 0;
+
+        function showNextSlide() {
+            // Remove 'active' class from the current slide
+            slides[currentSlide].classList.remove("active");
+            
+            // Calculate the next slide index (loops back to 0 when it hits the end)
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            // Add 'active' class to the new slide so it fades in
+            slides[currentSlide].classList.add("active");
+        }
+
+        // Change the slide every 3.5 seconds (3500 milliseconds)
+        setInterval(showNextSlide, 3500);
+    });
+
+</script>
 
 </body>
 </html>

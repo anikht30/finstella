@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path,include,re_path
 from forum.views import landing_page,apply_view,userexists,login_view,logout_view,dashboard_view,thread_detail_view,create_thread_view,member_directory_view,add_subreply,profile_view,edit_profile,member_profile
 from forum.views import all_active_discussion_view,all_new_discussion_view,my_discussion_view,events_page,create_event,register_for_event
 from forum.views import mark_notification_read,category_list_view,category_details,global_search,feedback,invite_peer,knowledge_vault,toggle_bookmark,private_workspace,delete_note,edit_note
@@ -24,6 +24,7 @@ from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -83,3 +84,11 @@ if settings.DEBUG:
 
 
 
+
+# Add this block at the very bottom of urls.py
+if not settings.DEBUG:
+    urlpatterns += [
+        re_path(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]
