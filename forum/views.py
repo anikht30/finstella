@@ -190,16 +190,16 @@ def logout_view(request):
 def dashboard_view(request):
     # 1. Fetch all threads from the database, ordering by the newest first
     # 'select_related' makes the database query much faster!
-    threads = Thread.objects.select_related('author','category').filter(replies__isnull=False).order_by('-created_at')[:5]
+    threads = Thread.objects.select_related('author','category').filter(replies__isnull=False).order_by('-created_at').distinct()[:5]
     
 
     #1a New discussion threads without any response
 
-    threads_new = Thread.objects.select_related('author','category').filter(replies__isnull=True).order_by('-created_at')[:5]
+    threads_new = Thread.objects.select_related('author','category').filter(replies__isnull=True).order_by('-created_at').distinct()[:5]
 
 
     # fetch my discussion
-    my_discussion_thred = Thread.objects.select_related('author','category').filter(Q(author=request.user) | Q(replies__author=request.user) ).order_by('-created_at')[:5]
+    my_discussion_thred = Thread.objects.select_related('author','category').filter(Q(author=request.user) | Q(replies__author=request.user) ).order_by('-created_at').distinct()[:5]
     
     # 3. Package the data into a dictionary to send to html
 
