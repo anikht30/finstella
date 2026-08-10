@@ -318,7 +318,7 @@
             Member Directory
         </a>
         <a href="{% url 'knowledge_vault' %}" class="menu">
-            <img src="{% static 'icons/Knowledge.svg' %}" alt="">
+            <img src="{% static 'icons/knowledge.svg' %}" alt="">
             Knowledge Vault
         </a>
         <a href="{% url 'events_page' %}" class="menu {% if request.resolver_match.url_name == 'events_page' %}active{% endif %}">
@@ -640,6 +640,16 @@ function toggleSidebar() {
         document.body.style.overflow = 'auto'; // Restore background scrolling
     }
 }
+
+// Select your element
+const element = document.querySelector('.user-name','.card-name');
+
+// Convert UPPERCASE string to lowercase, then capitalize the first letter of each word
+element.textContent = element.textContent
+  .toLowerCase()
+  .replace(/\b\w/g, char => char.toUpperCase());
+
+
 
 </script>
 </body>

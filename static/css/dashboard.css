@@ -113,7 +113,7 @@ header{
     font-size: 14px;
     font-weight: 600;
     font-family: inherit;
-    text-transform: capitalize;
+    text-transform: initial;
 }
 
 
