@@ -15,8 +15,9 @@ User = get_user_model()
 
 @login_required
 def events_page(request):
+    today = timezone.now().date()
     # 1. Fetch only the approved events
-    upcoming_events = Event.objects.filter(is_approved=True)#.order_range(['start_time'])
+    upcoming_events = Event.objects.filter(is_approved=True).filter(start_time__date=today)#.order_range(['start_time'])
     
     # 2. Get a list of IDs for events this user is already registered for
     # (This allows us to change the "Register" button to "Registered" on the front end)

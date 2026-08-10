@@ -298,7 +298,7 @@
     <nav class="menu-list">
         
         <a href="{% url 'dashboard' %}" class="menu">
-            <img src="{% static 'icons/home.svg' %}" alt="">
+            <img src="{% static 'icons/dashboard.svg' %}" alt="">
             Dashboard
         </a>
         <a href="{% url 'active_discussion' %}" class="menu">
@@ -314,7 +314,7 @@
             My Discussions
         </a>
         <a href="{% url 'member_directory' %}" class="menu {% if request.resolver_match.url_name == 'member_directory' %}active{% endif %}">
-            <img src="{% static 'icons/bookmark.svg' %}" alt="">
+            <img src="{% static 'icons/member_directory.svg' %}" alt="">
             Member Directory
         </a>
         <a href="{% url 'knowledge_vault' %}" class="menu">
@@ -322,11 +322,11 @@
             Knowledge Vault
         </a>
         <a href="{% url 'events_page' %}" class="menu {% if request.resolver_match.url_name == 'events_page' %}active{% endif %}">
-            <img src="{% static 'icons/bookmark.svg' %}" alt="">
+            <img src="{% static 'icons/webinar.svg' %}" alt="">
             Webinar & Events
         </a>
         <a href="{% url 'private_workspace' %}" class="menu {% if request.resolver_match.url_name == 'private_workspace' %}active-menu{% endif %}">
-        <img src="{% static 'icons/expertcircle.svg' %}" alt=""> <!-- Use whatever icon fits best -->
+        <img src="{% static 'icons/my_workspace.svg' %}" alt=""> <!-- Use whatever icon fits best -->
         My Workspace
     </a>
     </nav>
