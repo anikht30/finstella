@@ -1,10 +1,19 @@
 
-{% extends "layout_dashboard.html" %}
+{% extends "layout.html" %}
 {%load static%}
 
   {% block title %} | Dashboard{%endblock%}
 
-  {% block  reportname %}<h4>Dashboard</h4>{% endblock  %}
+
+ {% block foraactiveboxstart %}
+
+          
+            {% endblock %}
+
+
+   {% block activeboxend %}
+     
+        {% endblock %}
 
    {% block maincontent %}
         <div class="post-question">
@@ -17,7 +26,7 @@
             </p>
 
             <a href="#" class="btn-hero-new" onclick="openDiscussionModal()">
-                So, post your query...
+                Post your query
                 <img src={%static 'icons/pen.svg'%} alt="">
             </a>
 
@@ -101,17 +110,17 @@
         
         <button class="tab-btn active" onclick="openTab(event, 'active-discussion-thred')">
             {% comment %} <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> {% endcomment %}
-            Active Discussion
+            Active Discussions
         </button>
 
         <button class="tab-btn" onclick="openTab(event, 'open-quer-thred')">
             {% comment %} <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg> {% endcomment %}
-            Open Query
+            Open Queries
         </button>
 
         <button class="tab-btn" onclick="openTab(event, 'mydiscthred')">
             {% comment %} <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg> {% endcomment %}
-            My Discussion
+            My Discussions
         </button>
 
     </div>
@@ -121,7 +130,8 @@
           <div class="active-discussion-box tab-content active" id="active-discussion-thred">
 
             <div class="active-discussion-title">
-                <h4>Active Discussions</h4>
+                {% comment %} <h4>Active Discussions</h4> {% endcomment %}
+                <h4></h4>
                 <a href="{% url 'active_discussion' %}" class="active-discussion-title-view">View all</a>
             </div>
 
@@ -167,7 +177,13 @@
                             <!-- FIXED: Removed the extra random </div> that was sitting here -->
                             
                             <h2>{{ thread.title }}</h2>
-                            <p>{{ thread.content }}</p>
+                            {% comment %} <p>{{ thread.content | slice:":400" }} <span class="seemore"> See more</span></p> {% endcomment %}
+                            {% if thread.content|length > 400 %}
+                                {{ thread.content|slice:":400" }}... 
+                            <span class="seemore"> See more </span>
+                            {% else %}
+                                {{ thread.content }}
+                            {% endif %}
                         </a> <!-- end of clickable thread content -->
 
                     </div> <!-- end of thred-details -->
@@ -189,7 +205,7 @@
                     <div class="thread-response"><h5>|</h5></div>    
                     
                     <div class="thread-peers">
-                        <h5>{{ thread.unique_author_count }} {% if thread.unique_author_count == 1 %}Peer{% else %}Peers{% endif %} Participate</h5>   
+                        <h5>{{ thread.unique_author_count }} {% if thread.unique_author_count == 1 %}Peer{% else %}Peers{% endif %} Participated</h5>   
                     </div>
                 </div> <!-- end of thread-belongs -->
 
@@ -215,7 +231,8 @@
           <div class="active-discussion-box tab-content" id="open-quer-thred">
             {% if threads_new %}
             <div class="active-discussion-title">
-                <h4>Open Queries</h4>
+                {% comment %} <h4>Open Queries</h4> {% endcomment %}
+                <h4></h4>
                 {% if threads_new %}<a href="{% url 'open_queries' %}" class="active-discussion-title-view">View all</a>{% endif %}
             </div>
 
@@ -264,7 +281,12 @@
                             <!-- FIXED: Removed the extra random </div> that was sitting here -->
                             
                             <h2>{{ thread.title }}</h2>
-                            <p>{{ thread.content }}</p>
+                            <p> {% if thread.content|length > 400 %}
+                                {{ thread.content|slice:":400" }}... 
+                            <span class="seemore"> See more </span>
+                            {% else %}
+                                {{ thread.content }}
+                            {% endif %}</p>
                         </a> <!-- end of clickable thread content -->
 
                     </div> <!-- end of thred-details -->
@@ -319,7 +341,8 @@
           <div class="active-discussion-box tab-content" id="mydiscthred">
             {% if my_discussion_thred %}
             <div class="active-discussion-title">
-                <h4>My Discussion</h4>
+                {% comment %} <h4>My Discussions</h4> {% endcomment %}
+                <h4></h4>
                 <a href={%url 'my_discussion'%} class="active-discussion-title-view">View all</a>
             </div>
 
@@ -363,7 +386,12 @@
                     </div>
 
                     <h2>{{thread.title}}</h2>
-                    <p>{{thread.content}}</p>
+                    <p> {% if thread.content|length > 400 %}
+                                {{ thread.content|slice:":400" }}... 
+                            <span class="seemore"> See more </span>
+                            {% else %}
+                                {{ thread.content }}
+                            {% endif %}</p>
                     </a>
                     </div>
                     
@@ -504,3 +532,5 @@ window.onclick = function(event) {
 
 
 {% endblock %}
+
+

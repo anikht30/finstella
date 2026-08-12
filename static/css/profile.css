@@ -4,13 +4,14 @@
         .profile-container {
             /* max-width: 800px; */
             /* margin: 60px auto; */
-            padding: 0 12px;
+            padding: 12px 12px;
             border: 1px solid #e7e8e9;
             /* background-color: red; */
             background-color: #fff;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             transition: transform 0.2s, opacity 0.2s;
+            margin-bottom:10px;
         }
 
         /* Profile Header Section */
@@ -24,6 +25,7 @@
             align-items: center;
             gap: 30px;
             margin-bottom: 24px;
+            
         }
 
         .profile-picture-wrapper {
@@ -69,6 +71,8 @@
             color: #1E293B;
             margin: 6px 0;
             font-weight: 700;
+            display: flex;
+            gap: 12px;
         }
 
         .profile-details p {

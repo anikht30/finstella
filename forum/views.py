@@ -191,6 +191,7 @@ def dashboard_view(request):
     # 1. Fetch all threads from the database, ordering by the newest first
     # 'select_related' makes the database query much faster!
     threads = Thread.objects.select_related('author','category').filter(replies__isnull=False).order_by('-created_at').distinct()[:5]
+
     
 
     #1a New discussion threads without any response

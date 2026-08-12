@@ -14,7 +14,7 @@
             {% endif %}finstella {% block title %}{%endblock%}</title>
             
     <link rel="icon" type="image/png" href="{% static 'icons/finstellaBrowser.png' %}">
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}?v=6">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}?v=7">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/thread-details.css'%}">
     <link rel="stylesheet" href="{% static 'css/edit_profile.css'%}">
@@ -205,12 +205,12 @@
         <!-- Deep Green Cover Photo -->
         <div class="card-cover">
             <!-- Outline Shield Icon -->
-            <div class="verification-badge" >
+            {% comment %} <div class="verification-badge" >
                 <svg title="Verified" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                     <path d="M9 12l2 2 4-4"></path>
                 </svg>
-            </div>
+            </div> {% endcomment %}
         </div>
 
         <!-- Overlapping Profile Picture -->
@@ -237,14 +237,16 @@
 
         <!-- Summary / Bio -->
         <div class="card-bio">
-            {{request.user.about | slice:":100"}}...
+            
+            {{request.user.about | slice:":100"}} {% if bio_lenght_greter_then_100 %}...{% endif %}
+            
             {% comment %} Driving Business Growth with Financial Automation | Financial Transformation Solutions with Microsoft Power Platform | ERP Implementation - Tally, Zoho, Odoo, ERPNext | Enabling AI in Finance {% endcomment %}
         </div>
 
         <hr class="card-divider">
 
         <!-- Bottom Action Icons -->
-        <div class="card-actions">
+        {% comment %} <div class="card-actions">
             <!-- User Check -->
             <a href="#" class="action-icon" title="Connected">
                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -287,7 +289,7 @@
                 </svg>
             </a>
         </div>
-        
+         {% endcomment %}
     </div>     
 
 
@@ -303,7 +305,7 @@
         </a>
         <a href="{% url 'active_discussion' %}" class="menu">
             <img src="{% static 'icons/conversation.svg' %}" alt="">
-            Active Discussion
+            Active Discussions
         </a>
         <a href="{% url 'open_queries' %}" class="menu {% if request.resolver_match.url_name == 'open_queries' %}active{% endif %}">
             <img src="{% static 'icons/openquery.svg' %}" alt="">
@@ -405,23 +407,34 @@
 
 
          <section class="main-content">
-            
-            <div class="active-discussion-box">
+           
+            {% block foraactiveboxstart %}
+
+           <div class="active-discussion-box">
+
+           
 
             <div class="active-discussion-title" style="justify-content:flex-start">
-            <a href="javascript:history.back()" class="back-link">
+            {% comment %} <a href="javascript:history.back()" class="back-link">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H5M12 19l-7-7 7-7"/></svg>
-            </a>
+            </a> {% endcomment %}
                 {% block  reportname %}<h4>Topics</h4>{% endblock  %}
                      
 
             </div>
-
+            {% endblock %}
 
          {% block maincontent %}
          
          {% endblock %}
-        </div>
+        
+        {% block activeboxend %}
+         </div>
+        {% endblock %}
+       
+
+
+
          </section>
 
         <aside class="right-sidebar">
@@ -432,12 +445,12 @@
             
             <!-- active title-->
             <div class="active-title">
-              <h4>Active Experts</h4>
+              <h4>Active Members</h4>
               <a href="{% url 'member_directory' %}" >View all</a>
             </div>
               <!-- active title end-->
 
-             {% for member in members%}
+             {% for member in members_list%}
             <div class="active-expert">
                 
                  {% comment %} just a comment {% endcomment %}

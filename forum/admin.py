@@ -6,9 +6,9 @@ from .models import CustomUser,Category,Thread,Event,Reply,SubReply,EventRegistr
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ['email', 'username', 'title', 'company', 'is_active_subscriber','mobileno','middle_name']
+    list_display = ['email', 'username', 'title', 'company', 'is_active_subscriber','mobileno','middle_name','profile_picture']
     fieldsets = UserAdmin.fieldsets+(
-        ('CFO Details',{'fields':('title','company','linkedin_url','is_active_subscriber','mobileno','middle_name')}),
+        ('CFO Details',{'fields':('title','company','linkedin_url','is_active_subscriber','mobileno','middle_name','profile_picture')}),
     )
 
 class categoryAdmin(admin.ModelAdmin):

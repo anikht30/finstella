@@ -576,7 +576,7 @@ background-color: #fdf0e5;
 .active-discussion-title h4 {
     font-size: 14px;
     font-weight: 600;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     color: rgb(15, 110, 86);
 }
 
@@ -707,6 +707,7 @@ article:hover{
     justify-content: flex-end;
     display: flex;
     font-weight: 400;
+    align-items: center;
 
     
 }
@@ -1575,3 +1576,11 @@ transform: translateX(-4px);
         box-sizing: border-box;
     }
     }
+
+
+
+.seemore{
+    font-size: 10px;
+    color: gray;
+    
+}

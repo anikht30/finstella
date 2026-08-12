@@ -39,7 +39,12 @@
                     </div>
                     </div>
                     <h2>{{thread.title}}</h2>
-                    <p>{{thread.content}}</p>
+                    <p> {% if thread.content|length > 400 %}
+                                {{ thread.content|slice:":400" }}... 
+                            <span class="seemore"> See more </span>
+                            {% else %}
+                                {{ thread.content }}
+                            {% endif %}</p>
                     </a>
                     </div>
                     

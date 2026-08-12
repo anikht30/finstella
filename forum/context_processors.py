@@ -14,9 +14,9 @@ def global_forum_app_data(request):
         topics = Category.objects.all().annotate(total_threads=Count('threads')).order_by('-total_threads')[:5]
         # order_by(Thread.objects.all().count)
 
-
+        bio_lenght_greter_then_100 = len(request.user.about) > 100
 # members list
-        members = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')[:5]
+        members_list = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')[:5]
         members_count = CustomUser.objects.filter(is_active=True, is_superuser=False).count()
 
    #dashboard Card count
@@ -48,7 +48,7 @@ def global_forum_app_data(request):
         return {'request':request,
             'active_discussion_count':active_discussion_count,
             'categories':categories,
-            'members':members,
+            'members_list':members_list,
             'members_count':members_count,
             'total_response':total_response,
             'open_queries_count':open_queries_count,
@@ -56,6 +56,7 @@ def global_forum_app_data(request):
             'unread_notifications_count':unread_notifications_count,
             'unread_notifications':unread_notifications,
             'topics':topics,
+            'bio_lenght_greter_then_100':bio_lenght_greter_then_100,
 
 
 

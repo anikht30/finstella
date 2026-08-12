@@ -30,7 +30,7 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = 'django-insecure-o1z8*!5o7%hqw9x(lb=d12tj)x_m0$c-#1jii@ko40f0c&#nks'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
+DEBUG = os.environ.get('DEBUG') == "True"
 
 #ALLOWED_HOSTS = ['192.168.2.30','10.136.232.6','192.168.0.106','192.168.2.46','localhost']
 #ALLOWED_HOSTS = ['192.168.2.46','192.168.0.104','localhost','0.0.0.0','192.168.2.68','192.168.0.101']
@@ -143,7 +143,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
