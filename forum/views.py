@@ -237,7 +237,7 @@ def thread_detail_view(request,thread_id):
     # fetch all existing replies for this specific thread
 
     #replies = thread.replies.all().order_by('created_at')
-    replies = thread.replies.prefetch_related('sub_replies','sub_replies__author').all()
+    replies = thread.replies.prefetch_related('sub_replies','sub_replies__author').all().order_by('-created_at')
 
     # members list
     # members = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')[:5]

@@ -193,7 +193,8 @@
                 <!-- 3. THREAD METADATA FOOTER -->
                 <div class="thread-belongs" style="color: #199A7A;">
                     <div class="time-ago">                   
-                        <h5>(Posted on {{ thread.created_at|date:"M j, Y" }})</h5>
+                        {% comment %} <h5>(Posted on {{ thread.created_at|date:"M j, Y h:i A"}})</h5> {% endcomment %}
+                        <h5>(Posted on {{ thread.created_at|date:"M j, Y" }} at {{ thread.created_at|time:"h:i A" }})</h5>
                     </div>
                     
                     <div class="thread-response"><h5>|</h5></div>    
@@ -296,7 +297,7 @@
                 <!-- 3. THREAD METADATA FOOTER -->
                 <div class="thread-belongs" style="color: #199A7A;">
                     <div class="time-ago">                   
-                        <h5>(Posted on {{ thread.created_at|date:"M j, Y" }})</h5>
+                        <h5>(Posted on {{ thread.created_at|date:"M j, Y" }} at {{ thread.created_at|time:"h:i A" }})</h5>
                     </div>
                 </div> <!-- end of thread-belongs -->
             
@@ -401,7 +402,7 @@
 
                 <div class="thread-belongs" style="color: #199A7A ;">
                     <div class="time-ago">                   
-                    <h5>(Posted on {{ thread.created_at|date:"M j, Y"}})</h5>
+                    <h5>(Posted on {{ thread.created_at|date:"M j, Y" }} at {{ thread.created_at|time:"h:i A" }})</h5>
                     </div>
                     
                 </div>

@@ -53,7 +53,7 @@
         <!-- FOOTER & REMOVE BUTTON -->
         <div class="thread-belongs" style="justify-content: space-between; align-items: center;">
             <div class="time-ago" style="color: #199A7A;">                   
-                <h5>(Posted on {{ thread.created_at|date:"M j, Y" }})</h5>
+                <h5>(Posted on {{ thread.created_at|date:"M j, Y" }} at {{ thread.created_at|time:"h:i A" }})</h5>
             </div>
             
             <!-- Remove from Vault Button -->

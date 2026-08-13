@@ -54,7 +54,7 @@
         
         <div class="thread-belongs" style="color: #199A7A;">
             <div class="time-ago">                   
-                <h5>(Posted on {{ thread.created_at|date:"M j, Y" }})</h5> 
+                <h5>(Posted on {{ thread.created_at|date:"M j, Y" }} at {{ thread.created_at|time:"h:i A" }})</h5>
             </div>
             
             {% if thread.replies.count %}
@@ -104,7 +104,7 @@
     {% endif %}
     
     <!-- WRAPPER TO FORCE VERTICAL STACKING -->
-    <div style="display: flex; flex-direction: column; gap: 20px;">
+    <div style="display: flex; flex-direction: column; gap: 5px;">
         {% for reply in replies %}
         
         <div class="thread-box" style="background: #fff; border: 1px solid #E2E8F0; padding: 20px; border-radius: 12px;">
@@ -152,7 +152,8 @@
                     </div>
 
                     <span style="font-size: 12px; color: #94A3B8;">
-                        (Replied on {{ reply.created_at|date:"M j, Y" }})
+                        (Replied on {{ reply.created_at|date:"M j, Y" }} at {{ reply.created_at|time:"h:i A"}})
+                        {% comment %} <h5>(Posted on {{ thread.created_at|date:"M j, Y" }} at {{ thread.created_at|time:"h:i A" }})</h5> {% endcomment %}
                     </span>
                 </div>
 
@@ -169,7 +170,7 @@
                 <!-- Nested Replies -->
                 {% if reply.sub_replies.all %}
                     <div id="nested-replies-{{ reply.id }}" style="display: none; margin-top: 24px; padding-left: 20px; border-left: 2px solid #E2E8F0;">
-                        {% for sub in reply.sub_replies.all %}
+                        {% for sub in reply.sub_replies.all|dictsortreversed:"created_at" %}
                             <div style="margin-bottom: 20px;">
                                 <div class="sub-reply" style="display: flex; align-items: flex-start; gap: 12px;">
                                     <a href="{% url 'member_profile' sub.author.id %}" style="flex-shrink: 0; text-decoration: none;">
@@ -185,7 +186,9 @@
                                     <div>
                                         <div style="display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px;">
                                             <span style="font-weight: 600; color: #1E293B; font-size: 14px;">{{ sub.author.first_name }} {{ sub.author.last_name }}</span>
-                                            <span style="font-size: 11px; color: #94A3B8;">(Replied on {{ sub.created_at|date:"M j, Y" }})</span>
+                                            <span style="font-size: 11px; color: #94A3B8;">
+                                                (Replied on {{ sub.created_at|date:"M j, Y" }} at {{sub.created_at|time:"h:i A"}})</span>
+                                                
                                         </div>
                                         <div style="font-size: 14px; line-height: 1.5; color: #475569;">
                                             {{ sub.content|linebreaks }}
