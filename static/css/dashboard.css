@@ -903,10 +903,13 @@ article:hover{
     line-height: 1;
 }
 .expert-text h5 {
+    font-family: inherit;
     margin: 0;
     font-size: 14px;
     text-transform: capitalize;
-    color:#000
+    color:#000;
+    font-weight: 500;
+    
     
 }
 
@@ -1583,4 +1586,42 @@ transform: translateX(-4px);
     font-size: 10px;
     color: gray;
     
+}
+
+
+.alphabet-filter-container {
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.filter-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    color: #0f172a;
+    border-color: #94a3b8;
+    background-color: #f1f5f9;
+}
+
+/* Active State (Selected Letter) */
+.filter-btn.active {
+    background-color: #199a7a; /* Primary accent color */
+    color: #ffffff;
+    border-color: #199a7a;
 }

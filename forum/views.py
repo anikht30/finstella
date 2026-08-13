@@ -8,6 +8,7 @@ from .forms import ProfileUpdateForm
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.db.models import Count
+import string
 
 
 User = get_user_model()
@@ -313,14 +314,35 @@ def create_thread_view(request):
 
 @login_required(login_url='login')
 def member_directory_view(request):
+    # get the selected letter from URL (defaults to 'All' if not set)
+    selected_letter = request.GET.get('letter', 'All')
+    
     # fetch all users who are marked as active, ordered by their first name
     # we exclude ther super user so the admin dosen't show up in member list
 
+
     members = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')
+
+    # Filter if a specific letter (A-Z) is selected
+
+    if selected_letter and selected_letter != 'All':
+        members = members.filter(
+            Q(first_name__istartswith=selected_letter) | 
+            Q(last_name__istartswith=selected_letter)
+        )
+
+    # Generate list ['A', 'B', 'C', ..., 'Z']
+    alphabet = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")#(string.ascii_letters)
+
+
+
     categories = Category.objects.all()
     context = {
         'members':members,
         'categories':categories,
+        'alphabet':alphabet,
+        'selected_letter':selected_letter,
+
     }
     return render(request, 'members.html', context)
 

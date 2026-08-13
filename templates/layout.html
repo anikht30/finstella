@@ -14,7 +14,7 @@
             {% endif %}finstella {% block title %}{%endblock%}</title>
             
     <link rel="icon" type="image/png" href="{% static 'icons/finstellaBrowser.png' %}">
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}?v=7">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}?v=8">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/thread-details.css'%}">
     <link rel="stylesheet" href="{% static 'css/edit_profile.css'%}">
@@ -32,7 +32,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 
-
+    
 
 </head>
 <body>
@@ -219,7 +219,7 @@
              {% if request.user.profile_picture %}
                 <img src="{{ request.user.profile_picture.url }}" alt="{{ request.user.first_name }}" class="card-avatar">
              {% else %}
-                <div class="expert-initial-avtar">
+                <div class="expert-initial-avtar myTitleCase">
                     {{ request.user.first_name|first }}{{ request.user.last_name|first }}
                 </div>
              {% endif %}
@@ -386,7 +386,7 @@
                 </a> {% endcomment %}
                 
                 <a href="{% url 'invite_peer' %}" class="menu">
-                    <img src={%static 'icons/Knowledge.svg'%} alt="">
+                    <img src={%static 'icons/knowledge.svg'%} alt="">
                     Invite a Peer
                 </a>
                 <a href="{% url 'feedback' %}" class="menu">
@@ -661,6 +661,8 @@ const element = document.querySelector('.user-name','.card-name');
 element.textContent = element.textContent
   .toLowerCase()
   .replace(/\b\w/g, char => char.toUpperCase());
+
+
 
 
 
