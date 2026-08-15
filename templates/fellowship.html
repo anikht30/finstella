@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Document</title>
+    <title>finstella | Sing In</title>
     <link rel="stylesheet" href="{% static 'css/landing.css' %}">  
     <link rel="stylesheet" href="{% static 'css/fellow.css' %}">
     <link rel="icon" type="image/png" href="{% static 'icons/finstellaBrowser.png' %}">
@@ -20,7 +20,11 @@
             
             <div class="logo-nav">
                 <div class="logo">
-                    <img src="{% static 'finstella.svg' %}" alt="">
+                    {% comment %} <img src="{% static 'finstella.svg' %}" alt=""> {% endcomment %}
+                     <a href="/">
+            <img src="{% static 'finstella.svg' %}" alt="Finstella Logo">
+                    </a>
+   
                 </div>
                 
                 <div class="nav">

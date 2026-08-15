@@ -1,12 +1,13 @@
 {% extends "layout.html" %}
 {% load static %}
 
-{% block title %}Editing Note - {{ note.title }}{% endblock %}
+{% block title %} | Editing Note - {{ note.title }}{% endblock %}
+{% block  reportname %}<h4>Edit Note</h4>{% endblock  %}
 
 {% block maincontent %}
 <style>
     .workspace-header {
-        margin-bottom: 30px;
+        margin-bottom: 10px;
         display: flex;
         align-items: center;
         gap: 15px;
@@ -106,17 +107,17 @@
     }
 </style>
 
-<div class="active-discussion-box">
+{% comment %} <div class="active-discussion-box"> {% endcomment %}
 <div class="main-content" style="grid-column: span 12;">
     
     <div class="workspace-header">
         <a href="{% url 'private_workspace' %}" class="back-btn" title="Back to Workspace">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         </a>
-        <div>
+        {% comment %} <div>
             <h1>Edit Note</h1>
             <p>Focus Mode</p>
-        </div>
+        </div> {% endcomment %}
     </div>
 
     <!-- UPDATE NOTE FORM -->
@@ -139,5 +140,5 @@
     </div>
 
 </div>
-</div>
+{% comment %} </div> {% endcomment %}
 {% endblock %}

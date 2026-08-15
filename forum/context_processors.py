@@ -42,7 +42,8 @@ def global_forum_app_data(request):
 
 
         # count only notifications for this specific user that are not read yet
-        unread_notifications_count = Notifications.objects.filter(recipient=request.user, is_read=False).count()
+        #unread_notifications_count = Notifications.objects.filter(recipient=request.user, is_read=False).count()
+        unread_notifications_count = Notifications.objects.filter(recipient=request.user,badge_cleared=False).count()
         unread_notifications = Notifications.objects.filter(recipient=request.user, is_read=False)
         request = request
         return {'request':request,

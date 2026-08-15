@@ -8,6 +8,7 @@ from .forms import ProfileUpdateForm
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.db.models import Count
+from django.urls import reverse
 import string
 
 
@@ -392,10 +393,18 @@ def profile_view(request):
 
     recent_replies = Reply.objects.filter(author=user).select_related('thread').order_by('-created_at')[:5]
 
+    user_notifications = None
+    if request.user.is_authenticated and request.user == user:
+        user_notifications = Notifications.objects.filter(
+            recipient=user
+        ).order_by('-created_at')
+
+
     context={
         'profile_user':user,
         'recent_threads':recent_threds,
-        'recent_replies':recent_replies
+        'recent_replies':recent_replies,
+        'user_notifications':user_notifications,
     }
     return render(request, 'profile.html', context)
 
@@ -589,6 +598,17 @@ def my_discussion_view(request):
 
     
     return render(request,'my_discussions.html',context)
+
+@login_required
+def click_notification_icon(request):
+    if request.user.is_authenticated:
+        # clear the red badge count without marking them as "read"
+        Notifications.objects.filter(
+            recipient = request.user,
+            badge_cleared=False
+        ).update(badge_cleared=True)
+    # Redirect to profile page and append the tab instruction
+    return redirect(f"{reverse('profile')}?tab=notifications")
 
 
 @login_required

@@ -4,33 +4,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us — Finstella</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet"/>
+    <title>finstella | About Us</title>
+    
+    <!-- Import Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="icon" type="image/png" href="{% static 'icons/finstellaBrowser.png' %}">
     
     <style>
-        body { background: #F8FAFC; margin: 0; padding: 0; font-family: 'Syne', sans-serif; color: #1E293B; }
+        /* CSS Variables for consistent theming */
+        :root {
+            --finstella-green: #199A7A;
+            --text-main: #1E293B;
+            --text-muted: #475569;
+            --bg-main: #F8FAFC;
+            --border-color: #E2E8F0;
+        }
+
+        /* Flex body ensures the footer always pushes to the bottom of the screen */
+        body { 
+            background: var(--bg-main); 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Inter', sans-serif; 
+            color: var(--text-main); 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; 
+        }
         
         /* Clean public navigation bar */
-        .public-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #fff; border-bottom: 1px solid #E2E8F0; }
-        .public-nav img { height: 30px; }
-        .back-link { color: #64748B; text-decoration: none; font-weight: 600; font-size: 14px; transition: color 0.2s; }
-        .back-link:hover { color: #199A7A; }
+        .public-nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 40px; 
+            background: #fff; 
+            border-bottom: 1px solid var(--border-color); 
+        }
         
+        .public-nav img { 
+            height: 32px; 
+        }
+        
+        .back-link { 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-weight: 500; 
+            font-size: 14px; 
+            transition: color 0.2s; 
+        }
+        
+        .back-link:hover { 
+            color: var(--finstella-green); 
+        }
+        
+        /* Main content wrapper to fill space between nav and footer */
+        .main-wrapper {
+            flex-grow: 1;
+            padding: 0 20px;
+        }
+
         /* Legal content container */
-        .legal-container { max-width: 800px; margin: 60px auto; background: #fff; padding: 50px 60px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #E2E8F0; }
-        .legal-header { text-align: center; margin-bottom: 40px; }
-        .legal-header h1 { font-family: 'Lora', serif; font-size: 36px; color: #199A7A; font-style: italic; margin-bottom: 10px; margin-top: 0; }
+        .legal-container { 
+            max-width: 800px; 
+            margin: 60px auto; 
+            background: #fff; 
+            padding: 50px 60px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04); 
+            border: 1px solid var(--border-color); 
+        }
         
-        .legal-content h2 { font-family: 'Syne', sans-serif; font-size: 20px; color: #1E293B; margin-top: 35px; margin-bottom: 15px; border-bottom: 1px solid #F1F5F9; padding-bottom: 8px; }
-        .legal-content p { font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 16px; }
-        .legal-content ul { margin-bottom: 20px; padding-left: 20px; }
-        .legal-content li { font-size: 15px; color: #475569; line-height: 1.7; margin-bottom: 10px; }
-        .legal-content strong { color: #1E293B; }
+        .legal-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+        }
         
+        .legal-header h1 { 
+            font-size: 32px; 
+            font-weight: 700;
+            color: var(--finstella-green); 
+            margin: 0; 
+            letter-spacing: -0.5px;
+        }
+        
+        .legal-content h2 { 
+            font-size: 18px; 
+            font-weight: 600;
+            color: var(--text-main); 
+            margin-top: 40px; 
+            margin-bottom: 16px; 
+            border-bottom: 1px solid #F1F5F9; 
+            padding-bottom: 10px; 
+        }
+        
+        .legal-content p { 
+            font-size: 15px; 
+            color: var(--text-muted); 
+            line-height: 1.7; 
+            margin-bottom: 20px; 
+        }
+        
+        .legal-content ul { 
+            margin-bottom: 24px; 
+            padding-left: 24px; 
+        }
+        
+        .legal-content li { 
+            font-size: 15px; 
+            color: var(--text-muted); 
+            line-height: 1.7; 
+            margin-bottom: 12px; 
+        }
+        
+        /* Tinted bullet points for a premium feel */
+        .legal-content li::marker {
+            color: var(--finstella-green);
+        }
+
+        .legal-content strong { 
+            color: var(--text-main); 
+            font-weight: 600;
+        }
+        
+        /* Redesigned Landing Page Footer */
+        .bottom-pane {
+            background: #fff;
+            border-top: 1px solid var(--border-color);
+            padding: 24px 20px;
+            text-align: center;
+            margin-top: auto; 
+        }
+
+        .bottom-pane h6 {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .bottom-pane a {
+            color: var(--finstella-green);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .bottom-pane a:hover {
+            text-decoration: underline;
+            color: #128266;
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .public-nav { padding: 15px 20px; }
-            .legal-container { padding: 30px 20px; margin: 30px 20px; }
+            .legal-container { padding: 30px 24px; margin: 30px auto; }
+            .legal-header h1 { font-size: 28px; }
         }
     </style>
 </head>
@@ -43,7 +176,7 @@
         <a href="/" class="back-link">← Back to Home</a>
     </nav>
     
-    <div style="padding: 0 20px;">
+    <div class="main-wrapper">
         <div class="legal-container">
             <div class="legal-header">
                 <h1>About Us</h1>
@@ -80,8 +213,11 @@
             </div>
         </div>
     </div>
- <div class="bottom-pane">
+
+    <!-- The neat, aligned footer -->
+    <div class="bottom-pane">
         <h6>By proceeding to Sign Up or Sign In, you agree to Finstella's <a href="{% url 'terms' %}">Terms & Conditions</a>, <a href="{% url 'privacy' %}">Privacy Policy</a>, <a href="{% url 'disclaimer' %}">Disclaimer</a> and <a href="{% url 'about' %}">About Us</a>.</h6>
     </div>  
+
 </body>
 </html>

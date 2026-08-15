@@ -7,22 +7,12 @@
 
 {% block maincontent %}
 <style>
-    .workspace-header {
-        margin-bottom: 30px;
-    }
-    
-    .workspace-header h1 {
-        font-family: 'Lora', serif;
-        font-size: 32px;
-        color: #199A7A;
-        font-style: italic;
-        margin-bottom: 8px;
-    }
-    
-    .workspace-header p {
-        color: #64748B;
-        font-family: 'Syne', sans-serif;
-        font-size: 14px;
+    /* Import Inter Font */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    /* Base Font Wrapper */
+    .workspace-wrapper {
+        font-family: 'Inter', sans-serif;
     }
 
     /* Note Input Area */
@@ -43,7 +33,7 @@
     .note-title-input {
         width: 100%;
         border: none;
-        font-family: 'Syne', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: 18px;
         font-weight: 600;
         color: #1E293B;
@@ -54,12 +44,13 @@
     
     .note-title-input::placeholder {
         color: #94A3B8;
+        font-weight: 500;
     }
 
     .note-content-input {
         width: 100%;
         border: none;
-        font-family: 'Syne', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-size: 14px;
         color: #475569;
         min-height: 100px;
@@ -86,7 +77,7 @@
         font-weight: 600;
         cursor: pointer;
         transition: background 0.2s;
-        font-family: inherit;
+        font-family: 'Inter', sans-serif;
     }
     
     .save-note-btn:hover {
@@ -105,7 +96,6 @@
         border: 1px solid #E2E8F0;
         border-radius: 12px;
         padding: 20px;
-        position: relative;
         display: flex;
         flex-direction: column;
         transition: transform 0.2s, box-shadow 0.2s;
@@ -116,12 +106,63 @@
         box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     }
 
+    /* NEW ALIGNMENT: Flex container to hold Title and Actions side-by-side */
+    .note-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 10px;
+        gap: 15px; /* Ensures space between long titles and the buttons */
+    }
+
     .note-card-title {
         font-size: 16px;
         font-weight: 700;
         color: #1E293B;
-        margin-bottom: 10px;
-        padding-right: 25px; /* Leave space for delete button */
+        margin: 0; 
+        font-family: 'Inter', sans-serif;
+        line-height: 1.4;
+    }
+
+    /* Actions container */
+    .note-card-actions {
+        display: flex;
+        gap: 8px;
+        opacity: 0.3;
+        transition: opacity 0.2s;
+        flex-shrink: 0; /* Prevents buttons from squishing */
+    }
+
+    .note-card:hover .note-card-actions {
+        opacity: 1;
+    }
+
+    /* Shared style for Edit and Delete buttons */
+    .action-btn {
+        background: none;
+        border: none;
+        padding: 6px;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .edit-btn {
+        color: #64748B;
+    }
+    .edit-btn:hover {
+        background: #f1f5f9;
+        color: #199A7A;
+    }
+
+    .delete-btn {
+        color: #EF4444;
+    }
+    .delete-btn:hover {
+        background: #fee2e2;
     }
 
     .note-card-content {
@@ -130,7 +171,8 @@
         line-height: 1.6;
         margin-bottom: 20px;
         flex-grow: 1;
-        white-space: pre-wrap; /* Keeps line breaks */
+        white-space: pre-wrap;
+        font-family: 'Inter', sans-serif;
     }
 
     .note-card-footer {
@@ -141,109 +183,67 @@
         align-items: center;
         border-top: 1px dashed #E2E8F0;
         padding-top: 12px;
-    }
-
-    .delete-note-btn {
-        background: none;
-        border: none;
-        color: #EF4444;
-        cursor: pointer;
-        padding: 4px;
-        border-radius: 4px;
-        position: absolute;
-        top: 16px;
-        right: 16px;
-        opacity: 0.3;
-        transition: opacity 0.2s, background 0.2s;
-    }
-    
-    .note-card:hover .delete-note-btn {
-        opacity: 1;
-    }
-    
-    .delete-note-btn:hover {
-        background: #fee2e2;
-    }
-
-    /* Add this new CSS block for the edit button */
-    .edit-note-btn {
-        position: absolute;
-        top: 16px;
-        right: 48px; /* Places it right next to the delete button */
-        color: #64748B;
-        padding: 4px;
-        border-radius: 4px;
-        opacity: 0.3;
-        transition: opacity 0.2s, background 0.2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .note-card:hover .edit-note-btn {
-        opacity: 1;
-    }
-
-    .edit-note-btn:hover {
-        background: #f1f5f9;
-        color: #199A7A; /* Turns Finstella Green on hover */
+        font-family: 'Inter', sans-serif;
     }
 </style>
 
-<div class="active-discussion-box">
-<div class="main-content" style="grid-column: span 12;">
-    
-    <div class="workspace-header">
-        <h1>Executive Workspace</h1>
-        <p>A private, secure space for your drafts, priorities, and daily reminders.</p>
-    </div>
-
-    <!-- CREATE NEW NOTE -->
-    <div class="note-input-card">
-        <form action="{% url 'private_workspace' %}" method="POST">
-            {% csrf_token %}
-            <input type="text" name="title" class="note-title-input" placeholder="Give your note a title (optional)...">
-            <textarea name="content" class="note-content-input" placeholder="Start typing your private notes here..." required></textarea>
-            
-            <div class="note-submit-bar">
-                <button type="submit" class="save-note-btn">Save Note privately</button>
-            </div>
-        </form>
-    </div>
-
-    <!-- SAVED NOTES -->
-    <h3 style="font-size: 14px; text-transform: uppercase; color: #64748B; margin-bottom: 15px; letter-spacing: 0.5px;">Your Recent Notes</h3>
-    
-    <div class="notes-grid">
-        {% for note in notes %}
-            <div class="note-card">
-                <h4 class="note-card-title">{{ note.title }}</h4>
-                <div class="note-card-content">{{ note.content|truncatechars:200 }}</div>
+{% comment %} <div class="active-discussion-box workspace-wrapper"> {% endcomment %}
+    <div class="main-content" style="grid-column: span 12;">
+        
+        <!-- CREATE NEW NOTE -->
+        <div class="note-input-card">
+            <form action="{% url 'private_workspace' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="title" class="note-title-input" placeholder="Give your note a title (optional)...">
+                <textarea name="content" class="note-content-input" placeholder="Start typing your private notes here..." required></textarea>
                 
-                <div class="note-card-footer">
-                    <span>Last edited: {{ note.updated_at|date:"M j, Y" }}</span>
+                <div class="note-submit-bar">
+                    <button type="submit" class="save-note-btn">Save Note privately</button>
                 </div>
+            </form>
+        </div>
 
-                <!-- Edit Button -->
-                <a href="{% url 'edit_note' note.id %}" class="edit-note-btn" title="Edit Note">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                </a>
+        <!-- SAVED NOTES -->
+        <h3 style="font-size: 14px; text-transform: uppercase; color: #64748B; margin-bottom: 15px; letter-spacing: 0.5px; font-family: 'Inter', sans-serif; font-weight: 600;">Your Recent Notes</h3>
+        
+        <div class="notes-grid">
+            {% for note in notes %}
+                <div class="note-card">
+                    
+                    <!-- THE NEW HEADER LAYOUT -->
+                    <div class="note-card-header">
+                        <h4 class="note-card-title">{{ note.title|default:"Untitled Note" }}</h4>
+                        
+                        <div class="note-card-actions">
+                            <!-- Edit Button -->
+                            <a href="{% url 'edit_note' note.id %}" class="action-btn edit-btn" title="Edit Note">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            </a>
 
-                <!-- Delete Button -->
-                <form action="{% url 'delete_note' note.id %}" method="POST" style="margin: 0;">
-                    {% csrf_token %}
-                    <button type="submit" class="delete-note-btn" title="Delete Note" onclick="return confirm('Are you sure you want to delete this private note?');">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-                    </button>
-                </form>
-            </div>
-        {% empty %}
-            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; border: 1px dashed #CBD5E1; border-radius: 12px; color: #94A3B8;">
-                Your workspace is completely empty. Jot down a thought above to get started.
-            </div>
-        {% endfor %}
+                            <!-- Delete Button -->
+                            <form action="{% url 'delete_note' note.id %}" method="POST" style="margin: 0;">
+                                {% csrf_token %}
+                                <button type="submit" class="action-btn delete-btn" title="Delete Note" onclick="return confirm('Are you sure you want to delete this private note?');">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="note-card-content">{{ note.content|truncatechars:200 }}</div>
+                    
+                    <div class="note-card-footer">
+                        <span>Last edited: {{ note.updated_at|date:"M j, Y" }}</span>
+                    </div>
+
+                </div>
+            {% empty %}
+                <div style="grid-column: 1 / -1; text-align: center; padding: 40px; border: 1px dashed #CBD5E1; border-radius: 12px; color: #94A3B8; font-family: 'Inter', sans-serif;">
+                    Your workspace is completely empty. Jot down a thought above to get started.
+                </div>
+            {% endfor %}
+        </div>
+
     </div>
-
-</div>
-</div>
+{% comment %} </div> {% endcomment %}
 {% endblock %}

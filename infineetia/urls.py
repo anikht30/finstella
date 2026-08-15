@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path,include,re_path
 from forum.views import landing_page,apply_view,userexists,login_view,logout_view,dashboard_view,thread_detail_view,create_thread_view,member_directory_view,add_subreply,profile_view,edit_profile,member_profile
 from forum.views import all_active_discussion_view,all_new_discussion_view,my_discussion_view,events_page,create_event,register_for_event
-from forum.views import mark_notification_read,category_list_view,category_details,global_search,feedback,invite_peer,knowledge_vault,toggle_bookmark,private_workspace,delete_note,edit_note
+from forum.views import mark_notification_read,category_list_view,category_details,global_search,feedback,invite_peer,knowledge_vault,toggle_bookmark,private_workspace,delete_note,edit_note,click_notification_icon
 #template view to quickly show temporary dashboard
 from django.views.generic import TemplateView
 from django.conf import settings
@@ -73,7 +73,7 @@ urlpatterns = [
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
-
+    path('notifications/click/', click_notification_icon, name='click_notification_icon'),
 
 ]
 

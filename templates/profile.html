@@ -3,8 +3,8 @@
 
 {% block title %} | Profile{% endblock %}
 
-{% block  reportname %}<h4>Profile</h4>{% endblock  %}
-{% block maincontent%}
+{% block reportname %}<h4>Profile</h4>{% endblock %}
+{% block maincontent %}
 
 <main class="profile-container">
     
@@ -21,14 +21,12 @@
             </div>
 
             <div class="profile-details">
-                
                 <h1 style=" text-transform: capitalize;">{{ profile_user.first_name }} {{ profile_user.last_name }}
                     {% if request.user == profile_user %}
                         <a href="{% url 'edit_profile' %}" title="Edit Profile" style="color: #000; display: flex; align-items: center;">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                         </a>
                     {% endif %}
-
                 </h1>
                 <p style="color: #1E293B; font-weight: 500;">
                     {% if profile_user.company %}{{ profile_user.company }}{% endif %}
@@ -36,7 +34,6 @@
                 <p>
                     {% if profile_user.title and profile_user.title != "None" %}{{ profile_user.title }}{% endif %}
                 </p>
-                {% comment %} <p>Mumbai, Maharashtra, India</p> <!-- Update this if you add a location field to your model --> {% endcomment %}
             </div>
         </div>
 
@@ -64,6 +61,14 @@
             <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
             Recent Responses
         </button>
+
+        <!-- NEW: Notifications Tab Button (Only visible to the account owner) -->
+        {% if request.user == profile_user %}
+        <button class="tab-btn" id="btn-notifications" onclick="openTab(event, 'tab-notifications')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            Notifications
+        </button>
+        {% endif %}
 
     </div>
 
@@ -125,6 +130,35 @@
         {% endif %}
     </div>
 
+    <!-- 4. NEW: Notifications Tab Content -->
+    {% if request.user == profile_user %}
+    <div id="tab-notifications" class="tab-content">
+        {% if user_notifications %}
+            {% for notif in user_notifications %}
+                
+                <!-- If notif.is_read is False, it applies a green tint and left border -->
+                <a href="{% url 'mark_notification_read' notif.id %}" 
+                   class="content-card" 
+                   style="display: block; text-decoration: none; transition: background-color 0.2s; 
+                          {% if not notif.is_read %}background-color: #f1f8f6; border-left: 4px solid #199A7A;{% endif %}">
+                    
+                    <div style="font-size: 15px; font-weight: {% if not notif.is_read %}700{% else %}500{% endif %}; color: #1E293B; margin-bottom: 6px;">
+                        {{ notif.message }}
+                    </div>
+                    <div style="font-size: 13px; color: #64748B; font-family: inherit;">
+                        {{ notif.created_at|timesince }} ago
+                    </div>
+                </a>
+                
+            {% endfor %}
+        {% else %}
+            <div class="content-card" style="text-align: center; color: #94A3B8; font-style: italic;">
+                You have no notifications yet.
+            </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
 </main>
 
 <script>
@@ -142,10 +176,20 @@
         }
 
         // 3. Show the current tab, and add an "active" class to the button that opened the tab
-        
         document.getElementById(tabId).classList.add("active");
         evt.currentTarget.classList.add("active");
     };
+
+    // NEW: Auto-Open the Notification Tab if the URL says "?tab=notifications"
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('tab') === 'notifications') {
+            const notifBtn = document.getElementById('btn-notifications');
+            if (notifBtn) {
+                notifBtn.click(); // This simulates the user clicking the tab!
+            }
+        }
+    });
 </script>
 
 {% endblock %}

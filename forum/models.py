@@ -7,6 +7,7 @@ import os
 from django.conf import settings #Safely connect to your CustomUser/Profile model
 
 
+
 class CustomUser(AbstractUser):
     #password will set after register in background
     title = models.CharField(max_length=100, blank=True, null=True, help_text="e.g. CFO, Finance Director")
@@ -213,6 +214,12 @@ class Notifications(models.Model):
     # 1. who receives the notification?
     recipient = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="notifications")
 
+    # Controls the red badge on the navbar icon
+    badge_cleared = models.BooleanField(default=False)
+
+    # Controls the visual effect in the profile tab
+    is_read = models.BooleanField(default=False)
+
     # 2. who triggered it? 
 
     actor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="actions", null=True, blank=True)
@@ -279,3 +286,7 @@ class PrivateNote(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.user.username}"
+
+
+
+        
