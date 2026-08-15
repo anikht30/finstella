@@ -137,6 +137,10 @@
             padding: 24px 20px;
             text-align: center;
             margin-top: auto; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
 
         .bottom-pane h6 {
@@ -159,6 +163,11 @@
             color: #128266;
         }
 
+        .panel-footer-copyright {
+            color: #94A3B8;
+            font-size: 12px;
+            font-weight: 400;
+        }
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .public-nav { padding: 15px 20px; }
@@ -214,10 +223,12 @@
         </div>
     </div>
 
-    <!-- The neat, aligned footer -->
-    <div class="bottom-pane">
+   <div class="bottom-pane">
         <h6>By proceeding to Sign Up or Sign In, you agree to Finstella's <a href="{% url 'terms' %}">Terms & Conditions</a>, <a href="{% url 'privacy' %}">Privacy Policy</a>, <a href="{% url 'disclaimer' %}">Disclaimer</a> and <a href="{% url 'about' %}">About Us</a>.</h6>
-    </div>  
-
+        
+        <div class="panel-footer-copyright">
+            © 2026 Finstella
+        </div>
+    </div>
 </body>
 </html>
