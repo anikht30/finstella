@@ -36,46 +36,52 @@
 
 </head>
 <body>
-     <!-- GLOBAL MESSAGES SYSTEM -->
-    {% if messages %}
-        <div id="toast-container" style="position: fixed; top: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 10px;">
-            {% for message in messages %}
-                <div class="finstella-toast" style="background: #ffffff; border-left: 4px solid {% if message.tags == 'error' %}#EF4444{% else %}#199A7A{% endif %}; box-shadow: 0 10px 25px rgba(0,0,0,0.1); padding: 16px 24px; border-radius: 8px; display: flex; align-items: center; gap: 12px; font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 600; color: #1E293B; min-width: 250px; transform: translateX(120%); animation: slideIn 0.4s forwards ease-out;">
-                    
-                    {% if message.tags == 'error' %}
-                        <!-- Red Error Icon -->
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                    {% else %}
-                        <!-- Green Success Icon -->
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#199A7A" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    {% endif %}
-                    
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div>
+   <!-- GLOBAL MESSAGES SYSTEM -->
+{% if messages %}
+    <div id="toast-container" style="position: fixed; top: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 10px;">
+        {% for message in messages %}
+            <!-- Removed the inline transform; the animation will handle it entirely -->
+            <div class="finstella-toast" style="background: #ffffff; border-left: 4px solid {% if message.tags == 'error' %}#EF4444{% else %}#199A7A{% endif %}; box-shadow: 0 10px 25px rgba(0,0,0,0.1); padding: 16px 24px; border-radius: 8px; display: flex; align-items: center; gap: 12px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: #1E293B; min-width: 250px; animation: slideIn 0.4s forwards ease-out;">
+                
+                {% if message.tags == 'error' %}
+                    <!-- Red Error Icon -->
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                {% else %}
+                    <!-- Green Success Icon -->
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#199A7A" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                {% endif %}
+                
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
 
-        <!-- Animation & Auto-Close Logic -->
-        <style>
-            @keyframes slideIn {
-                to { transform: translateX(0); }
-            }
-            @keyframes fadeOut {
-                to { opacity: 0; transform: translateY(-10px); }
-            }
-        </style>
-        <script>
-            // Make the toasts disappear automatically after 4 seconds
-            setTimeout(function() {
-                const toasts = document.querySelectorAll('.finstella-toast');
-                toasts.forEach(toast => {
-                    toast.style.animation = 'fadeOut 0.4s forwards ease-in';
-                    // Remove from the DOM completely after fade out
-                    setTimeout(() => toast.remove(), 400); 
-                });
-            }, 4000);
-        </script>
-    {% endif %}
+    <!-- Animation & Auto-Close Logic -->
+    <style>
+        @keyframes slideIn {
+            0% { transform: translateX(120%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeOut {
+            0% { transform: translateX(0); opacity: 1; }
+            /* Sliding it back to the right looks much smoother than fading straight up */
+            100% { transform: translateX(120%); opacity: 0; }
+        }
+    </style>
+    <script>
+        // Make the toasts disappear automatically after 4 seconds
+        setTimeout(function() {
+            const toasts = document.querySelectorAll('.finstella-toast');
+            toasts.forEach(toast => {
+                toast.style.animation = 'fadeOut 0.4s forwards ease-in';
+                
+                // Changed from 400ms to 450ms. 
+                // This extra 50ms guarantees the CSS finishes before DOM removal, killing the flicker.
+                setTimeout(() => toast.remove(), 450); 
+            });
+        }, 4000);
+    </script>
+{% endif %}
 <header>
         <div class="header">
            <!-- ADD THIS HAMBURGER ICON -->

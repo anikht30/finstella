@@ -302,6 +302,8 @@ def create_thread_view(request):
                 
             )
             # Send the user directly to their newly created thread!
+             # 3. Add a success message to show the user
+            messages.success(request, "Your query submitted successfully!")
             return redirect('thread_detail',thread_id=new_thread.id)
     
     #if they are just loading the page, show them the blank form
