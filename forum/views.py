@@ -760,7 +760,7 @@ def invite_peer(request):
         
         if peer_email:
             # Build the absolute URL for your registration page
-            register_url = request.build_absolute_uri('/apply/')
+            register_url = request.build_absolute_uri('/login/')
             
             subject = f"Invitation to join Finstella from {request.user.first_name} {request.user.last_name}"
             

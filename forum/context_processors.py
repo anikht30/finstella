@@ -14,7 +14,7 @@ def global_forum_app_data(request):
         topics = Category.objects.all().annotate(total_threads=Count('threads')).order_by('-total_threads')[:5]
         # order_by(Thread.objects.all().count)
 
-        bio_lenght_greter_then_100 = len(request.user.about) > 100
+        bio_lenght_greter_then_100 = len(request.user.about or "") > 100
 # members list
         members_list = CustomUser.objects.filter(is_active=True, is_superuser=False).order_by('first_name')[:5]
         members_count = CustomUser.objects.filter(is_active=True, is_superuser=False).count()

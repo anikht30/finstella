@@ -1,8 +1,57 @@
 from django.contrib import admin
+from django.core.mail import send_mail
+from django.conf import settings
+from django.urls import reverse
 from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth import get_user_model
 from .models import CustomUser,Category,Thread,Event,Reply,SubReply,EventRegistration,Notifications,Feedback
+from django.utils.crypto import get_random_string
+from django.contrib import messages
 
 
+
+User = get_user_model()
+
+@admin.action(description="Approve users, generate password & send payment link")
+def approve_and_email_users(modeladmin, request, queryset):
+    for user in queryset:
+        # 1. Generate a secure 10-character temporary password
+        dummy_password = get_random_string(length=10)
+        
+        # 2. Assign the password and mark the user as active/approved
+        user.set_password(dummy_password)
+        user.is_active = True 
+        user.save()
+
+        # Build the absolute URL for the checkout page
+        checkout_url = request.build_absolute_uri('/login/')
+        
+        subject = "Application Approved! Welcome to Finstella"
+        
+        # 3. Update the email to include the dummy password
+        message = (
+            f"Hello {user.first_name},\n\n"
+            f"Congratulations! Your application to join Finstella has been approved.\n\n"
+            f"Your account has been provisioned with a temporary password. "
+            f"You can log in using this password and change it from your profile settings later on.\n\n"
+            f"Your temporary password: {dummy_password}\n\n"
+            f"To activate your account and gain access to the network, please follow the link below to complete your subscription payment:\n\n"
+            f"{checkout_url}\n\n"
+            f"We look forward to seeing you inside.\n\n"
+            f"Best regards,\n"
+            f"The Finstella Team"
+        )
+        
+        # Send via your live SMTP
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [user.email],
+            fail_silently=False,
+        )
+        
+    messages.success(request, f"Successfully approved, generated passwords, and emailed {queryset.count()} users.")
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
@@ -10,9 +59,11 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets+(
         ('CFO Details',{'fields':('title','company','linkedin_url','is_active_subscriber','mobileno','middle_name','profile_picture')}),
     )
+    actions = [approve_and_email_users]
 
 class categoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name',)}
+
 
 admin.site.register(CustomUser,CustomUserAdmin)
 admin.site.register(Category,categoryAdmin)
