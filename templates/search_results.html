@@ -1,19 +1,11 @@
 {% extends "layout.html" %}
 {% load static %}
 
-{% block title %}Search Results for "{{ query }}"{% endblock %}
-
+{% block title %} | Search Results for "{{ query }}"{% endblock %}
+{% block reportname %}<h4>Search</h4>{% endblock %}
 {% block maincontent %}
-<div class="active-discussion-box">
-    <div class="active-discussion-title">
-                <h4>Search</h4>
-                {% comment %} <a href={%url "acive_discussion"%}>View all</a> {% endcomment %}
-                  <a href="javascript:history.back()" class="back-link">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Back
-            </a>
-
-            </div>
+{% comment %} <div class="active-discussion-box"> {% endcomment %}
+    
 
     <div class="main-content" style="grid-column: span 12; padding:10px 10px;">
         
@@ -94,5 +86,5 @@
         {% endif %}
 
     </div>
-</div>
+{% comment %} </div> {% endcomment %}
 {% endblock %}

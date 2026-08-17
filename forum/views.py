@@ -9,10 +9,60 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.db.models import Count
 from django.urls import reverse
+from django.core.mail import send_mail
+from django.conf import settings
 import string
+from functools import wraps
+
+
+
+def subscription_required(view_func):
+    @wraps(view_func)
+    def _wrapped_view(request, *args, **kwargs):
+        # 1. Always let superusers (you) through so you don't lock yourself out of your own app!
+        if request.user.is_superuser:
+            return view_func(request, *args, **kwargs)
+            
+        # 2. Check if the user has an active subscription
+        if getattr(request.user, 'is_active_subscriber', False):
+            return view_func(request, *args, **kwargs)
+            
+        # 3. If they are not a superuser and haven't paid, bounce them to checkout
+        return redirect('checkout_view')
+        
+    return _wrapped_view
 
 
 User = get_user_model()
+
+
+@login_required
+def checkout_view(request):
+    # if the user is already active, send them straight to the dashboard
+    if getattr(request.user,'is_active_subscriber',False):
+        return redirect('dashboard')
+
+    return render(request, 'checkout.html')
+
+
+@login_required
+def process_dummy_payment(request):
+    if request.method == 'POST':
+        # 1. We completely ignore the fake credit card data submitted in the form
+        
+        # 2. Activate the user's subscription status in your database
+        # (Ensure you have a boolean field like 'has_active_subscription' on your User model)
+
+        request.user.is_active_subscriber = True
+        request.user.save()
+        # 3. Trigger the success toast notification we built earlier!
+        messages.success(request, "Payment successful! Welcome to the Finstella network.")
+
+        # 4. Send them into the application
+        return redirect('dashboard')
+        
+    return redirect('checkout_view')
+    
 
 
 @login_required
@@ -151,7 +201,8 @@ def apply_view(request):
         user.save()
         # Send them back to the landing page after applying
         # (Later, we can make a dedicated "Success" page)
-        return redirect('landing_page')
+        messages.success(request,"An application accepted successfully!")
+        return redirect('login')
     # If they are just visiting the page, show them the blank form
     return render(request, 'apply.html')
 
@@ -171,6 +222,11 @@ def login_view(request):
         if user is not None:
             # The password is correct, log them in
             login(request,user)
+            # --- THE NEW SUBSCRIPTION CHECK ---
+            # We use getattr() just in case the field doesn't exist on standard admin users
+            if not getattr(user, 'has_active_subscription', False):
+                # If they haven't paid, send them to the dummy payment gateway
+                return redirect('checkout_view')
             return redirect('dashboard')
         
         else:
@@ -188,7 +244,8 @@ def logout_view(request):
     return redirect('landing_page',)
 
 
-@login_required(login_url='login') # This kicks unauthorised 
+@login_required(login_url='login') # This kicks unauthorised
+@subscription_required 
 def dashboard_view(request):
     # 1. Fetch all threads from the database, ordering by the newest first
     # 'select_related' makes the database query much faster!
@@ -696,9 +753,43 @@ def feedback(request):
 
 @login_required
 def invite_peer(request):
+    # 1. Handle the Form Submission (POST)
+    if request.method == 'POST':
+        peer_name = request.POST.get('peer_name', 'Colleague')
+        peer_email = request.POST.get('peer_email')
+        
+        if peer_email:
+            # Build the absolute URL for your registration page
+            register_url = request.build_absolute_uri('/apply/')
+            
+            subject = f"Invitation to join Finstella from {request.user.first_name} {request.user.last_name}"
+            
+            message = (
+                f"Hello {peer_name},\n\n"
+                f"{request.user.first_name} {request.user.last_name} has invited you to apply "
+                f"for the exclusive Finstella network for finance leaders.\n\n"
+                f"Click the link below to submit your application:\n"
+                f"{register_url}?ref={request.user.username}\n\n"
+                f"Best regards,\n"
+                f"The Finstella Team"
+            )
+            
+            send_mail(
+                subject,
+                message,
+                settings.DEFAULT_FROM_EMAIL,
+                [peer_email],
+                fail_silently=False,
+            )
+            
+            messages.success(request, f"Invitation successfully sent to {peer_name} at {peer_email}")
+            
+        # Redirect back to the same page so the form clears and the toast shows up
+        return redirect('invite_peer') 
+
+    # 2. Handle the Page Load (GET)
+    # This is what was missing! It tells Django to render your HTML file.
     return render(request, 'invite_a_peer_page.html')
-
-
 
 
 # The knowledge valut page

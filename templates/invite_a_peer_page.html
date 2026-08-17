@@ -7,6 +7,12 @@
 
 {% block maincontent %}
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    .invite-wrapper {
+        font-family: 'Inter', sans-serif;
+    }
+
     .invite-hero {
         background: #042C1A; /* Deep, premium green */
         border-radius: 16px;
@@ -19,11 +25,12 @@
     }
 
     .invite-hero h1 {
-        font-family: 'Lora', serif;
-        font-size: 36px;
+        font-size: 32px;
+        font-weight: 700;
         margin-bottom: 15px;
         position: relative;
         z-index: 2;
+        letter-spacing: -0.5px;
     }
 
     .invite-hero p {
@@ -66,15 +73,18 @@
     }
 
     .invite-card h2 {
-        font-size: 20px;
+        font-size: 18px;
+        font-weight: 600;
         color: #1E293B;
         margin-bottom: 10px;
+        margin-top: 0;
     }
 
     .invite-card p {
         font-size: 14px;
         color: #64748B;
         margin-bottom: 25px;
+        line-height: 1.5;
     }
 
     /* The Link Copy Box */
@@ -106,6 +116,7 @@
         color: #1E293B;
         cursor: pointer;
         transition: background 0.2s;
+        font-family: 'Inter', sans-serif;
     }
 
     .copy-btn:hover {
@@ -127,8 +138,9 @@
         padding: 12px 16px;
         border: 1px solid #CBD5E1;
         border-radius: 8px;
-        font-family: inherit;
+        font-family: 'Inter', sans-serif;
         font-size: 14px;
+        box-sizing: border-box;
     }
 
     .email-input:focus {
@@ -147,13 +159,13 @@
         font-size: 15px;
         cursor: pointer;
         transition: background 0.2s;
+        font-family: 'Inter', sans-serif;
     }
 
     .send-invite-btn:hover {
         background: #128266;
     }
 
-    /* Mobile Responsive */
     @media (max-width: 768px) {
         .invite-grid {
             grid-template-columns: 1fr;
@@ -161,7 +173,7 @@
     }
 </style>
 
-<div class="main-container">
+<div class="main-container invite-wrapper">
     <div class="main-content" style="grid-column: span 12;">
         
         <div class="invite-hero">
@@ -177,13 +189,12 @@
                 <p>Send this link directly to a peer via LinkedIn, WhatsApp, or your own email client.</p>
                 
                 <div class="copy-link-box">
-                    <!-- Ideally, this value is generated in your Django view: e.g., request.build_absolute_uri('apply') + '?ref=' + request.user.username -->
-                    <input type="text" id="referral-link" class="copy-link-input" value="https://www.finstella.co/apply/?ref={{ request.user.username }}" readonly>
+                    <input type="text" id="referral-link" class="copy-link-input" value="https://finstella.pro/apply/?ref={{ request.user.username }}" readonly>
                     <button class="copy-btn" id="copy-btn" onclick="copyLink()">Copy</button>
                 </div>
 
-                <div style="font-size: 13px; color: #64748B; background: #f0fdfa; padding: 12px; border-radius: 8px; border-left: 3px solid #199A7A;">
-                    <strong>Why use this link?</strong> Applications submitted through a member's link are fast-tracked through our verification process.
+                <div style="font-size: 13px; color: #64748B; background: #f0fdfa; padding: 12px; border-radius: 8px; border-left: 3px solid #199A7A; line-height: 1.5;">
+                    <strong style="color: #1E293B;">Why use this link?</strong> Applications submitted through a member's link are fast-tracked through our verification process.
                 </div>
             </div>
 
@@ -212,20 +223,16 @@
 
 <script>
     function copyLink() {
-        // Grab the input field
         var copyText = document.getElementById("referral-link");
         var btn = document.getElementById("copy-btn");
 
-        // Select and copy the text
         copyText.select();
-        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+        copyText.setSelectionRange(0, 99999);
         navigator.clipboard.writeText(copyText.value);
 
-        // Visual feedback on the button
         btn.innerHTML = "Copied!";
         btn.classList.add("copied");
 
-        // Reset after 3 seconds
         setTimeout(function() {
             btn.innerHTML = "Copy";
             btn.classList.remove("copied");
