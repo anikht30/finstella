@@ -13,6 +13,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 import string
 from functools import wraps
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
 
 
@@ -472,19 +474,44 @@ def profile_view(request):
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
-        # request.Files is required to handle the image upload;
-
-        form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user)
-        if form.is_valid():
-            form.save()
-            messages.success(request,"Profile Updated Successfully!")
-            return redirect('profile')
         
+        # --- SCENARIO 1: USER IS UPDATING THEIR PASSWORD ---
+        if 'change_password' in request.POST:
+            # Re-instantiate the profile form just so it doesn't disappear from the page on a failed password attempt
+            form = ProfileUpdateForm(instance=request.user) 
+            password_form = PasswordChangeForm(request.user, request.POST)
+            
+            if password_form.is_valid():
+                user = password_form.save()
+                # CRITICAL: Keeps the user logged in after the password hash changes
+                update_session_auth_hash(request, user)
+                
+                messages.success(request, "Your password was successfully updated!")
+                return redirect('profile')
+            else:
+                messages.error(request, "Please correct the errors in the password form.")
+                
+        # --- SCENARIO 2: USER IS UPDATING THEIR PROFILE ---
+        else:
+            # request.FILES is required to handle the image upload
+            form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user)
+            password_form = PasswordChangeForm(request.user) # Keep password form blank
+            
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Profile Updated Successfully!")
+                return redirect('profile')
+    
+    # --- SCENARIO 3: USER IS JUST LOADING THE PAGE (GET REQUEST) ---
     else:
         form = ProfileUpdateForm(instance=request.user)
+        password_form = PasswordChangeForm(request.user)
 
-    return render(request, 'edit_profile.html',{'form':form})
-
+    # Pass both forms into your template
+    return render(request, 'edit_profile.html', {
+        'form': form,
+        'password_form': password_form
+    })
 
 @login_required
 def member_profile(request, user_id):

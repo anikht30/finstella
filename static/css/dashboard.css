@@ -887,7 +887,7 @@ article:hover{
     border-radius: 50%;
     color: rgb(15, 110, 86);
 
-    /* border: 1px solid rgb(15, 110, 86); */
+    border: 1px solid #fff;
     object-fit: cover;
     background: #f7fdfb;
     justify-content: center;
@@ -896,6 +896,8 @@ article:hover{
     font-size: 12px;
     font-weight: 600;
     text-decoration: none;
+     box-shadow:.4px 12px rgba(0, 0, 0, 0.05);
+    
 
 }
 

@@ -177,11 +177,11 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Note: When you are ready to go live, you will replace the line above with your real SMTP settings:
-EMAIL_HOST = 'smtp.office365.com'
+EMAIL_HOST = 'smtp.gmail.com'#'smtp.office365.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'aniket@asapadvisors.co.in'
-EMAIL_HOST_PASSWORD = 'Anvay@141830'
+EMAIL_HOST_USER = 'asap.advisors@gmail.com' #'aniket@asapadvisors.co.in'
+EMAIL_HOST_PASSWORD = 'zrza vihy nnqj nxia'#'Anvay@141830'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'aniket@asapadvisors.co.in'
+DEFAULT_FROM_EMAIL = 'asap.advisors@gmail.com'#'aniket@asapadvisors.co.in'
 # ... existing code ...
