@@ -146,7 +146,7 @@
                             <div class="author-details">
                                 
                                 <div class="author-icon">
-                                    <a href="{% url 'member_profile' thread.author.id %}">
+                                    <a href="{% url 'member_profile' thread.author.id %}" style="text-decoration:none">
                                         {% if thread.author.profile_picture %}
                                             <img src="{{ thread.author.profile_picture.url }}" alt="{{ thread.author.first_name }}">
                                         {% else %}

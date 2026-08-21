@@ -15,7 +15,7 @@
     
     {% comment %} <h2 class="sec-h2" style="margin-bottom: 32px;">Verified Finance Leaders</h2> {% endcomment %}
 
-    <div class="alphabet-filter-container" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; align-items: center;">
+    <div class="alphabet-filter-container" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; align-items: center;justify-content:center;">
     
     <!-- 'All' Button -->
     <a href="{% url 'member_directory' %}" 
@@ -51,7 +51,7 @@
     {% if member.profile_picture %}
         <img src="{{ member.profile_picture.url }}" alt="{{ member.first_name }}" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(4, 44, 26, 0.05); box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
     {% else %}
-        <div style="width: 48px; height: 48px; border-radius: 50%;  background:#f7fdfb; color: rgb(15, 110, 86); display: flex; align-items: center; justify-content: center; font-family: inherit; font-size: 14px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <div style="width: 48px; height: 48px; border-radius: 50%;  background:#f7fdfb; color: rgb(15, 110, 86); display: flex; align-items: center; justify-content: center; font-family: inherit; font-size: 14px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border:1px solid rgb(15, 110, 86);">
             {{ member.first_name|first }}{{ member.last_name|first }}
         </div>
     {% endif %}

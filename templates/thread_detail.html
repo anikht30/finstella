@@ -118,7 +118,7 @@
                                 {% if reply.author.profile_picture %}
                                     <img src="{{ reply.author.profile_picture.url }}" alt="{{ reply.author.first_name }}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
                                 {% else %}
-                                    <div class="initial" style="text-decoration: none; width: 40px; height: 40px; border-radius: 50%; background: #199A7A; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                                    <div class="initial" >
                                         {{ reply.author.first_name|first }}{{ reply.author.last_name|first }}
                                     </div>
                                 {% endif %}
@@ -177,7 +177,7 @@
                                         {% if sub.author.profile_picture %}
                                             <img src="{{ sub.author.profile_picture.url }}" alt="{{ sub.author.first_name }}" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
                                         {% else %}
-                                            <div style="width: 32px; height: 32px; border-radius: 50%; background: #199A7A; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">
+                                            <div class="initial" style="width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;">
                                                 {{ sub.author.first_name|first }}{{ sub.author.last_name|first }}
                                             </div>
                                         {% endif %}
