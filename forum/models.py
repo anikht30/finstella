@@ -14,12 +14,30 @@ class CustomUser(AbstractUser):
     company= models.CharField(max_length=150,blank=True,null=True)
     linkedin_url=models.CharField(max_length=200, blank=True, null=True)
 
+    city = models.CharField(max_length=100, blank=True, null=True)
+    state = models.CharField(max_length=100, blank=True, null=True)
+    country = models.CharField(max_length=100, blank=True, null=True, default="India")
+
+    # Professional Data 
+
+    professional_qualification = models.CharField(max_length=200, blank=True, null=True, help_text="e.g., CA, CFA, CPA")
+
     is_active_subscriber = models.BooleanField(default=False)
 
     profile_picture = models.ImageField(upload_to='avatars/', null=True, blank=True)
     about = models.TextField(null=True, blank=True, help_text='A Brief executive bio.')
+
+
+    #phone Details
+    country_code = models.CharField(max_length=5, blank=True, null=True, default="+91")
     mobileno = models.CharField(max_length=15, blank=True, null=True)
+
     middle_name=models.CharField(max_length=150,blank=True,null=True)
+
+
+    # Privacy Settings
+    show_email = models.BooleanField(default=False)
+    show_mobile_no = models.BooleanField(default=False)
 
     # def save(self, *args, **kwargs):
     #     # 1. CHECK IF THE IMAGE IS NEW
