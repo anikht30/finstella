@@ -63,6 +63,7 @@ header{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-column: span 3;
+    
 }
 
 .notification, 
@@ -1680,3 +1681,8 @@ transform: translateX(-4px);
             text-align: center;
         }
     }
+
+
+.limit-breaks br + br + br{
+    display: none;
+}

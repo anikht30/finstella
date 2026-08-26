@@ -2,8 +2,6 @@
 {% extends "layout.html" %}
 {% load static %}
 
-
-
 {% block title %} | Edit Profile{%endblock%}
 
 {% block  reportname %}<h4>Edit Profile</h4>{% endblock  %}
@@ -30,18 +28,31 @@
         <div class="photo-upload-cell">
             <div class="avatar-circle">
                 {% if user.profile_picture %}
+                    <!-- We need both elements rendered so we can swap them with JS -->
+                    <span id="avatar-initials" style="display: none; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 24px; font-weight: 600; color: #199A7A; background: #E2E8F0;">{{ user.first_name|first }}{{ user.last_name|first }}</span>
                     <img id="avatar-preview" src="{{ user.profile_picture.url }}" style="width: 100%; height: 100%; object-fit: cover;">
                 {% else %}
-                    <span id="avatar-initials">{{ user.first_name|first }}{{ user.last_name|first }}</span>
+                    <span id="avatar-initials" style="border: 1px solid #199A7A; border-radius:50%;display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 24px; font-weight: 600; color: #199A7A; background: rgb(247, 253, 251);">{{ user.first_name|first }}{{ user.last_name|first }}</span>
                     <img id="avatar-preview" src="" style="width: 100%; height: 100%; object-fit: cover; display: none;">
                 {% endif %}
             </div>
-            
-            <label for="id_profile_picture" class="photo-upload-box">
-                <strong>Upload / Update Profile Picture</strong>
-                <small>(Recommended .jpg .png .gif .bmp file formats)</small>
-            </label>
-            <input type="file" name="profile_picture" id="id_profile_picture" accept="image/*" style="display: none;">
+    
+            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px;">
+                <label for="id_profile_picture" class="photo-upload-box" style="margin: 0;">
+                    <strong>Upload / Update Profile Picture</strong>
+                    <small>(Recommended .jpg .png .gif .bmp file formats)</small>
+                </label>
+                <input type="file" name="profile_picture" id="id_profile_picture" accept="image/*" style="display: none;">
+                
+                <!-- THE NEW REMOVE CHECKBOX -->
+                {% if user.profile_picture %}
+                <label style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #EF4444; cursor: pointer; font-weight: 500;">
+                    <!-- The name "profile_picture-clear" is exactly what Django looks for to delete the file! -->
+                    <input type="checkbox" name="profile_picture-clear" id="remove-photo-check" style="width: 15px; height: 15px; accent-color: #EF4444;">
+                    Remove current photo
+                </label>
+                {% endif %}
+            </div>
         </div>
 
         <!-- ROW 2 -->
@@ -81,7 +92,6 @@
             {{ form.linkedin_url }}
         </div>
 
-
        <!-- ROW 6 -->
         <div class="field-box">
             <span>City</span>
@@ -91,9 +101,6 @@
             <span>State</span>
             {{ form.state }}
         </div>
-
-
-
         
        <!-- ROW 7 -->
         <div class="field-box">
@@ -119,6 +126,70 @@
         
     </form>
 
+    <!-- ========================================== -->
+    <!-- NEW: PASSWORD UPDATE SECTION ADDED HERE -->
+    <!-- ========================================== -->
+    <div class="header-titles" style="margin-top: 60px;">
+        <h1>Update Password</h1>
+        <p>Ensure your account is using a long, random password to stay secure.</p>
+    </div>
+
+    <!-- Removed 'new-profile-grid' and changed to a vertical stack to fix the layout -->
+    <form method="POST" style="display: flex; flex-direction: column; gap: 24px;">
+        {% csrf_token %}
+        
+        <!-- Loop through the fields in Django's PasswordChangeForm -->
+        {% for field in password_form %}
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+                
+                <div class="field-box" style="margin: 0;">
+                    <span>
+                        <!-- Shorten the excessively long default Django label -->
+                        {% if field.name == 'new_password2' %}
+                            Confirm Password
+                        {% else %}
+                            {{ field.label }}
+                        {% endif %}
+                    </span>
+                    <input type="password" name="{{ field.name }}" id="{{ field.auto_id }}" required>
+                </div>
+                
+                <!-- Errors -->
+                {% if field.errors %}
+                    <div style="color: #EF4444; font-size: 13px; font-weight: 500; padding-left: 15px;">
+                        {{ field.errors.0 }}
+                    </div>
+                {% endif %}
+                
+                <!-- Help text -->
+                {% if field.help_text %}
+                    <div class="password-help-text" style="color: #64748B; font-size: 12px; line-height: 1.4; padding-left: 15px; margin-top: 2px;">
+                        {{ field.help_text|safe }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <!-- ACTION BUTTONS -->
+        <div class="submit-row" style="margin-top: 10px; display: flex; justify-content: flex-end;">
+            <!-- THIS NAME ATTRIBUTE IS CRITICAL -->
+            <button type="submit" name="change_password" style="background-color: #199a7a; color: white; padding: 12px 35px; border-radius: 12px; border: none; font-weight: 500; cursor: pointer; font-size: 15px;">Update Password</button>
+        </div>
+    </form>
+
+    <style>
+        .password-help-text ul {
+            padding-left: 10px;
+            margin: 5px 0 0 0;
+        }
+        .password-help-text li {
+            margin-bottom: 4px;
+        }
+    </style>
+    <!-- ========================================== -->
+    <!-- END OF PASSWORD UPDATE SECTION -->
+    <!-- ========================================== -->
+
     <!-- The Cropping Modal (Hidden by default) -->
     <div id="cropModalOverlay" class="crop-modal-overlay">
         <div class="crop-modal-content">
@@ -134,7 +205,6 @@
     </div>
 
 </section>
-
 
 <script>
     const fileInput = document.getElementById('id_profile_picture'); 
@@ -218,6 +288,23 @@
       });
 
     // FIX 2: Removed the redundant previewImage function that was breaking the cropper!
+    // Grab the new checkbox
+    const removePhotoCheck = document.getElementById('remove-photo-check');
+
+    // 1. Visually swap the photo for initials when they check the box
+    if (removePhotoCheck) {
+        removePhotoCheck.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                // Hide photo, show initials
+                profilePreview.style.display = 'none';
+                if (avatarInitials) avatarInitials.style.display = 'flex'; 
+            } else {
+                // Show photo, hide initials
+                profilePreview.style.display = 'block';
+                if (avatarInitials) avatarInitials.style.display = 'none';
+            }
+        });
+    }
 </script>
 
 {% endblock  %}

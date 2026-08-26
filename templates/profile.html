@@ -38,8 +38,8 @@
         </div>
 
         {% if profile_user.about %}
-            <div class="profile-bio">
-                {{ profile_user.about|linebreaks }}
+            <div class="profile-bio limit-breaks">
+                {{ profile_user.about|linebreaksbr }}
             </div>
         {% endif %}
     </div>

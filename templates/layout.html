@@ -120,7 +120,17 @@
 <!-- The Wrapper Container -->
 <div class="nav-icons-container" style="display: flex; align-items: center; gap: 20px;">
     
+
+
+     <!-- 2. Your Message/Mail Icon -->
+    <a class="message" href="#" style="display: inline-block;">
+        {% comment %} <img src="{% static 'icons/mail.svg' %}" alt="Messages"> {% endcomment %}
+    </a>
+
+
     <!-- 1. Your Notification Bell -->
+
+    
     <a href="{% url 'click_notification_icon' %}" class="notification" style="position: relative; display: inline-block; cursor: pointer; text-decoration: none;">
         <img src="{% static 'icons/notification-bell.svg' %}" alt="Notifications">
         {% if unread_notifications_count > 0 %}
@@ -130,10 +140,7 @@
         {% endif %}
     </a>
 
-    <!-- 2. Your Message/Mail Icon -->
-    {% comment %} <a  class="message" href="#" style="display: inline-block;">
-        <img src="{% static 'icons/mail.svg' %}" alt="Messages">
-    </a> {% endcomment %}
+   
 
 </div>
   
