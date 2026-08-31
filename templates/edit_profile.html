@@ -46,9 +46,9 @@
                 
                 <!-- THE NEW REMOVE CHECKBOX -->
                 {% if user.profile_picture %}
-                <label style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #EF4444; cursor: pointer; font-weight: 500;">
+                <label style="display: flex; align-items: center; gap: 6px; font-size: 10px; color: #EF4444; cursor: pointer; font-weight: 500;padding-left:20px;">
                     <!-- The name "profile_picture-clear" is exactly what Django looks for to delete the file! -->
-                    <input type="checkbox" name="profile_picture-clear" id="remove-photo-check" style="width: 15px; height: 15px; accent-color: #EF4444;">
+                    <input type="checkbox" name="profile_picture-clear" id="remove-photo-check" style="width: 10px; height: 10px; accent-color: #EF4444;">
                     Remove current photo
                 </label>
                 {% endif %}
@@ -78,9 +78,10 @@
             {{ form.company }}
         </div>
         <div class="field-box">
-            <span>Mobile No.</span>
-            <input type="tel" name="mobileno" value="{{request.user.mobileno}}">
+            <span>Qualification</span>
+            {{ form.professional_qualification }}
         </div>
+
 
         <!-- ROW 5 -->
         <div class="field-box">
@@ -93,25 +94,33 @@
         </div>
 
        <!-- ROW 6 -->
-        <div class="field-box">
+       <div class="field-box" style="position: relative;">
             <span>City</span>
-            {{ form.city }}
+            <!-- autocomplete="off" stops the browser's default history from covering our custom dropdown -->
+            <input type="text" name="city" id="id_city" value="{{ request.user.city|default:'' }}" placeholder="Start typing a city name..." autocomplete="off">
+            
+            <!-- Custom Dropdown Container -->
+            <div id="city-dropdown" style="position: absolute; top: 100%; left: 0; width: 100%; background: #fff; border: 1px solid #E2E8F0; border-radius: 8px; z-index: 1000; display: none; max-height: 200px; overflow-y: auto; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin-top: 5px; font-size: 13px;"></div>
         </div>
+        
         <div class="field-box">
             <span>State</span>
-            {{ form.state }}
+            <input type="text" name="state" id="id_state" value="{{ request.user.state|default:'' }}" placeholder="Auto-filled">
         </div>
         
        <!-- ROW 7 -->
         <div class="field-box">
             <span>Country</span>
-            {{ form.country }}
-        </div>
-        <div class="field-box">
-            <span>Qualification</span>
-            {{ form.professional_qualification }}
+           <input type="text" name="country" id="id_country" value="{{ request.user.country|default:'India' }}" placeholder="Auto-filled">
         </div>
 
+          <div class="field-box">
+            <span>Mobile No.</span>
+            <input type="text" name="country_code" id="id_country_code" value="{{ request.user.country_code|default:'+91' }}" style="width: 40px; text-align: center;" placeholder="+91">
+            <input type="tel" name="mobileno" value="{{request.user.mobileno}}">
+        </div>
+
+   
         <!-- ROW 9 (FULL WIDTH) -->
         <div class="field-box textarea-box">
             <span>Executive Summary</span>
@@ -305,6 +314,108 @@
             }
         });
     }
+
+
+    // for auto fill city and state, country
+
+// --- GLOBAL CITY SEARCH & AUTO-FILL ---
+const cityInput = document.getElementById('id_city');
+const stateInput = document.getElementById('id_state');
+const countryInput = document.getElementById('id_country');
+const phoneCodeInput = document.getElementById('id_country_code');
+const dropdown = document.getElementById('city-dropdown');
+
+let debounceTimer;
+
+cityInput.addEventListener('input', function() {
+    clearTimeout(debounceTimer);
+    const query = this.value;
+    dropdown.innerHTML = '';
+    
+    // Wait until they type at least 3 characters
+    if (query.length < 3) {
+        dropdown.style.display = 'none';
+        return;
+    }
+
+    // Delay the API call by 400ms so we don't spam requests while they type
+    debounceTimer = setTimeout(() => {
+        // 1. Fetch cities from OpenStreetMap Nominatim (Free, no API key needed)
+        fetch(`https://nominatim.openstreetmap.org/search?city=${encodeURIComponent(query)}&format=json&addressdetails=1&limit=5`)
+        .then(res => res.json())
+        .then(data => {
+            if (data.length === 0) {
+                dropdown.style.display = 'none';
+                return;
+            }
+            
+            dropdown.style.display = 'block';
+            data.forEach(item => {
+                const address = item.address;
+                const cityName = address.city || address.town || address.village || query;
+                const stateName = address.state || '';
+                const countryName = address.country || '';
+                const countryCode = address.country_code || ''; // 2-letter code (e.g., 'in', 'us')
+
+                // Create dropdown item
+                const div = document.createElement('div');
+                div.style.padding = '10px 15px';
+                div.style.cursor = 'pointer';
+                div.style.borderBottom = '1px solid #f1f5f9';
+                div.style.color = '#1E293B';
+                
+                // Show "City, State, Country" in the dropdown list
+                const formattedLocation = [cityName, stateName, countryName].filter(Boolean).join(', ');
+                div.textContent = formattedLocation;
+                
+                // Hover styling
+                div.onmouseover = () => div.style.backgroundColor = '#f8fafc';
+                div.onmouseout = () => div.style.backgroundColor = 'transparent';
+
+                // WHEN THEY CLICK A CITY:
+                div.addEventListener('click', () => {
+                    // Fill location inputs
+                    cityInput.value = cityName;
+                    stateInput.value = stateName;
+                    countryInput.value = countryName;
+                    dropdown.style.display = 'none'; // Close dropdown
+
+                    // 2. Fetch Phone Dialing Code based on the country
+                    if (countryCode) {
+                        fetch(`https://restcountries.com/v3.1/alpha/${countryCode}`)
+                        .then(r => r.json())
+                        .then(cData => {
+                            if (cData && cData[0] && cData[0].idd) {
+                                const root = cData[0].idd.root || '';
+                                
+                                // FIX: Only append the suffix if there is exactly 1 (like India: +9 and 1). 
+                                const suffix = (cData[0].idd.suffixes && cData[0].idd.suffixes.length === 1) ? cData[0].idd.suffixes[0] : '';
+                                
+                                // SAFETY CHECK: Ensure the HTML input exists before trying to fill it
+                                if (phoneCodeInput) {
+                                    phoneCodeInput.value = root + suffix;
+                                } else {
+                                    console.error("Could not find the phone code input! Make sure it has id='id_country_code'");
+                                }
+                            }
+                        })
+                        .catch(err => console.error("Error fetching country code:", err));
+                    }
+                });
+
+                dropdown.appendChild(div);
+            });
+        });
+    }, 400);
+});
+
+// Close the custom dropdown if the user clicks anywhere else on the screen
+document.addEventListener('click', function(e) {
+    if (e.target !== cityInput && e.target !== dropdown) {
+        dropdown.style.display = 'none';
+    }
+});
+
 </script>
 
 {% endblock  %}
