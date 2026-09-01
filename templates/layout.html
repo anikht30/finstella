@@ -225,6 +225,7 @@
         <div class="card-info">
             <h3 class="card-name">{{request.user.first_name}} {{request.user.last_name}} </h3>
             <p class="card-title">{{request.user.title}}</p>
+            <h6 style="font:inherit; font-size:10px;font-weight:400;">{{request.user.city}} | {{request.user.state}} | {{request.user.country}}</h6>
             {% comment %} <p class="card-location">Mumbai, Maharashtra</p> {% endcomment %}
         </div>
 
