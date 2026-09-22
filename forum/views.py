@@ -38,14 +38,30 @@ def subscription_required(view_func):
 User = get_user_model()
 
 
+# @login_required
+# def checkout_view(request):
+#     # if the user is already active, send them straight to the dashboard
+#     if getattr(request.user,'is_active_subscriber',False):
+#         return redirect('dashboard')
+
+#     return render(request, 'checkout.html')
+
+
 @login_required
 def checkout_view(request):
     # if the user is already active, send them straight to the dashboard
-    if getattr(request.user,'is_active_subscriber',False):
+    if getattr(request.user, 'is_active_subscriber', False):
+        return redirect('dashboard')
+
+    # Catch the "Continue to Dashboard" button click
+    if request.method == 'POST':
+        # Mark them as active so they bypass this screen next time
+        request.user.is_active_subscriber = True
+        request.user.save()
+        
         return redirect('dashboard')
 
     return render(request, 'checkout.html')
-
 
 @login_required
 def process_dummy_payment(request):
@@ -203,7 +219,7 @@ def apply_view(request):
         user.save()
         # Send them back to the landing page after applying
         # (Later, we can make a dedicated "Success" page)
-        messages.success(request,"An application accepted successfully!")
+        messages.success(request,"An application submited successfully!")
         return redirect('login')
     # If they are just visiting the page, show them the blank form
     return render(request, 'apply.html')

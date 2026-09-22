@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activate Account — Finstella</title>
+    <title>Welcome to Finstella</title>
     
     <!-- Import Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +21,7 @@
             justify-content: center;
             min-height: 100vh;
             color: #1E293B;
+            padding: 20px;
         }
 
         .checkout-container {
@@ -35,7 +36,7 @@
 
         .checkout-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .checkout-header img {
@@ -46,52 +47,65 @@
         .checkout-header h1 {
             font-size: 24px;
             font-weight: 700;
-            margin: 0 0 8px 0;
+            margin: 0 0 12px 0;
             color: #199A7A;
         }
 
         .checkout-header p {
-            font-size: 14px;
-            color: #64748B;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #475569;
             margin: 0;
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        /* New styles for the Bank & QR block */
+        .bank-card {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
         }
 
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #475569;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 14px;
+        .bank-card img {
+            width: 160px;
+            height: 160px;
+            object-fit: contain;
             border: 1px solid #CBD5E1;
             border-radius: 8px;
-            font-family: 'Inter', sans-serif;
-            font-size: 15px;
-            box-sizing: border-box;
-            transition: border-color 0.2s;
+            background: #ffffff;
+            padding: 10px;
         }
 
-        .form-control:focus {
-            outline: none;
-            border-color: #199A7A;
+        .bank-info {
+            width: 100%;
+            text-align: left;
         }
 
-        .split-group {
+        .bank-info-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748B;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #E2E8F0;
+            padding-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .bank-row {
             display: flex;
-            gap: 15px;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
-        
-        .split-group .form-group {
-            flex: 1;
-        }
+
+        .bank-label { color: #64748B; }
+        .bank-value { color: #1E293B; font-weight: 600; }
 
         .pay-btn {
             width: 100%;
@@ -103,7 +117,6 @@
             font-weight: 600;
             border-radius: 8px;
             cursor: pointer;
-            margin-top: 10px;
             transition: background-color 0.2s;
             font-family: 'Inter', sans-serif;
         }
@@ -113,59 +126,62 @@
         }
 
         .secure-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
+            text-align: center;
+            margin-top: 16px;
             color: #94A3B8;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 500;
+            line-height: 1.4;
         }
     </style>
 </head>
 <body>
 
     <div class="checkout-container">
+        
         <div class="checkout-header">
+            <!-- Uses your existing finstella.svg logo -->
             <img src="{% static 'finstella.svg' %}" alt="Finstella Logo">
-            <h1>Complete Your Subscription</h1>
-            <p>Annual Professional Membership — ₹X</p>
+            <h1>Welcome to Finstella!</h1>
+            <p>Your trial has started. To ensure uninterrupted access, kindly make the payment of <strong>₹12,000</strong> (inclusive of GST).</p>
         </div>
 
-        <!-- Submits to your dummy processor view -->
-        <form action="{% url 'process_payment' %}" method="POST">
-            {% csrf_token %}
+        <div class="bank-card">
+            <!-- Ensure you have this QR code image in your static/images folder -->
+            <img src="{% static 'images/finstella-payment-qr.png' %}" alt="Payment QR Code">
             
-            <div class="form-group">
-                <label>Name on Card</label>
-                <input type="text" class="form-control" placeholder="Jane Doe" required>
-            </div>
-
-            <div class="form-group">
-                <label>Card Number</label>
-                <!-- For a demo, you can pre-fill dummy text or leave it blank -->
-                <input type="text" class="form-control" placeholder="0000 0000 0000 0000" maxlength="19" required>
-            </div>
-
-            <div class="split-group">
-                <div class="form-group">
-                    <label>Expiry Date</label>
-                    <input type="text" class="form-control" placeholder="MM/YY" maxlength="5" required>
+            <div class="bank-info">
+                <div class="bank-info-title">Bank Account Details</div>
+                
+                <div class="bank-row">
+                    <span class="bank-label">Bank Name:</span>
+                    <span class="bank-value">HDFC Bank</span>
                 </div>
-                <div class="form-group">
-                    <label>CVC</label>
-                    <input type="text" class="form-control" placeholder="123" maxlength="4" required>
+                <div class="bank-row">
+                    <span class="bank-label">Account Name:</span>
+                    <span class="bank-value">Finstella Solutions</span>
+                </div>
+                <div class="bank-row">
+                    <span class="bank-label">Account No:</span>
+                    <span class="bank-value">50200012345678</span>
+                </div>
+                <div class="bank-row">
+                    <span class="bank-label">IFSC Code:</span>
+                    <span class="bank-value">HDFC0001234</span>
                 </div>
             </div>
+        </div>
 
-            <button type="submit" class="pay-btn">Pay ₹X & Activate</button>
+        <!-- Submits back to your welcome_payment view -->
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="pay-btn">Continue to Dashboard</button>
             
             <div class="secure-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                Secure Demo Environment
+                You can also complete this payment later from your account settings.
             </div>
         </form>
+        
     </div>
 
 </body>
